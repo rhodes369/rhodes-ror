@@ -1,4 +1,4 @@
-class CreateMaterialApplications < ActiveRecord::Migration
+class CreateApplications < ActiveRecord::Migration
   def change
     create_table :applications do |t|
       t.string :title
