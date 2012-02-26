@@ -1,5 +1,6 @@
 class Finish < ActiveRecord::Base
-  belongs_to :material
+  has_many :material_finishes, :dependent => :destroy
+  has_many :materials, :through => :material_finishes
 
   validates :title, presence: true
   validates_uniqueness_of :title    
