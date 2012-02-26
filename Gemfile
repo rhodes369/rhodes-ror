@@ -1,6 +1,9 @@
 source 'https://rubygems.org'
 
 gem 'rails', '3.2.1'
+gem 'bcrypt-ruby', '3.0.1'
+gem 'faker', '1.0.1'
+
 
 # Bundle edge Rails instead:
 # gem 'rails', :git => 'git://github.com/rails/rails.git'
@@ -36,3 +39,11 @@ gem 'jquery-rails'
 
 # To use debugger
 gem 'ruby-debug19' #, :require => 'ruby-debug'
+
+group :test do
+  gem 'rspec-rails', '2.8.1'
+  gem 'capybara', '1.1.2'
+  gem 'rb-fsevent', '0.4.3.1', :require => false
+  gem 'growl', '1.0.3'
+  gem 'factory_girl_rails', '1.4.0'
+end
