@@ -21,8 +21,9 @@ ActiveRecord::Schema.define(:version => 20120226034958) do
 
   create_table "materials", :force => true do |t|
     t.string   "title"
-    t.datetime "created_at", :null => false
-    t.datetime "updated_at", :null => false
+    t.integer  "material_type_id"
+    t.datetime "created_at",       :null => false
+    t.datetime "updated_at",       :null => false
   end
 
 end
