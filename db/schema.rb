@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20120226095519) do
+ActiveRecord::Schema.define(:version => 20120228035131) do
 
   create_table "applications", :force => true do |t|
     t.string   "title"
@@ -25,6 +25,14 @@ ActiveRecord::Schema.define(:version => 20120226095519) do
     t.datetime "updated_at", :null => false
   end
 
+  create_table "images", :force => true do |t|
+    t.integer  "material_id"
+    t.string   "orig_filename"
+    t.string   "thumb_filename"
+    t.datetime "created_at",     :null => false
+    t.datetime "updated_at",     :null => false
+  end
+
   create_table "material_applications", :force => true do |t|
     t.integer "material_id"
     t.integer "application_id"
@@ -33,6 +41,11 @@ ActiveRecord::Schema.define(:version => 20120226095519) do
   create_table "material_finishes", :force => true do |t|
     t.integer "material_id"
     t.integer "finish_id"
+  end
+
+  create_table "material_images", :force => true do |t|
+    t.integer "material_id"
+    t.integer "image_id"
   end
 
   create_table "material_types", :force => true do |t|
@@ -44,6 +57,7 @@ ActiveRecord::Schema.define(:version => 20120226095519) do
   create_table "materials", :force => true do |t|
     t.string   "title"
     t.integer  "material_type_id"
+    t.integer  "default_image_id"
     t.datetime "created_at",       :null => false
     t.datetime "updated_at",       :null => false
     t.text     "description"
