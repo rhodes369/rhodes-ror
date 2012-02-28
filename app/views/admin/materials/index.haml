@@ -1,0 +1,9 @@
+= render :partial => 'admin/materials/form', :locals => { :material => @material}
+
+%h1
+  Edit Materials
+%ul
+  - @materials.each do |material| 
+    %li
+      =link_to material.title, edit_admin_material_path(material.id)
+    

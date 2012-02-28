@@ -1,0 +1,5 @@
+%h1 
+  Existing Materials:
+%select#color{size: 10, multiple: true}
+  - @materials.each do |i|
+    %option{:value => i.id}= i.title

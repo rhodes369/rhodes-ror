@@ -1,7 +1,14 @@
 RhodesRor::Application.routes.draw do
+
+  namespace :admin do
+    resources :materials, :finishes
+  end
+  
+  match '/admin' => 'admin/admin#index'
   
   root :to => 'admin#index'
-  
+
+
   # The priority is based upon order of creation:
   # first created -> highest priority.
 
