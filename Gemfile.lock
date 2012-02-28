@@ -172,5 +172,5 @@ DEPENDENCIES
   rspec-rails (= 2.8.1)
   ruby-debug19
   sass-rails (~> 3.2.3)
-  sqlite3
+  sqlite3 (= 1.3.5)
   uglifier (>= 1.0.3)

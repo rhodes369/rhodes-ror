@@ -1,10 +1,14 @@
 class Material < ActiveRecord::Base
-  has_one :material_type
-  has_many :material_finishes, :dependent => :destroy
-  has_many :finishes, :through => :material_finishes
-  has_many :material_applications, :dependent => :destroy
-  has_many :applications, :through => :material_applications  
   
+  has_many :finishes, :through => :material_finishes 
+  has_many :applications, :through => :material_applications
+
+  has_many :material_finishes, :dependent => :destroy
+  has_many :material_applications, :dependent => :destroy
+  has_many :images, :dependent => :destroy 
+  
+  has_one :material_type
+    
   validates :title, presence: true
   validates_uniqueness_of :title
 end
