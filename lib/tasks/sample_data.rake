@@ -27,34 +27,33 @@ namespace :db do
     img1 = Image.create!(orig_filename: 'test1.jpg')
     img2 = Image.create!(orig_filename: 'test2.jpg')
     img3 = Image.create!(orig_filename: 'test3.jpg')
+    img4 = Image.create!(orig_filename: 'test4.jpg')
     
     p 'adding some associations...'
-    p 'for materials...'
-    mat1.material_type_id = mt1
-    mat2.material_type_id = mt2
     
     p 'for finishes...'
-    mat1.finishes << fin1
-    mat1.finishes << fin2
-    
-    mat2.finishes << fin2
-    mat2.finishes << fin3   
+    [fin1,fin2].each{ |fin| mat1.finishes << fin }
+    [fin1,fin2,fin3].each{ |fin| mat2.finishes << fin } 
     
     p 'for applications...'
-    mat1.applications << app1
-    mat1.applications << app2
-    mat2.applications << app2
-    mat2.applications << app3
-    
+    [app1,app2].each{ |app| mat1.applications << app }
+    [app1,app2,app3].each{ |app| mat2.applications << app }
+      
     p 'for images...'
-    mat1.images << img1
-    mat1.images << img2
-    mat2.images << img2
-    mat2.images << img3
+    [img1,img2].each{ |img| mat1.images << img }
+    [img3,img4].each{ |img| mat2.images << img }
+
+    p 'setting material defaults...'
+    mat1.material_type_id = mt1
+    mat2.material_type_id = mt2
+
+    mat1.default_image_id = img1
+    mat2.default_image_id = img3
+
+    p 'saving material udpates'
+    mat1.save!; mat2.save!
     
-    p 'saving material objects...'
-    mat1.save!
-    mat2.save!
-    
+    p 'done!'
+   
   end
 end

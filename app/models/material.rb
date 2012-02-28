@@ -5,8 +5,7 @@ class Material < ActiveRecord::Base
 
   has_many :material_finishes, :dependent => :destroy
   has_many :material_applications, :dependent => :destroy
-  has_many :images, :dependent => :destroy
-  #has_many :images, :through => :material_images 
+  has_many :images, :dependent => :destroy 
   
   has_one :material_type
     
