@@ -1,0 +1,7 @@
+%h1
+  Current Materials:
+%ul
+  - @materials.each do |material| 
+    %li
+      = link_to material.title, material_path(material.id)
+
