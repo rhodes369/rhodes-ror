@@ -1,5 +1,7 @@
 RhodesRor::Application.routes.draw do
-
+  
+  resources :materials, :only => [:index, :show]
+  
   namespace :admin do
     resources :materials, :finishes
   end
