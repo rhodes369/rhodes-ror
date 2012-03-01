@@ -5,6 +5,7 @@ class CreateImages < ActiveRecord::Migration
       t.string :thumb_filename
       t.integer :material_id
       t.integer :finish_id
+      t.integer :image_id
 
       t.timestamps
     end

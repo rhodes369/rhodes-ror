@@ -30,6 +30,7 @@ ActiveRecord::Schema.define(:version => 20120301014829) do
     t.string   "thumb_filename"
     t.integer  "material_id"
     t.integer  "finish_id"
+    t.integer  "image_id"
     t.datetime "created_at",     :null => false
     t.datetime "updated_at",     :null => false
   end

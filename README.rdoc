@@ -1,3 +1,19 @@
+== Rhodes Ruby on Rails 3.2 verison
+
+developers - if you want to contribute, fork a personal repo, clone it, then 
+do a pull request. (contact doktorj -at- gmail.com if you would like access
+to do so.)
+
+first clone the repo in to your desired directory:
+git clone git@github.com:rhodes369/rhodes-ror.git
+
+setup your remotes if you havn't already:
+git remote upstream git@github.com:rhodes369/rhodes-ror.git
+
+then fork 
+
+
+
 == Welcome to Rails
 
 Rails is a web-application framework that includes everything needed to create
