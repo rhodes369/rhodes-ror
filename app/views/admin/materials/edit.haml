@@ -3,5 +3,37 @@
 = form_for @material, :url => admin_material_path do |f| 
   = f.label :title
   = f.text_field :title
-  = f.submit
+  %br
+  = f.label :material_type
+  = collection_select :material, :material_type_id, MaterialType.all, :id, :title, {:selected => @material.material_type_id }
+  %br
+  = f.label :finishes
+  %br
+  / = collection_select :material, :finish_ids, Finish.all, :id, :title,
+  /   { :selected => @material.finishes},
+  /   { :multiple => true, :role => 'material[finish_ids][] }
+  %br
+
+  / 
+  / = f.select('finish_ids', options_from_collection_for_select(@material.finishes, 'id', 'title'), {:multiple => 'multiple', :size => 10})
+  /   %option{:value => ''}
+  /     = Finishes
+  /   - for @all_finishes.each do |finish|
+  /     %option_for_select{:value => finish.id}
+  /       =finish.title
+  / %br
+  
+  
+  / = f.select{:name => 'finish_ids', :size => 10} 
+  / - for @all_finishes.each do |finish|
+  /   %option{:value => finish.id}= finish.name
+  /   
+  / %br
+  = f.text_area :description, :size => "50x5"
+  
+  %br
+  %br
+  %div{align: 'right'}
+    = f.submit
+  
   
