@@ -1,8 +1,9 @@
 class MaterialsController < ApplicationController
+  layout 'application'
   
   def index
-    @materials = Material.all #.order 'DESC'
     @material = Material.new
+    @materials = Material.all
   end  
     
   def show

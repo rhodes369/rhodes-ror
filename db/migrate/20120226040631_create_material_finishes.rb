@@ -4,5 +4,6 @@ class CreateMaterialFinishes < ActiveRecord::Migration
       t.integer :material_id
       t.integer :finish_id
     end
+    add_index :material_finishes, [:material_id, :finish_id]
   end
 end

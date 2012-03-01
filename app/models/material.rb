@@ -1,5 +1,7 @@
 class Material < ActiveRecord::Base
   
+  default_scope order: 'materials.title ASC'  
+  
   has_many :finishes, :through => :material_finishes 
   has_many :applications, :through => :material_applications
 
