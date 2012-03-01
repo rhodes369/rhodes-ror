@@ -2,13 +2,57 @@
 <html>
 <head>
   <title>RhodesRor</title>
-  <%= stylesheet_link_tag    "application", :media => "all" %>
+  <%= stylesheet_link_tag    "application", "core", :media => "all" %>
   <%= javascript_include_tag "application" %>
   <%= csrf_meta_tags %>
 </head>
 <body>
 
-<%= yield %>
+<div id="outer">
+  <div id="header_back">
+    <div id="links_back"></div>
+  </div>
+</div><!-- outer -->
+
+<div id="wrapper">
+
+  <div id="header">
+
+    <h1 id="logo"><a href="index.html"><span></span>Rhodes.org</a></h1>
+
+  </div><!-- header -->
+
+
+  <div id="right-back">
+    <div id="center-back" class="TwoColumnFix">
+      <div id="left-back">
+
+
+        <div id="content-left">
+
+          <%= render "left_nav" %>
+
+        </div><!-- content-left -->
+
+
+        <div id="content-center" class="TwoColumnFix">
+
+          <%= yield %>
+
+        </div><!-- content-center -->
+
+
+        <div id="content-right">
+        </div><!-- content-right //-->
+
+      </div><!-- left-back -->
+    </div><!-- center-back -->
+  </div><!-- right-back -->
+
+
+</div><!-- wrapper -->
+
+
 
 </body>
 </html>
