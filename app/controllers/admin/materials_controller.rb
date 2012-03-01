@@ -1,12 +1,10 @@
 class Admin::MaterialsController < ApplicationController
-  def new
-    @material = Material.new
-    @materials = Material.all
-  end
+  
+  layout 'admin/layouts/application'
   
   def index
-    @materials = Material.all #.order 'DESC'
     @material = Material.new
+    @materials = Material.all #.order 'DESC'    
   end  
     
   def create
@@ -14,10 +12,10 @@ class Admin::MaterialsController < ApplicationController
 
     respond_to do |format|
       if @material.save
-        format.html { redirect_to admin_material_path, notice: 'Entry was successfully created.' }
+        format.html { redirect_to admin_materials_path, notice: 'Material was successfully created.' }
         format.json { render json: @material, status: :created, location: @material }
       else
-        format.html { render action: "index" }
+        format.html { render action: "admin/index" }
         format.json { render json: @material.errors, status: :unprocessable_entity }
       end
     end

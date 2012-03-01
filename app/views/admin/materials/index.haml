@@ -1,13 +1,12 @@
-= render :partial => 'admin/materials/form', :locals => { :material => @material}
-
+= render 'form'
 %h1
-  Edit Materials!!!
+  Materials Index
 %ul
   - @materials.each do |material| 
     %li
       = link_to  material.title, admin_material_path(material)
       = link_to 'Edit', edit_admin_material_path(material)
-      = link_to 'Destroy', admin_material_path(material), confirm: 'Are you sure?', method: :delete
-      = button_to "Delete", :action => "destroy", :controller => "materials"
+      = button_to 'Edit', edit_admin_material_path(material), :name => :edit
+      = button_to 'Delete', admin_material_path(material), :method => :delete, :confirm => "Are you sure?"
       
 
