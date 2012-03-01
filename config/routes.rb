@@ -8,7 +8,7 @@ RhodesRor::Application.routes.draw do
   
   match '/admin' => 'admin/admin#index'
   
-  root :to => 'admin#index'
+  #root :to => 'public/index.haml'
 
 
   # The priority is based upon order of creation:
