@@ -168,7 +168,7 @@ DEPENDENCIES
   faker (= 1.0.1)
   growl (= 1.0.3)
   haml
-  jquery-rails
+  jquery-rails (>= 2.0.1)
   rails (= 3.2.1)
   rb-fsevent (= 0.4.3.1)
   rspec-rails (= 2.8.1)
