@@ -172,7 +172,6 @@ DEPENDENCIES
   factory_girl_rails (= 1.4.0)
   faker (= 1.0.1)
   growl (= 1.0.3)
-  haml
   haml-rails
   jquery-rails (>= 2.0.1)
   rails (= 3.2.1)

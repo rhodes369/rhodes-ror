@@ -9,7 +9,7 @@ gem 'faker', '1.0.1'
 # gem 'rails', :git => 'git://github.com/rails/rails.git'
 
 gem 'sqlite3', '1.3.5'
-gem 'haml'
+#gem 'haml'
 gem 'haml-rails'
 
 
