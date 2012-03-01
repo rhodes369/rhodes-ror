@@ -3,5 +3,10 @@
 = form_for @material, :url => admin_material_path do |f| 
   = f.label :title
   = f.text_field :title
+  %br
+  = collection_select :material, :material_type_id, MaterialType.all, :id, :title, {:selected => @material.material_type_id }
+  %br
+  %div{align: 'right'}
   = f.submit
+  
   

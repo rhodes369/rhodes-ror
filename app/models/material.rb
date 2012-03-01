@@ -14,6 +14,6 @@ class Material < ActiveRecord::Base
   validates :title, presence: true
   validates_uniqueness_of :title
   
-  attr_accessible :title, :description
+  attr_accessible :title, :description, :material_type_id
   
 end
