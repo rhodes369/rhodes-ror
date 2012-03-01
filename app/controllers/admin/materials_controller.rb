@@ -48,11 +48,11 @@ class Admin::MaterialsController < ApplicationController
     
 
   def destroy
-    @material = Entry.find(params[:id])
+    @material = Material.find(params[:id])
     @material.destroy
 
     respond_to do |format|
-      format.html { redirect_to admin_url }
+      format.html { redirect_to admin_materials_path }
       format.json { render json: @material, status: :deleted }
     end
   end 

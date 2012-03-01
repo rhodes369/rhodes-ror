@@ -5,7 +5,9 @@
 %ul
   - @materials.each do |material| 
     %li
-      =p material.title
-      = link_to 'Edit', edit_admin_material_path(material.id)
-      = link_to 'Delete', material, confirm: 'Are you sure?', method: 'delete'
+      = link_to  material.title, admin_material_path(material)
+      = link_to 'Edit', edit_admin_material_path(material)
+      = link_to 'Destroy', admin_material_path(material), confirm: 'Are you sure?', method: :delete
+      = button_to "Delete", :action => "destroy", :controller => "materials"
+      
 
