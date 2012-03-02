@@ -1,8 +1,154 @@
-%h1 Show Material Details Page
-%h2
-  Material:  
-  =@material.title
-  %br
-  %br
-  Description:
-  =@material.description
+
+#content-left
+
+  %h1
+    %a{href: "stone.html"} Stone
+
+  // Stone lists: Antiques, New, All
+  %ul
+    %li
+      %a.expanded
+        .arrow
+        %span.arrowTxt Antiques
+
+      %ul
+        %li
+          %a{href: "stone_antyangtzelime.html"}
+            (&ndash;) Antique Yangtze
+            // Indent for long titles
+            %span.indentLinks Limestone
+
+    // THIS LIST IS SET TO COLLAPSED, AS IT CONTAINS THE ITEM WE'RE VIEWING. I KNOW THE NAMING IS BACKWARDS - COLLAPSED = OPEN (we can change)
+    %li
+      %a.collapsed
+        .arrow 
+        %span.arrowTxt Newly Crafted
+
+      %ul
+        %li
+          %a{href: "stone_amande.html"} (&ndash;) Amande Limestone
+
+    %li
+      %a.collapsed
+        .arrow 
+        %span.arrowTxt All Materials
+
+      %ul
+        %li
+          %a{href: "stone_antyangtzelime.html"}
+            (&ndash;) Antique Yangtze
+            // Indent for long titles
+            %span.indentLinks Limestone
+
+
+
+
+#content-center
+
+  %h3 =@material.title
+
+  #finish
+    // Currently, this variable gets pulled from js on the img
+    FINISH: Finish 
+    %br var(&quot;) minimum thickness
+
+  // AVAILABLE FINISHES
+  %p
+    %span.caps
+      Available finishes:
+    -- FINISHES -- 
+
+  // RECOMMENDED USES / APPLICATIONS
+  %p
+    %span.caps
+      Recommended Uses:
+    -- APPLICATIONS -- 
+
+  // DESCRIPTIOMN
+  #description
+    // Advise on how to break into paragraphs, place inside p tag or no?
+    %p =@material.description
+
+  %p.readMore Read More
+
+  %p
+    %a{href: "", target: "_blank"} Download material details PDF
+
+
+  // MATERIAL SPECS, THESE VARY IN KIND
+  .details
+    %h3 Material Specifications
+    %p
+      %span.caps country of origin:
+      China 
+      %br
+      %span.caps color range:
+      camel - caramel
+      %br
+      %span.caps Standard block size:
+      %br
+      %span.indent 60" x 24" x 20"
+
+
+  // TECH SPECS, THESE VARY IN KIND
+  .details
+    %h3 Technical Data
+    %p ASTM C97 absorption %            (&ndash;) 1.43
+    %p ASTM C97 bulk gravity lbs/ft3    (&ndash;) 159.9
+
+
+
+
+#content-right
+
+  // previous page
+  %a.prev
+
+  // root element for scrollable
+  .scrollable
+
+    // root element for the items
+    .items
+
+      // THUMBNAILS 1-5
+      %div
+        // FINISH INFO IS IN THE MOUSEOVER FUNCTION, BEING WRITTEN TO #finish
+        %a(href="#" onMouseover="MM_swapImage('enlarge1','','images/stone/Amande/amande_4ptStalk.jpg',0); writeText('FINISH: Type of finish <br> and minimum thickness')")
+          %img{src: "images/stone/Amande/thumbs/amande_4ptStalk.jpg", alt: "", name: "a1"}
+
+
+  // next page
+  %a.next
+
+  / This has been in page, but I'd prefer it to go in scripts if possible
+  / <script>
+  /   // execute scripts when the DOM is ready.
+  /   $(function() {
+  /     // initialize scrollable
+  /     $(".scrollable").scrollable();
+  /   });
+  / </script>
+
+
+  // MAIN IMAGE
+  #enlarge_container
+    %img{src: "images/stone/Amande/amande_4ptStalk.jpg", name: "enlarge1"}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

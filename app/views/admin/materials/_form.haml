@@ -1,7 +1,7 @@
-%h1 
-  Create/Edit Material
+
 = form_for @material, :url => admin_materials_path do  |f| 
-  = f.label :title
-  = f.text_field :title
+
+  = f.text_field :title, :placeholder => "Create New Material"
+
   = f.submit
-  
+
