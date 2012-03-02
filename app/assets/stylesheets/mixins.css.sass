@@ -1,0 +1,284 @@
+// MIXINS
+
+// NON SELECTABLE CONTENTS
+=user-select
+  user-select: none
+  -webkit-user-select: none
+  -moz-user-select: none
+  -khtml-user-select: none
+  -o-user-select: none
+
+
+// CLICK-THROUGH
+=clickable
+  pointer-events: auto
+=click-through
+  pointer-events: none
+
+
+// DISPLAY
+=block
+  display: block
+=hidden
+  display: none
+=inline-block
+  display: inline-block
+=absolute
+  position: absolute
+=relative
+  position: relative
+=fixed
+  position: fixed
+=overflow
+  overflow: hidden
+=left
+  float: left
+=right
+  float: right
+=clear
+  clear: both
+=transparent
+  background: transparent
+=outline
+  outline:  none
+
+
+// FONTS
+=bold
+  font-weight: bold
+=center
+  text-align: center
+=font($size)
+  font-size: $size
+
+=swatchit
+  font-family: swatchit, arial, sans-serif
+=verdana
+  font-family: verdana, arial, sans-serif
+=trebuchet
+  font-family: "trebuchet ms", tahoma, sans-serif
+=arial
+  font-family: arial, sans-serif
+
+
+// CURSORS
+=pointer
+  cursor: pointer
+=cursor
+  cursor: default
+=grab
+  cursor: grab
+  cursor: -moz-grab
+  cursor: -webkit-grab
+=grabbing
+  cursor: grabbing
+  cursor: -moz-grabbing
+  cursor: -webkit-grabbing
+
+
+// ROUND
+
+=round($radius)
+  border-radius:            $radius + px
+  -moz-border-radius:       $radius + px
+  -webkit-border-radius:    $radius + px
+
+  background-clip: padding-box !important
+
+
+// FLAT
+
+=flat-top
+  border-top-left-radius:             0px
+  -moz-border-radius-topleft:         0px
+  -webkit-border-radius-topleft:      0px
+
+  border-top-right-radius:            0px
+  -moz-border-radius-topright:        0px
+  -webkit-border-radius-topright:     0px
+
+
+=flat-right
+  border-top-right-radius:            0px
+  -moz-border-radius-topright:        0px
+  -webkit-border-radius-topright:     0px
+
+  border-bottom-right-radius:         0px
+  -moz-border-radius-bottomright:     0px
+  -webkit-border-radius-bottomright:  0px
+
+
+=flat-bottom
+  border-bottom-left-radius:          0px
+  -moz-border-radius-bottomleft:      0px
+  -webkit-border-radius-bottomleft:   0px
+
+  border-bottom-right-radius:         0px
+  -moz-border-radius-bottomright:     0px
+  -webkit-border-radius-bottomright:  0px
+
+
+=flat-left
+  border-top-left-radius:             0px
+  -moz-border-radius-topleft:         0px
+  -webkit-border-radius-topleft:      0px
+
+  border-bottom-left-radius:          0px
+  -moz-border-radius-bottomleft:      0px
+  -webkit-border-radius-bottomleft:   0px
+
+
+=flat-all
+  border-top-left-radius:             0px
+  -moz-border-radius-topleft:         0px
+  -webkit-border-radius-topleft:      0px
+
+  border-top-right-radius:            0px
+  -moz-border-radius-topright:        0px
+  -webkit-border-radius-topright:     0px
+
+  border-bottom-right-radius:         0px
+  -moz-border-radius-bottomright:     0px
+  -webkit-border-radius-bottomright:  0px
+
+  border-bottom-left-radius:           0px
+  -moz-border-radius-bottomleft:      0px
+  -webkit-border-radius-bottomleft:   0px
+
+
+
+
+// GLOWS AND SHADOWS
+
+=shadow($x, $y, $depth, $color)
+  box-shadow:         $x + px $y + px $depth + px $color
+  -moz-box-shadow:    $x + px $y + px $depth * 0.7 + px $color
+  -webkit-box-shadow: $x + px $y + px $depth + px $color
+
+=glow-black($depth)
+  box-shadow:         0 0 $depth + px #000
+  -moz-box-shadow:    0 0 $depth * 0.7 + px #000
+  -webkit-box-shadow: 0 0 $depth + px #000
+
+=glow-black-alpha($depth, $percent)
+  box-shadow:         0 0 $depth + px rgba(0,0,0,$percent)
+  -moz-box-shadow:    0 0 $depth * 0.7 + px rgba(0,0,0,$percent)
+  -webkit-box-shadow: 0 0 $depth + px rgba(0,0,0,$percent)
+
+
+=glow-white($depth)
+  box-shadow:         0 0 $depth + px #fff
+  -moz-box-shadow:    0 0 $depth * 0.5 + px #fff
+  -webkit-box-shadow: 0 0 $depth + px #fff
+
+=glow-white-alpha($depth, $percent)
+  box-shadow:         0 0 $depth + px rgba(255,255,255,$percent)
+  -moz-box-shadow:    0 0 $depth * 0.7 + px rgba(255,255,255,$percent)
+  -webkit-box-shadow: 0 0 $depth + px rgba(255,255,255,$percent)
+
+
+=inner-glow($depth)
+  box-shadow:         inset 0 0 $depth + px #fff
+  -moz-box-shadow:    inset 0 0 $depth + px #fff
+  -webkit-box-shadow: inset 0 0 $depth + px #fff
+
+
+// =inner-shadow($depth)
+//   box-shadow:         inset 0 4px $depth + px rgba(0,0,0,0.2)
+//   -moz-box-shadow:    inset 0 4px $depth + px rgba(0,0,0,0.2)
+//   -webkit-box-shadow: inset 0 4px $depth + px rgba(0,0,0,0.2)
+
+
+=inner-shadow($x, $y, $depth, $color)
+  box-shadow:         inset + $x + px $y + px $depth + px $color
+  -moz-box-shadow:    inset + $x + px $y + px $depth + px $color
+  -webkit-box-shadow: inset + $x + px $y + px $depth + px $color
+
+
+
+// GRADIENTS
+
+=gradient($color1, $color2)
+  background:     $color1
+  background:     -webkit-gradient(linear, center top, center bottom, from( $color1 ), to( $color2 ))
+  background:     -moz-linear-gradient($color1, $color2)
+  background:     -o-linear-gradient($color1, $color2)
+
+=gradient-H($color1, $color2)
+  background:     $color1
+  background:     -webkit-gradient(linear, left top, right top, from( $color1 ), to( $color2 ))
+  background:     -moz-linear-gradient(left, $color1, $color2)
+  background:     -o-linear-gradient(left, $color1, $color2)
+
+
+
+
+// BACKGROUNDS
+=bg-white($alpha)
+  background-color: #fff
+  background-color: rgba(250,250,250, $alpha)
+
+=bg-black($alpha)
+  background-color: #000
+  background-color: rgba(0,0,0, $alpha)
+
+
+
+
+// SHINE
+
+=bg-shine($offset)
+  box-shadow:         inset 0px $offset + px rgba(255,255,255,0.1)
+  -moz-box-shadow:    inset 0px $offset + px rgba(255,255,255,0.1)
+  -webkit-box-shadow: inset 0px $offset + px rgba(255,255,255,0.1)
+
+
+
+
+// ALPHA
+
+=alpha($percent)
+  filter: alpha(opacity=$percent)
+  -moz-opacity:     $percent / 100
+  -khtml-opacity:   $percent / 100
+  -webkit-opacity:  $percent / 100
+  opacity:          $percent / 100
+
+
+
+
+// TRANSITIONS
+
+=transition($ms, $property)
+  transition-duration: $ms
+  transition-property: $property
+  transition-timing-function: ease
+  -moz-transition-duration: $ms
+  -moz-transition-property: $property
+  -moz-transition-timing-function: ease
+  -webkit-transition-duration: $ms
+  -webkit-transition-property: $property
+  -webkit-transition-timing-function: ease
+  -o-transition-duration: $ms
+  -o-transition-property: $property
+  -o-transition-timing-function: ease
+
+
+
+
+// TRANSFORMS
+=rotate($deg)
+  -moz-transform:     rotate($deg + deg)
+  -o-transform:       rotate($deg + deg)
+  -webkit-transform:  rotate($deg + deg)
+
+
+
+
+
+
+
+//// 3 POINT GRADIENT SAMPLE
+// background-image: -moz-linear-gradient(top, rgba(58,58,58,0.0), #3a3a3a 37%, #111 60%, #000)
+// background-image: -webkit-gradient(linear, center top, center bottom, color-stop(0%, rgba(58,58,58,0.0)), color-stop(37%, #3a3a3a), color-stop(60%, #111), color-stop(100%, #000))
+// background-image: -o-linear-gradient(top, rgba(58,58,58,0.0), #3a3a3a 37%, #111 60%, #000)

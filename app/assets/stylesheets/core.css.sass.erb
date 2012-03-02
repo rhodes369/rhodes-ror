@@ -1,6 +1,5 @@
 // CORE STYLES
 
-
 @font-face
   font-family: 'LucidaSans'
   src: url('../fonts/LucidaSans/lucidasansstd-webfont.eot')
@@ -113,7 +112,7 @@ h1
   letter-spacing: 2px
   color: #414042
   /* Fix inconsistency in Chrome
-  height: 28px
+  height: auto
   line-height: 24px
   a
     &:link, &:visited
@@ -345,6 +344,218 @@ h1#logo
   left: 974px
   margin: 35px auto 0
   width: 578px
+
+
+
+
+// CONTENT SPECIFIC TYPE
+#content-left h1, #content-center h1
+  margin: 0 0 0 0px
+
+#content-left h2, #content-center h2
+  margin: 4px 0 16px 0px
+
+#content-left h3, #content-center h3, .description h3
+  margin: 14px 0 8px 0px
+  padding: 0
+  font-weight: bold
+  font-size: .9em
+  text-transform: uppercase
+  color: #252525
+
+#content-right h4
+  margin: 0 0 2px 5px
+  padding: 0
+
+#content-left p, #content-center p
+  margin: 2px 0 16px 0px
+  padding: 0
+  color: #252525
+  line-height: 1.3em
+  font-size: .9em
+
+.description p
+  margin: 2px 0 16px 25px
+  padding: 0
+  font-size: .9em
+  color: #252525
+  line-height: 1.3em
+
+.details
+  margin: 20px 0 0 0
+
+#content-center .details p
+  margin: 2px 0 10px 0
+
+.description
+  clear: both
+  margin: 24px 0 0
+  height: 94px
+  overflow: hidden
+
+#content-center
+  p.readMore
+    margin: 0
+    padding: 16px 0
+    cursor: pointer
+    display: block
+    text-decoration: underline
+    color: #7C3113
+    background-color: #e0e0dc
+    &:hover
+      text-decoration: none
+      color: #252525
+  a
+    line-height: 1.3em
+    font-size: 1em
+  .thumbs a
+    font-size: .9em
+
+
+
+
+
+// LEFT NAV
+.nolist
+  color: #979e7d
+
+.current
+  color: #252525
+  cursor: default
+  a
+    color: #252525
+    cursor: default
+
+#content-left ul
+  list-style: none
+  margin: 12px 0 40px
+  padding: 0
+  width: auto
+  height: auto
+  li
+    font-size: 14px
+    padding: 0
+    margin: 6px 0
+  li a
+    position: relative
+    font-size: 14px
+    text-decoration: none
+    cursor: pointer
+    display: block
+    padding: 2px 0
+    line-height: 16px
+    &:hover
+      text-decoration: none
+      color: #252525
+    span.arrowTxt
+      padding: 2px 0 2px 18px
+    &.nolist
+      font-size: 14px
+      text-decoration: none
+      border-bottom: 1px solid #979e7d
+      color: #7C3113
+
+
+// EXPAND AND COLLAPSE ARROWS
+.expanded .arrow
+  position: absolute
+  top: 6px
+  border-style: solid
+  height: 0
+  width: 0
+  border-color: transparent transparent transparent #636363
+  border-width: 6px
+
+.collapsed .arrow, .expanded:hover .arrow
+  position: absolute
+  top: 8px
+  border-style: solid
+  height: 0
+  width: 0
+  border-color: #636363 transparent transparent
+  border-width: 6px 6px 0
+
+
+
+
+
+
+
+
+// CONTAINER FOR STONE FINISH TEXT
+#finish
+  margin: 0 0 16px
+  padding: 0
+  height: 38px
+  font-size: .9em
+  color: #252525
+  line-height: 1.3em
+
+
+
+
+
+
+
+
+
+// THUMBS for stone and press
+.thumbs
+  list-style: none
+  margin: 26px 0 0
+  padding: 0
+  width: auto
+  height: auto
+
+#content-center h3.stoneHeaders
+  margin: 30px 0 22px
+
+.thumbs
+  li
+    float: left
+    margin: 0 28px 28px 0
+    padding: 0
+    width: auto
+    height: 210px
+    &:hover
+      box-shadow: 0 0 10px #888
+      -moz-box-shadow: 0 0 10px #888
+      -webkit-box-shadow: 0 0 10px #888
+      -o-box-shadow: 0 0 10px #888
+  a
+    display: block
+    margin: 0
+    padding: 4px
+    width: 144px
+    height: 202px
+    text-decoration: none
+    background: #f0f0ee
+    &:hover
+      text-decoration: none
+      background: #686868
+      color: white
+      span
+        text-decoration: none
+        background: #686868
+        color: white
+  .material
+    display: block
+    margin: 10px 0 0 10px
+  .type
+    display: block
+    margin-left: 10px
+    color: #252525
+  img
+    width: 144px
+    height: 144px
+    border: none
+
+#content-center .thumbs .inline
+  display: inline
+  margin: 0
+
+
+
 
 
 
