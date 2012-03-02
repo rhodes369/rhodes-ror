@@ -1,5 +1,22 @@
 
 
+
+// CONTAINER FOR STONE FINISH TEXT
+#finish
+  margin: 0 0 16px
+  padding: 0
+  height: 38px
+  font-size: .9em
+  color: #252525
+  line-height: 1.3em
+
+
+
+
+
+
+
+
 // get rid of system borders being generated for A tags
 
 a:active
@@ -96,13 +113,13 @@ a
     float: left
     margin: 28px 0px 0
     cursor: pointer
-    background-image: url(../images/next.gif)
+    background-image: url(<%= asset_path 'next.gif' %>)
     &:hover
-      background-image: url(../images/nextO.gif)
+      background-image: url<%= asset_path 'nextO.gif' %>)
   &.prev
-    background-image: url(../images/prev.gif)
+    background-image: url(<%= asset_path 'prev.gif' %>)
     &:hover
-      background-image: url(../images/prevO.gif)
+      background-image: url(<%= asset_path 'prevO.gif' %>)
   &.disabled
     visibility: hidden !important
 

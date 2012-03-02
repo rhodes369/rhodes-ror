@@ -26,7 +26,7 @@
 
     = collection_select :material, :material_type_id, MaterialType.all, :id, :title, {:selected => @material.material_type_id }
 
-    = f.label :finishes
+    %h4 Select finishe(s)
 
     %select#finish_ids{name: 'finish_ids', size: "5x20", multiple: true}
       - @all_finishes.each do |finish|
