@@ -16,7 +16,7 @@ class Material < ActiveRecord::Base
   validates_uniqueness_of :title
    
   attr_accessible :title, :description, :material_type_id, :finish_ids, 
-                  :application_ids, :image_ids
+                  :application_ids, :image_ids, :specifications, :technical_data
 
 end
 
