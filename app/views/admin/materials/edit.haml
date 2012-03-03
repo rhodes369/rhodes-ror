@@ -37,6 +37,8 @@
     = f.text_area :description, :size => "50x5", :placeholder => "Description of material..."
 
     = f.submit
+    
+    = button_to 'Delete', admin_material_path(@material), :method => :delete, :confirm => "Are you sure?"
 
 
 
