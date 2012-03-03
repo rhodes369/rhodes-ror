@@ -23,6 +23,14 @@
   </div><!-- header -->
 
 
+  <% if flash[:notice] %>
+    <p class="notice"><%= flash[:notice] %></p>
+  <% end %>
+  <% if flash[:error] %>
+    <p class="error"><%= flash[:error] %></p>
+  <% end %>
+
+
   <div id="right-back">
     <div id="center-back" class="TwoColumnFix">
       <div id="left-back">
