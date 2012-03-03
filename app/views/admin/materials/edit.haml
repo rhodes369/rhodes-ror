@@ -18,7 +18,15 @@
       - @all_finishes.each do |finish|
         %option{:value => finish.id, :selected =>  @material.finishes.include?(finish) ? "selected" : nil}
           =finish.title 
-        
+    
+    %br
+    %h4 Select application(s)
+    
+    %select#application_ids{name: 'material[application_ids][]', size: "5x20", multiple: true}
+      - @all_applications.each do |app|
+        %option{:value => app.id, :selected =>  @material.applications.include?(app) ? "selected" : nil}
+          = app.title
+
 
     = f.text_area :description, :size => "50x5", :placeholder => "Description of material..."
 

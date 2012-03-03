@@ -16,7 +16,7 @@ class Material < ActiveRecord::Base
   
   #after_validation :reset_finishes, :only => :update #, :populte :create
   
-  attr_accessible :title, :description, :material_type_id, :finish_ids
+  attr_accessible :title, :description, :material_type_id, :finish_ids, :application_ids
 
   
   # clear out old finishes before populating with new selections

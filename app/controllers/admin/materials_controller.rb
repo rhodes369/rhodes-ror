@@ -27,6 +27,7 @@ class Admin::MaterialsController < ApplicationController
   def edit
     @material = Material.find(params[:id])
     @all_finishes = Finish.order('title ASC')
+    @all_applications = Application.order('title ASC')
   end  
   
   def update
