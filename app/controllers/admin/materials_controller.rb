@@ -42,7 +42,7 @@ class Admin::MaterialsController < ApplicationController
     respond_to do |format|
       if @material.update_attributes(params[:material])
         
-        @material.reset_finishes()        
+        #@material.reset_finishes()        
         @material.populate_finishes params[:material][:finish_ids]
         
         flash[:notice] = 'Material Updated'

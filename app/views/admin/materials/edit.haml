@@ -14,11 +14,11 @@
     
     %h4 Select finishe(s)
 
-    %select#finish_ids{name: 'finish_ids', size: "5x20", multiple: true}
+    %select#finish_ids{name: 'material[finish_ids][]', size: "5x20", multiple: true}
       - @all_finishes.each do |finish|
         - selected = '' 
         - selected = 'selected' if @material.finishes.include?(finish)
-        %option{:value => finish.id, :selected => selected}=finish.title
+        %option{:value => finish.id, :selected => @material.finishes}=finish.title
 
     = f.text_area :description, :size => "50x5", :placeholder => "Description of material..."
 
