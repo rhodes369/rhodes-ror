@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20120301014829) do
+ActiveRecord::Schema.define(:version => 20120303063647) do
 
   create_table "applications", :force => true do |t|
     t.string   "title"
@@ -55,9 +55,11 @@ ActiveRecord::Schema.define(:version => 20120301014829) do
   create_table "material_images", :force => true do |t|
     t.integer "material_id"
     t.integer "image_id"
+    t.integer "finish_id"
   end
 
-  add_index "material_images", ["material_id", "image_id"], :name => "index_material_images_on_material_id_and_image_id"
+  add_index "material_images", ["image_id"], :name => "index_material_images_on_image_id"
+  add_index "material_images", ["material_id"], :name => "index_material_images_on_material_id"
 
   create_table "material_types", :force => true do |t|
     t.string   "title"
@@ -69,6 +71,7 @@ ActiveRecord::Schema.define(:version => 20120301014829) do
     t.string   "title"
     t.integer  "material_type_id"
     t.integer  "default_image_id"
+    t.integer  "pdf_id"
     t.text     "description"
     t.datetime "created_at",       :null => false
     t.datetime "updated_at",       :null => false
@@ -76,5 +79,11 @@ ActiveRecord::Schema.define(:version => 20120301014829) do
 
   add_index "materials", ["default_image_id"], :name => "index_materials_on_default_image_id"
   add_index "materials", ["material_type_id"], :name => "index_materials_on_material_type_id"
+
+  create_table "pdfs", :force => true do |t|
+    t.string   "orig_filename"
+    t.datetime "created_at",    :null => false
+    t.datetime "updated_at",    :null => false
+  end
 
 end

@@ -7,9 +7,10 @@
 #content-center.TwoColumnFix
 
   = form_for @material, :url => admin_material_path do |f| 
-
+    %h4 Title
     = f.text_field :title
-
+    
+    %h4 Material Type
     = collection_select :material, :material_type_id, MaterialType.all, :id, :title, {:selected => @material.material_type_id }
     
     %h4 Select finishe(s)
@@ -18,11 +19,41 @@
       - @all_finishes.each do |finish|
         %option{:value => finish.id, :selected =>  @material.finishes.include?(finish) ? "selected" : nil}
           =finish.title 
-        
-
+    
+    %br
+    %h4 Select application(s)
+    
+    %select#application_ids{name: 'material[application_ids][]', size: "5x20", multiple: true}
+      - @all_applications.each do |app|
+        %option{:value => app.id, :selected =>  @material.applications.include?(app) ? "selected" : nil}
+          = app.title
+    
+    %br
+    %h4 Description
     = f.text_area :description, :size => "50x5", :placeholder => "Description of material..."
+    
+    %br
+    %h4 Add a pdf file
+    = f.file_field name: 'material[pdf]'    
+    - unless @material.pdf_id.nil?
+      %p
+        current pdf: 
+        - @pdf = Pdf.find(@material.pdf_id)
+        = @pdf.orig_filename
+
+
+    %br
+    %h4 Add an Image
+    = f.file_field name: 'material[image_ids]'
+
+    
+    - if @material.images.count > 0
+      %br
+      = render :partial => 'image_thumbs'
+        
+    %br
+    %br
 
     = f.submit
-    
   %br
   = button_to 'Delete', admin_material_path(@material), :method => :delete, :confirm => "Are you sure?"
