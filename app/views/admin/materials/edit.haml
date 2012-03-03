@@ -34,7 +34,7 @@
 
     %br
     %h4 Add an Image
-    = f.file_field :name => 'material[image]'
+    = f.file_field name: 'material[image_ids]'
     
     - if @material.images.count > 0
       %br

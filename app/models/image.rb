@@ -1,7 +1,10 @@
 class Image < ActiveRecord::Base
-  has_one  :image_finishes, :dependent => :destroy
-  has_one  :finish, :through => :image_finishes
-  belongs_to  :material
+  
+  UPLOAD_PATH = "images/uploads"
+  
+  belongs_to :material
+  has_one :finish
+  
   
   validates :orig_filename, presence: true
 end

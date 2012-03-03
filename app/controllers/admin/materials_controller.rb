@@ -34,9 +34,11 @@ class Admin::MaterialsController < ApplicationController
     @material = Material.find(params[:id])
     return if @material.nil?
   
+    upload() unless params[:image_ids].blank? # upload files if any exist
 
     respond_to do |format|
-      if @material.update_attributes(params[:material])        
+      if @material.update_attributes(params[:material])   
+            
         flash[:notice] = 'Material Updated'       
         format.html { redirect_to admin_materials_path }
         #format.json { head :no_content, status: :success }
@@ -46,8 +48,15 @@ class Admin::MaterialsController < ApplicationController
         #format.json { render json: @material.errors, status: :unprocessable_entity }
       end
     end
-
   end  
+  
+  
+  def upload
+    uploaded_io = params[:new_image]
+    File.open(Rails.root.join('public', 'uploads', uploaded_io.original_filename), 'w') do |file|
+      file.write(uploaded_io.read)
+    end
+  end
   
   
   def show
@@ -64,5 +73,5 @@ class Admin::MaterialsController < ApplicationController
       format.html { redirect_to admin_materials_path }
       format.json { render json: @material, status: :deleted }
     end
-  end 
+  end  
 end
