@@ -1,26 +1,12 @@
 
-
 #content-left
 
   %h1 
     Edit Material
 
-  / undefined method `each' for nil:NilClass
-  / %ul
-  /   - @materials.each do |material| 
-  /     %li
-  /       = link_to  material.title, edit_admin_material_path(material)
-
-
 #content-center.TwoColumnFix
 
   = form_for @material, :url => admin_material_path do |f| 
-
-    / undefined local variable or method `material' for #<#<Class:0x007fe173ac69d8>:0x007fe173823708>
-    / = link_to  material.title, admin_material_path(material)
-
-    / undefined local variable or method `material' for #<#<Class:0x007fe173ac69d8>:0x007fe173c1c6e8>
-    / = button_to 'Delete', admin_material_path(material), :method => :delete, :confirm => "Are you sure?"
 
     = f.text_field :title
 
@@ -28,11 +14,11 @@
     
     %h4 Select finishe(s)
 
-    %select#finish_ids{name: 'finish_ids', size: "5x20", multiple: true}
+    %select#finish_ids{name: 'material[finish_ids][]', size: "5x20", multiple: true}
       - @all_finishes.each do |finish|
         - selected = '' 
         - selected = 'selected' if @material.finishes.include?(finish)
-        %option{:value => finish.id, :selected => selected}=finish.title
+        %option{:value => finish.id, :selected => @material.finishes}=finish.title
 
     = f.text_area :description, :size => "50x5", :placeholder => "Description of material..."
 
