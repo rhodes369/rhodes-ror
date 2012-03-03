@@ -33,27 +33,17 @@ class Admin::MaterialsController < ApplicationController
   def update
     @material = Material.find(params[:id])
     return if @material.nil?
-      
-    #render text: params[:material_finishes][:finish_ids] 
-    
+  
 
-    
-    #params[:material_finishes].delete
-    
     respond_to do |format|
-      if @material.update_attributes(params[:material])
-        
-        #@material.reset_finishes()        
-        @material.populate_finishes params[:material][:finish_ids]
-        
-        flash[:notice] = 'Material Updated'
-        
-        format.html { redirect_to admin_materials_path, :notice => 'Material was successfully updated.' }
-        #format.json { head :no_content }
+      if @material.update_attributes(params[:material])        
+        flash[:notice] = 'Material Updated'       
+        format.html { redirect_to admin_materials_path }
+        #format.json { head :no_content, status: :success }
       else
         flash[:error] = 'Problem updating Material'
-       format.html { render action: "edit" }
-       #format.json { render json: @material.errors, status: :unprocessable_entity }
+        format.html { render action: "edit" }
+        #format.json { render json: @material.errors, status: :unprocessable_entity }
       end
     end
 
