@@ -31,10 +31,21 @@
     %br
     %h4 Description
     = f.text_area :description, :size => "50x5", :placeholder => "Description of material..."
+    
+    %br
+    %h4 Add a pdf file
+    = f.file_field name: 'material[pdf]'    
+    - unless @material.pdf_id.nil?
+      %p
+        current pdf: 
+        - @pdf = Pdf.find(@material.pdf_id)
+        = @pdf.orig_filename
+
 
     %br
     %h4 Add an Image
     = f.file_field name: 'material[image_ids]'
+
     
     - if @material.images.count > 0
       %br
