@@ -97,23 +97,13 @@
   // MATERIAL SPECS, THESE VARY IN KIND
   .details
     %h3 Material Specifications
-    %p
-      %span.caps country of origin:
-      China 
-      %br
-      %span.caps color range:
-      camel - caramel
-      %br
-      %span.caps Standard block size:
-      %br
-      %span.indent 60" x 24" x 20"
+    %p=simple_format(@material.specifications)
 
 
   // TECH SPECS, THESE VARY IN KIND
   .details
     %h3 Technical Data
-    %p ASTM C97 absorption %            &ndash; 1.43
-    %p ASTM C97 bulk gravity lbs/ft3    &ndash; 159.9
+    %p=simple_format(@material.technical_data)
 
 
 

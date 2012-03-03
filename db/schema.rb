@@ -73,6 +73,8 @@ ActiveRecord::Schema.define(:version => 20120303063647) do
     t.integer  "default_image_id"
     t.integer  "pdf_id"
     t.text     "description"
+    t.text     "specifications"
+    t.text     "technical_data"
     t.datetime "created_at",       :null => false
     t.datetime "updated_at",       :null => false
   end

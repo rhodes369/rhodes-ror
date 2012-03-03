@@ -6,6 +6,8 @@ class CreateMaterials < ActiveRecord::Migration
       t.integer :default_image_id
       t.integer :pdf_id
       t.text :description
+      t.text :specifications
+      t.text :technical_data
 
       t.timestamps
     end
