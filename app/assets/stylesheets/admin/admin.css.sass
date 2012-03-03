@@ -1,3 +1,5 @@
+@import mixins
+
 // ADMIN
 input, select, label, textarea
   display: block
@@ -38,12 +40,9 @@ input#material_title
   -webkit-box-shadow: inset 2px 4px 4px #ccc
 
   &:focus
-    // +shadow(0, 0, 8, #414042)
+    +shadow(0, 0, 8, #414042)
     color: #414042
     border: 1px solid #414042
-    box-shadow:         0px 0px 8px #414042
-    -moz-box-shadow:    0px 0px 8px #414042
-    -webkit-box-shadow: 0px 0px 8px #414042
 
 // FINISH
 select#material_material_type_id
@@ -62,13 +61,9 @@ textarea#material_description
   -webkit-box-shadow: inset 1px 2px 3px #ccc
 
   &:focus
-    // +shadow(0, 0, 8, #414042)
     color: #414042
     border: 1px solid #414042
-    box-shadow:         0px 0px 8px #414042
-    -moz-box-shadow:    0px 0px 8px #414042
-    -webkit-box-shadow: 0px 0px 8px #414042
-
+    +shadow(0, 0, 8, #414042)
 
 
 // FILTERS
