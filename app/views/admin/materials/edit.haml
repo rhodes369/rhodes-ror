@@ -33,6 +33,14 @@
     = f.text_area :description, :size => "50x5", :placeholder => "Description of material..."
     
     %br
+    %h4 Material Specifications
+    = f.text_area :material_specifications, :size => "50x5", :placeholder => "Matierlal Specs..."
+    
+    %br
+    %h4 Technical Data
+    = f.text_area :technical_data, :size => "50x5", :placeholder => "Technical Data..."        
+    
+    %br
     %h4 Add a pdf file
     = f.file_field name: 'material[pdf]'    
     - unless @material.pdf_id.nil?
