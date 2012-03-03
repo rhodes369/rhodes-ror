@@ -7,9 +7,10 @@
 #content-center.TwoColumnFix
 
   = form_for @material, :url => admin_material_path do |f| 
-
+    %h4 Title
     = f.text_field :title
-
+    
+    %h4 Material Type
     = collection_select :material, :material_type_id, MaterialType.all, :id, :title, {:selected => @material.material_type_id }
     
     %h4 Select finishe(s)
@@ -26,8 +27,9 @@
       - @all_applications.each do |app|
         %option{:value => app.id, :selected =>  @material.applications.include?(app) ? "selected" : nil}
           = app.title
-
-
+    
+    %br
+    %h4 Description
     = f.text_area :description, :size => "50x5", :placeholder => "Description of material..."
 
     = f.submit
