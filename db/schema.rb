@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20120301014829) do
+ActiveRecord::Schema.define(:version => 20120303063647) do
 
   create_table "applications", :force => true do |t|
     t.string   "title"
@@ -78,5 +78,11 @@ ActiveRecord::Schema.define(:version => 20120301014829) do
 
   add_index "materials", ["default_image_id"], :name => "index_materials_on_default_image_id"
   add_index "materials", ["material_type_id"], :name => "index_materials_on_material_type_id"
+
+  create_table "pdfs", :force => true do |t|
+    t.string   "orig_filename"
+    t.datetime "created_at",    :null => false
+    t.datetime "updated_at",    :null => false
+  end
 
 end

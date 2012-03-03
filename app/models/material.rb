@@ -10,6 +10,7 @@ class Material < ActiveRecord::Base
   has_many :images, :dependent => :destroy 
   
   has_one :material_type
+  has_one :pdf
     
   validates :title, presence: true
   validates_uniqueness_of :title
