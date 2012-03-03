@@ -45,29 +45,48 @@
 
 #content-center
 
-  %h3 =@material.title
+  %h3
+    =@material.title
+    %br
+    %br
+    
+  - unless @material.material_type_id.nil?
+    - @material_type = MaterialType.find(@material.material_type_id)
+    #material_type
+      MATERIAL TYPE: 
+      = @material_type.nil? ? 'None' : @material_type.title    
+    %br
 
   #finish
     // Currently, this variable gets pulled from js on the img
+    // hmm, i'll have to add some ajax/coffee for this part later -dr. J
     FINISH: Finish 
     %br 3&quot; minimum thickness
 
   // AVAILABLE FINISHES
-  %p
-    %span.caps
-      Available finishes:
-    __FINISHES__
+  - if @material.finishes.count > 0
+    %p
+      %span.caps
+        Available finishes:
+        %ul
+        - @material.finishes.each do |finish|
+          %li
+            = finish.title
 
   // RECOMMENDED USES / APPLICATIONS
-  %p
-    %span.caps
-      Recommended Uses:
-    __APPLICATIONS__
+  - if @material.applications.count > 0
+    %p
+      %span.caps
+        Recommended Uses:
+        %ul
+        - @material.applications.each do |app|
+          %li
+            = app.title  
 
   // DESCRIPTIOMN
   #description
     // Advise on how to break into paragraphs, place inside p tag or no?
-    %p =@material.description
+    %p=simple_format(@material.description)
 
   %p.readMore Read More
 
