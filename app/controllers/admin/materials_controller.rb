@@ -33,8 +33,9 @@ class Admin::MaterialsController < ApplicationController
   def update
     @material = Material.find(params[:id])
     return if @material.nil?
-  
-    upload_image() unless params[:image_ids].blank? # upload files if any exist
+    
+    #self.upload_pdf() unless params[:pdf].blank? # upload files if any exist
+    #upload_image() unless params[:image].blank? # upload files if any exist
 
     respond_to do |format|
       if @material.update_attributes(params[:material])   
@@ -68,7 +69,7 @@ class Admin::MaterialsController < ApplicationController
   
 private
   def upload_image
-    uploaded_io = params[:image_ids]
+    uploaded_io = params[:image]
     File.open(Rails.root.join('public', 'uploads', uploaded_io.original_filename), 'w') do |file|
       file.write(uploaded_io.read)
     end
