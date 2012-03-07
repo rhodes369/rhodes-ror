@@ -1,10 +1,15 @@
 class Image < ActiveRecord::Base
   
-  UPLOAD_PATH = "images/uploads"
-  
   belongs_to :material
   has_one :finish
   
+  attr_accessible :material_id, :image, :image_file_name, :image_content_type, :image_file_size
   
-  validates :orig_filename, presence: true
+  has_attached_file :image, :styles => { :large => "400x400>",  :thumb => "150x150#" }
+
+  validates_uniqueness_of :image_file_name, :scope => :material_id 
+  validates_attachment_presence :image
+  validates_attachment_size :image, :less_than => 5.megabytes
+  validates_attachment_content_type :image, :content_type => ['image/jpeg', 'image/png']
+   
 end

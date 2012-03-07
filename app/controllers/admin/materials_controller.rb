@@ -5,11 +5,17 @@ class Admin::MaterialsController < ApplicationController
   def index
     @materials = Material.all 
     @material = Material.new
-    render :index
+
+    respond_to do |format|
+      format.html 
+      format.json { render json: @materials }
+    end
+
   end  
     
   def create
-    @material = Material.new(params[:material])
+    @material = Material.new(params[:material] )
+    @image = Image.create( params[:image] )
 
     respond_to do |format|
       if @material.save
@@ -26,6 +32,7 @@ class Admin::MaterialsController < ApplicationController
   
   def edit
     @material = Material.find(params[:id])
+    @image = Image.new
     @all_finishes = Finish.order('title ASC')
     @all_applications = Application.order('title ASC')
   end  

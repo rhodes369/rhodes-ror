@@ -51,17 +51,37 @@
 
 
     %br
-    %h4 Add an Image
-    = f.file_field :images
+    = f.submit
+    
+    %br
+    %br
+
+    = button_to 'Delete Material', admin_material_path(@material), :method => :delete, :confirm => "Are you sure you want to delete this material and all of it's gallery images?"
+    
+    %br
+    %br    
+    / = render :partial => "sidebar"
+    
+    %h2 Gallery Images
+
+    - if @material.images.count > 0     
+      = render 'image_thumbs', { :material => @material }        
+      %br
+      %br
+    - else
+      %p
+        None  
+
+    / = render :partial => "thumb_gallery", :locals => { :image => @image, :material => @material }
+    
+    %h2
+      Add New Image
+    = form_for @image, :url => admin_images_url do |i| 
+      = i.file_field :image
+      = i.hidden_field :material_id, { :value => @material.id }
+      %br
+      = i.submit 'Upload Image'          
+ 
 
     
-    - if @material.images.count > 0
-      %br
-      = render :partial => 'image_thumbs'
-        
-    %br
-    %br
 
-    = f.submit
-  %br
-  = button_to 'Delete', admin_material_path(@material), :method => :delete, :confirm => "Are you sure?"

@@ -1,6 +1,9 @@
 RhodesRor::Application.routes.draw do
   
+  #get "images/new"
+
   resources :materials, :only => [:index, :show]
+  #resources :images
   
   namespace :admin do
     resources :materials, :finishes, :applications, :images

@@ -1,13 +1,11 @@
 
 #content-left
 
-
-
 #content-center.TwoColumnFix
 
   %h1 
     Create new Material
-  = form_for @material, :url => admin_materials_path do |f| 
+  = form_for material, :url => admin_materials_path do |f| 
     = f.label :title
     = f.text_field :title
     = f.submit

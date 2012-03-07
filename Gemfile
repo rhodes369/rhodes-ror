@@ -10,6 +10,7 @@ gem 'faker', '1.0.1'
 
 gem 'sqlite3', '1.3.5'
 gem 'haml-rails'
+gem "paperclip", "~> 2.7"
 
 
 # Gems used only for assets and not required
