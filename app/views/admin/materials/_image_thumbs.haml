@@ -1,3 +1,8 @@
 %h4 Images
-- @material.images.each do |image|
+- material.images.each do |image|
+  %span{:style => "white-space: nowrap" }
+  = link_to image_tag(image.image_url(:thumb), image.image_url(:large))
+  = link_to 'X', image, confirm: 'Are you sure?', method: :delete
+  %br
   %p= image.orig_filename
+  

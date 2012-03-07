@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20120303063647) do
+ActiveRecord::Schema.define(:version => 20120307071704) do
 
   create_table "applications", :force => true do |t|
     t.string   "title"
@@ -26,13 +26,15 @@ ActiveRecord::Schema.define(:version => 20120303063647) do
   end
 
   create_table "images", :force => true do |t|
-    t.string   "orig_filename"
-    t.string   "thumb_filename"
     t.integer  "material_id"
     t.integer  "finish_id"
     t.integer  "image_id"
-    t.datetime "created_at",     :null => false
-    t.datetime "updated_at",     :null => false
+    t.datetime "created_at",         :null => false
+    t.datetime "updated_at",         :null => false
+    t.string   "image_file_name"
+    t.string   "image_content_type"
+    t.integer  "image_file_size"
+    t.datetime "image_updated_at"
   end
 
   add_index "images", ["finish_id"], :name => "index_images_on_finish_id"

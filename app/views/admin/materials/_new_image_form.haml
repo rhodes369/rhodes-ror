@@ -1,0 +1,6 @@
+%h2
+  Add New Image
+= form_for material.images, :url => admin_materials_path do |i| 
+  i.file_field :image
+  i.hidden_field :material_id, { :value => material.id }
+  i.submit 'Upload Image'
