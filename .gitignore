@@ -14,6 +14,6 @@
 /log/*.log
 /tmp
 
-*.DS_Store
+.DS_Store
 
 /public/system
