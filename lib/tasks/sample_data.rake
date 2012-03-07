@@ -23,12 +23,6 @@ namespace :db do
     app2 = Application.create!(title: 'Interior')
     app3 = Application.create!(title: 'Exterior')
     
-    p 'adding some fake images...'
-    img1 = Image.create!(orig_filename: 'test1.jpg')
-    img2 = Image.create!(orig_filename: 'test2.jpg')
-    img3 = Image.create!(orig_filename: 'test3.jpg')
-    img4 = Image.create!(orig_filename: 'test4.jpg')
-    
     p 'adding a fake pdf...'
     pdf = Pdf.create!(orig_filename: 'test1.pdf')
     
@@ -41,12 +35,6 @@ namespace :db do
     p 'for applications...'
     [app1,app2].each{ |app| mat1.applications << app }
     [app1,app2,app3].each{ |app| mat2.applications << app }
-      
-    p 'for images...'
-    [img1,img2].each{ |img| mat1.images << img }
-    [img3,img4].each{ |img| mat2.images << img }
-    
-    p 'for pdf...'
 
 
     p 'setting material defaults...'
@@ -57,8 +45,8 @@ namespace :db do
     mat1.material_type_id = mt1
     mat2.material_type_id = mt2
 
-    mat1.default_image_id = img1
-    mat2.default_image_id = img3
+    # mat1.default_image_id = img1
+    # mat2.default_image_id = img3
     
     mat1.pdf_id = pdf.id
     mat2.pdf_id = pdf.id

@@ -7,9 +7,6 @@
     %span{:style => "white-space: nowrap" }
     %a{ :href => i.image.url(:large) }
       %img{:src => i.image.url(:thumb) }
-    = link_to 'x', i, :confirm => 'Are you sure?', :method => :delete
+    = link_to 'x', i, :confirm => 'Are you sure you want to remove this image?', :method => :delete
     %br
     %p= i.image_file_name
-- else
-  %p
-    None
