@@ -61,26 +61,12 @@
     
     %br
     %br    
-    
+    / = render :partial => "sidebar"
     
     %h2 Gallery Images
 
-    - if @material.images.count > 0
-      %br
-      / = render :partial => "sidebar"
-      /= render 'thumb_gallery', { :material => @material }
-      %h4 Images
-      - @material.images.each do |i|
-        %span{:style => "white-space: nowrap" }
-        %a{ :href => i.image.url(:large) }
-          %img{:src => i.image.url(:thumb) }
-          %br
-          %p= i.image_file_name
-        = link_to 'X', i, :confirm => 'Are you sure?', :method => :delete, :url => admin_image_path
-
-        %br
-        
-      
+    - if @material.images.count > 0     
+      = render 'image_thumbs', { :material => @material }
 
         
     %br

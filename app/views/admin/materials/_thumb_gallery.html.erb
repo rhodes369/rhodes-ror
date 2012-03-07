@@ -1,8 +1,0 @@
-<%= material.images.each do |image| %>
-  <span style="white-space: nowrap;">
-    test
-    <%= debug material %>
-    <%= image_tag image.image.url(:thumb) %>
-    <%= link_to 'X', image, confirm: 'Are you sure?', method: :delete %>
-  </span>
-<% end %>

@@ -1,8 +1,15 @@
-%h4 Images
-- material.images.each do |image|
-  %span{:style => "white-space: nowrap" }
-  = link_to image_tag(image.image_url(:thumb), image.image_url(:large))
-  = link_to 'X', image, confirm: 'Are you sure?', method: :delete
-  %br
-  %p= image.orig_filename
-  
+
+%br
+%h4 Current Images
+%div{:style => "align: center; border-width: 1px; width: 700px"}
+
+  - @material.images.each do |i|
+    %span{:style => "white-space: nowrap" }
+    %a{ :href => i.image.url(:large) }
+      %img{:src => i.image.url(:thumb) }
+    = link_to 'x', i, :confirm => 'Are you sure?', :method => :delete
+    %br
+    %p= i.image_file_name
+- else
+  %p
+    None

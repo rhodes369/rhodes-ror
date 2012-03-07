@@ -65,7 +65,7 @@ class Admin::ImagesController < ApplicationController
     @image.destroy
 
     respond_to do |format|
-      format.html { redirect_to edit_material_path @material }
+      format.html { redirect_to admin_edit_material_path @material }
       format.json { head :no_content }
     end
   end
