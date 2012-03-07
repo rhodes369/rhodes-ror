@@ -10,7 +10,7 @@ class Material < ActiveRecord::Base
   has_many :material_finishes, :dependent => :destroy
   has_many :material_applications, :dependent => :destroy
   
-  has_one :pdf, :dependent => :destroy
+  # has_one :pdf, :dependent => :destroy
   has_one :material_type
     
   validates :title, presence: true, :uniqueness => true
