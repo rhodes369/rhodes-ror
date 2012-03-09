@@ -9,21 +9,11 @@
       %li
         = link_to  material.title, edit_admin_material_path(material)
 
-
-  / %table{widh: "600px"}
-  /   - @materials.each do |material| 
-  /     %tr
-  /       %td
-  /         = link_to  material.title, admin_material_path(material)
-  /       %td  
-  /         = button_to 'Edit', edit_admin_material_path(material), :method => :get
-  /       %td     
-  /         = button_to 'Delete', admin_material_path(material), :method => :delete, :confirm => "Are you sure?"
-
-
 #content-center.TwoColumnFix
 
-  = render 'form'
+  = form_for @material, :url => admin_materials_path do |mf|
+    = mf.text_field :title, :placeholder => 'Create New Material'
+    = mf.submit :id => :create_material
 
 
 
