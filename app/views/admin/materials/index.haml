@@ -9,10 +9,11 @@
       %li
         = link_to  material.title, edit_admin_material_path(material)
 
-
 #content-center.TwoColumnFix
 
-  = render 'form'
+  = form_for @material, :url => admin_materials_path do |mf|
+    = mf.text_field :title, :placeholder => 'Create New Material'
+    = mf.submit :id => :create_material
 
 
 
