@@ -37,13 +37,12 @@
     %h4 Description
     = f.text_area :description, :size => "50x5", :placeholder => "Description of material..."
     
-    %br
-    %h4 Material Specifications
-    / = f.text_area :specifications, :size => "50x5", :placeholder => "Specifications..."
     
+    %h4 Material Specifications
+    = f.text_area :specifications, :size => "50x5", :placeholder => "Specifications..."    
     %br
     %h4 Technical Data
-    / = f.text_area :technical_data, :size => "50x5", :placeholder => "Technical Data..."
+    = f.text_area :technical_data, :size => "50x5", :placeholder => "Technical Data..."
     
     %br
     %h4 Add a pdf file
@@ -81,9 +80,5 @@
     = form_for @image, :url => admin_images_url do |i| 
       = i.file_field :image
       = i.hidden_field :material_id, { :value => @material.id }
-      %br
       = i.submit 'Upload Image'          
- 
-
-    
-
+    %br
