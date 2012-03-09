@@ -74,14 +74,14 @@
 
     / = render :partial => "thumb_gallery", :locals => { :image => @image, :material => @material }
     
-    %h2
-      Add New Image
-    = form_for @image, :url => admin_images_url do |i| 
-      = i.file_field :image
-      = i.hidden_field :material_id, { :value => @material.id }
-      %br
-      = i.submit 'Upload Image'          
- 
+  %h2
+    Add New Image
+  = form_for @image, :url => admin_images_url do |i| 
+    = i.file_field :image
+    = i.hidden_field :material_id, { :value => @material.id }
+    %br
+    = i.submit 'Upload Image'          
+
 
     
 
