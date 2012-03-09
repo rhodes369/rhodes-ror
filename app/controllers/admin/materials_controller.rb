@@ -32,6 +32,7 @@ class Admin::MaterialsController < ApplicationController
   
   def edit
     @material = Material.find(params[:id])
+    @materials = Material.all
     @image = Image.new
     @all_finishes = Finish.order('title ASC')
     @all_applications = Application.order('title ASC')
