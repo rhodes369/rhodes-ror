@@ -4,6 +4,11 @@
   %h1 
     Edit Material
 
+  / %ul
+  /   - @materials.each do |material| 
+  /     %li
+  /       = link_to  material.title, edit_admin_material_path(material)
+
 #content-center.TwoColumnFix
 
   = form_for @material, :url => admin_material_path do |f| 
@@ -34,20 +39,20 @@
     
     %br
     %h4 Material Specifications
-    = f.text_area :specifications, :size => "50x5", :placeholder => "Specifications..."
+    / = f.text_area :specifications, :size => "50x5", :placeholder => "Specifications..."
     
     %br
     %h4 Technical Data
-    = f.text_area :technical_data, :size => "50x5", :placeholder => "Technical Data..."        
+    / = f.text_area :technical_data, :size => "50x5", :placeholder => "Technical Data..."
     
     %br
     %h4 Add a pdf file
     = f.file_field 'material[pdf]'    
-    - unless @material.pdf_id.nil?
-      %p
-        current pdf: 
-        - @pdf = Pdf.find(@material.pdf_id)
-        = @pdf.orig_filename
+    / - unless @material.pdf_id.nil?
+    /   %p
+    /     current pdf: 
+    /     - @pdf = Pdf.find(@material.pdf_id)
+    /     = @pdf.orig_filename
 
 
     %br
@@ -56,7 +61,7 @@
     %br
     %br
 
-    / = button_to 'Delete Material', admin_material_path(@material), :method => :delete, :confirm => "Are you sure you want to delete this material and all of it's gallery images?"
+    = button_to 'Delete Material', admin_material_path(@material), :method => :delete, :confirm => "Are you sure you want to delete this material and all of it's gallery images?"
     
     %br
     %br    
@@ -74,14 +79,14 @@
 
     / = render :partial => "thumb_gallery", :locals => { :image => @image, :material => @material }
     
-  %h2
-    Add New Image
-  = form_for @image, :url => admin_images_url do |i| 
-    = i.file_field :image
-    = i.hidden_field :material_id, { :value => @material.id }
-    %br
-    = i.submit 'Upload Image'          
-
+    %h2
+      Add New Image
+    = form_for @image, :url => admin_images_url do |i| 
+      = i.file_field :image
+      = i.hidden_field :material_id, { :value => @material.id }
+      %br
+      = i.submit 'Upload Image'          
+ 
 
     
 
