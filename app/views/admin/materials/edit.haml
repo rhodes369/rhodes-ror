@@ -33,7 +33,7 @@
         %option{:value => app.id, :selected =>  @material.applications.include?(app) ? "selected" : nil}
           = app.title
 
-    / %h4 Description
+    %h4 Description
     = f.text_area :description, :size => "50x5", :placeholder => "Description of material..."
 
     %h4 Material Specifications
@@ -53,6 +53,17 @@
 
     / = render :partial => "sidebar"
 
+    = f.submit :id => 'update_material', :class => 'submit'
+    %br
+    %br
+  
+  
+    / = button_to 'Delete Material', admin_material_path(@material), :method => :delete, :confirm => "Are you sure you want to delete this material and all of it's gallery images?", :class => "delete"
+    / = f.submit :name => 'Delete Material', :method => 'delete', :confirm => "Are you sure you want to delete this material and all of it's gallery images?", :class => "delete"
+    %br
+    %br
+
+
     %h4 Gallery Images
 
     - if @material.images.count > 0     
@@ -71,14 +82,10 @@
       = i.hidden_field :material_id, { :value => @material.id }
       = i.submit 'Upload Image'
 
+    
     .clear
 
-    = f.submit :id => 'update_material', :class => 'submit'
+    / = f.submit :id => 'update_material', :class => 'submit'
 
     = button_to 'Delete Material', admin_material_path(@material), :method => :delete, :confirm => "Are you sure you want to delete this material and all of it's gallery images?", :class => "delete"
-
-
-
-
-
 
