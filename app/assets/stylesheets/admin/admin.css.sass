@@ -16,7 +16,7 @@ label
   color: #252525
 
 select
-  margin: 0
+  margin: 0 0 24px
   min-width: 180px
   option
     padding: 2px 4px
@@ -50,7 +50,7 @@ select#material_material_type_id
 
 // DESCRIPTION
 textarea#material_description
-  margin: 40px 0 16px
+  margin: 0 0 24px
   padding: 8px
   min-width: 500px
   color: #999
@@ -82,9 +82,22 @@ input#material_material[pdf]
     border: 1px solid #414042
 
 
+input#image_image
+  float: left
 
 
+input.submit, input.delete
+  float: left
+  margin: 40px 20px 0 0
+  height: 48px
+  width: 160px
+  +round(8)
 
+input.submit
+  +save(24)
+
+input.delete
+  +delete(24)
 
 
 

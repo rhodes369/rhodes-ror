@@ -4,18 +4,19 @@
   %h1 
     Edit Material
 
-  / %ul
-  /   - @materials.each do |material| 
-  /     %li
-  /       = link_to  material.title, edit_admin_material_path(material)
+  %ul
+    - @materials.each do |material| 
+      %li
+        = link_to  material.title, edit_admin_material_path(material)
 
 #content-center.TwoColumnFix
 
   = form_for @material, :url => admin_material_path do |f| 
-    %h4 Title
+
+    / %h4 Title
     = f.text_field :title
     
-    %h4 Material Type
+    / %h4 Material Type
     = collection_select :material, :material_type_id, MaterialType.all, :id, :title, {:selected => @material.material_type_id }
     
     %h4 Select finishe(s)
@@ -24,49 +25,36 @@
       - @all_finishes.each do |finish|
         %option{:value => finish.id, :selected =>  @material.finishes.include?(finish) ? "selected" : nil}
           =finish.title 
-    
-    %br
+
     %h4 Select application(s)
     
     %select#application_ids{name: 'material[application_ids][]', size: "5x20", multiple: true}
       - @all_applications.each do |app|
         %option{:value => app.id, :selected =>  @material.applications.include?(app) ? "selected" : nil}
           = app.title
-    
-    %br
-    %h4 Description
-    = f.text_area :description, :size => "50x5", :placeholder => "Description of material..."
-    
-    %br
-    %h4 Material Specifications
-    / = f.text_area :specifications, :size => "50x5", :placeholder => "Specifications..."
-    
-    %br
-    %h4 Technical Data
-    / = f.text_area :technical_data, :size => "50x5", :placeholder => "Technical Data..."
-    
-    %br
-    %h4 Add a pdf file
-    / = f.file_field 'material[pdf]'    
-    / - unless @material.pdf_id.nil?
-    /   %p 
-    /     current pdf: 
-    /     - @pdf = Pdf.find(@material.pdf_id)
-    /     = @pdf.orig_filename
-    / 
-    %br
-    
-    %br
-    %br
-    = f.submit :id => 'update_material'
 
-    / = button_to 'Delete Material', admin_material_path(@material), :method => :delete, :confirm => "Are you sure you want to delete this material and all of it's gallery images?"
+    / %h4 Description
+    = f.text_area :description, :size => "50x5", :placeholder => "Description of material..."
+
+    %h4 Material Specifications
+    = f.text_area :specifications, :size => "50x5", :placeholder => "Specifications..."
     
-    %br
-    %br    
+    %h4 Technical Data
+    = f.text_area :technical_data, :size => "50x5", :placeholder => "Technical Data..."
+
+    %h4 Add a pdf file
+    = f.file_field 'material[pdf]'    
+    - unless @material.pdf_id.nil?
+      %p
+        current pdf: 
+        - @pdf = Pdf.find(@material.pdf_id)
+        = @pdf.orig_filename
+
+
     / = render :partial => "sidebar"
-    
-    %h2 Gallery Images
+
+    %h4 Gallery Images
+
     - if @material.images.count > 0     
       = render 'image_thumbs', { :material => @material }        
       %br
@@ -75,15 +63,22 @@
       %p
         None  
 
-    
-    %h2
-      Add New Image
+    / = render :partial => "thumb_gallery", :locals => { :image => @image, :material => @material }
+
+    %h4 Add New Image
     = form_for @image, :url => admin_images_url do |i| 
       = i.file_field :image
       = i.hidden_field :material_id, { :value => @material.id }
-      %br
-      = i.submit 'Upload Image'          
- 
+      = i.submit 'Upload Image'
 
-    
+    .clear
+
+    = f.submit :id => 'update_material', :class => 'submit'
+
+    = button_to 'Delete Material', admin_material_path(@material), :method => :delete, :confirm => "Are you sure you want to delete this material and all of it's gallery images?", :class => "delete"
+
+
+
+
+
 

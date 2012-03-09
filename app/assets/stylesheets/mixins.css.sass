@@ -235,6 +235,37 @@
 
 
 
+// BUTTONS
+
+=save($offset)
+  +bg-shine($offset)
+  +gradient(#235b1b, #70d03b)
+  +pointer
+  color: #fff
+  border: 1px solid #70d03b
+  &:hover
+    +gradient(#70d03b, #235b1b)
+    border: 1px solid #fff
+  &:active
+    +bg-shine(0)
+    +gradient(#15460e, #5bbe25)
+    border: 1px solid #15460e
+
+=delete($offset)
+  +bg-shine($offset)
+  +gradient(#8b1812, #ee6844)
+  +pointer
+  color: #fff
+  border: 1px solid #b22626
+  &:hover
+    +gradient(#ee6844, #8b1812)
+    border: 1px solid #fff
+  &:active
+    +bg-shine(0)
+
+
+
+
 // ALPHA
 
 =alpha($percent)
