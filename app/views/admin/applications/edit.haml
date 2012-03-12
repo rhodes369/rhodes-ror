@@ -1,0 +1,20 @@
+
+#content-left
+
+  %h1 
+    Edit Application
+
+  %ul
+    - @applications.each do |app| 
+      %li
+        = link_to  app.title, edit_admin_finish_path(app)
+
+#content-center.TwoColumnFix
+
+  = form_for @application, :url => admin_application_path, :method => :put do |f| 
+
+    %h4 Title
+    = f.text_field :title
+    
+    %br
+    = f.submit 'Upate', :id => "update_application", :class => "submit"
