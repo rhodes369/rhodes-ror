@@ -1,0 +1,20 @@
+
+#content-left
+
+  %h1 
+    Edit Finish
+
+  %ul
+    - @finishes.each do |fin| 
+      %li
+        = link_to  fin.title, edit_admin_finish_path(fin)
+
+#content-center.TwoColumnFix
+
+  = form_for @finish, :url => admin_finish_path, :method => :put do |f| 
+
+    %h4 Title
+    = f.text_field :title
+    
+    %br
+    = f.submit 'Upate', :id => "update_finish", :class => "submit"
