@@ -14,7 +14,7 @@ class Admin::FinishesController < ApplicationController
 
     respond_to do |format|
       if @finish.save
-        format.html { redirect_to admin_finishes_path, :notice => 'Finish Saved' }
+        format.html { redirect_to admin_finishes_path, :notice => 'Finish was Saved' }
         format.json { render json: @finish, status: :created, location: @finish }
       else
         flash[:error] = 'Problem Saving Finish'
@@ -37,7 +37,7 @@ class Admin::FinishesController < ApplicationController
     respond_to do |format|
       if @finish.update_attributes(params[:finish])   
                   
-        format.html { redirect_to admin_finishes_path, notice: 'Finish Updated' }
+        format.html { redirect_to admin_finishes_path, notice: 'Finish was Updated' }
         format.json { head :no_content, status: :success }
       else
         format.html { render action: "edit", error: 'Problem updating Material' }

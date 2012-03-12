@@ -1,5 +1,9 @@
 RhodesRor::Application.routes.draw do
   
+  get "applications/new"
+
+  get "applications/edit"
+
   get "finishes/new"
 
   get "finishes/create"
