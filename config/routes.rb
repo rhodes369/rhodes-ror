@@ -1,5 +1,15 @@
 RhodesRor::Application.routes.draw do
   
+  get "finishes/new"
+
+  get "finishes/create"
+
+  get "finishes/edit"
+
+  get "finishes/update"
+
+  get "finishes/destroy"
+
   #get "images/new"
 
   resources :materials, :only => [:index, :show]
