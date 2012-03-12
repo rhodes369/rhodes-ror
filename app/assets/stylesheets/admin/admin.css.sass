@@ -25,7 +25,7 @@ select
 
 
 // EDIT TITLE
-input#material_title
+input#material_title, input#finish_title, input#application_title
   margin: 0 0 16px
   padding: 8px 12px
   min-width: 450px
@@ -91,6 +91,7 @@ input.submit, input.delete
   margin: 40px 20px 0 0
   height: 48px
   width: 160px
+  +font(14px)
   +round(8)
 
 input.submit
@@ -104,36 +105,37 @@ input.delete
 
 
 // FILTERS
-.filterWrap
-  float: left
-  margin: 10px 20px 20px 0
-  padding: 4px 8px
-  background: #F0F0EE
-  border-radius: 4px
-  -moz-border-radius: 4px
-  -webkit-border-radius: 4px
-  border: 1px solid #676767
-  border: 1px solid rgba(0, 0, 0, 0.7)
-  background: #F0F0EE
-  background: -webkit-gradient(linear, center top, center bottom, from(#f0f0ee), to(#e0e0dc))
-  background: -moz-linear-gradient(#f0f0ee, #e0e0dc)
-  background: -o-linear-gradient(#f0f0ee, #e0e0dc)
-
 .filters
   margin: 0 0 20px
 
-  select
-    background: transparent
-    -webkit-appearance: none
-    border: none
-    padding: 0
-    height: 16px
-    font-size: 12px
-  option
-    cursor: pointer
-    padding: 4px
-    &.label
-      cursor: default
+  .filterWrap
+    float: left
+    margin: 10px 20px 20px 0
+    padding: 4px 8px
+    height: 18px
+    background: #F0F0EE
+    border-radius: 4px
+    -moz-border-radius: 4px
+    -webkit-border-radius: 4px
+    border: 1px solid #676767
+    border: 1px solid rgba(0, 0, 0, 0.7)
+    background: #F0F0EE
+    background: -webkit-gradient(linear, center top, center bottom, from(#f0f0ee), to(#e0e0dc))
+    background: -moz-linear-gradient(#f0f0ee, #e0e0dc)
+    background: -o-linear-gradient(#f0f0ee, #e0e0dc)
+
+    select
+      background: transparent
+      -webkit-appearance: none
+      border: none
+      padding: 0
+      height: 16px
+      font-size: 12px
+    option
+      cursor: pointer
+      padding: 4px
+      &.label
+        cursor: default
 
 
 

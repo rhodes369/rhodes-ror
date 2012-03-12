@@ -13,8 +13,6 @@
 
   = form_for @application, :url => admin_applications_path, :method => :post do |f| 
 
-    %h4 Title
     = f.text_field :title
-    
-    %br
+
     = f.submit 'Add Application', :id => "add_application", :class => "submit"

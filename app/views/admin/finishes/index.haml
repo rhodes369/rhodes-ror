@@ -12,5 +12,7 @@
 #content-center.TwoColumnFix
 
   = form_for @finish, :url => admin_finishes_path do |f|
+
     = f.text_field :title, :placeholder => 'Create New Finish'
+
     = f.submit 'Create', :id => "create_finish", :class => "submit"

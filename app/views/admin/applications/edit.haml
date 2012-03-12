@@ -13,8 +13,6 @@
 
   = form_for @application, :url => admin_application_path, :method => :put do |f| 
 
-    %h4 Title
     = f.text_field :title
-    
-    %br
-    = f.submit 'Upate', :id => "update_application", :class => "submit"
+
+    = f.submit 'Update', :id => "update_application", :class => "submit"

@@ -13,8 +13,6 @@
 
   = form_for @finish, :url => admin_finish_path, :method => :put do |f| 
 
-    %h4 Title
     = f.text_field :title
-    
-    %br
-    = f.submit 'Upate', :id => "update_finish", :class => "submit"
+
+    = f.submit 'Update', :id => "update_finish", :class => "submit"
