@@ -1,0 +1,19 @@
+#content-left
+
+  %h1 
+    New Finish
+
+  %ul
+    - @finishes.each do |fin| 
+      %li
+        = link_to  fin.title, edit_admin_finish_path(fin)
+
+#content-center.TwoColumnFix
+
+  = form_for @finish, :url => admin_finishes_path, :method => :post do |f| 
+
+    %h4 Title
+    = f.text_field :title
+    
+    %br
+    = f.submit 'Add Finish', :id => "add_finish", :class => "submit"
