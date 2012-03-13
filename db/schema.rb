@@ -28,7 +28,6 @@ ActiveRecord::Schema.define(:version => 20120307071704) do
   create_table "images", :force => true do |t|
     t.integer  "material_id"
     t.integer  "finish_id"
-    t.integer  "image_id"
     t.datetime "created_at",         :null => false
     t.datetime "updated_at",         :null => false
     t.string   "image_file_name"
@@ -53,15 +52,6 @@ ActiveRecord::Schema.define(:version => 20120307071704) do
   end
 
   add_index "material_finishes", ["material_id", "finish_id"], :name => "index_material_finishes_on_material_id_and_finish_id"
-
-  create_table "material_images", :force => true do |t|
-    t.integer "material_id"
-    t.integer "image_id"
-    t.integer "finish_id"
-  end
-
-  add_index "material_images", ["image_id"], :name => "index_material_images_on_image_id"
-  add_index "material_images", ["material_id"], :name => "index_material_images_on_material_id"
 
   create_table "material_types", :force => true do |t|
     t.string   "title"
