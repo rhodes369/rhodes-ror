@@ -3,4 +3,6 @@ class MaterialType < ActiveRecord::Base
   
   validates :title, presence: true
   validates_uniqueness_of :title
+
+  attr_accessible :title
 end
