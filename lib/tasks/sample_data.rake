@@ -1,6 +1,9 @@
 namespace :db do
   desc "Fill database with sample data"
-  task populate: :environment do
+  task reset_with_test_data: :environment do
+    
+    Rake::Task['uploads:remove_all'].invoke
+    Rake::Task['db:drop'].invoke
     Rake::Task['db:reset'].invoke
     
     p 'adding some materials...'
