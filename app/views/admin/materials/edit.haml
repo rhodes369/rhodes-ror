@@ -16,7 +16,7 @@
     / %h4 Title
     = f.text_field :title
     
-    / %h4 Material Type
+    %h4 Material Type
     = collection_select :material, :material_type_id, MaterialType.all, :id, :title, {:selected => @material.material_type_id }
     
     %h4 Select finishe(s)
