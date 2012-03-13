@@ -16,18 +16,11 @@ class Material < ActiveRecord::Base
   validates :title, presence: true, :uniqueness => true
   validates_uniqueness_of :title
    
-  attr_accessible :title, :description, :material_type_id, :finish_ids, 
-                  :application_ids, :pdf, :images, :specifications, :technical_data
+  attr_accessible :title, :description, :material_type_id, 
+                  :finish_ids, :application_ids, :pdf, 
+                  :images, :specifications, :technical_data
 
-  before_destroy :delete_material_images
-
-private 
-  def delete_material_images
-    self.images.each do |image|
-      @image.image = nil
-      @image.save
-    end
-  end  
+  before_destroy :delete_material_images 
   
 end
 
