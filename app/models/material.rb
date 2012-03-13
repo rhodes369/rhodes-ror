@@ -24,44 +24,40 @@ class Material < ActiveRecord::Base
 
   before_destroy :delete_material_images 
        
-       
-  # our search filters
-  def self.by_material(mat = nil)
-    return if mat.nil?
-    self.find(mat) 
-  end                            
   
-  return array material_type
-  def self.by_material_type(mat = nil)
-    return if mat.nil?
-    where('material_type_id = ?', mat.id) 
-  end
+  # def self.by_material_ids(material_ids = [1,3,4])
+  #   return if !matrial_ids.count > 0
+  #   self.where(':id', material.ids) 
+  # end
   
-  # retrn array of local finish_ids
-  def self.with_finishes(finishes = [])
-    return [] unless finishes.count > 0
-    MaterialFinish.where(finish_id: finishes).map(&:material_id).uniq
-  end
   
-  # return array of local application ids
-  def self.with_applications(applications = [])
-    return [] unless applications.count > 0
-    Application.where(application_id: applications).map(&:application.id).uniq
-  end
-  
-  # aggregation of above filters into a colsolidated search method
-  def self.search_filters(mat = nil, finishes = [], applications = [])
-    materials = self.find(mat.id)
-    mats_with_types = []
-    mats_with_filters = []
-    mats_with_applications = []
-    
-    mats_with_types = self.by_material_type(mat) unless mat.nil?
-    mats_with_finishes = self.with_finishes(finishes) 
-    mats_with_applications = self.where(:applications => applications) unless applications.size > 0
-    
-    ( mats_with_types + mats_with_finishes + mats_with_applications) #.map(&:material_id)
-  end   
+  # 
+  # # retrn array of local finish_ids
+  # def self.with_finishes(finishes = [])
+  #   return [] unless finishes.count > 0
+  #   MaterialFinish.where(finish_id: finishes).map(&:material_id).uniq
+  # end
+  # 
+  # # return array of local application ids
+  # def self.with_applications(applications = [])
+  #   return [] unless applications.count > 0
+  #   Application.where(:application => applications).map(&:application.id).uniq
+  # end
+  # 
+  # # aggregation of above filters into a colsolidated search method
+  # def self.search_filters(  mat_id = nil, finishes = [], applications = [] )
+  #   
+  #   mats_with_material_type = self.by_mat_id
+  #   mats_with_finishes = self.with_finishes
+  #   mats_with_applications = applications
+  #   
+  #   mats_with_types = self.by_material_type_id(material_.id) unless mat.id.nil?
+  #   mats_with_finishes = self.finishes(:finish_id => finishes) 
+  #   mats_with_applications = self.where(:applications => applications) unless applications.size > 0  
+  #   
+  #   (mats_with_material_types + mates_with_finishes + mats_with_applications)
+  #   
+  # end   
 end
 
 
