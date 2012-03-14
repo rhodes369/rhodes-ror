@@ -5,34 +5,32 @@
   +clickable
   +user-select
   +pointer
-  +round(16)
+  +round(8)
   +flat-top
   box-shadow: 0 0 40px #f0e207
   -moz-box-shadow: 0 0 40px #f0e207
   -webkit-box-shadow: 0 0 40px #f0e207
-  +font(22)
   padding: 0 50px
   text-align: center
   position: fixed
   top: 0px
-  left: 472px
+  left: 50%
   min-height: 50px
   max-width: 550px
-  z-index: 1600
-  color: #ddd
-  background: #313131
-  background: -webkit-gradient(linear, left top, left bottom, from(rgba(49,49,49,1.0)), to(rgba(0,0,0,1.0)))
-  background: -moz-linear-gradient(top, rgba(49,49,49,1.0), rgba(0,0,0,1.0))
-  border: 4px solid #fff
+  z-index: 2000
+  +bg-black(.8)
+  border: 2px solid #fff
   border-top: none
-  .geoArrow
-    +right
-    width: 32px
-    height: 50px
-    margin: 0 0 0 12px
-    @extend .arrow-up-32
+
+  .notice p
+    color: #ddd
+
+  .alert p
+    color: #7C3113
+
   p
     +left
+    +font(14)
     margin: 12px 12px 12px 0
   .check, .close
     width: 31px
