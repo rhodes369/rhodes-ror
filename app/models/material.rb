@@ -12,18 +12,38 @@ class Material < ActiveRecord::Base
   has_one :material_type
      
   default_scope order: 'materials.title ASC'  
-       
+  #scope :index_finishes, lambda{ |limit| Finish.limit(limit) }
+  #scope :index_finishes, lambda{ |limit| self.finishes.all }
+  #scope :with_finishes, lambda{ |limit| Material.limit(limit) }
+  #scope :mats_with_finishes, lambda { |finish_id| 
+  #MaterialFinish.where(finish_id: finish_id).map(&:material_id).uniq 
+  #}
+  
+  
   #by_material_types = where(material_id = ?, mat  
     
   validates :title, presence: true, :uniqueness => true
   validates_uniqueness_of :title
    
   attr_accessible :title, :description, :material_type_id, 
-                  :finish_ids, :application_ids, :pdf, 
+                  :finish_ids, :finishes, :application_ids, :pdf, 
                   :images, :specifications, :technical_data
 
   before_destroy :delete_material_images 
-       
+  after_initialize :add_finishes
+  
+  
+  def add_finishes
+    finishes = MaterialFinish.where(material_id: self.id).map(&:material_id)
+  end 
+ 
+  # def index_materials(limit = 3)
+  #   #return if !limit > 0
+  #   self.all.limit(limit)
+  #   @index_images = lambda{ |limit| Material.index_finishes(limit) }
+  # end
+
+  
   
   # def self.by_material_ids(material_ids = [1,3,4])
   #   return if !matrial_ids.count > 0
