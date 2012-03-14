@@ -41,10 +41,11 @@ class Admin::ImagesController < ApplicationController
  
     respond_to do |format|
       if @image.save
-        format.html { redirect_to edit_admin_material_path @material, notice: 'Image was successfully updated.' }
+        #flash[:notice] = "test"
+        format.html { redirect_to edit_admin_material_path(@material), notice: 'Image was successfully updated.' }
         format.json { render json: @image, status: :created, location: @image }
       else
-        format.html { redirect_to edit_admin_material_path @material, notice: 'Unable to add Image.' }
+        format.html { redirect_to edit_admin_material_path(@material), notice: 'Unable to add Image.' }
         format.json { render json: @image.errors, status: :unprocessable_entity }
       end
     end
@@ -65,8 +66,7 @@ class Admin::ImagesController < ApplicationController
     @image.destroy
 
     respond_to do |format|
-      format.html { redirect_to edit_admin_material_path @material }
-      format.json { head :no_content }
+      format.html { redirect_to edit_admin_material_path(@material), notice: 'Image was removed' }
     end
   end
 end

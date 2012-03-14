@@ -30,23 +30,21 @@ class Material < ActiveRecord::Base
   before_destroy :delete_material_images 
   after_initialize :add_finishes
   
+  validates :title, presence: true, :uniqueness => true 
+  validates_length_of :title, :maximum => 20, :error => 'Title can only be 20 characters long'
+ 
   
   def add_finishes
     finishes = MaterialFinish.where(material_id: self.id).map(&:material_id)
   end 
+  
  
   # def index_materials(limit = 3)
   #   #return if !limit > 0
   #   self.all.limit(limit)
   #   @index_images = lambda{ |limit| Material.index_finishes(limit) }
   # end
-
-  
-
-  validates :title, presence: true, :uniqueness => true 
-  validates_length_of :title, :maximum => 20, :error => 'Title can only be 20 characters long'
-      
-           
+            
   
   # def self.by_material_ids(material_ids = [1,3,4])
   #   return if !matrial_ids.count > 0
