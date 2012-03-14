@@ -15,11 +15,8 @@ class Image < ActiveRecord::Base
   validates_attachment_content_type :image, 
                         :content_type => ['image/jpeg', 'image/png']
 
+  
 
-  def clear_all_material_images(material)
-
-  end
-   
 end
 
 
