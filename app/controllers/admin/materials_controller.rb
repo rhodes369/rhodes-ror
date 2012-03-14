@@ -23,7 +23,7 @@ class Admin::MaterialsController < ApplicationController
         format.html { redirect_to admin_materials_path }
         format.json { render json: @material, status: :created, location: @material }
       else
-        flash[:error] = 'Problem Saving Material'
+        flash[:alert] = 'Problem Saving Material'
         format.html { redirect_to admin_materials_path }
         format.json { render json: @material.errors, status: :unprocessable_entity }
       end
