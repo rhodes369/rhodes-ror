@@ -85,26 +85,36 @@
 
     .clear
 
+    %h2
+      Finishes 
+      
+    - @material.finishes.each do |fin| 
+      - debug(@material)
+      - if fin.title.nil?  
+        %p= 'None'
+      - else
+        - @material.mats_with_finishes(fin.id).each do |mat| 
+          %p= "finish title: #{fin.title}"
+          %h3= "mat title: #{mat.title}"
+          - if mat.images.count > 0    
+            %ul#antique.thumbs.clearfix
+              - mat.images.each do |i|    
+                %li
+                  %a{ :href => i.image.url(:large) }
+                    %img{:src => i.image.url(:thumb), :alt => "" }           
+                      %span.material    
+        
 
-
-
-  %h3 Antique Materials
-
-  %ul#antique.thumbs.clearfix
-    %li
-      %a{href: ""}
-        %img{src: "", alt: ""}
-        %span.material Material
-        %span.type Type
-
-
-
-
-  %h3 Newly Crafted
-
-  %ul#new.thumbs.clearfix
-    %li
-      %a{href: ""}
-        %img{src: "", alt: ""}
-        %span.material Material
-        %span.type Type
+  
+    
+    / %br
+    / %br
+    / 
+    / %h3 Newly Crafted
+    / 
+    / %ul#new.thumbs.clearfix
+    /   %li
+    /     %a{href: ""}
+    /       %img{src: "", alt: ""}
+    /       %span.material Material
+    /       %span.type Type
