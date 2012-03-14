@@ -17,8 +17,7 @@ class Admin::FinishesController < ApplicationController
         format.html { redirect_to admin_finishes_path, :notice => 'Finish was Saved' }
         format.json { render json: @finish, status: :created, location: @finish }
       else
-        flash[:error] = 'Problem Saving Finish'
-        format.html { redirect_to admin_finishes_path }
+        format.html { redirect_to admin_finishes_path, :alert =>'Problem Saving Entity' }
         format.json { render json: @finish.errors, status: :unprocessable_entity }
       end
     end
