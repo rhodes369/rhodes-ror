@@ -1,12 +1,36 @@
 
-%br
-%h4 Current Images
-%div{:style => "align: center; border-width: 1px; width: 700px"}
+// previous page
+%a.prev
 
-  - @material.images.each do |i|
-    %span{:style => "white-space: nowrap" }
-    %a{ :href => i.image.url(:large) }
-      %img{:src => i.image.url(:thumb) }
-    = link_to 'x', admin_image_path(i), :confirm => 'Are you sure you want to remove this image?', :method => :delete
-    %br
-    %p= i.image_file_name
+// root element for scrollable
+.scrollable
+
+  // root element for the items
+  .items
+
+    // THUMBNAILS 1-5
+    %div
+
+      - @material.images.each do |i|
+        %a{:href => i.image.url(:large)}
+          / (href="#" onMouseover="MM_swapImage('enlarge1','','images/stone/Amande/amande_4ptStalk.jpg',0); writeText('FINISH: Type of finish <br> and minimum thickness')")
+
+          %img{:src => i.image.url(:thumb)}
+
+          / Need to make this a div, not a link, so that it can sit inside the parent a link.
+          = link_to 'x', admin_image_path(i), :confirm => 'Are you sure you want to remove this image?', :method => :delete
+
+        / %p= i.image_file_name
+
+
+// next page
+%a.next
+
+
+
+// MAIN IMAGE
+#enlarge_container
+  %img{src: "images/stone/Amande/amande_4ptStalk.jpg", name: "enlarge1"}
+
+
+
