@@ -19,12 +19,10 @@ class Admin::MaterialsController < ApplicationController
 
     respond_to do |format|
       if @material.save
-        flash[:notice] = 'Material Saved'
-        format.html { redirect_to admin_materials_path }
+        format.html { redirect_to admin_materials_path, notice: 'Material Saved' }
         format.json { render json: @material, status: :created, location: @material }
       else
-        flash[:error] = 'Problem Saving Material'
-        format.html { redirect_to admin_materials_path }
+        format.html { redirect_to admin_materials_path, alert: 'Problem Saving Material' }
         format.json { render json: @material.errors, status: :unprocessable_entity }
       end
     end
@@ -67,10 +65,10 @@ class Admin::MaterialsController < ApplicationController
   def destroy
     @material = Material.find(params[:id])
     @material.destroy
-    flash[:notice] = 'Material Removed'
+    #flash[:notice] = 'Material Removed'
 
     respond_to do |format|
-      format.html { redirect_to admin_materials_path }
+      format.html { redirect_to admin_materials_path, notice: 'Material Removed' }
       format.json { render json: @material, status: :deleted }
     end
   end  

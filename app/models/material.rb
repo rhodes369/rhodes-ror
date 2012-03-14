@@ -21,9 +21,7 @@ class Material < ActiveRecord::Base
   
   
   #by_material_types = where(material_id = ?, mat  
-    
-  validates :title, presence: true, :uniqueness => true
-  validates_uniqueness_of :title
+
    
   attr_accessible :title, :description, :material_type_id, 
                   :finish_ids, :finishes, :application_ids, :pdf, 
@@ -44,6 +42,11 @@ class Material < ActiveRecord::Base
   # end
 
   
+
+  validates :title, presence: true, :uniqueness => true 
+  validates_length_of :title, :maximum => 20, :error => 'Title can only be 20 characters long'
+      
+           
   
   # def self.by_material_ids(material_ids = [1,3,4])
   #   return if !matrial_ids.count > 0
@@ -78,7 +81,20 @@ class Material < ActiveRecord::Base
   #   (mats_with_material_types + mates_with_finishes + mats_with_applications)
   #   
   # end   
-end
+  
+  
+private 
+  # deletes uploaded material images
+  def delete_material_images
+    if self.images.count > 0 
+      self.images.each do |image|
+        @image.image = nil
+        @image.save
+      end
+    end  
+  end  
+end  
+
 
 
   
