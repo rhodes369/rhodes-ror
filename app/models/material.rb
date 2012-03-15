@@ -31,7 +31,7 @@ class Material < ActiveRecord::Base
   after_initialize :add_finishes
   
   validates :title, presence: true, :uniqueness => true 
-  #validates_length_of :title, :maximum => 20, :error => 'Title can only be 20 characters long'
+  validates_length_of :title, :maximum => 20, :alert => 'Title can only be 20 characters long'
  
   
   def add_finishes
