@@ -21,24 +21,37 @@
   +bg-black(.8)
   border: 2px solid #fff
   border-top: none
+  &:hover .close
+    +bg-black(.7)
+    color: red
 
   .notice p
     color: #ddd
 
   .alert p
-    color: #7C3113
+    color: red
 
   p
     +left
     +font(14)
     margin: 12px 12px 12px 0
-  .check, .close
-    width: 31px
-    height: 31px
+
+  .close
+    +font(12px)
+    +round(12)
+    +center
+    +bold
     +absolute
+    width: 24px
+    height: 24px
+    line-height: 24px
     right: 12px
     top: 11px
-  .check
-    // +check-31
-  .close
-    @extend .close-24-hover
+    background: rgba(250,0,0,0.5)
+    color: #fff
+
+
+
+
+
+
