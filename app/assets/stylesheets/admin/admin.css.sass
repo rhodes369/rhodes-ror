@@ -82,6 +82,7 @@ input#material_material[pdf]
     border: 1px solid #414042
 
 
+// EDIT / UPLOAD IMAGES
 form#new_image
   margin: 42px 0 0 40px
 
@@ -94,9 +95,34 @@ form#new_image
   text-align: center
   border: 1px solid #acacac
 
-
 input#image_image
   float: left
+
+.scrollable a
+  &:hover .close
+    +block
+
+  .close
+    +hidden
+    +absolute
+    +font(12px)
+    +round(12)
+    +center
+    +bold
+    top: 4px
+    right: 4px
+    width: 24px
+    height: 24px
+    line-height: 24px
+    background: rgba(250,0,0,0.5)
+    color: #fff
+    &:hover
+      +bg-black(.7)
+      color: red
+
+
+
+
 
 
 input.submit, input.delete
