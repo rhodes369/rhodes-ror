@@ -45,7 +45,7 @@ class Admin::ImagesController < ApplicationController
         format.html { redirect_to edit_admin_material_path(@material), notice: 'Image was successfully updated.' }
         format.json { render json: @image, status: :created, location: @image }
       else
-        format.html { redirect_to edit_admin_material_path(@material), notice: 'Unable to add Image.' }
+        format.html { redirect_to edit_admin_material_path(@material), alert: 'Problem uploading Image' }
         format.json { render json: @image.errors, status: :unprocessable_entity }
       end
     end
