@@ -38,7 +38,7 @@ class Admin::MaterialsController < ApplicationController
         format.html { redirect_to edit_admin_material_path(@material), notice: 'Material Updated' }
         format.json { head :no_content, status: :success }
       else
-        format.html { redirect_to edit_admin_material_path(@material), alert: 'Problem updating material' }
+        format.html { redirect_to edit_admin_material_path(@material), alert: 'Problem Updating Material' }
         format.json { render json: @material.errors, status: :unprocessable_entity }
       end
     end
