@@ -12,13 +12,12 @@
     %div
 
       - @material.images.each do |i|
-        %a{:href => i.image.url(:large)}
+        %a{:href => i.image.url(:large), name: "a1"}
           / (href="#" onMouseover="MM_swapImage('enlarge1','','images/stone/Amande/amande_4ptStalk.jpg',0); writeText('FINISH: Type of finish <br> and minimum thickness')")
 
           %img{:src => i.image.url(:thumb)}
-
-          / Need to make this a div, not a link, so that it can sit inside the parent a link.
-          = link_to 'x', admin_image_path(i), :confirm => 'Are you sure you want to remove this image?', :method => :delete
+          .close X
+          / = link_to 'x', admin_image_path(i), :confirm => 'Are you sure you want to remove this image?', :method => :delete
 
         / %p= i.image_file_name
 
