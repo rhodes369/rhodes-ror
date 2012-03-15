@@ -2,8 +2,8 @@
 #globalAlert{class: "#{(flash.notice || flash.alert) ? '' : 'hidden'}"}
   .notice{class: "#{flash.notice ? '' : 'hidden'}"}
     %p= raw(flash.notice)
-    .check
+    .close X
 
   .alert{class: "#{flash.alert ? '' : 'hidden'}"}
     %p= raw(flash.alert)
-    .close
+    .close X
