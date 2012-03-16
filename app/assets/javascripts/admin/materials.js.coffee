@@ -17,8 +17,7 @@ $ ->
       console.log "selector_id: #{selector_id} image_id: #{image_id} large_image: #{large_image}" # works fine
         
       $('#large_image').attr(src: large_image)
-      console.log 'done updating large image'  
-
+      console.log 'updated large image'  
   )
   
  

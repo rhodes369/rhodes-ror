@@ -71,13 +71,14 @@
 
     .filterWrap
       %select#material-type
-        %option{selected: "selected", class: "label", value: 'none'} Search by Material Type
-        - @all_material_types.each do |mt|
-          %option{:value => mt.id, :selected =>  @material.material_type_id == mt.id (mt) ? "selected" : nil}= mt.title
+        %option{ class: "label", value: 'none', selected: "selected" }
+          Search by Material Type
+        / - @all_material_types.each do |mt|
+        /   %option{:value => mt.id, :selected =>  @material.material_type_id == mt.id (mt) ? "selected" : nil}= mt.title
 
 
     .filterWrap
-      %select#material-finish
+      %select#finish_id
         %option{selected: "selected", class: "label", value: 'none'} Search by Finishes
         - @all_finishes.each do |finish|
           %option{:value => finish.id, :selected =>  @material.finishes.include?(finish) ? "selected" : nil}= finish.title
@@ -94,27 +95,28 @@
 
     %h3
       Finishes 
-
+      
+    %div#test
     
-    / %h2
-    /   Finishes 
-    /   
-    / - @material.finishes.each do |fin| 
-    /   - debug(@material)
-    /   - if fin.title.nil?  
-    /     %p= 'None'
-    /   - else
-    /     - @material.mats_with_finishes(fin.id).each do |mat| 
-    /       %p= "finish title: #{fin.title}"
-    /       %h3= "mat title: #{mat.title}"
-    /       - if mat.images.count > 0    
-    /         %ul#antique.thumbs.clearfix
-    /           - mat.images.each do |i|    
-    /             %li
-    /               %a{ :href => i.image.url(:large) }
-    /                 %img{:src => i.image.url(:thumb), :alt => "" }           
-    /                   %span.material    
-        
+    %h2
+      Finishes 
+      
+    - @material.finishes.each do |fin| 
+      - debug(@material)
+      - if fin.title.nil?  
+        %p= 'None'
+      - else
+        - @material.mats_with_finishes(fin.id).each do |mat| 
+          %p= "finish title: #{fin.title}"
+          %h3= "mat title: #{mat.title}"
+          - if mat.images.count > 0    
+            %ul#antique.thumbs.clearfix
+            - mat.images.each do |i|    
+              %li
+                %a{ :href => i.image.url(:large) }
+                  %img{:src => i.image.url(:thumb), :alt => "" }           
+                    %span.material    
+      
 
    
     - if mats_with_images = Material.newly_crafted_with_images.count > 0
