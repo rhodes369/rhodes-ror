@@ -53,30 +53,7 @@
 
 #content-center.TwoColumnFix
 
-  .filters
-
-    .filterWrap
-      %select#material
-        %option{selected: "selected", class: "label"} Search by Material
-        %option Antique Yangtze Limestone
-        %option Antique Pewter Granite
-        %option Antique Salmon Granite
-     
-    / .filterWrap
-    /   %select#material-type
-    /     %option{selected: "selected", class: "label"} Search by Material Type
-    /     %option Firebrick
-    /     %option Granite
-    /     %option Limestone
-
-    / .filterWrap
-    /   %select#material-type
-    /     %option{ class: "label", value: 'none', selected: "selected" }
-    /       Search by Material Type
-    /     / - @all_material_types.each do |mt|
-    /     /   %option{:value => mt.id, :selected =>  @material.material_type_id == mt.id (mt) ? "selected" : nil}= mt.title
-
-
+  .filters 
     .filterWrap
       %select#mat_type_id
         %option{ class: "label", value: 'none', selected: "selected"} Search by Material Type
@@ -118,9 +95,7 @@
                 %a{ :href => i.image.url(:large) }
                   %img{:src => i.image.url(:thumb), :alt => "" }           
                     %span.material    
-      
-
-   
+        
     - if mats_with_images = Material.newly_crafted_with_images.count > 0
       %br
       %br
