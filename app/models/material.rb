@@ -11,11 +11,10 @@ class Material < ActiveRecord::Base
   has_one :material_type
   #has_one :pdf, :dependent => :destroy
      
-  default_scope order: 'materials.title ASC' 
-
-  scope :mats_with_finishes, lambda{ |fid| MaterialFinish.where(finish_id: fid) } # .map(&:material_id).uniq }
-  scope :newly_crafted, Material.order('created_at DESC').limit(NEWLY_CRAFTED_LIMIT)
-     
+  scope :alphabetical, self.order('title ASC') 
+  scope :newly_crafted, Material.limit(NEWLY_CRAFTED_LIMIT).order('created_at DESC')
+  scope :mats_with_finishes, lambda{ |fid| MaterialFinish.where(finish_id: fid) } # .map(&:material_id).uniq }   
+  
   #scope :with_finishes, lambda{ |limit| Material.limit(limit) }
   #scope :mats_with_finishes, lambda{ |finish_id| MaterialFinish.where(finish_id: finish_id) }
  
@@ -33,7 +32,7 @@ class Material < ActiveRecord::Base
     unless self.material_type_id.nil?
       material_type_title = MaterialType.find(self.material_type_id).title
     else
-      'None'
+      material_type_title = 'None'
     end
   end
 
@@ -44,7 +43,7 @@ class Material < ActiveRecord::Base
        @image.image = nil
        @image.save
      end
-   end  
+   end    
   end
    
 

@@ -118,5 +118,6 @@
               %a{ :href => material_path(mat) }
                 %img{:src => default_image.image.url(:thumb) }
                 %span.material= "#{mat.title}"
-                %span.type= "#{mat.get_material_type_title}"
+                - unless mat_type_title = mat.get_material_type_title.nil?
+                  %span.type= "#{mat.get_material_type_title}"
 
