@@ -69,27 +69,32 @@
     /     %option Granite
     /     %option Limestone
 
-    .filterWrap
-      %select#material-type
-        %option{ class: "label", value: 'none', selected: "selected" }
-          Search by Material Type
-        / - @all_material_types.each do |mt|
-        /   %option{:value => mt.id, :selected =>  @material.material_type_id == mt.id (mt) ? "selected" : nil}= mt.title
+    / .filterWrap
+    /   %select#material-type
+    /     %option{ class: "label", value: 'none', selected: "selected" }
+    /       Search by Material Type
+    /     / - @all_material_types.each do |mt|
+    /     /   %option{:value => mt.id, :selected =>  @material.material_type_id == mt.id (mt) ? "selected" : nil}= mt.title
 
 
     .filterWrap
-      %select#finish_id
-        %option{selected: "selected", class: "label", value: 'none'} Search by Finishes
-        - @all_finishes.each do |finish|
-          %option{:value => finish.id, :selected =>  @material.finishes.include?(finish) ? "selected" : nil}= finish.title
-         
+      %select#mat_type_id
+        %option{ class: "label", value: 'none', selected: "selected"} Search by Material Type
+        - @all_mat_types.each do |mat_type|
+          %option{:value => mat_type.id, :selected => nil }= mat_type.title
 
     .filterWrap
-      %select#material-application
-        %option{selected: "selected", class: "label"} Search by Applications
-        %option Interior
-        %option Exterior
-        %option Wet / pool
+      %select#mat_finish_id
+        %option{ class: "label", value: 'none', selected: "selected"} Search by Finishes
+        - @all_mat_finishes.each do |finish|
+          %option{:value => finish.id, :selected => nil }= finish.title
+    
+    .filterWrap
+      %select#mat_app_id
+        %option{ class: "label", value: 'none', selected: "selected" } Search by Applications
+        - @all_mat_apps.each do |app|
+          %option{:value => app.id, :selected =>  nil }= app.title         
+
 
     .clear
 

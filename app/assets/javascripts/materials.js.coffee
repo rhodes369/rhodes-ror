@@ -1,36 +1,22 @@
-# Place all the behaviors and hooks related to the matching controller here.
-# All this logic will automatically be available in application.js.
-# You can use CoffeeScript in this file: http://jashkenas.github.com/coffee-script/
-
+$ = jQuery # we must be mixing libraries elsewhere so we need $ to represent jQuery yo!
 $ ->
-  console.log 'test'
+  # look for change events on these div classes, 
+  # then process results, save filters to cookie
+  
   $('.filters .filterWrap').on(
     change: (event) ->
-      finish_id = $('#finish_id').val()
-      console.log "changed to id: #{finish_id}"
+      mat_type_id = $('#mat_type_id').val()
+      mat_finish_id = $('#mat_finish_id').val()
+      mat_app_id = $('#mat_app_id').val()
+
+      console.log "filter changes detected\nfinish_id: #{mat_finish_id} app_id: #{mat_app_id} type_id: #{mat_type_id}"       
+      console.log 'updating material filter cookies...' 
+        
+      expiry = { expires: 365 } # set all expiry's for 1 year  
+      $.cookie("mat_type_id_filter", mat_type_id, expiry) 
+      $.cookie("mat_finish_id_filter", mat_finish_id, expiry) 
+      $.cookie("mat_app_id_filter", mat_app_id, expiry)                
   )
-  
-  # update_filter_cookies: ->   
-  #   mat_type_id = $('#material-finish').val()
-  #   console.log "mat_type_id: #{mat_type_id}"
-  #   #$.cookie("attribute", "value", { path: '/' })
-  #   
-  # $(document).on('change', '#material-finish', data, update_filter_cookies) 
-  #   console.log 'changed'
-  #   
-  # $('#material-finish').on(
-  #   change: (event) ->   
-  #     console.log 'changed' 
-  # )    
-  # 
-  # 
-  # $('.material_thumb').on(
-  #   mouseover: (event) ->   
-  #     selector_id = $(this).attr('id')
-  #     image_id = $(this).data('image_id')
-  #     large_image = $(this).data('large_image')
-  #     console.log "selector_id: #{selector_id} image_id: #{image_id} large_image: #{large_image}" # works fine
-  #       
-  #     $('#large_image').attr(src: large_image)
-  #     console.log 'updated large image'  
-  # )
+      
+
+
