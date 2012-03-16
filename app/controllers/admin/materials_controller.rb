@@ -48,9 +48,9 @@ class Admin::MaterialsController < ApplicationController
     @material = Material.find(params[:id])
     @materials = Material.all
     @image = Image.new
-    @all_finishes = Finish.all('title ASC')
+    @all_finishes = Finish.order(:title)
+    @all_applications = Application.order(:title)
   end
-
   
   def show
     @material = Material.find(params[:id])
