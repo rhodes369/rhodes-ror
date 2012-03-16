@@ -85,36 +85,38 @@
 
     .clear
 
-    %h2
-      Finishes 
-      
-    - @material.finishes.each do |fin| 
-      - debug(@material)
-      - if fin.title.nil?  
-        %p= 'None'
-      - else
-        - @material.mats_with_finishes(fin.id).each do |mat| 
-          %p= "finish title: #{fin.title}"
-          %h3= "mat title: #{mat.title}"
-          - if mat.images.count > 0    
-            %ul#antique.thumbs.clearfix
-              - mat.images.each do |i|    
-                %li
-                  %a{ :href => i.image.url(:large) }
-                    %img{:src => i.image.url(:thumb), :alt => "" }           
-                      %span.material    
+    / %h2
+    /   Finishes 
+    /   
+    / - @material.finishes.each do |fin| 
+    /   - debug(@material)
+    /   - if fin.title.nil?  
+    /     %p= 'None'
+    /   - else
+    /     - @material.mats_with_finishes(fin.id).each do |mat| 
+    /       %p= "finish title: #{fin.title}"
+    /       %h3= "mat title: #{mat.title}"
+    /       - if mat.images.count > 0    
+    /         %ul#antique.thumbs.clearfix
+    /           - mat.images.each do |i|    
+    /             %li
+    /               %a{ :href => i.image.url(:large) }
+    /                 %img{:src => i.image.url(:thumb), :alt => "" }           
+    /                   %span.material    
         
 
-  
-    
-    / %br
-    / %br
-    / 
-    / %h3 Newly Crafted
-    / 
-    / %ul#new.thumbs.clearfix
-    /   %li
-    /     %a{href: ""}
-    /       %img{src: "", alt: ""}
-    /       %span.material Material
-    /       %span.type Type
+   
+    - if @materials_newly_crafted.count > 0
+      %br
+      %br
+      %h3 Newly Crafted
+      - @materials_newly_crafted.each do |mat| 
+        - if mat.images.count > 0
+          - default_image = mat.images.first  
+          %ul#new.thumbs.clearfix
+            %li
+              %a{ :href => material_path(mat) }
+                %img{:src => default_image.image.url(:thumb) }
+                %span.material= "#{mat.title}"
+                %span.type= "#{mat.get_material_type_title}"
+
