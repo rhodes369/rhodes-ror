@@ -61,20 +61,27 @@
         %option Antique Yangtze Limestone
         %option Antique Pewter Granite
         %option Antique Salmon Granite
+     
+    / .filterWrap
+    /   %select#material-type
+    /     %option{selected: "selected", class: "label"} Search by Material Type
+    /     %option Firebrick
+    /     %option Granite
+    /     %option Limestone
 
     .filterWrap
       %select#material-type
-        %option{selected: "selected", class: "label"} Search by Material Type
-        %option Firebrick
-        %option Granite
-        %option Limestone
+        %option{selected: "selected", class: "label", value: 'none'} Search by Material Type
+        - @all_material_types.each do |mt|
+          %option{:value => mt.id, :selected =>  @material.material_type_id == mt.id (mt) ? "selected" : nil}= mt.title
+
 
     .filterWrap
       %select#material-finish
-        %option{selected: "selected", class: "label"} Search by Finishes
-        %option Antique
-        %option Split
-        %option Pineapple
+        %option{selected: "selected", class: "label", value: 'none'} Search by Finishes
+        - @all_finishes.each do |finish|
+          %option{:value => finish.id, :selected =>  @material.finishes.include?(finish) ? "selected" : nil}= finish.title
+         
 
     .filterWrap
       %select#material-application
@@ -85,6 +92,10 @@
 
     .clear
 
+    %h3
+      Finishes 
+
+    
     / %h2
     /   Finishes 
     /   
