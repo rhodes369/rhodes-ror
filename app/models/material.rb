@@ -1,6 +1,6 @@
 class Material < ActiveRecord::Base
    
-  NEWLY_CRAFTED_LIMIT = 4
+  NEWLY_CRAFTED_WITH_IMAGES_LIMIT = 4
   
   has_many :images, :dependent => :destroy
   has_many :finishes, :through => :material_finishes 
@@ -11,14 +11,9 @@ class Material < ActiveRecord::Base
   has_one :material_type
   #has_one :pdf, :dependent => :destroy
      
-  default_scope order: 'materials.title ASC' 
+  scope :alphabetical, self.order('title ASC') 
+  scope :newly_crafted, self.order('created_at DESC')  
 
-  scope :mats_with_finishes, lambda{ |fid| MaterialFinish.where(finish_id: fid) } # .map(&:material_id).uniq }
-  scope :newly_crafted, Material.order('created_at DESC').limit(NEWLY_CRAFTED_LIMIT)
-     
-  #scope :with_finishes, lambda{ |limit| Material.limit(limit) }
-  #scope :mats_with_finishes, lambda{ |finish_id| MaterialFinish.where(finish_id: finish_id) }
- 
   attr_accessible :title, :description, :material_type_id, 
                   :finish_ids, :finishes, :application_ids, :pdf, 
                   :images, :specifications, :technical_data
@@ -27,26 +22,39 @@ class Material < ActiveRecord::Base
   
   validates :title, presence: true, :uniqueness => true 
   validates_length_of :title, :maximum => 20, :alert => 'Title can only be 20 characters long'
+   
+  # filter out all newly crafted mats without images
+  def self.newly_crafted_with_images
+    with_images = []
+    self.newly_crafted.each { |mat| with_images << mat if mat.images.count > 0 } 
+    return with_images.take(NEWLY_CRAFTED_WITH_IMAGES_LIMIT)
+  end
   
-
+  def self.with_finish(finish_id)
+    with_finish = []
+    MaterialFinish.where(finish_id: finish_id).each { |mat| with_finish << mat }
+    
+    return with_finish
+  end
+  
   def get_material_type_title
     unless self.material_type_id.nil?
       material_type_title = MaterialType.find(self.material_type_id).title
     else
-      'None'
+      material_type_title = 'None'
     end
   end
 
   # deletes all uploaded material images
   def delete_material_images
-   if self.images.count > 0 
-     self.images.each do |image|
+    if self.images.count > 0 
+      self.images.each do |image|
        @image.image = nil
        @image.save
-     end
-   end  
+      end
+    end    
   end
-   
+      
 
    # def index_materials(limit = 3)
    #   #return if !limit > 0
