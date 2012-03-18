@@ -9,30 +9,42 @@
   .items
 
     // THUMBNAILS 1-5
-    %div
-    
-      /%a{:href => i.image.url(:large), name: "a1"}
+    .group
+
       - @material.images.each do |i|
-        
-        %img{src: i.image.url(:thumb), name: 'al', class: "material_thumb", id: "material_thumb_#{i.id}", :data => { large_image: "#{i.image.url(:large)}", image_id: "#{i.id}"  }}
+        .img
+          %img{src: i.image.url(:thumb), name: 'al', class: "material_thumb", id: "material_thumb_#{i.id}", :data => { large_image: "#{i.image.url(:large)}", image_id: "#{i.id}"  }}
           .close X
-          
+          %label.default
+            %input{type: "radio"}
+            %span set default
+
+
+
+
+
+
+
+
           / (href="#" onMouseover="MM_swapImage('enlarge1','','images/stone/Amande/amande_4ptStalk.jpg',0); 
           / writeText('FINISH: Type of finish <br> and minimum thickness')")
 
-        
           / = link_to 'x', admin_image_path(i), :confirm => 'Are you sure you want to remove this image?', :method => :delete
 
           / %p= i.image_file_name
-        
-      
-    
+
+
+
+
+
 // next page
 %a.next
 
+
+
 // MAIN IMAGE
 #enlarge_container
-  %img{src: "images/stone/Amande/amande_4ptStalk.jpg", name: "enlarge1", id: "large_image"}
+  %img{src: "/", name: "enlarge1", id: "large_image"}
         
 %br
 %br
