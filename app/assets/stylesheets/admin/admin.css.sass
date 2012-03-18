@@ -98,7 +98,7 @@ form#new_image
 input#image_image
   float: left
 
-.scrollable a
+.scrollable .img
   &:hover .close
     +block
 
@@ -114,11 +114,11 @@ input#image_image
     width: 24px
     height: 24px
     line-height: 24px
-    +bg-black(.5)
-    color: red
+    background: rgba(250,0,0,0.3)
+    color: #fff
     &:hover
-      background: rgba(250,0,0,0.3)
-      color: #fff
+      +bg-black(.5)
+      color: red
 
 
 

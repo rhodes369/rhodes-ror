@@ -30,7 +30,7 @@ a:active
  // it's enough that you set the width and height for the root element and
  // not for this element.
 
-.items div
+.items .group
   float: left
   width: 535px
   cursor: pointer
@@ -43,7 +43,7 @@ a:active
     text-align: center
 
 // single scrollable item
-.scrollable a
+.scrollable .img
   position: relative
   display: inline-block
   float: left
@@ -79,6 +79,7 @@ a:active
 
 a
   &.prev
+    clear: both
     width: 22px
     height: 63px
     float: left

@@ -9,13 +9,14 @@
   .items
 
     // THUMBNAILS 1-5
-    %div
+    .group
     
       /%a{:href => i.image.url(:large), name: "a1"}
       - @material.images.each do |i|
-        
-        %img{src: i.image.url(:thumb), name: 'al', class: "material_thumb", id: "material_thumb_#{i.id}", :data => { large_image: "#{i.image.url(:large)}", image_id: "#{i.id}"  }}
-          .close X
+
+        .img
+          %img{src: i.image.url(:thumb), name: 'al', class: "material_thumb", id: "material_thumb_#{i.id}", :data => { large_image: "#{i.image.url(:large)}", image_id: "#{i.id}"  }}
+            .close X
           
           / (href="#" onMouseover="MM_swapImage('enlarge1','','images/stone/Amande/amande_4ptStalk.jpg',0); 
           / writeText('FINISH: Type of finish <br> and minimum thickness')")
@@ -29,6 +30,8 @@
     
 // next page
 %a.next
+
+
 
 // MAIN IMAGE
 #enlarge_container
