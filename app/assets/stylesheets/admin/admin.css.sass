@@ -99,8 +99,9 @@ input#image_image
   float: left
 
 .scrollable .img
-  &:hover .close
-    +block
+  &:hover
+    .close, .default
+      +block
 
   .close
     +hidden
@@ -121,6 +122,27 @@ input#image_image
       color: red
 
 
+  .default
+    +hidden
+    +absolute
+    +pointer
+    +font(12px)
+    bottom: 0
+    left: 0
+    width: 100%
+    height: 24px
+    line-height: 24px
+    background: rgba(250,250,250,0.7)
+    &:hover
+      background: rgba(250,250,250,0.9)
+    span
+      +absolute
+      top: 0
+      left: 5px
+    input
+      +absolute
+      top: 3px
+      right: 4px
 
 
 
