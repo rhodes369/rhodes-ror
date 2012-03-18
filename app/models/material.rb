@@ -12,7 +12,8 @@ class Material < ActiveRecord::Base
   #has_one :pdf, :dependent => :destroy
      
   scope :alphabetical, self.order('title ASC') 
-  scope :newly_crafted, self.order('created_at DESC')  
+  scope :newly_crafted, self.order('created_at DESC')
+  scope :antique_in_title, self.where('title LIKE ?', '%Antique%').order('title ASC') 
 
   attr_accessible :title, :description, :material_type_id, 
                   :finish_ids, :finishes, :application_ids, :pdf, 
