@@ -6,7 +6,7 @@ class Image < ActiveRecord::Base
   attr_accessible :material_id, :image, :image_file_name, 
                   :image_content_type, :image_file_size
   
-  has_attached_file :image, :styles => { :large => "529x529>",  
+  has_attached_file :image, :styles => { :large => "527x527>",  
                     :thumb => "95x95#" }
 
   validates_uniqueness_of :image_file_name, :scope => :material_id 

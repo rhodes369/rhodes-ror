@@ -1,0 +1,45 @@
+
+#content-left
+
+  %h1
+    %a{href: "stone.html"} Stone
+
+  // Stone lists: Antiques, New, All
+  %ul
+    %li
+      %a.expanded
+        .arrow
+        %span.arrowTxt Antiques
+
+      %ul
+        - Material.antique_in_title.each do |mat|
+          %li
+            = link_to mat.title, material_path(mat)
+            &ndash; 
+            // = mat.title
+            // Indent for long titles
+            // %span.indentLinks Limestone
+
+    // THIS LIST IS SET TO COLLAPSED, AS IT CONTAINS THE ITEM WE'RE VIEWING. I KNOW THE NAMING IS BACKWARDS - COLLAPSED = OPEN (we can change)
+    %li
+      %a.collapsed
+        .arrow 
+        %span.arrowTxt Newly Crafted
+
+      %ul
+        - Material.newly_crafted.limit(5).each do |mat|
+          %li
+            = link_to mat.title, material_path(mat)
+
+    %li
+      %a.collapsed
+        .arrow 
+        %span.arrowTxt All Materials
+
+        %ul
+          - Material.newly_crafted.each do |mat|
+            %li
+              = link_to mat.title, material_path(mat)
+            // &ndash; Antique Yangtze
+            // Indent for long titles
+            // %span.indentLinks Limestone
