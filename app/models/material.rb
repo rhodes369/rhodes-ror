@@ -22,7 +22,7 @@ class Material < ActiveRecord::Base
   before_destroy :delete_material_images 
   
   validates :title, presence: true, :uniqueness => true 
-  validates_length_of :title, :maximum => 20, :alert => 'Title can only be 20 characters long'
+  validates_length_of :title, :maximum => 25, :alert => 'Title can only be 25 characters long'
    
   # filter out all newly crafted mats without images
   def self.newly_crafted_with_images
