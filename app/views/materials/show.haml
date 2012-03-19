@@ -5,15 +5,10 @@
 
   %h3
     =@material.title
-    %br
-    %br
-    
-  - unless @material.material_type_id.nil?
-    - @material_type = MaterialType.find(@material.material_type_id)
-    #material_type
-      MATERIAL TYPE: 
-      = @material_type.nil? ? 'None' : @material_type.title    
-    %br
+
+    - unless @material.material_type_id.nil?
+      - @material_type = MaterialType.find(@material.material_type_id)
+      = @material_type.nil? ? 'None' : @material_type.title
 
   #finish
     // Currently, this variable gets pulled from js on the img
@@ -26,20 +21,16 @@
     %p
       %span.caps
         Available finishes:
-        %ul
-        - @material.finishes.each do |finish|
-          %li
-            = finish.title
+      - @material.finishes.each do |finish|
+        = finish.title
 
   // RECOMMENDED USES / APPLICATIONS
   - if @material.applications.count > 0
     %p
       %span.caps
         Recommended Uses:
-        %ul
-        - @material.applications.each do |app|
-          %li
-            = app.title  
+      - @material.applications.each do |app|
+        = app.title
 
   // DESCRIPTIOMN
   #description
@@ -81,7 +72,7 @@
       %div
         // FINISH INFO IS IN THE MOUSEOVER FUNCTION, BEING WRITTEN TO #finish
         %a(href="#" onMouseover="MM_swapImage('enlarge1','','images/stone/Amande/amande_4ptStalk.jpg',0); writeText('FINISH: Type of finish <br> and minimum thickness')")
-          %img{src: "images/stone/Amande/thumbs/amande_4ptStalk.jpg", alt: "", name: "a1"}
+          %img{src: "/", alt: "", name: "a1"}
 
 
   // next page
@@ -99,7 +90,7 @@
 
   // MAIN IMAGE
   #enlarge_container
-    %img{src: "images/stone/Amande/amande_4ptStalk.jpg", name: "enlarge1"}
+    %img{src: "/", name: "enlarge1"}
 
 
 
