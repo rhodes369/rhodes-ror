@@ -147,22 +147,25 @@ input#image_image
 
 
 
-input.submit, input.delete
+input.submit, input.delete, input.view
   float: left
   margin: 40px 20px 0 0
   height: 48px
   width: 160px
+  +center
   +font(14px)
   +round(8)
 
 input.submit
-  +save(24)
+  +submit(24)
 
 input.delete
   +delete(24)
 
-
-
+input.view
+  +view(24)
+  margin: 20px 20px 0 0
+  width: 340px
 
 
 // FILTERS
