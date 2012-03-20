@@ -237,7 +237,7 @@
 
 // BUTTONS
 
-=save($offset)
+=submit($offset)
   +bg-shine($offset)
   +gradient(#235b1b, #70d03b)
   +pointer
@@ -259,6 +259,18 @@
   border: 1px solid #b22626
   &:hover
     +gradient(#ee6844, #8b1812)
+    border: 1px solid #fff
+  &:active
+    +bg-shine(0)
+
+=view($offset)
+  +bg-shine($offset)
+  +gradient(#09233f, #1c4d78)
+  +pointer
+  color: #fff
+  border: 1px solid #1c4d78
+  &:hover
+    +gradient(#1c4d78, #09233f)
     border: 1px solid #fff
   &:active
     +bg-shine(0)
