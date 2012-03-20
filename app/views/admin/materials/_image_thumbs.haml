@@ -16,7 +16,7 @@
           %img{src: i.image.url(:thumb), name: 'al', class: "material_thumb", id: "material_thumb_#{i.id}", :data => { large_image: "#{i.image.url(:large)}", image_id: "#{i.id}"  }}
           .close X
           %label.default
-            %input{type: "radio"}
+            %input{type: "radio", :name => :default_image_id, :data => {material_id: @material.id, default_image_id: i.id }}
             %span set default
 
 
