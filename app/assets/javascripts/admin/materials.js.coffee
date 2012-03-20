@@ -23,12 +23,15 @@ $ ->
 
   $('.default_image_id').on(
     click: (event) ->      
-      default_image_id = $('input[name=default_image_id]:checked').val()
+      #default_image_id = $('input[name=default_image_id]:checked').val()
+      material_id = $(this).data('material_id')
+      default_image_id = $(this).data('default_image_id')
       # material_id = $()
-      console.log "default_image_id: #{default_image_id}"
+      console.log "material_id: #{material_id} default_image_id: #{default_image_id}"
            
       $.ajax( (response) ->
-        url: "/admin/material/#{default_image_id}/update_default_image.json"
+        url: "/admin/material/#{material_id}/update_default_image.json"
+        default_image_id: default_image_id
         dataType: "json"
         type: "PUT"   
         success: ->
