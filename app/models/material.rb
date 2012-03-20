@@ -52,6 +52,10 @@ class Material < ActiveRecord::Base
     end
   end
 
+  def self.update_default_image
+
+  end
+
   # deletes all uploaded material images
   def delete_material_images
     if self.images.count > 0 

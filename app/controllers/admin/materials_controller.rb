@@ -42,7 +42,17 @@ class Admin::MaterialsController < ApplicationController
         format.json { render json: @material.errors, status: :unprocessable_entity }
       end
     end
-  end    
+  end 
+  
+  def update_default_image_id
+    default_image_id = params[:default_image_id]
+    return unless default_image_id.numeric?
+  
+    self.default_image = default_image_id
+    self.save!
+
+    render :json => {type: 'ok'} if request.xhr?         
+  end
 
   def edit
     @material = Material.find(params[:id])
