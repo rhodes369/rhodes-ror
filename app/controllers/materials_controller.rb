@@ -3,8 +3,12 @@ class MaterialsController < ApplicationController
   
   def index
     @material = Material.new # for optionally creating a new material on the index
-    @materials = Material.alphabetical # for sidebar edit links
-    @materials_newly_crafted = Material.newly_crafted.limit(5) # array of newly created mats
+    @materials_newly_crafted = Material.newly_crafted_with_images # array of newly created mats
+    
+    # sidebar
+    @materials_antique_in_title = Material.antique_in_title
+    @materials_alpha = Material.alphabetical # for sidebar edit links    
+    @materials_newly_crafted_sidebar = Material.newly_crafted_sidebar # all mats excluding antiques
     
     # populate filter pulldown values
     @all_mat_finishes = Finish.order(:title)

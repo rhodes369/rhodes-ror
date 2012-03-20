@@ -12,11 +12,9 @@
         %span.arrowTxt Antiques
 
       %ul
-        - Material.antique_in_title.each do |mat|
+        - @materials_antique_in_title.each do |mat|
           %li
-            = link_to mat.title, material_path(mat)
-
-            // = mat.title
+            = link_to "#{mat.title} (#{mat.material_type_title})", material_path(mat)
             // Indent for long titles
             // %span.indentLinks Limestone
 
@@ -27,9 +25,9 @@
         %span.arrowTxt Newly Crafted
 
       %ul
-        - Material.newly_crafted.limit(5).each do |mat|
+        - @materials_newly_crafted_sidebar.each do |mat|
           %li
-            = link_to mat.title, material_path(mat)
+            = link_to "#{mat.title} (#{mat.material_type_title})", material_path(mat)
 
     %li
       %a.collapsed
@@ -37,9 +35,9 @@
         %span.arrowTxt All Materials
 
         %ul
-          - Material.newly_crafted.each do |mat|
+          - @materials_alpha.each do |mat|
             %li
-              = link_to mat.title, material_path(mat)
+              = link_to "#{mat.title} (#{mat.material_type_title})", material_path(mat)
             // &ndash; Antique Yangtze
             // Indent for long titles
             // %span.indentLinks Limestone
