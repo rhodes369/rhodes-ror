@@ -1,18 +1,18 @@
 RhodesRor::Application.routes.draw do
   
-  get "applications/new"
-
-  get "applications/edit"
-
-  get "finishes/new"
-
-  get "finishes/create"
-
-  get "finishes/edit"
-
-  get "finishes/update"
-
-  get "finishes/destroy"
+  # get "applications/new"
+  # 
+  # get "applications/edit"
+  # 
+  # get "finishes/new"
+  # 
+  # get "finishes/create"
+  # 
+  # get "finishes/edit"
+  # 
+  # get "finishes/update"
+  # 
+  # get "finishes/destroy"
 
   #get "images/new"
 
