@@ -21,7 +21,21 @@ $ ->
   )
 
 
+  $('.default_image_id').on(
+    click: (event) ->      
+      default_image_id = $('input[name=default_image_id]:checked').val()
+      # material_id = $()
+      console.log "default_image_id: #{default_image_id}"
+           
+      $.ajax( (response) ->
+        url: "/admin/material/#{default_image_id}/update_default_image.json"
+        dataType: "json"
+        type: "PUT"   
+        success: ->
+          alert 'updated default_mat_image'
+      )
     
+  )    
 
   
 
