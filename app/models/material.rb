@@ -10,19 +10,25 @@ class Material < ActiveRecord::Base
   
   has_one :material_type
   #has_one :pdf, :dependent => :destroy
-     
-  scope :alphabetical, self.order('title ASC') 
-  scope :newly_crafted, self.order('created_at DESC')
-  scope :antique_in_title, self.where('title LIKE ?', '%Antique%').order('title ASC') 
-
+  
   attr_accessible :title, :description, :material_type_id, 
                   :finish_ids, :finishes, :application_ids, :pdf, 
-                  :images, :specifications, :technical_data
+                  :images, :specifications, :technical_data  
+      
+  scope :alphabetical, self.order('title ASC') 
+  scope :newly_crafted, self.order('created_at DESC')
+  # i hate to do manual sql (for a NOT LIKE) here but this is the data the client wants
+  scope :newly_crafted_sidebar, self.find_by_sql("SELECT * from materials 
+                                      WHERE title NOT LIKE '%antique%' 
+                                      ORDER BY created_at DESC")
+  scope :antique_in_title, self.where('title LIKE ?', '%antique%').order('title ASC') 
+
 
   before_destroy :delete_material_images 
   
   validates :title, presence: true, :uniqueness => true 
   validates_length_of :title, :maximum => 25, :alert => 'Title can only be 25 characters long'
+  
    
   # filter out all newly crafted mats without images
   def self.newly_crafted_with_images
@@ -38,7 +44,7 @@ class Material < ActiveRecord::Base
     return with_finish
   end
   
-  def get_material_type_title
+  def material_type_title
     unless self.material_type_id.nil?
       material_type_title = MaterialType.find(self.material_type_id).title
     else
