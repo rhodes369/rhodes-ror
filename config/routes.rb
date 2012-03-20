@@ -21,6 +21,10 @@ RhodesRor::Application.routes.draw do
   
   namespace :admin do
     resources :materials, :finishes, :applications, :images
+    put '/material/:id/update_default_image(.:format)', 
+      { :controller => 'admin/materials', 
+        :action => 'update_default_image', 
+        :as => :update_default_mat_image }                                   
   end
   
   match '/admin' => 'admin/admin#index'

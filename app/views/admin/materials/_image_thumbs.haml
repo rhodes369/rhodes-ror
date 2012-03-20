@@ -10,16 +10,16 @@
 
     // THUMBNAILS 1-5
     .group
-      = form_for @material, :'data-type' => :json, :remote => true, :html => { :id => 'update_mat_default_image', :method => :put, :url =>  } do |f2|
+      = form_for @material, :'data-type' => :json, :remote => true, :html => { :id => 'udpate_default_image', :method => :put, :url => admin_update_default_mat_image_url(@material) } do |f2|
       
-      - @material.images.each do |i|
-        .img
-          %img{src: i.image.url(:thumb), name: 'al', class: "material_thumb", id: "material_thumb_#{i.id}", :data => { large_image: "#{i.image.url(:large)}", image_id: "#{i.id}" }}
-          .close X
-          %label.default
-            f.radio_button {:class => :default_image_id
-            /%input{type: "radio", :class => :default_image_id, :name => :default_image_id, :data => {material_id: @material.id, default_image_id: i.id }}
-            %span set default
+        - @material.images.each do |i|
+          .img
+            %img{src: i.image.url(:thumb), name: 'al', class: "material_thumb", id: "material_thumb_#{i.id}", :data => { large_image: "#{i.image.url(:large)}", image_id: "#{i.id}" }}
+            .close X
+            %label.default
+              f.radio_button {:class => :default_image_id
+              /%input{type: "radio", :class => :default_image_id, :name => :default_image_id, :data => {material_id: @material.id, default_image_id: i.id }}
+              %span set default
 
 
 
