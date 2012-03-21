@@ -9,36 +9,38 @@ $(document).ready ->
       $('#large_image').attr(src: @large_image)   
   )
   
-  # remove image 
-  $('.close2').on(
-    click: -> 
-      
-      @image_id = $(this).data('image_id')    
-      @url = "/admin/images/#{@image_id}.json"
-      
-      console.log "about to remove image_id #{@image_id} using @url: #{@url}"
-
-      $.ajax
-        url: @url
-        dataType: 'json'
-        type: 'DELETE'
-        data: { material_id: @material_id, image_id: @image_id }        
-        success: (data) =>
-          $(this).parent().fade(100)
-          alert 'Image Removed.'
-        error: (data) =>
-          alert 'Problem removing image.'
-          console.log data.statusText           
-  )  
+  # # remove image 
+  # $('.close2').on(
+  #   click: -> 
+  #     
+  #     @image_id = $(this).data('image_id')    
+  #     @url = "/admin/images/#{@image_id}.json"
+  #     
+  #     console.log "about to remove image_id #{@image_id} using @url: #{@url}"
+  # 
+  #     $.ajax
+  #       url: @url
+  #       dataType: 'json'
+  #       type: 'DELETE'
+  #       data: { material_id: @material_id, image_id: @image_id }        
+  #       success: (data) =>
+  #         $(this).parent().fadeOut(2000)
+  #         alert 'Image Removed.'
+  #       error: (data) =>
+  #         alert 'Problem removing image.'
+  #         console.log data.statusText           
+  # )  
   
   # set default image
   $('.default_image_id').on(
-    change: ->   
-       
+    change: (alert) ->   
+      
       @material_id = $(this).data('material_id')
       @default_image_id = $(this).data('default_image_id')
-      @url = "/admin/materials/#{material_id}/update_default_image.json"  
-    
+      console.log "test mat_id: #{@material_id} def_image_id: #{@default_image_id}"
+      @url = "/admin/materials/#{material_id}/update_default_image.json"
+       
+      
       $.ajax 
         url: url
         dataType: 'json'

@@ -52,6 +52,19 @@ class Admin::ImagesController < ApplicationController
     @image = Image.find(params[:id])
     @material = Material.find(@image.material_id)
     
+    # set a new alternative default_image_id if the current one is getting axed
+    if @material.default_image_id == @image.id
+      if @material.images.count > 1
+        @alt_images_ids = @material.images.map(&:id)
+        unless @alt_image_ids == @image_id
+          @material.default_image_id = @alt_image_ids.first
+        else
+          @material.default_image_id = @alt_image_ids.last
+        end
+    end    
+          
+        
+    
     # detatch/delete all related paperclip images
     @image.image = nil
     @image.save 
