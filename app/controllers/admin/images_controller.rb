@@ -60,7 +60,7 @@ class Admin::ImagesController < ApplicationController
     if @material.default_image_id == @image.id
       if @material.images.count > 1
         @alt_images_ids = @material.images
-        if @material.images.first != @image_id
+        if @material.images.first != @image.id
           @material.default_image_id = @material.images.first.id
         else
           @material.default_image_id = @material.images.last.id
