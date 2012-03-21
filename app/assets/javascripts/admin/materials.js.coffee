@@ -10,7 +10,7 @@ $(document).ready ->
   )
   
   # remove image 
-  $('.close2').on(
+  $('.removeImg').on(
     click: -> 
       
       @image_id = $(this).data('image_id')    
