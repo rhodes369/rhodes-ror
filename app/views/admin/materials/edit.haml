@@ -69,7 +69,7 @@
   = render :partial => 'new_image_form', :locals => { :material => @material }
     
   - if @material.images.count > 0
-    = render :partial => 'image_thumbs', :locals => { :material => @material }  
+    = render :partial => 'gallery', :locals => { :material => @material }  
   - else
     .imgPlaceholder
 

@@ -10,16 +10,20 @@
 
     // THUMBNAILS 1-5
     .group
+    
       = form_for @material, :remote => true, :url => admin_material_update_default_image_path(@material) do |f|
              
         - @material.images.each do |i|
+        
           .img
             %img{src: i.image.url(:thumb), name: 'al', class: "material_thumb", id: "material_thumb_#{i.id}", :data => { large_image: "#{i.image.url(:large)}", image_id: "#{i.id}" }}
-            .close X
+            
+            // = link_to "X", :method => :delete, :confirm => "Are you sure?",  :url => admin_images_url(i), :class => ".close.close2", :data => { image_id: i.id }
+            .close.close2{:data => { image_id: i.id }} X
+            
             %label.default
-              %input{type: "radio", :checked => @material.default_image_id == i.id || nil, :class => :default_image_id, :name => 'default_image_id', :data => { material_id: @material.id, default_image_id: i.id }}
+              %input{ type: "radio", :class => :default_image_id, :name => 'default_image_id', :checked => @material.default_image_id == i.id || nil, :data => { material_id: @material.id, default_image_id: @material.default_image_id, image_id: i.id } }
               %span set default
-
 
 // next page
 %a.next
@@ -27,7 +31,7 @@
 
 // MAIN IMAGE
 #enlarge_container
-  %img{src: material.default_large_image, name: "enlarge1", id: "large_image"}
+  %img{ src: material.default_large_image, name: "enlarge1", id: "large_image" }
   
 / #enlarge_container
 /   %img{src: "/", name: "enlarge1", id: "large_image"}
