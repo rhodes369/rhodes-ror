@@ -10,7 +10,9 @@
 
     // THUMBNAILS 1-5
     .group
-      = form_for @material, :url => admin_update_default_mat_image_path(@material), :remote => true, :method => "put", :html => { :id => 'udpate_default_image', :'data-type' => 'json' } do |f2|
+      // = form_for @material, :url => admin_image_path(@material), :remote => true, :html => { :id => 'udpate_default_image', :'data-type' => 'json' } do |f2|
+      
+      = form_for @material, :remote => true do |f2|
       
         - @material.images.each do |i|
           .img

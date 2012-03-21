@@ -2,7 +2,7 @@
 # All this logic will automatically be available in application.js.
 # You can use CoffeeScript in this file: http://jashkenas.github.com/coffee-script/
 
-$ ->
+$(document).ready ->
   udpateLargeImage: (large_image) ->
     console.log "updating large image to: #{large_image}"
     #$('#enlarge_container').relpaceWith(large_image)
@@ -22,21 +22,24 @@ $ ->
 
 
   $('.default_image_id').on(
-    click: (event) ->      
+    change: (event) ->   
+       
       material_id = $(this).data('material_id')
       default_image_id = $(this).data('default_image_id')
+      # material_id = 1
+      # default_image_id = 5
       console.log "material_id: #{material_id} default_image_id: #{default_image_id}"
-      url = "/admin/material/#{material_id}/update_default_image"
-      
-      $.ajax( (data) ->
-        url: url
-        default_image_id: default_image_id
+      url = "/admin/materials/#{material_id}/update_default_image/#{default_image_id}.json"
+    
+      # url: $(this).href
+      # material_id: "#{material_id}"
+      # default_image_id: "#{default_image_id}"    
+    
+      $.ajax 
         dataType: "json"
         type: "PUT"   
-        success: ->
-          alert 'updated default_mat_image'
-      )
-    
+        success: (data) =>
+          alert 'updated default_mat_image'        
   )    
 
   

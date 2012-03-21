@@ -44,14 +44,22 @@ class Admin::MaterialsController < ApplicationController
     end
   end 
   
-  def update_default_image_id
+  def update_default_image
+    material_id = params[:material_id]
     default_image_id = params[:default_image_id]
-    return unless default_image_id.numeric?
-  
-    self.default_image = default_image_id
-    self.save!
-
-    render :json => {type: 'ok'} if request.xhr?         
+    
+    return unless material_id.numeric? and default_image_id.numeric?
+    
+    respond_to do |format|
+       
+      @material = Material.find(material_id)  
+      @material.default_image = default_image_id
+      @material.save!
+      format.json { head :no_content, status: :success }
+      
+    end
+    
+    #render :json => {type: 'ok'} if request.xhr?         
   end
 
   def edit
