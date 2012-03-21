@@ -59,12 +59,13 @@ class Admin::ImagesController < ApplicationController
     # set a new alternative default_image_id if the current one is getting axed
     if @material.default_image_id == @image.id
       if @material.images.count > 1
-        @alt_images_ids = @material.images.map(&:id)
-        if @alt_image_ids != @image_id
-          @material.default_image_id = @alt_image_ids.first
+        @alt_images_ids = @material.images
+        if @material.images.first != @image_id
+          @material.default_image_id = @material.images.first.id
         else
-          @material.default_image_id = @alt_image_ids.last
+          @material.default_image_id = @material.images.last.id
         end
+        @material.save!
       end
     end    
           
