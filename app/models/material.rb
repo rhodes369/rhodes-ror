@@ -46,6 +46,14 @@ class Material < ActiveRecord::Base
 
 
 
+  def default_large_image
+    unless self.default_image_id.nil?
+      default_image = Image.find self.default_image_id
+      return default_image.image.url(:large) # paperclip
+    end    
+  end
+
+
   def set_default_image(image_id)
     return unless image_id.is_a?(Numeric) and image_id > 0
     self.default_image_id = image_id
