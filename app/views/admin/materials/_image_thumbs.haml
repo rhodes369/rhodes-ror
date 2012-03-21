@@ -17,30 +17,12 @@
             %img{src: i.image.url(:thumb), name: 'al', class: "material_thumb", id: "material_thumb_#{i.id}", :data => { large_image: "#{i.image.url(:large)}", image_id: "#{i.id}" }}
             .close X
             %label.default
-              %input{type: "radio", :class => :default_image_id, :name => 'default_image_id', :data => { material_id: @material.id, default_image_id: i.id }}
+              %input{type: "radio", :checked => @material.default_image_id == i.id || nil, :class => :default_image_id, :name => 'default_image_id', :data => { material_id: @material.id, default_image_id: i.id }}
               %span set default
-
-
-
-
-
-
-
-
-          / (href="#" onMouseover="MM_swapImage('enlarge1','','images/stone/Amande/amande_4ptStalk.jpg',0); 
-          / writeText('FINISH: Type of finish <br> and minimum thickness')")
-
-          / = link_to 'x', admin_image_path(i), :confirm => 'Are you sure you want to remove this image?', :method => :delete
-
-          / %p= i.image_file_name
-
-
-
 
 
 // next page
 %a.next
-
 
 
 // MAIN IMAGE
