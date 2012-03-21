@@ -52,14 +52,14 @@ class Admin::ImagesController < ApplicationController
     @image = Image.find(params[:id])
     @material = Material.find(@image.material_id)
     
-    # detatch/delete all related paper clip images
+    # detatch/delete all related paperclip images
     @image.image = nil
     @image.save 
-    
     @image.destroy
 
     respond_to do |format|
       format.html { redirect_to edit_admin_material_path(@material), notice: 'Image was removed' }
+      format.json { render json: { type: 'ok', status: :success } }
     end
   end
 end
