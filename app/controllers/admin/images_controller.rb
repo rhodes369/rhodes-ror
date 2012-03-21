@@ -1,6 +1,5 @@
 class Admin::ImagesController < ApplicationController
-  # GET /images
-  # GET /images.json
+
   def index
     @images = Image.all
 
@@ -10,8 +9,7 @@ class Admin::ImagesController < ApplicationController
     end
   end
 
-  # GET /images/1
-  # GET /images/1.json
+
   def show
     @image = Image.find(params[:id])
        
@@ -21,8 +19,7 @@ class Admin::ImagesController < ApplicationController
     end
   end
 
-  # GET /images/new
-  # GET /images/new.json
+
   def new
     @image = Image.new
 
@@ -33,16 +30,14 @@ class Admin::ImagesController < ApplicationController
   end
 
 
-  # POST /images
-  # POST /images.json
   def create
     @image = Image.new(params[:image])
     @material = Material.find(params[:image][:material_id])
  
     respond_to do |format|
       if @image.save
-        #flash[:notice] = "test"
-        format.html { redirect_to edit_admin_material_path(@material), notice: 'Image was successfully updated.' }
+        format.html { redirect_to edit_admin_material_path(@material), 
+                      notice: 'Image was successfully added.' }
         format.json { render json: @image, status: :created, location: @image }
       else
         format.html { redirect_to edit_admin_material_path(@material), alert: 'Problem uploading Image' }
@@ -52,8 +47,6 @@ class Admin::ImagesController < ApplicationController
   end
 
 
-  # DELETE /images/1
-  # DELETE /images/1.json
   def destroy
     
     @image = Image.find(params[:id])
