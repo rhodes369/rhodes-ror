@@ -43,6 +43,15 @@ class Material < ActiveRecord::Base
     
     return with_finish
   end
+
+
+
+  def set_default_image(image_id)
+    return unless image_id.is_a?(Numeric) and image_id > 0
+    self.default_image_id = image_id
+    return true if self.save!
+  end
+  
   
   def material_type_title
     unless self.material_type_id.nil?
@@ -51,6 +60,7 @@ class Material < ActiveRecord::Base
       material_type_title = 'None'
     end
   end
+
 
   # deletes all uploaded material images
   def delete_material_images

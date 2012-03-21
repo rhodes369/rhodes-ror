@@ -1,32 +1,17 @@
 RhodesRor::Application.routes.draw do
   
-  get "applications/new"
-
-  get "applications/edit"
-
-  get "finishes/new"
-
-  get "finishes/create"
-
-  get "finishes/edit"
-
-  get "finishes/update"
-
-  get "finishes/destroy"
-
-  #get "images/new"
-
   resources :materials, :only => [:index, :show]
-  #resources :images
-  
+   
   namespace :admin do
-    resources :materials, :finishes, :applications, :images
-  end
-  
+    resources :finishes, :applications, :images
+    resources :materials do
+      put :update_default_image, :to => 'materials#update_default_image'                                  
+    end
+  end    
+ 
   match '/admin' => 'admin/admin#index'
   
   #root :to => 'public/index.haml'
-
 
   # The priority is based upon order of creation:
   # first created -> highest priority.
