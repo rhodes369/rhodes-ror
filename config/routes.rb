@@ -5,28 +5,13 @@ RhodesRor::Application.routes.draw do
   namespace :admin do
     resources :finishes, :applications, :images
     resources :materials do
-      put :update_default_image, :to => 'materials#update_default_image'
-      #match "/about" => "info#about", :as => :about  
-      #match '/update_default_image', :as => :update_default_image
-      # put '/update_default_image/:default_image_id(.:format)', 
-      #   { :controller => 'admin/materials', 
-      #     :action => 'update_default_image', 
-      #     :as => :update_default_mat_image 
-      #   }                                   
+      put :update_default_image, :to => 'materials#update_default_image'                                  
     end
   end    
-  # resources :materials do
-  #   #match ':controller/:action/:id/:user_id'
-  #   #match 'update_default_image/:default_image_id' => 'materials#update_default_image', :via => :get
-  #   get 'materials/update_default_image', :as => :update_default_mat_image
-  # end
-  # 
-
-  
+ 
   match '/admin' => 'admin/admin#index'
   
   #root :to => 'public/index.haml'
-
 
   # The priority is based upon order of creation:
   # first created -> highest priority.
