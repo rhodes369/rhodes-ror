@@ -5,7 +5,7 @@ RhodesRor::Application.routes.draw do
   namespace :admin do
     resources :finishes, :applications, :images
     resources :materials do
-      get :update_default_image, :to => 'materials#update_default_image'
+      put :update_default_image, :to => 'materials#update_default_image'
       #match "/about" => "info#about", :as => :about  
       #match '/update_default_image', :as => :update_default_image
       # put '/update_default_image/:default_image_id(.:format)', 

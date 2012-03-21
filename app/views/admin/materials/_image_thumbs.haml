@@ -10,16 +10,13 @@
 
     // THUMBNAILS 1-5
     .group
-      // = form_for @material, :url => admin_image_path(@material), :remote => true, :html => { :id => 'udpate_default_image', :'data-type' => 'json' } do |f2|
-      
-      = form_for @material, :remote => true do |f2|
-      
+      = form_for @material, :remote => true, :url => admin_material_update_default_image_path(@material) do |f|
+             
         - @material.images.each do |i|
           .img
             %img{src: i.image.url(:thumb), name: 'al', class: "material_thumb", id: "material_thumb_#{i.id}", :data => { large_image: "#{i.image.url(:large)}", image_id: "#{i.id}" }}
             .close X
             %label.default
-              // f2.radio_button {:class => :default_image_id, :name => default_image_id,:data => {material_id: @material.id, default_image_id: i.id  }
               %input{type: "radio", :class => :default_image_id, :name => 'default_image_id', :data => { material_id: @material.id, default_image_id: i.id }}
               %span set default
 
