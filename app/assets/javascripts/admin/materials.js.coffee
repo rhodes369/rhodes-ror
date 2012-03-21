@@ -33,19 +33,19 @@ $(document).ready ->
   
   # set default image
   $('.default_image_id').on(
-    change: (alert) ->   
-      
+    change: ->        
       @material_id = $(this).data('material_id')
-      @default_image_id = $(this).data('default_image_id')
-      alert $(this).data('material_id')
+      @default_image_id = $(this).data('default_image_id') 
+      @image_id = $(this).data('image_id')
+         
       console.log "test mat_id: #{@material_id} def_image_id: #{@default_image_id}"
-      @url = "/admin/materials/#{material_id}/update_default_image.json"
-            
-      $.ajax 
-        url: url
+      @url = "/admin/materials/#{@material_id}/update_default_image.json"
+               
+      $.ajax
+        url: @url
         dataType: 'json'
         type: 'PUT'
-        data: { material_id: @material_id, default_image_id: @default_image_id }        
+        data: { material_id: @material_id, default_image_id: @image_id }        
         success: (data) =>
           alert 'Default image saved.'
         error: (data) =>

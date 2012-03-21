@@ -53,9 +53,9 @@ class Admin::MaterialsController < ApplicationController
     
     @material = Material.find(material_id)  
     return if @material.nil? 
-    
+   
     respond_to do |format|      
-      unless @material.set_default_image(default_image_id).nil?
+       if @material.set_default_image(default_image_id)
         format.json { render json: { type: 'ok', status: :success } }
       else
         format.json { render json: @material.errors, status: :unprocessable_entity }

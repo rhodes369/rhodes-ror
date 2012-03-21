@@ -22,7 +22,7 @@
             .close.close2{:data => { image_id: i.id }} X
             
             %label.default
-              %input{type: "radio", :checked => @material.default_image_id == i.id || nil, :class => :default_image_id, :name => 'default_image_id', :data => { material_id: @material.id, default_image_id: @material.default_image_id }}
+              %input{ type: "radio", :class => :default_image_id, :name => 'default_image_id', :checked => @material.default_image_id == i.id || nil, :data => { material_id: @material.id, default_image_id: @material.default_image_id, image_id: i.id } }
               %span set default
 
 // next page
