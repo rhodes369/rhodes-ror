@@ -6,11 +6,8 @@ $(document).ready ->
 
   $('.material_thumb').on(
     mouseover: (event) ->   
-      selector_id = $(this).attr('id')
-      image_id = $(this).data('image_id')
-      large_image = $(this).data('large_image')
-
-      $('#large_image').attr(src: large_image) 
+      @large_image = $(this).data('large_image')
+      $('#large_image').attr(src: @large_image)   
   )
 
   $('.default_image_id').on(
@@ -18,13 +15,12 @@ $(document).ready ->
        
       material_id = $(this).data('material_id')
       default_image_id = $(this).data('default_image_id')
-      console.log "material_id: #{material_id} default_image_id: #{default_image_id}"
       url = "/admin/materials/#{material_id}/update_default_image.json"  
     
       $.ajax 
         url: url
-        dataType: "json"
-        type: "PUT"  
+        dataType: 'json'
+        type: 'PUT'
         data: { material_id: material_id, default_image_id: default_image_id }
         
         success: (data) =>
