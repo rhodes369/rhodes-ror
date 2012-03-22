@@ -6,6 +6,7 @@
 
   // Stone lists: Antiques, Newly Crafted (Excluding ones with Antique in title), All
   %ul
+    / ANTIQUES
     %li
       %a.expanded
         .arrow
@@ -18,7 +19,7 @@
             // Indent for long titles
             // %span.indentLinks Limestone
 
-    // THIS LIST IS SET TO COLLAPSED, AS IT CONTAINS THE ITEM WE'RE VIEWING. I KNOW THE NAMING IS BACKWARDS - COLLAPSED = OPEN (we can change)
+    / NEWLY CRAFTED
     %li
       %a.collapsed
         .arrow 
@@ -29,6 +30,7 @@
           %li
             = link_to "#{mat.title} #{mat.material_type_title}", material_path(mat)
 
+    / ALL
     %li
       %a.collapsed
         .arrow 
