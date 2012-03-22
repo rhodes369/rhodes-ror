@@ -58,15 +58,18 @@ class Admin::ImagesController < ApplicationController
     # TODO - move this part into model
     # set a new alternative default_image_id if the current one is getting axed
     if @material.default_image_id == @image.id
-      if @material.images.count > 1
-        @alt_images_ids = @material.images
-        if @material.images.first != @image.id
+      if @material.images.count > 1 # set another as default
+        if @material.images.first.id != @image.id
           @material.default_image_id = @material.images.first.id
         else
           @material.default_image_id = @material.images.last.id
         end
-        @material.save!
+      else
+        @material.default_image_id = nil # unset if no images
       end
+      
+      @material.save!
+   
     end    
           
     # detatch/delete all related paperclip images

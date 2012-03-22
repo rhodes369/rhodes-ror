@@ -1,7 +1,4 @@
-class Material < ActiveRecord::Base
-   
-  NEWLY_CRAFTED_WITH_IMAGES_LIMIT = 4
-  
+class Material < ActiveRecord::Base 
   has_many :images, :dependent => :destroy
   has_many :finishes, :through => :material_finishes 
   has_many :applications, :through => :material_applications 
@@ -56,7 +53,6 @@ class Material < ActiveRecord::Base
     end 
     
     return with_images
-    #return with_images.take(NEWLY_CRAFTED_WITH_IMAGES_LIMIT)
   end
 
 

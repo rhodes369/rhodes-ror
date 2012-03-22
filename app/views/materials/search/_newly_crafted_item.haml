@@ -2,9 +2,8 @@
   - default_image = Image.find(mat.default_image_id)
   %ul#new.thumbs.clearfix
     %li
-      - unless default_image.nil?
-        %a{:href => material_path(mat) }
-          %img{:src => default_image.image.url(:thumb) }
-          %span.material= "#{mat.title}"
-          - unless mat_type_title = mat.material_type_title.nil?
-            %span.type= "#{mat.material_type_title}"
+      %a{:href => material_path(mat) }
+        %img{:src => default_image.image.url(:thumb) }
+        %span.material= "#{mat.title}"
+        - unless mat_type_title = mat.material_type_title.nil?
+          %span.type= "#{mat.material_type_title}"
