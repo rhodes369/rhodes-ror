@@ -25,4 +25,25 @@ class MaterialsController < ApplicationController
     @materials_alpha = Material.alphabetical # for sidebar edit links    
     @materials_newly_crafted_sidebar = Material.newly_crafted_sidebar # all mats excluding antiques    
   end
+  
+  def search
+    @filters = params[:filters] || {}
+    
+    
+    newly_crafted_html = render :partial => "newly_crafted_search_results", :content_type => "text/html", 
+                    :layout => false, :locals => { :test => 'test' }
+    
+    
+     
+    respond_to do |format|      
+      if @material.set_default_image(default_image_id)
+        format.js { render json: { type: 'ok', status: :success } }
+        
+      else
+        format.js { render json: @material.errors, status: :unprocessable_entity }
+      end
+    end    
+
+  end
+  
 end

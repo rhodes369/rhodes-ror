@@ -1,6 +1,6 @@
 RhodesRor::Application.routes.draw do
   
-  resources :materials, :only => [:index, :show]
+  resources :materials, :only => [:index, :show] 
    
   namespace :admin do
     resources :finishes, :applications, :images
@@ -10,6 +10,7 @@ RhodesRor::Application.routes.draw do
   end    
  
   match '/admin' => 'admin/admin#index'
+  match '/materials/search' => 'materials#search'
   
   #root :to => 'public/index.haml'
 

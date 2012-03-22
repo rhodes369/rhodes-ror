@@ -23,12 +23,7 @@
 
 
     .clear
-    
-    %div#search_results
-      %h2
-        Search Results 
-      %div#feh
-      
+          
     - @material.finishes.each do |fin| 
       - debug(@material)
       - if fin.title.nil?  
@@ -44,18 +39,11 @@
                 %a{ :href => i.image.url(:large) }
                   %img{:src => i.image.url(:thumb), :alt => "" }           
                     %span.material    
-        
-    - if mats_with_images = Material.newly_crafted_with_images.count > 0
-      %br
-      %br
-      %h3 Newly Crafted
-      - Material.newly_crafted_with_images.each do |mat| 
-        - default_image = mat.images.first  
-        %ul#new.thumbs.clearfix
-          %li
-            %a{:href => material_path(mat) }
-              %img{:src => default_image.image.url(:thumb) }
-              %span.material= "#{mat.title}"
-              - unless mat_type_title = mat.material_type_title.nil?
-                %span.type= "#{mat.material_type_title}"
+
+    %div#searchResults
+      %h2
+        Search Results 
+      %div#newlyCraftedSearchResults   
+        = render :partial => 'newly_crafted_search_results'  
+
 
