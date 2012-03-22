@@ -1,0 +1,9 @@
+- if mats_with_images = Material.newly_crafted_with_images.count > 0
+  %br
+  %br
+  %h3 NEWLY CRAFTED MATERIALS 
+  %h2
+    using filters:
+    - filters.each do |key,val|
+      %div
+        = "key: #{key} val: #{val}"  

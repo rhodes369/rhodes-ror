@@ -1,6 +1,8 @@
 RhodesRor::Application.routes.draw do
   
-  resources :materials, :only => [:index, :show] 
+  resources :materials, :only => [:index, :show] do
+    put :search, :to => 'materials#search'
+  end
    
   namespace :admin do
     resources :finishes, :applications, :images

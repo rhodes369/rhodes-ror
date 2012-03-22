@@ -26,21 +26,26 @@ class MaterialsController < ApplicationController
     @materials_newly_crafted_sidebar = Material.newly_crafted_without_antiques    
   end
   
-  # materials index search filters
+  # TODO: move most of logic into model
+  # materials index search filters (ajax)
   def search
-    @filters = params[:filters] || {}
+    filters = params[:filters] || {}
+    antiques = Material.antique_in_title
+    newly_crafted_with_images = Material.newly_crafted_with_images
     
-    
-    newly_crafted_html = render :partial => "newly_crafted_search_results", :content_type => "text/html", 
-                    :layout => false, :locals => { :test => 'test' }
-        
+    if newly_crafted_with_images.count > 0
+      newly_crafted_html = render_to_string(partial: 'materials/search/newly_crafted_header', locals: { filters: filters })      
+      newly_crafted_with_images.each do |mat| 
+        newly_crafted_html += render_to_string(partial: 
+        'materials/search/newly_crafted_item', locals: { 
+        newly_crafted_with_images: newly_crafted_with_images 
+        })
+      end   
+    end
+       
     respond_to do |format|      
-      if @material.set_default_image(default_image_id)
-        format.js { render json: { type: 'ok', status: :success } }
-        
-      else
-        format.js { render json: @material.errors, status: :unprocessable_entity }
-      end
-    end    
-  end
+      format.json { render json: { type: 'ok', status: :success, newly_crafted_html: newly_crafted_html }}
+    end 
+  end   
+
 end
