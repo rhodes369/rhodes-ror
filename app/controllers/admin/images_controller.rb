@@ -58,7 +58,7 @@ class Admin::ImagesController < ApplicationController
     # TODO - move this part into model
     # set a new alternative default_image_id if the current one is getting axed
     if @material.default_image_id == @image.id
-      if @material.images.count > 1 # set another as default
+      if @material.images.count > 1
         if @material.images.first.id != @image.id
           @material.default_image_id = @material.images.first.id
         else
