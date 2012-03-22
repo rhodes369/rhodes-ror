@@ -15,11 +15,15 @@ $ ->
       @filters['mat_finish_id'] = $('#mat_finish_id').val()
       @filters['mat_app_id'] = $('#mat_app_id').val()
       
-      searchResults = $('#searchResults')
-      searchResults.fadeOut('medium') # if @mat_type_id = @mat_finish_id = @mat_app_id == 'none'
+      @searchResults = $('#searchResults')
+      @searchResults.fadeOut('medium') # if @mat_type_id = @mat_finish_id = @mat_app_id == 'none'
       
       console.log "filter changes detected" # "\nfinish_id: #{mat_finish_id} app_id: #{mat_app_id} type_id: #{mat_type_id}"       
-      console.log "@filters: #{@filters}"
+      console.log "@filters: "
+      
+      # print out our @filters hash
+      for key, value of @filters
+        console.log key, value
       
       @url = "/materials/search"
                
@@ -30,7 +34,9 @@ $ ->
         data: { filters: @filters }        
         success: (data) =>
           console.log 'updating search'
-          searchResults.fadeIn(3000)
+          @searchResults.fadeIn(3000)
+          console.log data
+          $('#newlyCraftedSearchResults').html(data.newlyCraftedHtml)
         error: (data) =>
           alert 'Problem filtering search.'
           console.log data.statusText      

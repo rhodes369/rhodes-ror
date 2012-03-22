@@ -40,9 +40,10 @@
                     %span.material    
 
     %div#searchResults 
+      %div#newlyCraftedSearchResults   
+        = render :partial => 'materials/search/newly_crafted_results'    
       %div#antiqueSearchResults
         = render :partial => 'antique_search_results'    
-      %div#newlyCraftedSearchResults   
-        = render :partial => 'materials/search/newly_crafted_results'  
+
 
 

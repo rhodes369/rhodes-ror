@@ -17,12 +17,22 @@ class Material < ActiveRecord::Base
       
   scope :alphabetical, self.order('title ASC') 
   scope :newly_crafted, self.order('created_at DESC')
+  
   scope :newly_crafted_without_antiques, 
         self.find_by_sql("SELECT * from materials 
                           WHERE title NOT LIKE '%antique%' 
                           ORDER BY created_at DESC")
-  scope :antique_in_title, self.where('title LIKE ?', '%antique%').order('title ASC') 
+  scope :antique_in_title, self.where('title LIKE ?', '%antique%').order('title ASC')  
+  
+  # scope :newly_crafted_with_images, lambda {
+  #   with_images = []
+  #   self.newly_crafted_without_antiques.each do |mat| 
+  #     with_images << mat if mat.images.count > 0 
+  #   end
+  #   return with_images
+  # }
 
+  scope :with_mat_type, lambda { |mat_type_id| where('material_type_id = ?', mat_type_id) }
 
   before_destroy :delete_material_images 
   
@@ -31,12 +41,26 @@ class Material < ActiveRecord::Base
   
    
   # filter out all newly crafted mats without images or 'antique' in title
-  def self.newly_crafted_with_images
+  def self.newly_crafted_with_images(filters = {})
+    logger.debug "newly_crafted_images filters: #{filters.inspect}"
     with_images = []
-    self.newly_crafted_without_antiques.each { |mat| with_images << mat if mat.images.count > 0 } 
+    
+    self.newly_crafted_without_antiques.each do |mat| 
+      unless filters[:mat_type_id].blank? 
+        if mat.material_type_id == filters[:mat_type_id].to_i
+          with_images << mat if mat.images.count > 0 
+        end
+      else
+        with_images << mat if mat.images.count > 0
+      end
+    end 
+    
     return with_images
     #return with_images.take(NEWLY_CRAFTED_WITH_IMAGES_LIMIT)
   end
+
+
+
   
   def self.with_finish(finish_id)
     with_finish = []

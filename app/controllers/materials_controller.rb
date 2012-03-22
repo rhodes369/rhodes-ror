@@ -3,7 +3,7 @@ class MaterialsController < ApplicationController
   
   def index
     @material = Material.new # for optionally creating a new material on the index
-    @materials_newly_crafted = Material.newly_crafted_with_images # array of newly created mats
+    @materials_newly_crafted = Material.newly_crafted_with_images() # array of newly created mats
     
     # left sidebar
     @materials_antique_in_title = Material.antique_in_title
@@ -29,22 +29,25 @@ class MaterialsController < ApplicationController
   # TODO: move most of logic into model
   # materials index search filters (ajax)
   def search
-    filters = params[:filters] || {}
+    filters = params[:filters] ||= {}
+    logger.debug "params (search()): #{filters.inspect}"
     antiques = Material.antique_in_title
-    newly_crafted_with_images = Material.newly_crafted_with_images
-    
+    newly_crafted_with_images = Material.newly_crafted_with_images(filters)
+    results = newly_crafted_with_images.count
+   
+    #move to model
+    newly_crafted_html = render_to_string(partial: 'materials/search/newly_crafted_header', locals: { filters: filters, results: results  })      
     if newly_crafted_with_images.count > 0
-      newly_crafted_html = render_to_string(partial: 'materials/search/newly_crafted_header', locals: { filters: filters })      
       newly_crafted_with_images.each do |mat| 
-        newly_crafted_html += render_to_string(partial: 
-        'materials/search/newly_crafted_item', locals: { 
-        newly_crafted_with_images: newly_crafted_with_images 
-        })
+        newly_crafted_html += render_to_string(
+          partial: 'materials/search/newly_crafted_item', locals: { mat: mat })
       end   
+    else
+      newly_crafted_html += 'No Results'
     end
-       
+    
     respond_to do |format|      
-      format.json { render json: { type: 'ok', status: :success, newly_crafted_html: newly_crafted_html }}
+      format.json { render json: { type: 'ok', status: :success, newlyCraftedHtml: newly_crafted_html }}
     end 
   end   
 
