@@ -1,13 +1,15 @@
 - if mats_with_images = Material.newly_crafted_with_images.count > 0
   %br
   %br
-  %h3 Newly Crafted
-  - Material.newly_crafted_with_images.each do |mat| 
-    - default_image = mat.images.first  
-    %ul#new.thumbs.clearfix
-      %li
-        %a{:href => material_path(mat) }
-          %img{:src => default_image.image.url(:thumb) }
-          %span.material= "#{mat.title}"
-          - unless mat_type_title = mat.material_type_title.nil?
-            %span.type= "#{mat.material_type_title}"
+  %h3 NEWLY CRAFTED MATERIALS
+  - Material.newly_crafted_with_images.each do |mat|
+    - unless mat.default_image_id.nil?  
+      - default_image = Image.find(mat.default_image_id)
+      %ul#new.thumbs.clearfix
+        %li
+          - unless default_image.nil?
+            %a{:href => material_path(mat) }
+              %img{:src => default_image.image.url(:thumb) }
+              %span.material= "#{mat.title}"
+              - unless mat_type_title = mat.material_type_title.nil?
+                %span.type= "#{mat.material_type_title}"

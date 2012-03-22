@@ -17,10 +17,10 @@ class Material < ActiveRecord::Base
       
   scope :alphabetical, self.order('title ASC') 
   scope :newly_crafted, self.order('created_at DESC')
-  # i hate to do manual sql (for a NOT LIKE) here but this is the data the client wants
-  scope :newly_crafted_sidebar, self.find_by_sql("SELECT * from materials 
-                                      WHERE title NOT LIKE '%antique%' 
-                                      ORDER BY created_at DESC")
+  scope :newly_crafted_without_antiques, 
+        self.find_by_sql("SELECT * from materials 
+                          WHERE title NOT LIKE '%antique%' 
+                          ORDER BY created_at DESC")
   scope :antique_in_title, self.where('title LIKE ?', '%antique%').order('title ASC') 
 
 
@@ -30,11 +30,12 @@ class Material < ActiveRecord::Base
   validates_length_of :title, :maximum => 25, :alert => 'Title can only be 25 characters long'
   
    
-  # filter out all newly crafted mats without images
+  # filter out all newly crafted mats without images or 'antique' in title
   def self.newly_crafted_with_images
     with_images = []
-    self.newly_crafted.each { |mat| with_images << mat if mat.images.count > 0 } 
-    return with_images.take(NEWLY_CRAFTED_WITH_IMAGES_LIMIT)
+    self.newly_crafted_without_antiques.each { |mat| with_images << mat if mat.images.count > 0 } 
+    return with_images
+    #return with_images.take(NEWLY_CRAFTED_WITH_IMAGES_LIMIT)
   end
   
   def self.with_finish(finish_id)
@@ -43,7 +44,6 @@ class Material < ActiveRecord::Base
     
     return with_finish
   end
-
 
 
   def default_large_image
@@ -64,10 +64,9 @@ class Material < ActiveRecord::Base
   
   
   def material_type_title
+    material_type_title = '' # don't show anything unless mat type title exists
     unless self.material_type_id.nil?
       material_type_title = MaterialType.find(self.material_type_id).title
-    else
-      material_type_title = 'None'
     end
   end
 

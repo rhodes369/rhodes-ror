@@ -8,7 +8,7 @@ class MaterialsController < ApplicationController
     # left sidebar
     @materials_antique_in_title = Material.antique_in_title
     @materials_alpha = Material.alphabetical # for sidebar edit links    
-    @materials_newly_crafted_sidebar = Material.newly_crafted_sidebar # all mats excluding antiques
+    @materials_newly_crafted_sidebar = Material.newly_crafted_without_antiques # all mats excluding antiques
     
     # populate filter pulldown values
     @all_mat_finishes = Finish.order(:title)
@@ -23,18 +23,17 @@ class MaterialsController < ApplicationController
     # left sidebar
     @materials_antique_in_title = Material.antique_in_title
     @materials_alpha = Material.alphabetical # for sidebar edit links    
-    @materials_newly_crafted_sidebar = Material.newly_crafted_sidebar # all mats excluding antiques    
+    @materials_newly_crafted_sidebar = Material.newly_crafted_without_antiques    
   end
   
+  # materials index search filters
   def search
     @filters = params[:filters] || {}
     
     
     newly_crafted_html = render :partial => "newly_crafted_search_results", :content_type => "text/html", 
                     :layout => false, :locals => { :test => 'test' }
-    
-    
-     
+        
     respond_to do |format|      
       if @material.set_default_image(default_image_id)
         format.js { render json: { type: 'ok', status: :success } }
@@ -43,7 +42,5 @@ class MaterialsController < ApplicationController
         format.js { render json: @material.errors, status: :unprocessable_entity }
       end
     end    
-
   end
-  
 end

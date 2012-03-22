@@ -25,7 +25,6 @@
     .clear
           
     - @material.finishes.each do |fin| 
-      - debug(@material)
       - if fin.title.nil?  
         %p= 'None'
       - else
@@ -40,9 +39,9 @@
                   %img{:src => i.image.url(:thumb), :alt => "" }           
                     %span.material    
 
-    %div#searchResults
-      %h2
-        Search Results 
+    %div#searchResults 
+      %div#antiqueSearchResults
+        = render :partial => 'antique_search_results'    
       %div#newlyCraftedSearchResults   
         = render :partial => 'newly_crafted_search_results'  
 
