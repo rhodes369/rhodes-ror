@@ -43,7 +43,7 @@ class Material < ActiveRecord::Base
     with_images = []
     
     self.newly_crafted_without_antiques.each do |mat| 
-      unless filters[:mat_type_id].blank? 
+      unless filters[:mat_type_id].blank?
         if mat.material_type_id == filters[:mat_type_id].to_i
           with_images << mat if mat.images.count > 0 
         end
