@@ -52,6 +52,10 @@ class Material < ActiveRecord::Base
       end
     end 
     
+    # since our array loses the original sql ordering, reverse 
+    with_images.sort! { |a,b| b.created_at <=> a.created_at }
+    
+    logger.debug "with_images: #{with_images.inspect}"
     return with_images
   end
 
