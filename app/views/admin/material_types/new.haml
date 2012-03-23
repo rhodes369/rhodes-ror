@@ -5,13 +5,13 @@
     New Material Type
 
   %ul
-    - @finishes.each do |fin| 
+    - @material_types.each do |mat_type| 
       %li
-        = link_to  fin.title, edit_admin_finish_path(fin)
+        = link_to  mat_type.title, edit_admin_material_type_path(mat_type)
 
 #content-center.TwoColumnFix
 
-  = form_for @finish, :url => admin_finishes_path, :method => :post do |f| 
+  = form_for @material_type, :url => admin_material_type_path, :method => :post do |f| 
 
     = f.text_field :title
 
