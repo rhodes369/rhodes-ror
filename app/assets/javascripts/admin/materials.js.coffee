@@ -68,7 +68,8 @@ $(document).ready ->
         type: 'PUT'
         data: { image_id: @image_id, finish_id: @finish_id }        
         success: (data) =>
-          alert 'Image Finish Saved.'
+          alert 'Saved Image Finish'
+          console.log 'saved image finish'
         error: (data) =>
           alert 'Problem Saving Image Finish.'
           console.log data.statusText                 
