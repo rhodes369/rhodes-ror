@@ -50,6 +50,26 @@ class Admin::ImagesController < ApplicationController
   end
 
 
+  def update_finish_id
+    image_id = params[:image_id].to_i
+    finish_id = params[:finish_id].to_i
+    
+    return unless image_id.is_a?(Numeric) and finish_id.is_a?(Numeric)
+    
+    @image = Image.find(image_id)  
+    return if @image.nil? 
+   
+    respond_to do |format|      
+      if @image.set_finish_id(finish_id)
+        format.json { render json: { type: 'ok', status: :success } }
+      else
+        format.json { render json: @image.errors, status: :unprocessable_entity }
+      end
+    end       
+  end
+
+
+
   def destroy
     
     @image = Image.find(params[:id])

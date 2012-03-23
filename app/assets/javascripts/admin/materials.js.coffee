@@ -53,3 +53,24 @@ $(document).ready ->
           console.log data.statusText                 
   )    
   
+  # update image finish type
+  $('.finishesImg').on(
+    change: ->        
+      @image_id = $(this).data('image_id')
+      @finish_id = $("option:selected", this).val()
+      @url = "/admin/images/#{@image_id}/update_image_finish_id.json"
+      
+      console.log "test @image_id: #{@image_id} finish_id: #{@finish_id} url: #{@url}"
+                    
+      $.ajax
+        url: @url
+        dataType: 'json'
+        type: 'PUT'
+        data: { image_id: @image_id, finish_id: @finish_id }        
+        success: (data) =>
+          alert 'Image Finish Saved.'
+        error: (data) =>
+          alert 'Problem Saving Image Finish.'
+          console.log data.statusText                 
+  )  
+  
