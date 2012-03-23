@@ -15,4 +15,12 @@ class Image < ActiveRecord::Base
   validates_attachment_content_type :image, 
                        :content_type => ['image/jpeg', 'image/png', 'image/gif']
 
+
+  def set_finish_id(finish_id = nil)
+    return if finish_id.nil?
+    
+    self.finish_id = finish_id
+    self.save!
+    
+  end
 end
