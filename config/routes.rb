@@ -5,7 +5,7 @@ RhodesRor::Application.routes.draw do
   end
    
   namespace :admin do
-    resources :finishes, :applications, :images
+    resources :material_types, :finishes, :applications, :images
     resources :materials do
       put :update_default_image, :to => 'materials#update_default_image'                                  
     end
