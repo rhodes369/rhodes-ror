@@ -16,7 +16,22 @@
           %img{src: i.image.url(:thumb), name: 'al', class: "material_thumb", id: "material_thumb_#{i.id}", :data => { large_image: "#{i.image.url(:large)}", image_id: "#{i.id}" }}
           
           // = link_to "X", :method => :delete, :confirm => "Are you sure?",  :url => admin_images_url(i), :class => ".close.close2", :data => { image_id: i.id }
-          .removeImg{:data => { image_id: i.id }} X
+
+          .finishesImg-wrap
+            %select.finishesImg
+              %option point stalk
+              %option 4 point stalk
+              %option fine adze
+              %option coarse adze
+              %option split
+              %option pinapple
+              %option honed
+              %option bush hammered
+              %option mechanical bush hammered
+              %option antique
+            .arrow-down
+
+          .removeImg{:data => { image_id: i.id }} remove
 
           %label.default
             %input{ type: "radio", :class => :default_image_id, :name => 'default_image_id', :checked => @material.default_image_id == i.id || nil, :data => { material_id: @material.id, default_image_id: @material.default_image_id, image_id: i.id } }

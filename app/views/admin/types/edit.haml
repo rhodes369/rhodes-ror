@@ -1,0 +1,18 @@
+
+#content-left
+
+  %h1 
+    Edit Material Type
+
+  %ul
+    - @finishes.each do |fin| 
+      %li
+        = link_to  fin.title, edit_admin_finish_path(fin)
+
+#content-center.TwoColumnFix
+
+  = form_for @finish, :url => admin_finish_path, :method => :put do |f| 
+
+    = f.text_field :title
+
+    = f.submit 'Update', :id => "update_type", :class => "submit"

@@ -86,7 +86,7 @@ input#material_material[pdf]
 form#new_image
   margin: 42px 0 0 40px
 
-.imgPlaceholder
+.placeholder-large
   clear: both
   width: 527px
   height: 527px
@@ -94,26 +94,50 @@ form#new_image
   padding: 0
   text-align: center
   border: 1px solid #acacac
+  background: url(<%= asset_path 'placeholder-112.gif' %>) no-repeat center #fff
 
 input#image_image
   float: left
 
 .scrollable .img
   &:hover
-    .removeImg, .default
+    .removeImg, .default, .finishesImg-wrap
       +block
+
+  .finishesImg-wrap
+    +hidden
+    +absolute
+    +round(6)
+    +alpha(70)
+    top: 0
+    left: 0
+    width: 95px
+    height: 22px
+    overflow: hidden
+    &:hover
+      +alpha(100)
+
+    select.finishesImg
+      +absolute
+      +pointer
+      top: 0
+      left: 0
+
+    .arrow-down
+      +absolute
+      top: 7px
+      right: 6px
 
   .removeImg
     +hidden
     +absolute
     +font(12px)
-    +round(12)
     +center
     +bold
     +pointer
-    top: 4px
-    right: 4px
-    width: 24px
+    top: 33px
+    left: 0px
+    width: 95px
     height: 24px
     line-height: 24px
     background: rgba(250,0,0,0.3)
