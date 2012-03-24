@@ -32,7 +32,6 @@ class MaterialsController < ApplicationController
     filters = params[:filters] ||= {}
     results = {}
     results['newly_crafted'] = {}
-    results['newly_crafted']['count'] = 0 # default
     
     logger.debug "params (search()): #{filters.inspect}"
     
@@ -42,10 +41,11 @@ class MaterialsController < ApplicationController
     results['newly_crafted']['count'] = newly_crafted.count # ||= 0
    
     # also move to model
-    results['newly_crafted']['html'] = render_to_string(partial: 'materials/search/newly_crafted_header', locals: { results: results})      
+    results['newly_crafted']['html'] = render_to_string( 
+      partial: 'materials/search/newly_crafted_header', locals: { results: results})      
     
-    if results['newly_crafted']['count'] > 0  
-      newly_crafted.each do |mat| 
+    if results['newly_crafted']['count'] > 0   
+      newly_crafted.each do |mat|     
         results['newly_crafted']['default_image'] = nil # reset
         
         unless mat.default_image_id.nil?
@@ -56,8 +56,9 @@ class MaterialsController < ApplicationController
         results['newly_crafted']['html'] += render_to_string(
           partial: 'materials/search/newly_crafted_item', 
             locals: { mat: mat, default_image: results['newly_crafted']['default_image'] })
-      end 
-    end
+   
+      end # newly_crafted.each do |mat| 
+    end # if results['newly_crafted']['count'] > 0 
     
     respond_to do |format|      
       format.json { render json: { type: 'ok', status: :success, results: results }}
