@@ -4,33 +4,27 @@
 
   .filters 
     .filterWrap
-      %select#mat_type_id
-        %option{ class: "label", value: 'none', selected: "selected"} Search by Material Type
+      %select#matTypeId
+        %option{ class: "label", value: '', selected: "selected"} Search by Material Type
         - @all_mat_types.each do |mat_type|
           %option{:value => mat_type.id, :selected => nil }= mat_type.title
 
     .filterWrap
-      %select#mat_finish_id
-        %option{ class: "label", value: 'none', selected: "selected"} Search by Finishes
+      %select#matFinishId 
+        %option{ class: "label", value: '', selected: "selected"} Search by Finishes
         - @all_mat_finishes.each do |finish|
           %option{:value => finish.id, :selected => nil }= finish.title
     
     .filterWrap
-      %select#mat_app_id
-        %option{ class: "label", value: 'none', selected: "selected" } Search by Applications
+      %select#matAppId
+        %option{ class: "label", value: '', selected: "selected" } Search by Application
         - @all_mat_apps.each do |app|
           %option{:value => app.id, :selected =>  nil }= app.title         
 
 
     .clear
-    
-    %div#search_results
-      %h2
-        Search Results 
-      %div#feh
-      
+          
     - @material.finishes.each do |fin| 
-      - debug(@material)
       - if fin.title.nil?  
         %p= 'None'
       - else
@@ -44,18 +38,12 @@
                 %a{ :href => i.image.url(:large) }
                   %img{:src => i.image.url(:thumb), :alt => "" }           
                     %span.material    
-        
-    - if mats_with_images = Material.newly_crafted_with_images.count > 0
-      %br
-      %br
-      %h3 Newly Crafted
-      - Material.newly_crafted_with_images.each do |mat| 
-        - default_image = mat.images.first  
-        %ul#new.thumbs.clearfix
-          %li
-            %a{:href => material_path(mat) }
-              %img{:src => default_image.image.url(:thumb) }
-              %span.material= "#{mat.title}"
-              - unless mat_type_title = mat.material_type_title.nil?
-                %span.type= "#{mat.material_type_title}"
+
+    %div#searchResults 
+      %div#newlyCraftedSearchResults   
+        = render :partial => 'materials/search/newly_crafted_results'    
+      %div#antiqueSearchResults
+        = render :partial => 'antique_search_results'    
+
+
 

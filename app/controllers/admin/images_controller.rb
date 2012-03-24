@@ -50,6 +50,26 @@ class Admin::ImagesController < ApplicationController
   end
 
 
+  def update_finish_id
+    image_id = params[:image_id].to_i
+    finish_id = params[:finish_id].to_i
+    
+    return unless image_id.is_a?(Numeric) and finish_id.is_a?(Numeric)
+    
+    @image = Image.find(image_id)  
+    return if @image.nil? 
+   
+    respond_to do |format|      
+      if @image.set_finish_id(finish_id)
+        format.json { render json: { type: 'ok', status: :success } }
+      else
+        format.json { render json: @image.errors, status: :unprocessable_entity }
+      end
+    end       
+  end
+
+
+
   def destroy
     
     @image = Image.find(params[:id])
@@ -59,14 +79,17 @@ class Admin::ImagesController < ApplicationController
     # set a new alternative default_image_id if the current one is getting axed
     if @material.default_image_id == @image.id
       if @material.images.count > 1
-        @alt_images_ids = @material.images
         if @material.images.first.id != @image.id
           @material.default_image_id = @material.images.first.id
         else
           @material.default_image_id = @material.images.last.id
         end
-        @material.save!
+      else
+        @material.default_image_id = nil # unset if no images
       end
+      
+      @material.save!
+   
     end    
           
     # detatch/delete all related paperclip images

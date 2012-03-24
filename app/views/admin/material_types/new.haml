@@ -1,0 +1,18 @@
+
+#content-left
+
+  %h1 
+    New Material Type
+
+  %ul
+    - @material_types.each do |mat_type| 
+      %li
+        = link_to  mat_type.title, edit_admin_material_type_path(mat_type)
+
+#content-center.TwoColumnFix
+
+  = form_for @material_type, :url => admin_material_type_path, :method => :post do |f| 
+
+    = f.text_field :title
+
+    = f.submit 'Add', :id => "add_type", :class => "submit"
