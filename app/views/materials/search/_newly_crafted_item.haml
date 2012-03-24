@@ -4,7 +4,7 @@
       - unless default_image.nil?  
         %img{ :src => default_image }
       - else 
-        %img{ :src => default_image }
+        %img{ :src => "#{asset_path('placeholder-95.gif')}" }
       
       %span.material= "#{ mat.title }"
       - unless mat_type_title = mat.material_type_title.nil?

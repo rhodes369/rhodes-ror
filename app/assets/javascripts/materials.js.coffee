@@ -37,7 +37,7 @@ $ ->
           console.log 'updating search'
           @searchResults.fadeIn(3000)
           console.log data
-          $('#newlyCraftedSearchResults').html(data.newlyCraftedHtml)
+          $('#newlyCraftedSearchResults').html(data.results.newly_crafted.html)
         error: (data) =>
           alert 'Problem filtering search.'
           console.log data.statusText      
