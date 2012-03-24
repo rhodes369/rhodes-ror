@@ -1,10 +1,10 @@
 class Material < ActiveRecord::Base 
+  
   has_many :images, :dependent => :destroy
   has_many :finishes, :through => :material_finishes 
   has_many :applications, :through => :material_applications 
   has_many :material_finishes, :dependent => :destroy
   has_many :material_applications, :dependent => :destroy
-  
   has_one :material_type
   #has_one :pdf, :dependent => :destroy
   
@@ -16,19 +16,10 @@ class Material < ActiveRecord::Base
   scope :newly_crafted, self.order('created_at DESC')
   
   scope :newly_crafted_without_antiques, 
-        self.find_by_sql("SELECT * from materials 
+        find_by_sql("SELECT * from materials 
                           WHERE title NOT LIKE '%antique%' 
                           ORDER BY created_at DESC")
   scope :antique_in_title, self.where('title LIKE ?', '%antique%').order('title ASC')  
-  
-  # scope :newly_crafted_with_images, lambda {
-  #   with_images = []
-  #   self.newly_crafted_without_antiques.each do |mat| 
-  #     with_images << mat if mat.images.count > 0 
-  #   end
-  #   return with_images
-  # }
-
   scope :with_mat_type, lambda { |mat_type_id| where('material_type_id = ?', mat_type_id) }
 
   before_destroy :delete_material_images 
@@ -37,31 +28,30 @@ class Material < ActiveRecord::Base
   validates_length_of :title, :maximum => 25, :alert => 'Title can only be 25 characters long'
   
    
-  # filter out all newly crafted mats without images or 'antique' in title
-  def self.newly_crafted_with_images(filters = {})
-    logger.debug "newly_crafted_images filters: #{filters.inspect}"
-    with_images = []
+  
+  # filter out all newly crafted mat or 'antique' in title
+  def self.newly_crafted(filters = {})
+    
+    logger.debug "looking up newly_crafted mats using filters: #{filters.inspect}"
+    
+    results = []
     
     self.newly_crafted_without_antiques.each do |mat| 
       unless filters[:mat_type_id].blank?
         if mat.material_type_id == filters[:mat_type_id].to_i
-          with_images << mat if mat.images.count > 0 
+          results << mat 
         end
       else
-        with_images << mat if mat.images.count > 0
+        results << mat 
       end
     end 
     
-    # since our array loses the original sql ordering, reverse 
-    with_images.sort! { |a,b| b.created_at <=> a.created_at }
-    
-    logger.debug "with_images: #{with_images.inspect}"
-    return with_images
+    # since our array loses the original sql ordering, reverse   
+    results.sort! { |a,b| b.created_at <=> a.created_at }   
+    return results
   end
 
 
-
-  
   def self.with_finish(finish_id)
     with_finish = []
     MaterialFinish.where(finish_id: finish_id).each { |mat| with_finish << mat }

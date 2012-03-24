@@ -55,18 +55,19 @@
     = f.text_field :title
     
     %h4 Material Type
-    = collection_select :material, :material_type_id, MaterialType.all, :id, :title, {:selected => @material.material_type_id }
     
+    = f.select(:material_type_id, @all_material_types.collect {|mat_type| [ mat_type.title, mat_type.id ]}, { :include_blank => 'Material Type'})
+        
     %h4 Select finishe(s)
 
-    %select#finish_ids{name: 'material[finish_ids][]', size: "5x20", multiple: true}
+    %select#finishIds{name: 'material[finish_ids][]', size: "5x20", multiple: true}
       - @all_finishes.each do |finish|
         %option{:value => finish.id, :selected =>  @material.finishes.include?(finish) ? "selected" : nil}
           =finish.title 
 
     %h4 Select application(s)
     
-    %select#application_ids{name: 'material[application_ids][]', size: "5x20", multiple: true}
+    %select#applicationIds{name: 'material[application_ids][]', size: "5x20", multiple: true}
       - @all_applications.each do |app|
         %option{:value => app.id, :selected =>  @material.applications.include?(app) ? "selected" : nil}
           = app.title

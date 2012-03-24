@@ -3,7 +3,7 @@ class MaterialsController < ApplicationController
   
   def index
     @material = Material.new # for optionally creating a new material on the index
-    @materials_newly_crafted = Material.newly_crafted_with_images() # array of newly created mats
+    @materials_newly_crafted = Material.newly_crafted # array of newly created mats
     
     # left sidebar
     @materials_antique_in_title = Material.antique_in_title
@@ -29,16 +29,21 @@ class MaterialsController < ApplicationController
   # TODO: move most of logic into model
   # materials index search filters (ajax)
   def search
+    
     filters = params[:filters] ||= {}
+    results = {}
+    
     logger.debug "params (search()): #{filters.inspect}"
+    
     antiques = Material.antique_in_title
-    newly_crafted_with_images = Material.newly_crafted_with_images(filters)
-    results = newly_crafted_with_images.count
+    newly_crafted = Material.newly_crafted(filters)
+    results['newly_crafted'] = newly_crafted
+    count = newly_crafted.count
    
-    #move to model
-    newly_crafted_html = render_to_string(partial: 'materials/search/newly_crafted_header', locals: { filters: filters, results: results  })      
-    if newly_crafted_with_images.count > 0
-      newly_crafted_with_images.each do |mat| 
+    # also move to model
+    newly_crafted_html = render_to_string(partial: 'materials/search/newly_crafted_header', locals: { filters: filters, results: results['newly_crafted']  })      
+    if count > 0
+      newly_crafted.each do |mat| 
         newly_crafted_html += render_to_string(
           partial: 'materials/search/newly_crafted_item', locals: { mat: mat })
       end   
@@ -50,5 +55,4 @@ class MaterialsController < ApplicationController
       format.json { render json: { type: 'ok', status: :success, newlyCraftedHtml: newly_crafted_html }}
     end 
   end   
-
 end

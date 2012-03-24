@@ -20,7 +20,6 @@ class Image < ActiveRecord::Base
     return if finish_id.nil?
     
     self.finish_id = finish_id
-    self.save!
-    
+    self.save!  
   end
 end
