@@ -17,15 +17,16 @@ $ ->
       
       @searchResults = $('#searchResults')
       @searchResults.fadeOut('medium') # if @mat_type_id = @mat_finish_id = @mat_app_id == 'none'
+      @url = "/materials/search"
       
       console.log "filter changes detected" # "\nfinish_id: #{mat_finish_id} app_id: #{mat_app_id} type_id: #{mat_type_id}"       
-      console.log "@filters: "
+      console.log "@filters: #{@filters.inspect} @url: #{@url.inspect} "
       
       # print out our @filters hash
       for key, value of @filters
         console.log key, value
       
-      @url = "/materials/search"
+      
                
       $.ajax
         url: @url

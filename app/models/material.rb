@@ -16,7 +16,7 @@ class Material < ActiveRecord::Base
   scope :newly_crafted, self.order('created_at DESC')
   
   scope :newly_crafted_without_antiques, 
-        find_by_sql("SELECT * from materials 
+        self.find_by_sql("SELECT * from materials 
                           WHERE title NOT LIKE '%antique%' 
                           ORDER BY created_at DESC")
   scope :antique_in_title, self.where('title LIKE ?', '%antique%').order('title ASC')  

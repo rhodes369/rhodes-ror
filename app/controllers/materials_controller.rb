@@ -37,22 +37,31 @@ class MaterialsController < ApplicationController
     
     antiques = Material.antique_in_title
     newly_crafted = Material.newly_crafted(filters)
-    results['newly_crafted'] = newly_crafted
-    count = newly_crafted.count
+    results['newly_crafted_count'] = newly_crafted.count ||= 0
    
     # also move to model
-    newly_crafted_html = render_to_string(partial: 'materials/search/newly_crafted_header', locals: { filters: filters, results: results['newly_crafted']  })      
-    if count > 0
+    results['newly_crafted_html'] = render_to_string(partial: 'materials/search/newly_crafted_header', locals: { filters: filters, results: results})      
+    if results['newly_crafted_count'] > 0
+      default_image = nil # reset
       newly_crafted.each do |mat| 
-        newly_crafted_html += render_to_string(
-          partial: 'materials/search/newly_crafted_item', locals: { mat: mat })
+        unless mat.default_image_id.nil?
+          default_image = Image.find(mat.default_image_id)
+          default_image = default_image.image.url(:thumb) 
+        else
+          # use this tech to be able to use asset_path within a controller
+          default_image = ActionController::Base.helpers.asset_path("placeholder-95.gif")    
+        end
+        
+        results['newly_crafted_html'] += render_to_string(
+          partial: 'materials/search/newly_crafted_item', 
+            locals: { mat: mat, results: results, default_image: default_image })
       end   
     else
-      newly_crafted_html += 'No Results'
+      results['newly_crafted_html'] += 'No Results'
     end
     
     respond_to do |format|      
-      format.json { render json: { type: 'ok', status: :success, newlyCraftedHtml: newly_crafted_html }}
+      format.json { render json: { type: 'ok', status: :success, newlyCraftedHtml: results['newly_crafted_html'] }}
     end 
   end   
 end
