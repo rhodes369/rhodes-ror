@@ -42,7 +42,7 @@ class MaterialsController < ApplicationController
     results['newly_crafted']['count'] = newly_crafted.count # ||= 0
    
     # also move to model
-    results['newly_crafted']['html'] = render_to_string(partial: 'materials/search/newly_crafted_header', locals: { filters: filters, results: results})      
+    results['newly_crafted']['html'] = render_to_string(partial: 'materials/search/newly_crafted_header', locals: { results: results})      
     
     if results['newly_crafted']['count'] > 0  
       newly_crafted.each do |mat| 
