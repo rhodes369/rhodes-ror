@@ -11,9 +11,9 @@ $ ->
       
       # setup our search filters
       @filters = {}
-      @filters['mat_type_id'] = $('#mat_type_id').val()
-      @filters['mat_finish_id'] = $('#mat_finish_id').val()
-      @filters['mat_app_id'] = $('#mat_app_id').val()
+      @filters['mat_type_id'] = $('#matTypeId').val()
+      @filters['mat_finish_id'] = $('#matFinishId').val()
+      @filters['mat_app_id'] = $('#matAppId').val()
       
       @searchResults = $('#searchResults')
       @searchResults.fadeOut('medium') # if @mat_type_id = @mat_finish_id = @mat_app_id == 'none'

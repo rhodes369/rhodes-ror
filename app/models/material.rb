@@ -35,16 +35,37 @@ class Material < ActiveRecord::Base
     logger.debug "looking up newly_crafted mats using filters: #{filters.inspect}"
     
     results = []
-    
+          
     self.newly_crafted_without_antiques.each do |mat| 
-      unless filters[:mat_type_id].blank?
-        if mat.material_type_id == filters[:mat_type_id].to_i
-          results << mat 
+     
+     unless filters.empty? # filter results via pulldowns
+     
+        # filter for mat type
+        if !filters[:mat_type_id].blank? 
+          if mat.material_type_id == filters[:mat_type_id].to_i 
+            results << mat unless results.include?(mat)
+          end
         end
-      else
-        results << mat 
-      end
-    end 
+       
+    
+        # filter for finish type
+        if !filters[:mat_finish_id].blank?
+          if mat.finishes.map(&:id).include?( filters[:mat_finish_id].to_i )  
+            results << mat unless results.include?(mat)
+          end
+        end
+       
+        # filter for application type
+        if !filters[:mat_app_id].blank?
+          if mat.applications.map(&:id).include?( filters[:mat_app_id].to_i )  
+            results << mat unless results.include?(mat)
+          end
+        end  
+         
+      else # no filters currently set       
+        results << mat # unless results.include?(mat)
+      end    
+    end
     
     # since our array loses the original sql ordering, reverse   
     results.sort! { |a,b| b.created_at <=> a.created_at }   
@@ -138,5 +159,3 @@ class Material < ActiveRecord::Base
    # end   
 
 end
-
-

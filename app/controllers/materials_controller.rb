@@ -38,9 +38,7 @@ class MaterialsController < ApplicationController
     antiques = Material.antique_in_title
     newly_crafted = Material.newly_crafted(filters)
     
-    results['newly_crafted']['count'] = newly_crafted.count # ||= 0
-   
-    # also move to model
+    results['newly_crafted']['count'] = newly_crafted.count
     results['newly_crafted']['html'] = render_to_string( 
       partial: 'materials/search/newly_crafted_header', locals: { results: results})      
     

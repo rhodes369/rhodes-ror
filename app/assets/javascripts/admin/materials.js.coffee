@@ -24,7 +24,7 @@ $(document).ready ->
         type: 'DELETE'
         data: { material_id: @material_id, image_id: @image_id }        
         success: (data) =>
-          $(this).parent().fadeOut(2000)
+          $(this).parent().fadeOut(555)
           alert 'Image Removed.'
         error: (data) =>
           alert 'Problem removing image.'
