@@ -46,19 +46,17 @@ class MaterialsController < ApplicationController
     
     if results['newly_crafted']['count'] > 0   
       newly_crafted.each do |mat|     
-        results['newly_crafted']['default_image'] = nil # reset
+        default_image = nil # reset
         
         unless mat.default_image_id.nil?
-          image = Image.find(mat.default_image_id).image.url(:thumb)
-          results['newly_crafted']['default_image'] = image
+          default_image = Image.find(mat.default_image_id).image.url(:thumb)
         end
         
         results['newly_crafted']['html'] += render_to_string(
           partial: 'materials/search/newly_crafted_item', 
-            locals: { mat: mat, default_image: results['newly_crafted']['default_image'] })
-   
-      end # newly_crafted.each do |mat| 
-    end # if results['newly_crafted']['count'] > 0 
+            locals: { mat: mat, default_image: default_image })
+      end 
+    end 
     
     respond_to do |format|      
       format.json { render json: { type: 'ok', status: :success, results: results }}

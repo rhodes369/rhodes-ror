@@ -22,12 +22,10 @@ $ ->
       console.log "filter changes detected" # "\nfinish_id: #{mat_finish_id} app_id: #{mat_app_id} type_id: #{mat_type_id}"       
       console.log "@filters: #{@filters.inspect} @url: #{@url.inspect} "
       
-      # print out our @filters hash
+      # print out our @filters hash for testing
       for key, value of @filters
         console.log key, value
-      
-      
-               
+                      
       $.ajax
         url: @url
         dataType: 'json'
