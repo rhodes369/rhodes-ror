@@ -15,6 +15,7 @@ $ ->
       @filters['mat_finish_id'] = $('#matFinishId').val()
       @filters['mat_app_id'] = $('#matAppId').val()
       
+      # clear all existing reults
       @searchResults = $('#searchResults')
       @searchResults.fadeOut('medium') # if @mat_type_id = @mat_finish_id = @mat_app_id == 'none'
       @url = "/materials/search"
@@ -32,10 +33,14 @@ $ ->
         type: 'PUT'
         data: { filters: @filters }        
         success: (data) =>
-          console.log 'updating search'
-          @searchResults.fadeIn(3000)
-          console.log data
+          console.log "updating search filters with data: #{data.inspect}"
+          
           $('#newlyCraftedSearchResults').html(data.results.newly_crafted.html)
+          $('#antiqueSearchResults').html(data.results.antiques.html)
+          
+          @searchResults.fadeIn(3000)
+  
+          
         error: (data) =>
           alert 'Problem filtering search.'
           console.log data.statusText      

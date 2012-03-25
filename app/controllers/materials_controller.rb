@@ -32,16 +32,22 @@ class MaterialsController < ApplicationController
     filters = params[:filters] ||= {}
     results = {}
     results['newly_crafted'] = {}
+    results['antiques'] = {}
     
-    logger.debug "params (search()): #{filters.inspect}"
+    logger.debug "params search(filters): #{filters.inspect}"
     
-    antiques = Material.antique_in_title
+    antiques_in_title = Material.antique_in_title_results(filters)
     newly_crafted = Material.newly_crafted(filters)
     
     results['newly_crafted']['count'] = newly_crafted.count
     results['newly_crafted']['html'] = render_to_string( 
-      partial: 'materials/search/newly_crafted_header', locals: { results: results})      
+      partial: 'materials/search/newly_crafted_header', locals: { results: results}) 
     
+    results['antiques']['count'] = antiques_in_title.count
+    results['antiques']['html'] = render_to_string( 
+      partial: 'materials/search/antiques/header', locals: { results: results})     
+    
+    # filter newly crafted
     if results['newly_crafted']['count'] > 0   
       newly_crafted.each do |mat|     
         default_image = nil # reset
@@ -55,6 +61,22 @@ class MaterialsController < ApplicationController
             locals: { mat: mat, default_image: default_image })
       end 
     end 
+    
+    # filter antiques
+    if results['antiques']['count'] > 0   
+      antiques_in_title.each do |mat|     
+        default_image = nil # reset
+        
+        if Image.exists?(mat.default_image_id)
+          default_image = Image.find(mat.default_image_id).image.url(:thumb)
+        end
+        
+        results['antiques']['html'] += render_to_string(
+          partial: 'materials/search/antiques/item', 
+            locals: { mat: mat, default_image: default_image })
+      end 
+    end    
+    
     
     respond_to do |format|      
       format.json { render json: { type: 'ok', status: :success, results: results }}

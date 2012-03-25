@@ -5,19 +5,19 @@
   .filters 
     .filterWrap
       %select#matTypeId
-        %option{ class: "label", value: '', selected: "selected"} Search by Material Type
+        %option{ class: "label", value: '', selected: "selected"} Filters by Material Type
         - @all_mat_types.each do |mat_type|
           %option{:value => mat_type.id, :selected => nil }= mat_type.title
 
     .filterWrap
       %select#matFinishId 
-        %option{ class: "label", value: '', selected: "selected"} Search by Finishes
+        %option{ class: "label", value: '', selected: "selected"} Filter by Finishes
         - @all_mat_finishes.each do |finish|
           %option{:value => finish.id, :selected => nil }= finish.title
     
     .filterWrap
       %select#matAppId
-        %option{ class: "label", value: '', selected: "selected" } Search by Application
+        %option{ class: "label", value: '', selected: "selected" } Filter by Application
         - @all_mat_apps.each do |app|
           %option{:value => app.id, :selected =>  nil }= app.title         
 
