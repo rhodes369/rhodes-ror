@@ -53,7 +53,7 @@ $(document).ready ->
           console.log data.statusText                 
   )    
   
-  # update image finish type
+  # update image finish type pulldown
   $('.finishesImg').on(
     change: ->        
       @image_id = $(this).data('image_id')

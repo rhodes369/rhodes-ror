@@ -68,9 +68,57 @@ class Material < ActiveRecord::Base
     end
     
     # since our array loses the original sql ordering, reverse   
-    results.sort! { |a,b| b.created_at <=> a.created_at }   
+    results = order_results_hash(results) 
+     
     return results
   end
+  
+
+
+  # filter out all newly crafted mat or 'antique' in title
+  def self.antique_in_title_results(filters = {})
+    
+    logger.debug "looking up mats with 'antique' in title using filters: #{filters.inspect}"
+    
+    results = []
+          
+    self.antique_in_title.each do |mat| 
+     
+     unless filters.empty? # filter results via pulldowns
+     
+        # filter for mat type
+        if !filters[:mat_type_id].blank? 
+          if mat.material_type_id == filters[:mat_type_id].to_i 
+            results << mat unless results.include?(mat)
+          end
+        end
+       
+    
+        # filter for finish type
+        if !filters[:mat_finish_id].blank?
+          if mat.finishes.map(&:id).include?( filters[:mat_finish_id].to_i )  
+            results << mat unless results.include?(mat)
+          end
+        end
+       
+        # filter for application type
+        if !filters[:mat_app_id].blank?
+          if mat.applications.map(&:id).include?( filters[:mat_app_id].to_i )  
+            results << mat unless results.include?(mat)
+          end
+        end  
+         
+      else # no filters currently set       
+        results << mat # unless results.include?(mat)
+      end    
+    end
+    
+    # since our array loses the original sql ordering, reverse   
+    results = order_results_hash(results) 
+     
+    return results
+  end
+
 
 
   def self.with_finish(finish_id)
@@ -115,47 +163,10 @@ class Material < ActiveRecord::Base
       end
     end    
   end
-      
-
-   # def index_materials(limit = 3)
-   #   #return if !limit > 0
-   #   self.all.limit(limit)
-   #   @index_images = lambda{ |limit| Material.index_finishes(limit) }
-   # end
-
-
-   # def self.by_material_ids(material_ids = [1,3,4])
-   #   return if !matrial_ids.count > 0
-   #   self.where(':id', material.ids) 
-   # end
-
-
-   # 
-   # # retrn array of local finish_ids
-   # def self.with_finishes(finishes = [])
-   #   return [] unless finishes.count > 0
-   #   MaterialFinish.where(finish_id: finishes).map(&:material_id).uniq
-   # end
-   # 
-   # # return array of local application ids
-   # def self.with_applications(applications = [])
-   #   return [] unless applications.count > 0
-   #   Application.where(:application => applications).map(&:application.id).uniq
-   # end
-   # 
-   # # aggregation of above filters into a colsolidated search method
-   # def self.search_filters(  mat_id = nil, finishes = [], applications = [] )
-   #   
-   #   mats_with_material_type = self.by_mat_id
-   #   mats_with_finishes = self.with_finishes
-   #   mats_with_applications = applications
-   #   
-   #   mats_with_types = self.by_material_type_id(material_.id) unless mat.id.nil?
-   #   mats_with_finishes = self.finishes(:finish_id => finishes) 
-   #   mats_with_applications = self.where(:applications => applications) unless applications.size > 0  
-   #   
-   #   (mats_with_material_types + mates_with_finishes + mats_with_applications)
-   #   
-   # end   
-
+     
+  private 
+  
+  def self.order_results_hash(results = {})
+    results.sort! { |a,b| b.created_at <=> a.created_at } # reverse!
+  end
 end
