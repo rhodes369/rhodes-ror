@@ -41,7 +41,7 @@ class MaterialsController < ApplicationController
     
     results['newly_crafted']['count'] = newly_crafted.count
     results['newly_crafted']['html'] = render_to_string( 
-      partial: 'materials/search/newly_crafted_header', locals: { results: results}) 
+      partial: 'materials/search/newly_crafted/header', locals: { results: results}) 
     
     results['antiques']['count'] = antiques_in_title.count
     results['antiques']['html'] = render_to_string( 
@@ -57,10 +57,10 @@ class MaterialsController < ApplicationController
         end
         
         results['newly_crafted']['html'] += render_to_string(
-          partial: 'materials/search/newly_crafted_item', 
+          partial: 'materials/search/newly_crafted/item', 
             locals: { mat: mat, default_image: default_image })
       end 
-    end 
+    end
     
     # filter antiques
     if results['antiques']['count'] > 0   
