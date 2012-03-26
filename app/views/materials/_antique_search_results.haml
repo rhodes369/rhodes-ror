@@ -1,6 +1,5 @@
 - if mats_with_images = Material.newly_crafted.count > 0
-  %br
-  %br
+
   %h3 ANTIQUE MATERIALS
   - Material.antique_in_title.each do |mat| 
     - default_image = mat.images.first  
