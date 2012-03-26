@@ -1,0 +1,30 @@
+@import mixins
+
+
+// LOADING
+
+#loading
+  +hidden
+  +fixed
+  +round(8)
+  padding: 20px 50px
+  text-align: center
+  position: fixed
+  top: 30%
+  left: 42%
+  z-index: 2000
+  +bg-black(.8)
+  +glow-black(20)
+
+  &:hover
+
+  .spinner
+    +left
+    margin: 0 30px 0 0
+    width: 32px
+    height: 32px
+    background: no-repeat center center transparent url(<%= asset_path 'spinner-grey-32.gif' %>)
+
+  span
+    +font(28px)
+    color: #e0e0dc
