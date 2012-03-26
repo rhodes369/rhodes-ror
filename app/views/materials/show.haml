@@ -58,33 +58,19 @@
 
 #content-right
 
-  // previous page
   %a.prev
 
-  // root element for scrollable
-  .scrollable
+  // Thumbnail window
+  .thumb-window
 
-    // root element for the items
-    .items
+    // Thumbnail container
+    .gallery-thumbs
 
-      // THUMBNAILS 1-5
-      %div
-        // FINISH INFO IS IN THE MOUSEOVER FUNCTION, BEING WRITTEN TO #finish
-        %a(href="#" onMouseover="MM_swapImage('enlarge1','','images/stone/Amande/amande_4ptStalk.jpg',0); writeText('FINISH: Type of finish <br> and minimum thickness')")
-          %img{src: "/", alt: "", name: "a1"}
+      // FINISH INFO IS IN THE MOUSEOVER FUNCTION, BEING WRITTEN TO #finish
+      %a(href="#" onMouseover="MM_swapImage('enlarge1','','images/stone/Amande/amande_4ptStalk.jpg',0); writeText('FINISH: Type of finish <br> and minimum thickness')")
+        %img{src: "/", alt: "", name: "a1"}
 
-
-  // next page
   %a.next
-
-  / This has been in page, but I'd prefer it to go in scripts if possible
-  / <script>
-  /   // execute scripts when the DOM is ready.
-  /   $(function() {
-  /     // initialize scrollable
-  /     $(".scrollable").scrollable();
-  /   });
-  / </script>
 
 
   // MAIN IMAGE

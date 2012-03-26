@@ -6,10 +6,8 @@ a:active
 \:focus
   -moz-outline-style: none
 
-// root element for the scrollable.
-// when scrolling occurs this element stays still.
 
-.scrollable
+.thumb-window
   position: relative
   float: left
   overflow: hidden
@@ -18,31 +16,14 @@ a:active
   margin: 0 0 0 4px
   &.noscroll
     margin: 0 0 0 25px
-  .items
-    // width: 20000em
+  .gallery-thumbs
     position: absolute
     clear: both
     form
       width: auto
 
-// position container to the right to make up for no left or right arrow
 
-// root element for scrollable items. Must be absolutely positioned
- // and it should have an extremely large width to accomodate scrollable items.
- // it's enough that you set the width and height for the root element and
- // not for this element.
-
-// .items
-//   span
-//     margin: 2px 0 0 0
-//     display: block
-//     font-size: 11px
-//     line-height: 11px
-//     color: #414042
-//     text-align: center
-
-// single scrollable item
-.scrollable .img
+.thumb-window .img
   position: relative
   display: inline-block
   float: left
@@ -69,7 +50,7 @@ a:active
       -webkit-opacity: 1
       opacity: 1
 
-.items img
+.gallery-thumbs img
   border: none
   width: 95px
   height: 95px
@@ -100,11 +81,6 @@ a
   &.disabled
     visibility: hidden !important
 
-// Next Button
-
-// Previous Button
-
-// disabled navigational button
 
 #enlarge_container
   clear: both
