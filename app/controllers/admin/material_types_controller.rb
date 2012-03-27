@@ -45,6 +45,7 @@ class Admin::MaterialTypesController < ApplicationController
     end
   end
 
+
   def destroy
   end
 end
