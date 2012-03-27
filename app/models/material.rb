@@ -1,4 +1,6 @@
 class Material < ActiveRecord::Base 
+
+  is_sluggable :title # from slugged gem
   
   has_many :images, :dependent => :destroy
   has_many :finishes, :through => :material_finishes 
@@ -21,6 +23,7 @@ class Material < ActiveRecord::Base
                           ORDER BY created_at DESC")
   scope :antique_in_title, self.where('title LIKE ?', '%antique%').order('title ASC')  
   scope :with_mat_type, lambda { |mat_type_id| where('material_type_id = ?', mat_type_id) }
+
 
   before_destroy :delete_material_images 
   
