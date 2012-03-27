@@ -1,5 +1,5 @@
 class Material < ActiveRecord::Base 
-  
+
   has_many :images, :dependent => :destroy
   has_many :finishes, :through => :material_finishes 
   has_many :applications, :through => :material_applications 
@@ -10,7 +10,7 @@ class Material < ActiveRecord::Base
   
   attr_accessible :title, :description, :material_type_id, 
                   :finish_ids, :finishes, :application_ids, :pdf, 
-                  :images, :specifications, :technical_data  
+                  :images, :specifications, :technical_data, :slug 
       
   scope :alphabetical, self.order('title ASC') 
   scope :newly_crafted, self.order('created_at DESC')
@@ -22,6 +22,10 @@ class Material < ActiveRecord::Base
   scope :antique_in_title, self.where('title LIKE ?', '%antique%').order('title ASC')  
   scope :with_mat_type, lambda { |mat_type_id| where('material_type_id = ?', mat_type_id) }
 
+  is_sluggable :title # from slugged gem
+
+  # after_save { Material.generate_slug! }
+  # after_update { self.generate_slug! }
   before_destroy :delete_material_images 
   
   validates :title, presence: true, :uniqueness => true 
@@ -163,7 +167,7 @@ class Material < ActiveRecord::Base
       end
     end    
   end
-     
+  
   private 
   
   def self.order_results_hash(results = {})

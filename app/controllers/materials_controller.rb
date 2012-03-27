@@ -18,7 +18,8 @@ class MaterialsController < ApplicationController
       
     
   def show
-    @material = Material.find(params[:id]) 
+    @material = Material.find_using_slug(params[:id]) 
+    redirect_to materials_path, notice: 'No material found' if @material.nil?
     
     # left sidebar
     @materials_antique_in_title = Material.antique_in_title

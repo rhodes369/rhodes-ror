@@ -1,7 +1,7 @@
 class Admin::MaterialsController < ApplicationController
   
   layout 'admin/layouts/application'
-
+  
   def index
     @materials = Material.all 
     @material = Material.new
@@ -16,9 +16,12 @@ class Admin::MaterialsController < ApplicationController
   def create
     @material = Material.new(params[:material] )
     @image = Image.create( params[:image] )
-
+    
+    #params[:material][:slug] = @material.generate_slug!
+    
     respond_to do |format|
       if @material.save
+        params[:material][:slug] = @material.generate_slug # for sluggable gem
         format.html { redirect_to edit_admin_material_path(@material), notice: 'Material Saved' }
         format.json { render json: @material, status: :created, location: @material }
       else
@@ -30,8 +33,10 @@ class Admin::MaterialsController < ApplicationController
    
   
   def update
-    @material = Material.find(params[:id])
+    @material = Material.find_using_slug(params[:id])
     redirect_to admin_material_url if @material.nil?
+    
+    params[:material][:slug] = @material.generate_slug # for sluggable gem
     
     respond_to do |format|
       if @material.update_attributes(params[:material])              
@@ -65,7 +70,7 @@ class Admin::MaterialsController < ApplicationController
 
 
   def edit
-    @material = Material.find(params[:id])
+    @material = Material.find_using_slug(params[:id])
     @materials = Material.all
     @image = Image.new
     @all_material_types = MaterialType.all
@@ -73,10 +78,6 @@ class Admin::MaterialsController < ApplicationController
     @all_applications = Application.order(:title)
   end
   
-  def show
-    @material = Material.find(params[:id])
-  end
-    
 
   def destroy
     @material = Material.find(params[:id])

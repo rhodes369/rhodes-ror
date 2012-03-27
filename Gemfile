@@ -1,15 +1,10 @@
 source 'https://rubygems.org'
 
 gem 'rails', '3.2.2'
-gem 'bcrypt-ruby', '3.0.1'
-gem 'faker', '1.0.1'
-
-
-# Bundle edge Rails instead:
-# gem 'rails', :git => 'git://github.com/rails/rails.git'
-
 gem 'sqlite3', '1.3.5'
-gem 'haml-rails'
+gem 'haml-rails' 
+gem 'slugged', '1.0.1'
+gem 'bcrypt-ruby', '3.0.1'
 gem "paperclip", "~> 2.7"
 
 
