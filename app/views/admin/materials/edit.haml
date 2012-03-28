@@ -47,6 +47,8 @@
       %li
         = link_to material.title, edit_admin_material_path(material)
 
+  %a{href: "/"} Create new material
+
 #content-center
 
   = form_for @material, :url => admin_material_path do |f| 
