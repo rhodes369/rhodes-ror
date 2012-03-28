@@ -9,25 +9,26 @@
   .gallery-thumbs
 
     = form_for @material, :remote => true do |f|
-           
-      - @material.images.each do |i|
+    
+      - unless @material.images.count == 0 
+        - material_sorted_images.each do |i|
       
-        .img
-          %img{src: i.image.url(:thumb), name: 'al', class: "material_thumb", id: "material_thumb_#{i.id}", :data => { large_image: "#{i.image.url(:large)}", image_id: "#{i.id}" }}
+          .img
+            %img{src: i.image.url(:thumb), name: 'al', class: "material_thumb", id: "material_thumb_#{i.id}", :data => { large_image: "#{i.image.url(:large)}", image_id: "#{i.id}" }}
           
-          .finishesImg-wrap
-            %select.finishesImg{ name: "image[finish_id]", :data => { image_id: "#{i.id}" } }
-              %option{:value => ''} Finish Type
-              - @all_finishes.each do |finish|
-                %option{:value => finish.id, :selected =>  i.finish_id == finish.id ? "selected" : nil}
-                  = finish.title
-            .arrow-down
+            .finishesImg-wrap
+              %select.finishesImg{ name: "image[finish_id]", :data => { image_id: "#{i.id}" } }
+                %option{:value => ''} Finish Type
+                - @all_finishes.each do |finish|
+                  %option{:value => finish.id, :selected =>  i.finish_id == finish.id ? "selected" : nil}
+                    = finish.title
+              .arrow-down
 
-          .removeImg{:data => { image_id: i.id }} remove
+            .removeImg{:data => { image_id: i.id }} remove
 
-          %label.default
-            %input{ type: "radio", :class => :default_image_id, :name => 'default_image_id', :checked => @material.default_image_id == i.id || nil, :data => { material_id: @material.id, default_image_id: @material.default_image_id, image_id: i.id } }
-            %span set default
+            %label.default
+              %input{ type: "radio", :class => :default_image_id, :name => 'default_image_id', :checked => @material.default_image_id == i.id || nil, :data => { material_id: @material.id, default_image_id: @material.default_image_id, image_id: i.id } }
+              %span set default
 
 // next page
 %a.next

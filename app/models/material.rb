@@ -22,17 +22,14 @@ class Material < ActiveRecord::Base
   scope :antique_in_title, self.where('title LIKE ?', '%antique%').order('title ASC')  
   scope :with_mat_type, lambda { |mat_type_id| where('material_type_id = ?', mat_type_id) }
 
-  is_sluggable :title # from slugged gem
+  is_sluggable :title # for slugged gem
 
-  # after_save { Material.generate_slug! }
-  # after_update { self.generate_slug! }
   before_destroy :delete_material_images 
   
   validates :title, presence: true, :uniqueness => true 
   validates_length_of :title, :maximum => 25, :alert => 'Title can only be 25 characters long'
   
    
-  
   # filter out all newly crafted mat or 'antique' in title
   def self.newly_crafted(filters = {})
     
@@ -130,6 +127,19 @@ class Material < ActiveRecord::Base
     MaterialFinish.where(finish_id: finish_id).each { |mat| with_finish << mat }
     
     return with_finish
+  end
+
+
+
+  # sort from newest to oldest with the default @ the beginning
+  def sort_thumb_images
+    return [] if self.images.count == 0
+    
+    self.images.sort { |a,b| b.created_at <=> a.created_at }
+    
+    default_image = Image.find self.default_image_id 
+    self.images.unshift default_image # put default image @ beginning
+    self.images.uniq # make sure array is unique  
   end
 
 
