@@ -74,7 +74,7 @@ class Admin::MaterialsController < ApplicationController
     redirect_to admin_materials_path, notice: 'Could not find material' if @material.nil?
     
     @materials = Material.all
-    @material_sorted_images = self.sort_images(@material) 
+    @material_sorted_images = @material.sort_thumb_images
     @image = Image.new
     @all_material_types = MaterialType.all
     @all_finishes = Finish.order(:title)
@@ -92,21 +92,17 @@ class Admin::MaterialsController < ApplicationController
       format.json { render json: @material, status: :deleted }
     end
   end  
-
-
-
- protected
-
+  
   # sort from newest to oldest with the default @ the beginning
-  def sort_images(mat)
-    unless mat.images.count == 0
-      mat.images.sort { |a,b| b.created_at <=> a.created_at }
-      default_image = Image.find mat.default_image_id 
-      mat.images.unshift default_image
-      mat.images.uniq # using .uniq instead of .delete since .delete deletes from db d 
-    else
-      return []
-    end
-  end
+  # def sort_images(mat)
+  #   unless mat.images.count == 0
+  #     mat.images.sort { |a,b| b.created_at <=> a.created_at }
+  #     default_image = Image.find mat.default_image_id 
+  #     mat.images.unshift default_image
+  #     mat.images.uniq # using .uniq instead of .delete since .delete deletes from db d 
+  #   else
+  #     return []
+  #   end
+  # end  
    
 end

@@ -130,6 +130,19 @@ class Material < ActiveRecord::Base
   end
 
 
+
+  # sort from newest to oldest with the default @ the beginning
+  def sort_thumb_images
+    return [] if self.images.count == 0
+    
+    self.images.sort { |a,b| b.created_at <=> a.created_at }
+    
+    default_image = Image.find self.default_image_id 
+    self.images.unshift default_image # put default image @ beginning
+    self.images.uniq # make sure array is unique  
+  end
+
+
   def default_large_image
     unless self.default_image_id.nil?
       unless Image.find_by_id(self.default_image_id).nil?
