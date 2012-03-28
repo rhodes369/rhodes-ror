@@ -79,6 +79,11 @@ class Admin::MaterialsController < ApplicationController
     @all_material_types = MaterialType.all
     @all_finishes = Finish.order(:title)
     @all_applications = Application.order(:title)
+    
+    # left sidebar
+    @materials_antique_in_title = Material.antique_in_title
+    @materials_alpha = Material.alphabetical # for sidebar edit links    
+    @materials_newly_crafted_sidebar = Material.newly_crafted_without_antiques # all mats excluding antiques       
   end
   
 
