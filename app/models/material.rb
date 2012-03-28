@@ -22,17 +22,14 @@ class Material < ActiveRecord::Base
   scope :antique_in_title, self.where('title LIKE ?', '%antique%').order('title ASC')  
   scope :with_mat_type, lambda { |mat_type_id| where('material_type_id = ?', mat_type_id) }
 
-  is_sluggable :title # from slugged gem
+  is_sluggable :title # for slugged gem
 
-  # after_save { Material.generate_slug! }
-  # after_update { self.generate_slug! }
   before_destroy :delete_material_images 
   
   validates :title, presence: true, :uniqueness => true 
   validates_length_of :title, :maximum => 25, :alert => 'Title can only be 25 characters long'
   
    
-  
   # filter out all newly crafted mat or 'antique' in title
   def self.newly_crafted(filters = {})
     

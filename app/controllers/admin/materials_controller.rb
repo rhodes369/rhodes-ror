@@ -71,6 +71,8 @@ class Admin::MaterialsController < ApplicationController
 
   def edit
     @material = Material.find_using_slug(params[:id])
+    redirect_to admin_materials_path, notice: 'Could not find material' if @material.nil?
+    
     @materials = Material.all
     @material_sorted_images = self.sort_images(@material) 
     @image = Image.new
@@ -91,14 +93,19 @@ class Admin::MaterialsController < ApplicationController
     end
   end  
 
+
+
+ protected
+
+  # sort from newest to oldest with the default @ the beginning
   def sort_images(mat)
-    mat.images.sort { |a,b| b.created_at <=> a.created_at }
     unless mat.images.count == 0
+      mat.images.sort { |a,b| b.created_at <=> a.created_at }
       default_image = Image.find mat.default_image_id 
-      mat.images[0] = default_image
-      mat.save!
+      mat.images.unshift default_image
+      mat.images.uniq # using .uniq instead of .delete since .delete deletes from db d 
     else
-      mat.images
+      return []
     end
   end
    

@@ -9,8 +9,9 @@
   .gallery-thumbs
 
     = form_for @material, :remote => true do |f|
+    
       - unless @material.images.count == 0 
-        - @material_sorted_images.each do |i|
+        - material_sorted_images.each do |i|
       
           .img
             %img{src: i.image.url(:thumb), name: 'al', class: "material_thumb", id: "material_thumb_#{i.id}", :data => { large_image: "#{i.image.url(:large)}", image_id: "#{i.id}" }}
