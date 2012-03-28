@@ -1,0 +1,120 @@
+@import mixins
+
+////////// MAIN NAV
+
+
+// NEWS
+#news
+  position: absolute
+  bottom: 40px
+  right: 10px
+  margin: 0 4px 0 0
+  height: auto
+  text-align: right
+  color: #636363
+  a
+    &:link, &:visited
+      font-size: .9em
+      margin: 0
+      padding: 4px 12px
+      color: #7c3113
+      text-decoration: none
+    &:hover, &.current
+      color: #636363
+      text-decoration: none
+
+
+// LINKS
+ul#links
+  position: absolute
+  bottom: 2px
+  right: 0
+  margin: 0 7px 0 0
+  padding: 0
+  width: 100%
+  height: 30px
+  text-align: right
+  list-style: none
+  li
+    text-align: center
+    float: right
+    position: relative
+    padding: 0
+    width: auto
+    line-height: 29px
+    background: transparent
+    &.current, &.nolink
+      line-height: 18px
+    a
+      &:link, &:visited
+        font-size: 14px
+        color: #e5e4e5
+        text-transform: uppercase
+        text-decoration: none
+        width: auto
+        padding: 6px 20px
+        height: 18px
+        background: transparent
+    &.current, &.nolink
+      font-size: 14px
+      color: #e5e4e5
+      text-transform: uppercase
+      text-decoration: none
+      width: auto
+      padding: 6px 20px
+      height: 18px
+      background: transparent
+    &:hover, a:hover
+      color: #222
+      background-color: #ccc
+  a
+    &:link.current, &:visited.current
+      color: #222
+      background-color: #ccc
+  li
+    &.current, &.nolink:hover
+      color: #222
+      background-color: #ccc
+    &:hover > a
+      color: #222
+    ul
+      display: none
+      list-style: none
+      position: absolute
+      top: 1em
+      left: 0
+      width: 150px
+      margin: 0
+      padding: 0
+      z-index: 100
+      background-color: #333
+      -moz-box-shadow: 0px 4px 8px #222
+      -webkit-box-shadow: 0px 4px 8px #222
+      box-shadow: 0px 4px 8px #222
+      // For IE 8
+      -ms-filter: "progid:DXImageTransform.Microsoft.Shadow(Strength=8, Direction=90, Color='#222')"
+      // For IE 5.5 - 7
+      filter: progid:DXImageTransform.Microsoft.Shadow(Strength=8, Direction=90, Color='#222')
+    > ul
+      top: 30px
+      left: 0
+    &:hover ul, &.over ul
+      display: block
+    ul li
+      margin: 0
+      padding: 0
+      text-align: left
+      float: none
+  ul li a
+    &:link, &:visited
+      width: 110px
+      display: inline-block
+      padding: 4px 20px
+    &:hover
+      color: #222
+      background-color: #ccc
+
+// ul#links li:hover > a and ul#links li:hover above makes the first child nav link stay highlited when mousing down to second children
+
+// DROPDOWNS
+// Fix all browsers but IE (...says suckerfish tutorial, advising auto on both elements, yet that broke IE7)
