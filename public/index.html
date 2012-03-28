@@ -1,6 +1,161 @@
-<h2>rhodes public/index.haml</h2>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<title>Rhodes Architectural Stone</title>
+<meta name="description" content="Rhodes Architectural Stone offers antique and hand-crafted building products, providing the building community a combination of expertise in traditional European masonry design with access to wonderful stone supplies from around the world. Through our full design, drafting, and consulting services, we provide our clients with hand-carved, yet affordable, custom stone products." />
+<meta name="keywords" content="stone, stone building materials, masonry, rock, antique stone, vintage stone, custom stone, building products, architectural stone, Seattle Stoneworks, antique granite, antique salmon granite, yangtze, limestone, granite, Rhodes, Roads,
+Rodes, vintagestone, vintage stone, Chinese stone, Chinese granite, Chinese Limestone, landscape stone, patio stone, Seattle" />
+<meta name="author" content="Ephraim Peniston, email: ephraim[at]placeboarts[dot]com, www.placeboarts.com" />
+<!-- jQuery Library //--><script type="text/javascript" src="http://cdn.jquerytools.org/1.2.5/full/jquery.tools.min.js"></script>
+<!-- Dropdown js + jQuery //--><script type="text/javascript" src="js/dropdown-superfish.js"></script>
+<!-- jQuery Cycle plugin //--><script src="http://cloud.github.com/downloads/malsup/cycle/jquery.cycle.all.latest.js" type="text/javascript"></script>
+<!-- jQuery Slideshow //-->
+<script type="text/javascript">
+$(document).ready(function() {
+ $('#slideshow').cycle({
+ fx: 'fade',
+ timeout: 4000,
+ speed: 1000,
+ random: true,
+ });
+}); 
+</script>
+<link href="styles/core.css" rel="stylesheet" type="text/css" />
 
-<ul>
-  <li><a href="/materials">show all materials</a></li>
-  <li><a href="/admin">admin</a></li>
-</ul>
+<style type="text/css">
+html, body {
+	margin:0; padding:0;
+	height:100%;}
+#wrapper {
+  padding: 0;
+	min-height: 0;
+	max-width: 1200px;
+	overflow: hidden;}
+#slideshow {
+	max-width: 1200px;
+	margin:0; 
+	padding:0;
+	overflow: hidden;
+	width: 1200px;
+	height: 685px;
+	z-index: 0;
+	/* z-index seems to be needed if over 8 images. not sure why, but it works. */}
+
+
+/* HEADER */
+#header {
+  z-index: 10;}
+#logo span {
+  background: url(<%= asset_path 'logo-stacked-tag.png' %>) no-repeat center transparent;}
+#logo a {
+  color: transparent;}
+
+ul#links {
+  margin: 0;
+  z-index:100;}
+
+/* DROPDOWNS */
+ul#links li ul {
+	background-color: #333;
+	background-color: rgba(0,0,0,0.7);
+}
+ul#links ul li a:hover {
+	color: #222;
+	background-color: #ccc;
+}
+
+/* NEWS */
+#news {margin: 0;}
+
+/* FOOTER */
+#footer {
+  background: transparent;}
+#footer .left {
+  padding: 10px 0;}
+</style>
+</head>
+
+<body>
+
+<div id="outer">
+  <div id="header_back">
+    <div id="links_back"></div>
+  </div>
+</div><!-- outer -->
+
+<div id="wrapper">
+
+  <div id="header">
+
+    <h1 id="logo"><a href="index.html"><span></span>Rhodes.org</a></h1>
+
+    <div id="news">
+      <a href="projects_ralphlauren.html">New Projects</a> |
+      <a href="stone_anthighlandporphyry.html">New Materials</a> |
+      <a href="/assets/press/pdf/TB-0811.pdf">New Press</a>
+    </div>
+
+    <ul id="links" class="sf-menu">
+        <li><a href="contact.html">Contact</a></li>
+        <li><a href="stone.html">Stone</a></li>
+        <li><a href="press.html">Press</a></li>
+        <li class="nolink">Projects
+          <ul>
+              <li><a href="projects_drumlin.html">Residential</a></li>
+              <li><a href="projects_ralphlauren.html">Commercial</a></li>
+            </ul>
+        </li>
+      <li><a href="company.html">Company</a>
+        <ul>
+          <li><a href="company.html">Who We Are</a></li>
+          <li><a href="company-what.html">What We Do</a></li>
+          <li><a href="company-how.html">How We Work</a></li>
+          <li><a href="company-why.html">Why Rhodes</a></li>
+          <li><a href="company-bios.html">Bios</a></li>
+            </ul>
+        </li>
+    </ul>
+
+  </div><!-- header -->
+
+  <div id="slideshow">
+    <img src="/assets/home/1_DSC0265_12297.jpg" width="1200" height="685" alt="Rhodes Architectural Stone" />
+    <img src="/assets/home/2-DSCN4449.jpg" width="1200" height="685" alt="Rhodes Architectural Stone" />
+    <img src="/assets/home/3-DSCN3031.jpg" width="1200" height="685" alt="Rhodes Architectural Stone" />
+    <img src="/assets/home/4_DSC0393_7947.jpg" width="1200" height="685" alt="Rhodes Architectural Stone" />
+    <img src="/assets/home/5_view-4.jpg" width="1200" height="685" alt="Rhodes Architectural Stone" />
+    <img src="/assets/home/7-torso-II-on-pedistal.jpg" width="1200" height="685" alt="Rhodes Architectural Stone" />
+    <img src="/assets/home/8-corner-assembly.jpg" width="1200" height="685" alt="Rhodes Architectural Stone" />
+    <img src="/assets/home/9-DSC_7022.jpg" width="1200" height="685" alt="Rhodes Architectural Stone" />
+    <img src="/assets/home/10-booklet-6.jpg" width="1200" height="685" alt="Rhodes Architectural Stone" />
+    <img src="/assets/home/11-DSC_7036.jpg" width="1200" height="685" alt="Rhodes Architectural Stone" />
+    <img src="/assets/home/12-cover.jpg" width="1200" height="685" alt="Rhodes Architectural Stone" />
+    <img src="/assets/home/13-DSCN3030.jpg" width="1200" height="685" alt="Rhodes Architectural Stone" />
+    <img src="/assets/home/14-DSCN3124.jpg" width="1200" height="685" alt="Rhodes Architectural Stone" />
+    <img src="/assets/home/15-DSC_2954.jpg" width="1200" height="685" alt="Rhodes Architectural Stone" />
+    <img src="/assets/home/16-DSC_7050.jpg" width="1200" height="685" alt="Rhodes Architectural Stone" />
+    <img src="/assets/home/17-IMG_6822.jpg" width="1200" height="685" alt="Rhodes Architectural Stone" />
+    <img src="/assets/home/18-DrumlinHall.jpg" width="1200" height="685" alt="Rhodes Architectural Stone" />
+    <img src="/assets/home/19-DSCN4511.jpg" width="1200" height="685" alt="Rhodes Architectural Stone" />
+  </div>
+
+</div><!-- wrapper -->
+
+
+<!-- FOOTER -->
+<div id="footer">
+  <div id="footerWrap">
+    <div class="left">
+      <p class="copyright">All content of this website Copyright 1998 - 2012 Rhodes Architectural Stone and/or its participating publications. <br>
+        All rights reserved. <a href="privacy.html">Joint Notice of Privacy Practices</a></p>
+      <p><a class="credit" href="http://www.placeboarts.com/design/design_web.html" target="_blank"><span class="creditTxt">UI Design &amp; development by </span><span class="name">PlaceboArts</span></a></p>
+      <p><a class="credit" href="http://www.neimangraphicdesign.com" target="_blank"><span class="creditTxt">Design by </span><span class="name">Neiman Graphic Design</a></p>
+    </div>
+    <div class="clear"></div>
+  </div>
+</div><!-- footer -->
+
+
+</body>
+</html>
