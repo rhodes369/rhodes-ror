@@ -72,6 +72,7 @@ class Admin::MaterialsController < ApplicationController
   def edit
     @material = Material.find_using_slug(params[:id])
     @materials = Material.all
+    @material_sorted_images = self.sort_images(@material) 
     @image = Image.new
     @all_material_types = MaterialType.all
     @all_finishes = Finish.order(:title)
@@ -88,5 +89,17 @@ class Admin::MaterialsController < ApplicationController
       format.html { redirect_to admin_materials_path, notice: 'Material Removed' }
       format.json { render json: @material, status: :deleted }
     end
-  end   
+  end  
+
+  def sort_images(mat)
+    mat.images.sort { |a,b| b.created_at <=> a.created_at }
+    unless mat.images.count == 0
+      default_image = Image.find mat.default_image_id 
+      mat.images[0] = default_image
+      mat.save!
+    else
+      mat.images
+    end
+  end
+   
 end
