@@ -38,14 +38,15 @@ gem 'jquery-rails', '>= 2.0.1'
 gem 'ruby-debug19' #, :require => 'ruby-debug'
 
 group :development, :test do
-  gem 'rspec-rails', '2.8.1'
+  gem 'factory_girl_rails', '1.4.0'
   #gem 'guard-rspec', '0.5.5'
+  
 end
 
 group :test do
-  gem 'rspec-rails', '2.8.1'
   gem 'capybara', '1.1.2'
+  gem 'shoulda', '3.0.1'
+  gem 'mocha', '0.10.5'
   gem 'rb-fsevent', '0.4.3.1', :require => false
   gem 'growl', '1.0.3'
-  gem 'factory_girl_rails', '1.4.0'
 end
