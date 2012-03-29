@@ -16,4 +16,4 @@
     = f.text_field :title
 
     = f.submit 'Update', :id => "update_type", :class => "submit"
-    = button_to 'Delete Material Type', admin_material_type_path(@material_type), :method => :delete, :confirm => "Are you sure you want to delete this material type and all of it's associations with materials?", :class => "delete"  
+    = button_to 'Delete Material Type', admin_material_type_path(@material_type), :method => :delete, :confirm => "Are you sure you want to delete this material type and all of it's associations with materials?", :class => "delete", :id => "delete"  

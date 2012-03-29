@@ -1,4 +1,5 @@
 class Admin::MaterialTypesController < ApplicationController
+  
   def index
     @material_type = MaterialType.new
     @material_types = MaterialType.all
