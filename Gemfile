@@ -4,9 +4,8 @@ gem 'rails', '3.2.2'
 gem 'sqlite3', '1.3.5'
 gem 'haml-rails' 
 gem 'slugged', '1.0.1'
-gem 'bcrypt-ruby', '3.0.1'
 gem "paperclip", "~> 2.7"
-
+gem 'bcrypt-ruby', '3.0.1'
 
 # Gems used only for assets and not required
 # in production environments by default.
@@ -38,15 +37,14 @@ gem 'jquery-rails', '>= 2.0.1'
 gem 'ruby-debug19' #, :require => 'ruby-debug'
 
 group :development, :test do
-  gem 'factory_girl_rails', '1.4.0'
-  #gem 'guard-rspec', '0.5.5'
-  
 end
 
 group :test do
+  gem 'factory_girl_rails', '1.4.0'
   gem 'capybara', '1.1.2'
   gem 'shoulda', '3.0.1'
   gem 'mocha', '0.10.5'
+  gem 'database_cleaner'
   gem 'rb-fsevent', '0.4.3.1', :require => false
   gem 'growl', '1.0.3'
 end

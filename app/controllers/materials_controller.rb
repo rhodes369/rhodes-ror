@@ -27,6 +27,7 @@ class MaterialsController < ApplicationController
     @materials_newly_crafted_sidebar = Material.newly_crafted_without_antiques    
   end
   
+  
   # TODO: move as much of this logic into model as possible
   # materials index search filters (ajax)
   def search  
@@ -77,8 +78,7 @@ class MaterialsController < ApplicationController
             locals: { mat: mat, default_image: default_image })
       end 
     end    
-    
-    
+      
     respond_to do |format|      
       format.json { render json: { type: 'ok', status: :success, results: results }}
     end 

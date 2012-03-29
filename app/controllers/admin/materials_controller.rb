@@ -90,11 +90,10 @@ class Admin::MaterialsController < ApplicationController
   def destroy
     @material = Material.find(params[:id])
     @material.destroy
-    #flash[:notice] = 'Material Removed'
 
     respond_to do |format|
       format.html { redirect_to admin_materials_path, notice: 'Material Removed' }
-      format.json { render json: @material, status: :deleted }
+      # format.json { render json: @material, status: :deleted }
     end
   end  
   
