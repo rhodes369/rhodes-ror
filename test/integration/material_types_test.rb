@@ -19,6 +19,17 @@ class MaterialTypesTest < ActionDispatch::IntegrationTest
     end 
   end 
  
+  test "clickng update button should save title" do
+    visit edit_admin_material_type_path(@mat_type_1)
+    
+    within 'div#content-center' do
+      new_title = 'test369'
+      fill_in 'material_type_title', with: new_title
+      click_button 'update'
+      assert_equal MaterialType.where(id: @mat_type_1).first.title, new_title
+    end
+  end
+ 
   test "clicking delete button should delete mat type and all mat relations" do  
     visit edit_admin_material_type_path(@mat_type_1)
     
