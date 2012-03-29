@@ -5,7 +5,7 @@ class Material < ActiveRecord::Base
   has_many :applications, :through => :material_applications 
   has_many :material_finishes, :dependent => :destroy
   has_many :material_applications, :dependent => :destroy
-  has_one :material_type
+  has_one  :material_type
   #has_one :pdf, :dependent => :destroy
   
   attr_accessible :title, :description, :material_type_id, 
@@ -121,15 +121,25 @@ class Material < ActiveRecord::Base
   end
 
 
-
   def self.with_finish(finish_id)
     with_finish = []
-    MaterialFinish.where(finish_id: finish_id).each { |mat| with_finish << mat }
-    
+    MaterialFinish.where(finish_id: finish_id).each { |mat| with_finish << mat }    
     return with_finish
   end
 
-
+  # set all instances using this mat_type_id to nil
+  def self.reset_all_material_types(mat_type_id)
+    mat_types = Material.where(material_type_id: mat_type_id)
+    
+    if mat_types.count > 0 
+      mat_types.each do |mat|
+        mat.material_type_id = nil
+        mat.save!
+      end
+    end 
+    
+    return mat_types.count   
+  end
 
   # sort from newest to oldest with the default @ the beginning
   def sort_thumb_images
@@ -177,6 +187,7 @@ class Material < ActiveRecord::Base
       end
     end    
   end
+
   
   private 
   

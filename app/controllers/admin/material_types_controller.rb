@@ -47,5 +47,16 @@ class Admin::MaterialTypesController < ApplicationController
 
 
   def destroy
+    @material_type = MaterialType.find(params[:id])
+    return if @material_type.nil?
+    
+    mat_count = Material.reset_all_material_types(@material_type.id)
+    title = @material_type.title
+    
+    @material_type.destroy
+
+    redirect_to admin_material_types_path, 
+      notice: "Material type #{title} removed, 
+      and #{mat_count} material relations reset."    
   end
 end
