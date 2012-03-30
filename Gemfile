@@ -45,6 +45,7 @@ group :test do
   gem 'shoulda', '3.0.1'
   gem 'mocha', '0.10.5'
   gem 'turn', '0.9.4'
+  gem 'minitest'
   gem 'database_cleaner'
   gem 'rb-fsevent', '0.4.3.1', :require => false
   gem 'growl', '1.0.3'
