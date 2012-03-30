@@ -3,7 +3,9 @@ require 'test_helper'
 class MaterialTypesTest < ActionDispatch::IntegrationTest
   
   def setup
+    @valid_title = 'rainbowed chrome'
     @center_div_id = 'div#content-center'
+    
     @mat_type_1 = Factory(:material_type, id: 1, title: 'firebrick')
     @mat_type_2 = Factory(:material_type, id: 2, title: 'granite')    
 
@@ -16,9 +18,9 @@ class MaterialTypesTest < ActionDispatch::IntegrationTest
       visit admin_material_types_path
     
       within @center_div_id do 
-        fill_in 'material_type_title', with: 'bamboo'
+        fill_in 'material_type_title', with: @valid_title
         click_button 'create_material_type'
-        assert_equal MaterialType.where(title: 'bamboo').count, 1
+        assert_equal MaterialType.where(title: @valid_title).count, 1
       end
     end
     assert_equal admin_material_types_path, current_path
@@ -37,10 +39,9 @@ class MaterialTypesTest < ActionDispatch::IntegrationTest
     visit edit_admin_material_type_path(@mat_type_1)
     
     within @center_div_id do
-      new_title = 'test 12'
-      fill_in 'material_type_title', with: new_title
+      fill_in 'material_type_title', with: @valid_title
       click_button 'update_material_type'
-      assert_equal MaterialType.where(id: @mat_type_1).first.title, new_title
+      assert_equal MaterialType.where(id: @mat_type_1).first.title, @valid_title
       assert_equal admin_material_types_path, current_path
     end
   end
@@ -49,7 +50,7 @@ class MaterialTypesTest < ActionDispatch::IntegrationTest
     visit edit_admin_material_type_path(@mat_type_1)
     
     within @center_div_id do
-      click_button 'delete'  
+      click_button 'delete_material_type'  
       assert_equal MaterialType.where(title: 'firebrick').exists?, false
       assert_equal Material.where(material_type_id: 1).count, 0
       assert_equal admin_material_types_path, current_path

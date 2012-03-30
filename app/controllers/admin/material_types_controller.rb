@@ -57,7 +57,7 @@ class Admin::MaterialTypesController < ApplicationController
     @material_type.destroy
 
     redirect_to admin_material_types_path, 
-      notice: "Material type #{title} removed, 
-      and #{mat_count} material relations reset."    
+      notice: "Material type: #{title} was removed.
+      and #{mat_count} material relations were reset."    
   end
 end

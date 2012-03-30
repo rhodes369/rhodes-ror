@@ -2,8 +2,10 @@ require 'test_helper'
 
 class ApplicationsTest < ActionDispatch::IntegrationTest
 
-  def setup 
-    @center_div_id = 'div#content-center'  
+  def setup
+    @valid_title = 'rainbowed chrome' 
+    @center_div_id = 'div#content-center' 
+     
     @app_1 = Factory(:application, id: 1, title: 'interior')
     @app_2 = Factory(:application, id: 2, title: 'exterior')    
 
@@ -17,9 +19,9 @@ class ApplicationsTest < ActionDispatch::IntegrationTest
       visit admin_applications_path
     
       within @center_div_id do 
-        fill_in 'application_title', with: 'space vacume'
+        fill_in 'application_title', with: @valid_title
         click_button 'create_application'
-        assert_equal Application.where(title: 'space vacume').count, 1
+        assert_equal Application.where(title: @valid_title).count, 1
       end
     end
     assert_equal admin_applications_path, current_path
@@ -30,10 +32,9 @@ class ApplicationsTest < ActionDispatch::IntegrationTest
     visit edit_admin_application_path(@app_1)
     
     within @center_div_id do
-      new_title = 'test 369'
-      fill_in 'application_title', with: new_title
+      fill_in 'application_title', with: @valid_title
       click_button 'update_application'
-      assert_equal Application.where(id: @app_1).first.title, new_title
+      assert_equal Application.where(id: @app_1).first.title, @valid_title
       assert_equal admin_applications_path, current_path
     end
   end
@@ -52,7 +53,7 @@ class ApplicationsTest < ActionDispatch::IntegrationTest
     visit edit_admin_application_path(@app_1)
     
     within @center_div_id do
-      click_button 'delete'  
+      click_button 'delete_application'  
       assert_equal Application.where(title: 'interior').exists?, false
       assert_equal MaterialApplication.where(application_id: 1).count, 0
       assert_equal admin_applications_path, current_path

@@ -56,8 +56,7 @@ class Admin::ApplicationsController < ApplicationController
     @application.destroy
 
     redirect_to admin_applications_path, 
-      notice: "Application #{title} removed, 
-      and #{app_count} material relations reset."    
-  end
-  
+      notice: "Application: #{title} was removed 
+      and #{app_count} material relations were reset."    
+  end 
 end
