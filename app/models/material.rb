@@ -141,6 +141,7 @@ class Material < ActiveRecord::Base
     return mat_types.count   
   end
 
+
   # sort from newest to oldest with the default @ the beginning
   def sort_thumb_images
     return [] if self.images.count == 0

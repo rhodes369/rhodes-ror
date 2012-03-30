@@ -17,4 +17,4 @@
 
     = f.submit 'Update', :id => "update_application", :class => "submit"
   
-  = button_to 'Delete Application', admin_material_type_path(@application), :method => :delete, :confirm => "Are you sure you want to delete this application and all of it's associations with materials?", :class => "delete", :id => "delete_application"  
+  = button_to 'Delete Application', admin_application_path(@application), :method => :delete, :confirm => "Are you sure you want to delete this application and all of it's associations with materials?", :class => "delete", :id => "delete_application"  
