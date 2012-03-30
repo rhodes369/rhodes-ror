@@ -1,4 +1,7 @@
 class Admin::FinishesController < ApplicationController
+  
+  layout 'admin/layouts/application'
+  
   def index
     @finish = Finish.new
     @finishes = Finish.all
