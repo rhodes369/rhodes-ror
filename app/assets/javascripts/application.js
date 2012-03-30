@@ -14,6 +14,6 @@
 //= require jquery
 //= require jquery_ujs
 //= require materials.js
-//= require_tree .
+//= require_directory .
 //= require_tree ../../../vendor/assets/javascripts/.
 

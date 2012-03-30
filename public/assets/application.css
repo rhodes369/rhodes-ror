@@ -1,1 +1,1823 @@
-@font-face{font-family:"LucidaSans";src:url("../fonts/LucidaSans/lucidasansstd-webfont.eot");src:url("../fonts/LucidaSans/lucidasansstd-webfont.eot?#iefix") format("embedded-opentype"),url("../fonts/LucidaSans/lucidasansstd-webfont.woff") format("woff"),url("../fonts/LucidaSans/lucidasansstd-webfont.ttf") format("truetype"),url("../fonts/LucidaSans/lucidasansstd-webfont.svg#LucidaSansStdRoman") format("svg");font-weight:normal;font-style:normal}html,body,div,span,applet,object,iframe,h1,h2,h3,h4,h5,h6,p,blockquote,pre,a,abbr,acronym,address,big,cite,code,del,dfn,em,font,ins,kbd,q,s,samp,small,strike,strong,sub,sup,tt,var,dl,dt,dd,ol,ul,li,fieldset,form,label,legend,table,caption,tbody,tfoot,thead,tr,th,td{border:0;font-family:inherit;font-size:100%;font-style:inherit;font-weight:inherit;margin:0;outline:0;padding:0}body{background:#fff;line-height:1}ol,ul{list-style:none}table{border-collapse:separate;border-spacing:0}caption,th,td{font-weight:normal;text-align:left}blockquote:before,blockquote:after{content:""}q:before,q:after{content:""}blockquote,q{quotes:"" ""}a img{border:0}html,body{margin:0;padding:0;height:100%;background-color:#e0e0dc;font-family:"LucidaSans",Verdana,Helvetica,sans-serif}#outer{position:absolute;margin:0;padding:0;width:100%;height:auto}#header_back{position:relative;margin:0;padding:0;width:100%;height:148px;background:#fff;background:rgba(250,250,250,0.9)}#links_back{position:absolute;bottom:2px;right:0;margin:0;padding:0;width:100%;height:30px;background-color:#676767;background-color:rgba(0,0,0,0.7)}#wrapper{margin:0 auto;padding:0;width:auto;width:1200px;height:auto;background-color:#e0e0dc}h1{margin:0 0 16px;font-family:Times,serif;font-size:26px;font-weight:normal;text-decoration:none;letter-spacing:2px;color:#414042;height:28px;line-height:24px}h1 a:link,h1 a:visited{margin:0 0 16px;font-family:Times,serif;font-size:26px;font-weight:normal;text-decoration:none;letter-spacing:2px;color:#414042;height:28px;line-height:24px}h1 a:hover{margin:0 0 16px;font-family:Times,serif;font-size:26px;font-weight:normal;text-decoration:none;letter-spacing:2px;color:#414042;height:28px;line-height:24px;color:#252525}h3,p,tr{color:#414042}h2{margin:8px 0 4px 0;font-size:18px;font-weight:normal;text-transform:uppercase;color:#111}h3{margin:8px 0 4px 0;font-size:14px;font-weight:bold}h4{margin:2px 0;font-weight:bold;line-height:1.3em;font-size:0.9em;color:#252525}p{margin:2px 0 16px 0;font-size:12px;line-height:18px}a:link,a:visited{font-family:"LucidaSans",Verdana,Helvetica,sans-serif;font-size:12px;text-decoration:underline;color:#7c3113}a:hover{text-decoration:none;color:#252525}tr{font-size:12px;text-align:center}.caps{text-transform:uppercase}.bold{font-weight:bold}.italics{font-style:italic}.uppercase{text-transform:uppercase}.indent{margin-left:20px;display:block}.list .indent,.indentLinks{margin-left:12px}.clear{clear:both}.left{float:left}.right{float:right}img.left,img.right{padding:6px;border:none;background:#f0f0ee}img.left{margin:2px 20px 10px 0}img.right{margin:2px 0px 10px 20px}.hide{display:none}.top{margin-left:80px;font-style:italic;font-weight:bold}.list{margin:0 0 10px 12px;padding:0;list-style:none}.list li{color:#111;font-size:14px;line-height:22px;padding:2px 0;margin:0}.clearfix{display:inline-block}.clearfix:after{content:".";display:block;clear:both;visibility:hidden;line-height:0;height:0}html[xmlns] .clearfix{display:block}* html .clearfix{height:1%}#header{position:relative;margin:0;padding:0;height:148px;width:100%}h1#logo{position:absolute;top:26px;left:1px;margin:0;padding:0;width:223px;height:77px}#logo span{position:absolute;top:0;left:0;width:223px;height:77px;margin:0;padding:0;background:url(../images/logo-stacked-tag.png) no-repeat center transparent}#logo a{color:transparent}#content{margin:0;padding:0;width:100%}#right-back{float:left;position:relative;width:100%;overflow:hidden}#center-back{float:left;position:relative;right:548px}#center-back.TwoColumnFix{width:auto}#left-back{float:left;position:relative;right:420px;min-height:670px;background:#f0f0ee}#content-left,#content-center,#content-right{float:left;position:relative;height:auto;padding:0;overflow:hidden}#content-left{left:968px;margin:0;padding:45px 10px 20px 30px;width:185px}#content-center{left:968px;margin:0;padding:76px 30px 30px;width:330px}#content-center.TwoColumnFix{left:975px;width:915px;padding:36px 30px 30px}#content-right{left:974px;margin:35px auto 0;width:578px}@media screen and (min-width: 1445px){#left-back{min-height:922px}.privacy #wrapper,.contact #wrapper{min-height:970px}}
+/*
+ * This is a manifest file that'll be compiled into application.css, which will include all the files
+ * listed below.
+ *
+ * Any CSS and SCSS file within this directory, lib/assets/stylesheets, vendor/assets/stylesheets,
+ * or vendor/assets/stylesheets of plugins, if any, can be referenced here using a relative path.
+ *
+ * You're free to add application-wide styles to this file and they'll appear at the top of the
+ * compiled file, but it's generally better to create a new file per style scope.
+ *
+
+
+*/
+
+/* line 4, ../../../app/assets/stylesheets/admin/admin.css.sass.erb */
+input, select, label, textarea {
+  display: block;
+}
+
+/* line 8, ../../../app/assets/stylesheets/admin/admin.css.sass.erb */
+form {
+  width: 600px;
+}
+
+/* line 11, ../../../app/assets/stylesheets/admin/admin.css.sass.erb */
+label {
+  margin: 2px 0;
+  font-weight: bold;
+  line-height: 1.3em;
+  font-size: 0.9em;
+  color: #252525;
+}
+
+/* line 18, ../../../app/assets/stylesheets/admin/admin.css.sass.erb */
+select {
+  margin: 0 0 24px;
+  min-width: 180px;
+}
+/* line 21, ../../../app/assets/stylesheets/admin/admin.css.sass.erb */
+select option {
+  padding: 2px 4px;
+}
+
+/* line 28, ../../../app/assets/stylesheets/admin/admin.css.sass.erb */
+input#material_title, input#material_type_title, input#finish_title, input#application_title {
+  margin: 0 0 16px;
+  padding: 8px 12px;
+  width: 330px;
+  font-family: Times, serif;
+  font-size: 26px;
+  letter-spacing: 2px;
+  color: #999999;
+  outline: none;
+  border: 1px solid #555555;
+  box-shadow: inset 2px 4px 4px #cccccc;
+  -moz-box-shadow: inset 2px 4px 4px #cccccc;
+  -webkit-box-shadow: inset 2px 4px 4px #cccccc;
+}
+/* line 42, ../../../app/assets/stylesheets/admin/admin.css.sass.erb */
+input#material_title:focus, input#material_type_title:focus, input#finish_title:focus, input#application_title:focus {
+  box-shadow: 0px 0px 8px #414042;
+  -moz-box-shadow: 0px 0px 5.6px #414042;
+  -webkit-box-shadow: 0px 0px 8px #414042;
+  color: #414042;
+  border: 1px solid #414042;
+}
+
+/* line 48, ../../../app/assets/stylesheets/admin/admin.css.sass.erb */
+select#material_material_type_id {
+  margin: 0 0 40px;
+}
+
+/* line 52, ../../../app/assets/stylesheets/admin/admin.css.sass.erb */
+textarea#material_description, textarea#material_specifications, textarea#material_technical_data {
+  margin: 0 0 24px;
+  padding: 8px;
+  width: 330px;
+  color: #999999;
+  outline: none;
+  border: 1px solid #555555;
+  box-shadow: inset 1px 2px 3px #cccccc;
+  -moz-box-shadow: inset 1px 2px 3px #cccccc;
+  -webkit-box-shadow: inset 1px 2px 3px #cccccc;
+}
+/* line 63, ../../../app/assets/stylesheets/admin/admin.css.sass.erb */
+textarea#material_description:focus, textarea#material_specifications:focus, textarea#material_technical_data:focus {
+  color: #414042;
+  border: 1px solid #414042;
+  box-shadow: 0px 0px 8px #414042;
+  -moz-box-shadow: 0px 0px 5.6px #414042;
+  -webkit-box-shadow: 0px 0px 8px #414042;
+}
+
+/* line 69, ../../../app/assets/stylesheets/admin/admin.css.sass.erb */
+input#material_material[pdf] {
+  margin: 0 0 16px;
+  padding: 4px 8px;
+  color: #999999;
+  outline: none;
+  border: 1px solid #555555;
+  box-shadow: inset 2px 4px 4px #cccccc;
+  -moz-box-shadow: inset 2px 4px 4px #cccccc;
+  -webkit-box-shadow: inset 2px 4px 4px #cccccc;
+}
+/* line 79, ../../../app/assets/stylesheets/admin/admin.css.sass.erb */
+input#material_material[pdf]:focus {
+  box-shadow: 0px 0px 8px #414042;
+  -moz-box-shadow: 0px 0px 5.6px #414042;
+  -webkit-box-shadow: 0px 0px 8px #414042;
+  color: #414042;
+  border: 1px solid #414042;
+}
+
+/* line 86, ../../../app/assets/stylesheets/admin/admin.css.sass.erb */
+form#new_image {
+  margin: 42px 0 0 40px;
+}
+
+/* line 89, ../../../app/assets/stylesheets/admin/admin.css.sass.erb */
+.placeholder-large {
+  clear: both;
+  width: 527px;
+  height: 527px;
+  margin: 20px 0 20px 25px;
+  padding: 0;
+  text-align: center;
+  border: 1px solid #acacac;
+  background: url(/assets/placeholder-112.gif) no-repeat center white;
+}
+
+/* line 99, ../../../app/assets/stylesheets/admin/admin.css.sass.erb */
+input#image_image {
+  float: left;
+}
+
+/* line 104, ../../../app/assets/stylesheets/admin/admin.css.sass.erb */
+.thumb-window .img:hover .removeImg, .thumb-window .img:hover .default, .thumb-window .img:hover .finishesImg-wrap {
+  display: block;
+}
+/* line 107, ../../../app/assets/stylesheets/admin/admin.css.sass.erb */
+.thumb-window .img .finishesImg-wrap {
+  display: none;
+  position: absolute;
+  border-radius: 6px;
+  -moz-border-radius: 6px;
+  -webkit-border-radius: 6px;
+  background-clip: padding-box !important;
+  filter: alpha(opacity=70);
+  -moz-opacity: 0.7;
+  -khtml-opacity: 0.7;
+  -webkit-opacity: 0.7;
+  opacity: 0.7;
+  top: 0;
+  left: 0;
+  width: 95px;
+  height: 22px;
+  overflow: hidden;
+}
+/* line 117, ../../../app/assets/stylesheets/admin/admin.css.sass.erb */
+.thumb-window .img .finishesImg-wrap:hover {
+  filter: alpha(opacity=100);
+  -moz-opacity: 1;
+  -khtml-opacity: 1;
+  -webkit-opacity: 1;
+  opacity: 1;
+}
+/* line 120, ../../../app/assets/stylesheets/admin/admin.css.sass.erb */
+.thumb-window .img .finishesImg-wrap select.finishesImg {
+  position: absolute;
+  cursor: pointer;
+  top: 0;
+  left: 0;
+}
+/* line 126, ../../../app/assets/stylesheets/admin/admin.css.sass.erb */
+.thumb-window .img .finishesImg-wrap .arrow-down {
+  position: absolute;
+  top: 7px;
+  right: 6px;
+}
+/* line 131, ../../../app/assets/stylesheets/admin/admin.css.sass.erb */
+.thumb-window .img .removeImg {
+  display: none;
+  position: absolute;
+  font-size: 12px;
+  text-align: center;
+  font-weight: bold;
+  cursor: pointer;
+  top: 33px;
+  left: 0px;
+  width: 95px;
+  height: 24px;
+  line-height: 24px;
+  background: rgba(250, 0, 0, 0.3);
+  color: white;
+}
+/* line 145, ../../../app/assets/stylesheets/admin/admin.css.sass.erb */
+.thumb-window .img .removeImg:hover {
+  background-color: black;
+  background-color: rgba(0, 0, 0, 0.5);
+  color: red;
+}
+/* line 150, ../../../app/assets/stylesheets/admin/admin.css.sass.erb */
+.thumb-window .img .default {
+  display: none;
+  position: absolute;
+  cursor: pointer;
+  font-size: 12px;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  height: 24px;
+  line-height: 24px;
+  background: rgba(250, 250, 250, 0.7);
+}
+/* line 161, ../../../app/assets/stylesheets/admin/admin.css.sass.erb */
+.thumb-window .img .default:hover {
+  background: rgba(250, 250, 250, 0.9);
+}
+/* line 163, ../../../app/assets/stylesheets/admin/admin.css.sass.erb */
+.thumb-window .img .default span {
+  position: absolute;
+  top: 0;
+  left: 5px;
+}
+/* line 167, ../../../app/assets/stylesheets/admin/admin.css.sass.erb */
+.thumb-window .img .default input {
+  cursor: pointer;
+  position: absolute;
+  top: 3px;
+  right: 4px;
+}
+
+/* line 176, ../../../app/assets/stylesheets/admin/admin.css.sass.erb */
+input.submit, input.delete, input.view {
+  float: left;
+  margin: 40px 20px 0 0;
+  height: 48px;
+  width: 160px;
+  text-align: center;
+  font-size: 14px;
+  border-radius: 8px;
+  -moz-border-radius: 8px;
+  -webkit-border-radius: 8px;
+  background-clip: padding-box !important;
+}
+
+/* line 185, ../../../app/assets/stylesheets/admin/admin.css.sass.erb */
+input.submit {
+  box-shadow: inset 0px 24px rgba(255, 255, 255, 0.1);
+  -moz-box-shadow: inset 0px 24px rgba(255, 255, 255, 0.1);
+  -webkit-box-shadow: inset 0px 24px rgba(255, 255, 255, 0.1);
+  background: #235b1b;
+  background: -webkit-gradient(linear, center top, center bottom, from(#235b1b), to(#70d03b));
+  background: -moz-linear-gradient(#235b1b, #70d03b);
+  background: -o-linear-gradient(#235b1b, #70d03b);
+  cursor: pointer;
+  color: white;
+  border: 1px solid #70d03b;
+}
+/* line 246, ../../../app/assets/stylesheets/mixins.css.sass */
+input.submit:hover {
+  background: #70d03b;
+  background: -webkit-gradient(linear, center top, center bottom, from(#70d03b), to(#235b1b));
+  background: -moz-linear-gradient(#70d03b, #235b1b);
+  background: -o-linear-gradient(#70d03b, #235b1b);
+  border: 1px solid white;
+}
+/* line 249, ../../../app/assets/stylesheets/mixins.css.sass */
+input.submit:active {
+  box-shadow: inset 0px 0px rgba(255, 255, 255, 0.1);
+  -moz-box-shadow: inset 0px 0px rgba(255, 255, 255, 0.1);
+  -webkit-box-shadow: inset 0px 0px rgba(255, 255, 255, 0.1);
+  background: #15460e;
+  background: -webkit-gradient(linear, center top, center bottom, from(#15460e), to(#5bbe25));
+  background: -moz-linear-gradient(#15460e, #5bbe25);
+  background: -o-linear-gradient(#15460e, #5bbe25);
+  border: 1px solid #15460e;
+}
+
+/* line 188, ../../../app/assets/stylesheets/admin/admin.css.sass.erb */
+input.delete {
+  box-shadow: inset 0px 24px rgba(255, 255, 255, 0.1);
+  -moz-box-shadow: inset 0px 24px rgba(255, 255, 255, 0.1);
+  -webkit-box-shadow: inset 0px 24px rgba(255, 255, 255, 0.1);
+  background: #8b1812;
+  background: -webkit-gradient(linear, center top, center bottom, from(#8b1812), to(#ee6844));
+  background: -moz-linear-gradient(#8b1812, #ee6844);
+  background: -o-linear-gradient(#8b1812, #ee6844);
+  cursor: pointer;
+  color: white;
+  border: 1px solid #b22626;
+}
+/* line 260, ../../../app/assets/stylesheets/mixins.css.sass */
+input.delete:hover {
+  background: #ee6844;
+  background: -webkit-gradient(linear, center top, center bottom, from(#ee6844), to(#8b1812));
+  background: -moz-linear-gradient(#ee6844, #8b1812);
+  background: -o-linear-gradient(#ee6844, #8b1812);
+  border: 1px solid white;
+}
+/* line 263, ../../../app/assets/stylesheets/mixins.css.sass */
+input.delete:active {
+  box-shadow: inset 0px 0px rgba(255, 255, 255, 0.1);
+  -moz-box-shadow: inset 0px 0px rgba(255, 255, 255, 0.1);
+  -webkit-box-shadow: inset 0px 0px rgba(255, 255, 255, 0.1);
+}
+
+/* line 191, ../../../app/assets/stylesheets/admin/admin.css.sass.erb */
+input.view {
+  box-shadow: inset 0px 24px rgba(255, 255, 255, 0.1);
+  -moz-box-shadow: inset 0px 24px rgba(255, 255, 255, 0.1);
+  -webkit-box-shadow: inset 0px 24px rgba(255, 255, 255, 0.1);
+  background: #09233f;
+  background: -webkit-gradient(linear, center top, center bottom, from(#09233f), to(#1c4d78));
+  background: -moz-linear-gradient(#09233f, #1c4d78);
+  background: -o-linear-gradient(#09233f, #1c4d78);
+  cursor: pointer;
+  color: white;
+  border: 1px solid #1c4d78;
+  margin: 20px 20px 0 0;
+  width: 340px;
+}
+/* line 272, ../../../app/assets/stylesheets/mixins.css.sass */
+input.view:hover {
+  background: #1c4d78;
+  background: -webkit-gradient(linear, center top, center bottom, from(#1c4d78), to(#09233f));
+  background: -moz-linear-gradient(#1c4d78, #09233f);
+  background: -o-linear-gradient(#1c4d78, #09233f);
+  border: 1px solid white;
+}
+/* line 275, ../../../app/assets/stylesheets/mixins.css.sass */
+input.view:active {
+  box-shadow: inset 0px 0px rgba(255, 255, 255, 0.1);
+  -moz-box-shadow: inset 0px 0px rgba(255, 255, 255, 0.1);
+  -webkit-box-shadow: inset 0px 0px rgba(255, 255, 255, 0.1);
+}
+
+/* line 198, ../../../app/assets/stylesheets/admin/admin.css.sass.erb */
+.filters {
+  margin: 0 0 20px;
+}
+/* line 201, ../../../app/assets/stylesheets/admin/admin.css.sass.erb */
+.filters .filterWrap {
+  float: left;
+  margin: 10px 20px 20px 0;
+  padding: 4px 8px;
+  height: 18px;
+  background: #f0f0ee;
+  border-radius: 4px;
+  -moz-border-radius: 4px;
+  -webkit-border-radius: 4px;
+  border: 1px solid #676767;
+  border: 1px solid rgba(0, 0, 0, 0.7);
+  background: #f0f0ee;
+  background: -webkit-gradient(linear, center top, center bottom, from(#f0f0ee), to(#e0e0dc));
+  background: -moz-linear-gradient(#f0f0ee, #e0e0dc);
+  background: -o-linear-gradient(#f0f0ee, #e0e0dc);
+}
+/* line 217, ../../../app/assets/stylesheets/admin/admin.css.sass.erb */
+.filters .filterWrap select {
+  background: transparent;
+  -webkit-appearance: none;
+  border: none;
+  padding: 0;
+  height: 16px;
+  font-size: 12px;
+}
+/* line 224, ../../../app/assets/stylesheets/admin/admin.css.sass.erb */
+.filters .filterWrap option {
+  cursor: pointer;
+  padding: 4px;
+}
+/* line 227, ../../../app/assets/stylesheets/admin/admin.css.sass.erb */
+.filters .filterWrap option.label {
+  cursor: default;
+}
+/* line 4, ../../app/assets/stylesheets/alert.css.sass */
+#globalAlert {
+  pointer-events: auto;
+  user-select: none;
+  -webkit-user-select: none;
+  -moz-user-select: none;
+  -khtml-user-select: none;
+  -o-user-select: none;
+  cursor: pointer;
+  border-radius: 8px;
+  -moz-border-radius: 8px;
+  -webkit-border-radius: 8px;
+  background-clip: padding-box !important;
+  border-top-left-radius: 0px;
+  -moz-border-radius-topleft: 0px;
+  -webkit-border-radius-topleft: 0px;
+  border-top-right-radius: 0px;
+  -moz-border-radius-topright: 0px;
+  -webkit-border-radius-topright: 0px;
+  box-shadow: 0 0 40px #f0e207;
+  -moz-box-shadow: 0 0 40px #f0e207;
+  -webkit-box-shadow: 0 0 40px #f0e207;
+  padding: 0 50px;
+  text-align: center;
+  position: fixed;
+  top: 0px;
+  left: 50%;
+  min-height: 50px;
+  max-width: 550px;
+  z-index: 2000;
+  background-color: black;
+  background-color: rgba(0, 0, 0, 0.8);
+  border: 2px solid white;
+  border-top: none;
+}
+/* line 24, ../../app/assets/stylesheets/alert.css.sass */
+#globalAlert:hover .close {
+  background-color: black;
+  background-color: rgba(0, 0, 0, 0.7);
+  color: red;
+}
+/* line 28, ../../app/assets/stylesheets/alert.css.sass */
+#globalAlert .notice p {
+  color: #dddddd;
+}
+/* line 31, ../../app/assets/stylesheets/alert.css.sass */
+#globalAlert .alert p {
+  color: red;
+}
+/* line 34, ../../app/assets/stylesheets/alert.css.sass */
+#globalAlert p {
+  float: left;
+  font-size: 14;
+  margin: 12px 12px 12px 0;
+}
+/* line 39, ../../app/assets/stylesheets/alert.css.sass */
+#globalAlert .close {
+  font-size: 12px;
+  border-radius: 12px;
+  -moz-border-radius: 12px;
+  -webkit-border-radius: 12px;
+  background-clip: padding-box !important;
+  text-align: center;
+  font-weight: bold;
+  position: absolute;
+  width: 24px;
+  height: 24px;
+  line-height: 24px;
+  right: 12px;
+  top: 11px;
+  background: rgba(250, 0, 0, 0.5);
+  color: white;
+}
+@font-face {
+  font-family: "LucidaSans";
+  src: url("/assets/LucidaSans/lucidasansstd-webfont.eot ");
+  src: url("/assets/LucidaSans/lucidasansstd-webfont.eot?#iefix ") format("embedded-opentype"), url("/assets/LucidaSans/lucidasansstd-webfont.woff") format("woff"), url("/assets/LucidaSans/lucidasansstd-webfont.ttf") format("truetype"), url("/assets/LucidaSans/lucidasansstd-webfont.svg#LucidaSansStdRoman") format("svg");
+  font-weight: normal;
+  font-style: normal;
+}
+
+/* line 15, ../../app/assets/stylesheets/core.css.sass.erb */
+html, body, div, span, applet, object, iframe, h1, h2, h3, h4, h5, h6, p, blockquote, pre, a, abbr, acronym, address, big, cite, code, del, dfn, em, font, ins, kbd, q, s, samp, small, strike, strong, sub, sup, tt, var, dl, dt, dd, ol, ul, li, fieldset, form, label, legend, table, caption, tbody, tfoot, thead, tr, th, td {
+  border: 0;
+  font-family: inherit;
+  font-size: 100%;
+  font-style: inherit;
+  font-weight: inherit;
+  margin: 0;
+  outline: 0;
+  padding: 0;
+}
+
+/* line 29, ../../app/assets/stylesheets/core.css.sass.erb */
+body {
+  background: white;
+  line-height: 1;
+}
+
+/* line 33, ../../app/assets/stylesheets/core.css.sass.erb */
+ol, ul {
+  list-style: none;
+}
+
+/* line 36, ../../app/assets/stylesheets/core.css.sass.erb */
+table {
+  border-collapse: separate;
+  border-spacing: 0;
+}
+
+/* line 41, ../../app/assets/stylesheets/core.css.sass.erb */
+caption, th, td {
+  font-weight: normal;
+  text-align: left;
+}
+
+/* line 46, ../../app/assets/stylesheets/core.css.sass.erb */
+blockquote:before, blockquote:after {
+  content: "";
+}
+
+/* line 50, ../../app/assets/stylesheets/core.css.sass.erb */
+q:before, q:after {
+  content: "";
+}
+
+/* line 53, ../../app/assets/stylesheets/core.css.sass.erb */
+blockquote, q {
+  quotes: "" "";
+}
+
+/* line 56, ../../app/assets/stylesheets/core.css.sass.erb */
+a img {
+  border: 0;
+}
+
+/* line 63, ../../app/assets/stylesheets/core.css.sass.erb */
+html, body {
+  margin: 0;
+  padding: 0;
+  height: 100%;
+  background-color: #e0e0dc;
+  font-family: "LucidaSans", Verdana, Helvetica, sans-serif;
+}
+
+/* line 70, ../../app/assets/stylesheets/core.css.sass.erb */
+#outer {
+  position: absolute;
+  margin: 0;
+  padding: 0;
+  width: 100%;
+  height: auto;
+}
+
+/* line 77, ../../app/assets/stylesheets/core.css.sass.erb */
+#header_back {
+  position: relative;
+  margin: 0;
+  padding: 0;
+  width: 100%;
+  height: 148px;
+  background: white;
+  background: rgba(250, 250, 250, 0.9);
+}
+
+/* line 86, ../../app/assets/stylesheets/core.css.sass.erb */
+#links_back {
+  position: absolute;
+  bottom: 2px;
+  right: 0;
+  margin: 0;
+  padding: 0;
+  width: 100%;
+  height: 30px;
+  background-color: #676767;
+  background-color: rgba(0, 0, 0, 0.7);
+}
+
+/* line 97, ../../app/assets/stylesheets/core.css.sass.erb */
+#wrapper {
+  margin: 0 auto;
+  padding: 0;
+  width: auto;
+  width: 1200px;
+  height: auto;
+  background-color: #e0e0dc;
+}
+
+/* line 107, ../../app/assets/stylesheets/core.css.sass.erb */
+h1 {
+  margin: 0 0 16px;
+  font-family: Times, serif;
+  font-size: 26px;
+  font-weight: normal;
+  text-decoration: none;
+  letter-spacing: 2px;
+  color: #414042;
+  /* Fix inconsistency in Chrome */
+  height: auto;
+  line-height: 24px;
+}
+/* line 119, ../../app/assets/stylesheets/core.css.sass.erb */
+h1 a:link, h1 a:visited {
+  margin: 0 0 16px;
+  font-family: Times, serif;
+  font-size: 26px;
+  font-weight: normal;
+  text-decoration: none;
+  letter-spacing: 2px;
+  color: #414042;
+  /* Fix inconsistency in Chrome */
+  height: 28px;
+  line-height: 24px;
+}
+/* line 130, ../../app/assets/stylesheets/core.css.sass.erb */
+h1 a:hover {
+  margin: 0 0 16px;
+  font-family: Times, serif;
+  font-size: 26px;
+  font-weight: normal;
+  text-decoration: none;
+  letter-spacing: 2px;
+  color: #414042;
+  /* Fix inconsistency in Chrome */
+  height: 28px;
+  line-height: 24px;
+  color: #252525;
+}
+
+/* line 143, ../../app/assets/stylesheets/core.css.sass.erb */
+h3, p, tr {
+  color: #414042;
+}
+
+/* line 146, ../../app/assets/stylesheets/core.css.sass.erb */
+h2 {
+  margin: 8px 0 4px 0;
+  font-size: 18px;
+  font-weight: normal;
+  text-transform: uppercase;
+  color: #111111;
+}
+
+/* line 153, ../../app/assets/stylesheets/core.css.sass.erb */
+h3 {
+  margin: 8px 0 4px 0;
+  font-size: 14px;
+  font-weight: bold;
+}
+
+/* line 158, ../../app/assets/stylesheets/core.css.sass.erb */
+h4 {
+  margin: 2px 0;
+  font-weight: bold;
+  line-height: 1.3em;
+  font-size: 0.9em;
+  color: #252525;
+}
+
+/* line 165, ../../app/assets/stylesheets/core.css.sass.erb */
+p {
+  margin: 2px 0 16px 0;
+  font-size: 12px;
+  line-height: 18px;
+}
+
+/* line 171, ../../app/assets/stylesheets/core.css.sass.erb */
+a:link, a:visited {
+  font-family: "LucidaSans", Verdana, Helvetica, sans-serif;
+  font-size: 12px;
+  text-decoration: underline;
+  color: #7c3113;
+}
+/* line 176, ../../app/assets/stylesheets/core.css.sass.erb */
+a:hover {
+  text-decoration: none;
+  color: #252525;
+}
+
+/* line 180, ../../app/assets/stylesheets/core.css.sass.erb */
+tr {
+  font-size: 12px;
+  text-align: center;
+}
+
+/* line 188, ../../app/assets/stylesheets/core.css.sass.erb */
+.hidden {
+  display: none;
+}
+
+/* line 190, ../../app/assets/stylesheets/core.css.sass.erb */
+.caps {
+  text-transform: uppercase;
+}
+
+/* line 192, ../../app/assets/stylesheets/core.css.sass.erb */
+.bold {
+  font-weight: bold;
+}
+
+/* line 194, ../../app/assets/stylesheets/core.css.sass.erb */
+.italics {
+  font-style: italic;
+}
+
+/* line 196, ../../app/assets/stylesheets/core.css.sass.erb */
+.uppercase {
+  text-transform: uppercase;
+}
+
+/* line 198, ../../app/assets/stylesheets/core.css.sass.erb */
+.indent {
+  margin-left: 20px;
+  display: block;
+}
+
+/* line 201, ../../app/assets/stylesheets/core.css.sass.erb */
+.list .indent, .indentLinks {
+  margin-left: 12px;
+}
+
+/* line 203, ../../app/assets/stylesheets/core.css.sass.erb */
+.clear {
+  clear: both;
+}
+
+/* line 205, ../../app/assets/stylesheets/core.css.sass.erb */
+.left {
+  float: left;
+}
+
+/* line 207, ../../app/assets/stylesheets/core.css.sass.erb */
+.right {
+  float: right;
+}
+
+/* line 211, ../../app/assets/stylesheets/core.css.sass.erb */
+img.left, img.right {
+  padding: 6px;
+  border: none;
+  background: #f0f0ee;
+}
+/* line 215, ../../app/assets/stylesheets/core.css.sass.erb */
+img.left {
+  margin: 2px 20px 10px 0;
+}
+/* line 217, ../../app/assets/stylesheets/core.css.sass.erb */
+img.right {
+  margin: 2px 0px 10px 20px;
+}
+
+/* line 220, ../../app/assets/stylesheets/core.css.sass.erb */
+.hide {
+  display: none;
+}
+
+/* line 222, ../../app/assets/stylesheets/core.css.sass.erb */
+.top {
+  margin-left: 80px;
+  font-style: italic;
+  font-weight: bold;
+}
+
+/* line 226, ../../app/assets/stylesheets/core.css.sass.erb */
+.list {
+  margin: 0 0 10px 12px;
+  padding: 0;
+  list-style: none;
+}
+/* line 230, ../../app/assets/stylesheets/core.css.sass.erb */
+.list li {
+  color: #111111;
+  font-size: 14px;
+  line-height: 22px;
+  padding: 2px 0;
+  margin: 0;
+}
+
+/* line 238, ../../app/assets/stylesheets/core.css.sass.erb */
+.arrow-right {
+  border-style: solid;
+  height: 0;
+  width: 0;
+  border-color: transparent transparent transparent #636363;
+  border-width: 6px;
+}
+
+/* line 245, ../../app/assets/stylesheets/core.css.sass.erb */
+.arrow-down {
+  border-style: solid;
+  height: 0;
+  width: 0;
+  border-color: #636363 transparent transparent;
+  border-width: 6px 6px 0;
+}
+
+/* line 256, ../../app/assets/stylesheets/core.css.sass.erb */
+.clearfix {
+  display: inline-block;
+}
+/* line 257, ../../app/assets/stylesheets/core.css.sass.erb */
+.clearfix:after {
+  content: ".";
+  display: block;
+  clear: both;
+  visibility: hidden;
+  line-height: 0;
+  height: 0;
+}
+
+/* line 266, ../../app/assets/stylesheets/core.css.sass.erb */
+html[xmlns] .clearfix {
+  display: block;
+}
+
+/* line 269, ../../app/assets/stylesheets/core.css.sass.erb */
+* html .clearfix {
+  height: 1%;
+}
+
+/* line 277, ../../app/assets/stylesheets/core.css.sass.erb */
+#header {
+  position: relative;
+  margin: 0;
+  padding: 0;
+  height: 148px;
+  width: 100%;
+}
+
+/* line 285, ../../app/assets/stylesheets/core.css.sass.erb */
+h1#logo {
+  position: absolute;
+  top: 26px;
+  left: 1px;
+  margin: 0;
+  padding: 0;
+  width: 223px;
+  height: 77px;
+}
+
+/* line 295, ../../app/assets/stylesheets/core.css.sass.erb */
+#logo span {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 223px;
+  height: 77px;
+  margin: 0;
+  padding: 0;
+  background: url(/assets/logo-stacked-tag.png) no-repeat center transparent;
+}
+/* line 304, ../../app/assets/stylesheets/core.css.sass.erb */
+#logo a {
+  color: transparent;
+}
+
+/* line 312, ../../app/assets/stylesheets/core.css.sass.erb */
+#content {
+  margin: 0;
+  padding: 0;
+  width: 100%;
+}
+
+/* line 318, ../../app/assets/stylesheets/core.css.sass.erb */
+#right-back {
+  float: left;
+  position: relative;
+  width: 100%;
+  overflow: hidden;
+}
+
+/* line 324, ../../app/assets/stylesheets/core.css.sass.erb */
+#center-back {
+  float: left;
+  position: relative;
+  right: 548px;
+}
+/* line 328, ../../app/assets/stylesheets/core.css.sass.erb */
+#center-back.TwoColumnFix {
+  width: auto;
+}
+
+/* line 331, ../../app/assets/stylesheets/core.css.sass.erb */
+#left-back {
+  float: left;
+  position: relative;
+  right: 420px;
+  min-height: 670px;
+  background: #f0f0ee;
+}
+
+/* line 338, ../../app/assets/stylesheets/core.css.sass.erb */
+#content-left, #content-center, #content-right {
+  float: left;
+  position: relative;
+  height: auto;
+  padding: 0;
+  overflow: hidden;
+}
+
+/* line 345, ../../app/assets/stylesheets/core.css.sass.erb */
+#content-left {
+  left: 968px;
+  margin: 0;
+  padding: 45px 10px 20px 30px;
+  width: 185px;
+}
+
+/* line 351, ../../app/assets/stylesheets/core.css.sass.erb */
+#content-center {
+  left: 968px;
+  margin: 0;
+  padding: 76px 30px 30px;
+  width: 330px;
+}
+/* line 356, ../../app/assets/stylesheets/core.css.sass.erb */
+#content-center.TwoColumnFix {
+  left: 975px;
+  width: 915px;
+  padding: 36px 30px 30px;
+}
+
+/* line 361, ../../app/assets/stylesheets/core.css.sass.erb */
+#content-right {
+  left: 974px;
+  margin: 35px auto 0;
+  width: 578px;
+}
+
+/* line 370, ../../app/assets/stylesheets/core.css.sass.erb */
+#content-left h1, #content-center h1 {
+  margin: 0 0 0 0px;
+}
+
+/* line 373, ../../app/assets/stylesheets/core.css.sass.erb */
+#content-left h2, #content-center h2 {
+  margin: 4px 0 16px 0px;
+}
+
+/* line 376, ../../app/assets/stylesheets/core.css.sass.erb */
+#content-left h3, #content-center h3, .description h3 {
+  margin: 14px 0 8px 0px;
+  padding: 0;
+  font-weight: bold;
+  font-size: 0.9em;
+  text-transform: uppercase;
+  color: #252525;
+}
+
+/* line 384, ../../app/assets/stylesheets/core.css.sass.erb */
+#content-right h4 {
+  margin: 0 0 2px 5px;
+  padding: 0;
+}
+
+/* line 388, ../../app/assets/stylesheets/core.css.sass.erb */
+#content-left p, #content-center p {
+  margin: 2px 0 16px 0px;
+  padding: 0;
+  color: #252525;
+  line-height: 1.3em;
+  font-size: 0.9em;
+}
+
+/* line 395, ../../app/assets/stylesheets/core.css.sass.erb */
+.description p {
+  margin: 2px 0 16px 25px;
+  padding: 0;
+  font-size: 0.9em;
+  color: #252525;
+  line-height: 1.3em;
+}
+
+/* line 402, ../../app/assets/stylesheets/core.css.sass.erb */
+.details {
+  margin: 20px 0 0 0;
+}
+
+/* line 405, ../../app/assets/stylesheets/core.css.sass.erb */
+#content-center .details p {
+  margin: 2px 0 10px 0;
+}
+
+/* line 408, ../../app/assets/stylesheets/core.css.sass.erb */
+.description {
+  clear: both;
+  margin: 24px 0 0;
+  height: 94px;
+  overflow: hidden;
+}
+
+/* line 415, ../../app/assets/stylesheets/core.css.sass.erb */
+#content-center p.readMore {
+  margin: 0;
+  padding: 16px 0;
+  cursor: pointer;
+  display: block;
+  text-decoration: underline;
+  color: #7c3113;
+  background-color: #e0e0dc;
+}
+/* line 423, ../../app/assets/stylesheets/core.css.sass.erb */
+#content-center p.readMore:hover {
+  text-decoration: none;
+  color: #252525;
+}
+/* line 426, ../../app/assets/stylesheets/core.css.sass.erb */
+#content-center a {
+  line-height: 1.3em;
+  font-size: 1em;
+}
+/* line 429, ../../app/assets/stylesheets/core.css.sass.erb */
+#content-center .thumbs a {
+  font-size: 0.9em;
+}
+
+/* line 437, ../../app/assets/stylesheets/core.css.sass.erb */
+.nolist {
+  color: #979e7d;
+}
+
+/* line 440, ../../app/assets/stylesheets/core.css.sass.erb */
+.current {
+  color: #252525;
+  cursor: default;
+}
+/* line 443, ../../app/assets/stylesheets/core.css.sass.erb */
+.current a {
+  color: #252525;
+  cursor: default;
+}
+
+/* line 447, ../../app/assets/stylesheets/core.css.sass.erb */
+#content-left a.newMat {
+  position: relative;
+  font-size: 14px;
+  text-decoration: none;
+  cursor: pointer;
+  display: block;
+  padding: 2px 0;
+  line-height: 16px;
+}
+/* line 455, ../../app/assets/stylesheets/core.css.sass.erb */
+#content-left a.newMat:hover {
+  text-decoration: none;
+  color: #252525;
+}
+
+/* line 459, ../../app/assets/stylesheets/core.css.sass.erb */
+#content-left ul {
+  list-style: none;
+  margin: 12px 0 40px;
+  padding: 0;
+  width: auto;
+  height: auto;
+}
+/* line 465, ../../app/assets/stylesheets/core.css.sass.erb */
+#content-left ul li {
+  font-size: 14px;
+  padding: 0;
+  margin: 6px 0;
+}
+/* line 469, ../../app/assets/stylesheets/core.css.sass.erb */
+#content-left ul li a {
+  position: relative;
+  font-size: 14px;
+  text-decoration: none;
+  cursor: pointer;
+  display: block;
+  padding: 2px 0;
+  line-height: 16px;
+}
+/* line 477, ../../app/assets/stylesheets/core.css.sass.erb */
+#content-left ul li a:hover {
+  text-decoration: none;
+  color: #252525;
+}
+/* line 480, ../../app/assets/stylesheets/core.css.sass.erb */
+#content-left ul li a span.arrowTxt {
+  padding: 2px 0 2px 18px;
+}
+/* line 482, ../../app/assets/stylesheets/core.css.sass.erb */
+#content-left ul li a.nolist {
+  font-size: 14px;
+  text-decoration: none;
+  border-bottom: 1px solid #979e7d;
+  color: #7c3113;
+}
+/* line 488, ../../app/assets/stylesheets/core.css.sass.erb */
+#content-left ul ul {
+  list-style: none;
+  margin: 0 0 0 12px;
+  padding: 0;
+}
+/* line 493, ../../app/assets/stylesheets/core.css.sass.erb */
+#content-left ul ul li a {
+  padding-left: 20px;
+  text-indent: -12px;
+}
+
+/* line 498, ../../app/assets/stylesheets/core.css.sass.erb */
+.expanded .arrow {
+  position: absolute;
+  top: 6px;
+  border-style: solid;
+  height: 0;
+  width: 0;
+  border-color: transparent transparent transparent #636363;
+  border-width: 6px;
+}
+
+/* line 507, ../../app/assets/stylesheets/core.css.sass.erb */
+.collapsed .arrow, .expanded:hover .arrow {
+  position: absolute;
+  top: 8px;
+  border-style: solid;
+  height: 0;
+  width: 0;
+  border-color: #636363 transparent transparent;
+  border-width: 6px 6px 0;
+}
+
+/* line 526, ../../app/assets/stylesheets/core.css.sass.erb */
+.thumbs {
+  list-style: none;
+  margin: 26px 0 0;
+  padding: 0;
+  width: auto;
+  height: auto;
+}
+
+/* line 533, ../../app/assets/stylesheets/core.css.sass.erb */
+#content-center h3.stoneHeaders {
+  margin: 30px 0 22px;
+}
+
+/* line 537, ../../app/assets/stylesheets/core.css.sass.erb */
+.thumbs li {
+  float: left;
+  margin: 0 28px 28px 0;
+  padding: 0;
+  width: auto;
+  height: 210px;
+}
+/* line 543, ../../app/assets/stylesheets/core.css.sass.erb */
+.thumbs li:hover {
+  box-shadow: 0 0 10px #888888;
+  -moz-box-shadow: 0 0 10px #888888;
+  -webkit-box-shadow: 0 0 10px #888888;
+  -o-box-shadow: 0 0 10px #888888;
+}
+/* line 548, ../../app/assets/stylesheets/core.css.sass.erb */
+.thumbs a {
+  display: block;
+  margin: 0;
+  padding: 4px;
+  width: 144px;
+  height: 202px;
+  text-decoration: none;
+  background: #f0f0ee;
+}
+/* line 556, ../../app/assets/stylesheets/core.css.sass.erb */
+.thumbs a:hover {
+  text-decoration: none;
+  background: #686868;
+  color: white;
+}
+/* line 560, ../../app/assets/stylesheets/core.css.sass.erb */
+.thumbs a:hover span {
+  text-decoration: none;
+  background: #686868;
+  color: white;
+}
+/* line 564, ../../app/assets/stylesheets/core.css.sass.erb */
+.thumbs .material {
+  display: block;
+  margin: 10px 0 0 10px;
+}
+/* line 567, ../../app/assets/stylesheets/core.css.sass.erb */
+.thumbs .type {
+  display: block;
+  margin-left: 10px;
+  color: #252525;
+}
+/* line 571, ../../app/assets/stylesheets/core.css.sass.erb */
+.thumbs img {
+  width: 144px;
+  height: 144px;
+  border: none;
+  display: block;
+}
+
+/* line 578, ../../app/assets/stylesheets/core.css.sass.erb */
+#content-center .thumbs .inline {
+  display: inline;
+  margin: 0;
+}
+
+/* line 596, ../../app/assets/stylesheets/core.css.sass.erb */
+.press .thumbs li {
+  height: 328px;
+}
+/* line 598, ../../app/assets/stylesheets/core.css.sass.erb */
+.press .thumbs a {
+  padding: 14px;
+  width: 180px;
+  height: 300px;
+}
+/* line 602, ../../app/assets/stylesheets/core.css.sass.erb */
+.press .thumbs .material {
+  text-transform: uppercase;
+}
+/* line 604, ../../app/assets/stylesheets/core.css.sass.erb */
+.press .thumbs .type {
+  margin-top: 6px;
+}
+/* line 606, ../../app/assets/stylesheets/core.css.sass.erb */
+.press .thumbs img {
+  width: 180px;
+  height: 230px;
+}
+/* line 609, ../../app/assets/stylesheets/core.css.sass.erb */
+.press #content-center .thumbs a {
+  font-size: 0.8em;
+}
+
+/* line 612, ../../app/assets/stylesheets/core.css.sass.erb */
+#quote {
+  width: 680px;
+  margin: 0 0 40px;
+}
+/* line 615, ../../app/assets/stylesheets/core.css.sass.erb */
+#quote h2 {
+  color: black;
+  font-size: 24px;
+}
+/* line 618, ../../app/assets/stylesheets/core.css.sass.erb */
+#quote p {
+  margin: 0;
+  font-size: 18px;
+}
+/* line 621, ../../app/assets/stylesheets/core.css.sass.erb */
+#quote .quote-marks {
+  font-size: 36px;
+  color: #7c3113;
+  position: relative;
+  top: 6px;
+}
+
+/* line 636, ../../app/assets/stylesheets/core.css.sass.erb */
+.contact #wrapper {
+  min-height: 900px;
+}
+
+/* line 639, ../../app/assets/stylesheets/core.css.sass.erb */
+#map {
+  position: relative;
+  margin: 10px auto 0;
+  padding: 0;
+  width: 1019px;
+  height: 498px;
+  background: url("../images/contact_map.gif") no-repeat center 0px transparent;
+}
+
+/* line 647, ../../app/assets/stylesheets/core.css.sass.erb */
+#contact-back {
+  position: absolute;
+  top: 660px;
+  left: 0;
+  min-width: 1200px;
+  width: 100%;
+  height: 196px;
+  background: white;
+  background: rgba(250, 250, 250, 0.5);
+}
+
+/* line 657, ../../app/assets/stylesheets/core.css.sass.erb */
+#seattle, #australia, #china {
+  position: absolute;
+  cursor: pointer;
+  display: block;
+  text-decoration: none;
+  margin: 0;
+  padding: 0;
+  width: 70px;
+  height: 70px;
+  background: transparent;
+  border-radius: 35px;
+  -moz-border-radius: 35px;
+  -webkit-border-radius: 35px;
+  z-index: 100;
+  transition-duration: 400ms;
+  -moz-transition-duration: 400ms;
+  -webkit-transition-duration: 400ms;
+  -o-transition-duration: 400ms;
+  transition-property: background;
+  -moz-transition-property: background;
+  -webkit-transition-property: background;
+  -o-transition-property: background;
+  transition-timing-function: ease;
+  -moz-transition-timing-function: ease;
+  -webkit-transition-timing-function: ease;
+  -o-transition-timing-function: ease;
+}
+
+/* line 684, ../../app/assets/stylesheets/core.css.sass.erb */
+#seattle:hover, #australia:hover, #china:hover {
+  background: #e6d1c6;
+  background: rgba(134, 67, 30, 0.2);
+}
+
+/* line 688, ../../app/assets/stylesheets/core.css.sass.erb */
+#seattle {
+  top: 138px;
+  left: 97px;
+}
+
+/* line 692, ../../app/assets/stylesheets/core.css.sass.erb */
+#china {
+  top: 219px;
+  left: 771px;
+}
+
+/* line 696, ../../app/assets/stylesheets/core.css.sass.erb */
+#australia {
+  top: 392px;
+  left: 864px;
+}
+
+/* line 700, ../../app/assets/stylesheets/core.css.sass.erb */
+#contact {
+  position: absolute;
+  top: 660px;
+  margin: 20px auto 0;
+  width: 1200px;
+}
+
+/* line 706, ../../app/assets/stylesheets/core.css.sass.erb */
+#general {
+  position: absolute;
+  top: -76px;
+  margin: 0 0 0 75px;
+}
+
+/* line 711, ../../app/assets/stylesheets/core.css.sass.erb */
+#contact a {
+  font-size: 12px;
+}
+
+/* line 714, ../../app/assets/stylesheets/core.css.sass.erb */
+.location {
+  float: left;
+  margin: 0 0 0 75px;
+  padding: 0;
+  width: 285px;
+}
+
+/* line 720, ../../app/assets/stylesheets/core.css.sass.erb */
+#contact p {
+  font-size: 12px;
+  line-height: 16px;
+  margin: 2px 0 6px;
+  color: #222222;
+}
+
+/* line 735, ../../app/assets/stylesheets/core.css.sass.erb */
+.company {
+  margin: 54px 0;
+  padding: 0;
+  width: 600px;
+}
+/* line 739, ../../app/assets/stylesheets/core.css.sass.erb */
+.company img.left {
+  margin: 0 30px 30px 0;
+}
+
+/* line 742, ../../app/assets/stylesheets/core.css.sass.erb */
+#content-center .company p {
+  line-height: 1.5em;
+  font-size: 0.9em;
+}
+
+/* line 746, ../../app/assets/stylesheets/core.css.sass.erb */
+.bioThumb {
+  float: left;
+  margin: 0 40px 20px 0;
+  padding: 10px;
+  background: #f0f0ee;
+}
+/* line 751, ../../app/assets/stylesheets/core.css.sass.erb */
+.bioThumb img {
+  border: none;
+}
+/* line 753, ../../app/assets/stylesheets/core.css.sass.erb */
+.bioThumb h4 {
+  margin: 6px 0 0;
+  font-weight: bold;
+  text-transform: uppercase;
+  font-size: 12px;
+  line-height: 18px;
+  color: #252525;
+}
+
+/* line 763, ../../app/assets/stylesheets/core.css.sass.erb */
+.howWeWork .company {
+  margin: 0;
+}
+/* line 765, ../../app/assets/stylesheets/core.css.sass.erb */
+.howWeWork #left-back {
+  right: 359px;
+}
+/* line 767, ../../app/assets/stylesheets/core.css.sass.erb */
+.howWeWork #center-back {
+  right: 548px;
+}
+/* line 769, ../../app/assets/stylesheets/core.css.sass.erb */
+.howWeWork #content-left {
+  left: 907px;
+}
+/* line 771, ../../app/assets/stylesheets/core.css.sass.erb */
+.howWeWork #content-center {
+  left: 907px;
+  width: 600px;
+}
+/* line 774, ../../app/assets/stylesheets/core.css.sass.erb */
+.howWeWork #content-right {
+  left: 950px;
+  width: 246px;
+}
+
+/* line 787, ../../app/assets/stylesheets/core.css.sass.erb */
+.privacy #wrapper {
+  background: #f0f0ee;
+  min-height: 670px;
+}
+/* line 790, ../../app/assets/stylesheets/core.css.sass.erb */
+.privacy #content {
+  margin: 100px 0 0 100px;
+}
+/* line 792, ../../app/assets/stylesheets/core.css.sass.erb */
+.privacy #content p {
+  width: 620px;
+  font-size: 16px;
+  line-height: 24px;
+}
+
+@media screen and (min-width: 1445px) {
+  /* line 810, ../../app/assets/stylesheets/core.css.sass.erb */
+  #left-back {
+    min-height: 922px;
+  }
+
+  /* line 812, ../../app/assets/stylesheets/core.css.sass.erb */
+  .privacy #wrapper, .contact #wrapper {
+    min-height: 970px;
+  }
+}
+/* line 4, ../../app/assets/stylesheets/footer.sass */
+#footer {
+  z-index: 99;
+  position: relative;
+  clear: both;
+  margin: 0;
+  padding: 0;
+  width: 100%;
+  min-width: 1200px;
+  background-color: #2a3332;
+  background-color: rgba(0, 0, 0, 0.1);
+}
+/* line 14, ../../app/assets/stylesheets/footer.sass */
+#footer #footerWrap {
+  margin: 0 auto;
+  padding: 0;
+  width: 1200px;
+}
+/* line 18, ../../app/assets/stylesheets/footer.sass */
+#footer .left {
+  margin: 0;
+  padding: 10px;
+}
+/* line 21, ../../app/assets/stylesheets/footer.sass */
+#footer p {
+  margin: 0;
+  padding: 0;
+  font-size: 0.8em;
+  color: #252525;
+}
+/* line 27, ../../app/assets/stylesheets/footer.sass */
+#footer a:link, #footer a:visited {
+  text-decoration: none;
+  color: #7c3113;
+}
+/* line 30, ../../app/assets/stylesheets/footer.sass */
+#footer a:hover {
+  text-decoration: underline;
+  color: #252525;
+}
+/* line 34, ../../app/assets/stylesheets/footer.sass */
+#footer p.address {
+  font-size: 0.8em;
+  font-weight: bold;
+}
+/* line 37, ../../app/assets/stylesheets/footer.sass */
+#footer p.copyright {
+  font-size: 0.7em;
+}
+/* line 41, ../../app/assets/stylesheets/footer.sass */
+#footer a.credit {
+  margin: 6px 0;
+  padding: 0;
+  display: block;
+  color: #666666;
+  text-shadow: 1px 1px 0 #dddddd;
+  text-decoration: none;
+  transition-duration: 400ms;
+  -moz-transition-duration: 400ms;
+  -webkit-transition-duration: 400ms;
+  -o-transition-duration: 400ms;
+  transition-property: color;
+  -moz-transition-property: color;
+  -webkit-transition-property: color;
+  -o-transition-property: color;
+  transition-timing-function: ease;
+  -moz-transition-timing-function: ease;
+  -webkit-transition-timing-function: ease;
+  -o-transition-timing-function: ease;
+}
+/* line 60, ../../app/assets/stylesheets/footer.sass */
+#footer a.credit:hover {
+  text-decoration: none;
+  background-position: center 0;
+  color: #111111;
+  text-shadow: 1px 1px 0 #dddddd;
+}
+/* line 65, ../../app/assets/stylesheets/footer.sass */
+#footer a.credit .creditTxt {
+  font-size: 11px;
+}
+/* line 67, ../../app/assets/stylesheets/footer.sass */
+#footer a.credit .name {
+  color: #7c3113;
+}
+/* line 69, ../../app/assets/stylesheets/footer.sass */
+#footer a.credit:hover .name {
+  font-style: italic;
+}
+/* line 3, ../../app/assets/stylesheets/images.css.sass.erb */
+a:active {
+  outline: none;
+}
+
+/* line 6, ../../app/assets/stylesheets/images.css.sass.erb */
+:focus {
+  -moz-outline-style: none;
+}
+
+/* line 10, ../../app/assets/stylesheets/images.css.sass.erb */
+.thumb-window {
+  position: relative;
+  float: left;
+  overflow: hidden;
+  width: 530px;
+  height: 116px;
+  margin: 0 0 0 4px;
+}
+/* line 17, ../../app/assets/stylesheets/images.css.sass.erb */
+.thumb-window.noscroll {
+  margin: 0 0 0 25px;
+}
+/* line 19, ../../app/assets/stylesheets/images.css.sass.erb */
+.thumb-window .gallery-thumbs {
+  position: absolute;
+  clear: both;
+}
+/* line 22, ../../app/assets/stylesheets/images.css.sass.erb */
+.thumb-window .gallery-thumbs form {
+  width: auto;
+}
+
+/* line 26, ../../app/assets/stylesheets/images.css.sass.erb */
+.thumb-window .img {
+  position: relative;
+  display: inline-block;
+  float: left;
+  margin: 10px 10px 10px 0;
+  padding: 0;
+  border: 1px solid #afafae;
+  width: 95px;
+  height: 95px;
+  filter: alpha(opacity=50);
+  -moz-opacity: 0.5;
+  -khtml-opacity: 0.5;
+  -webkit-opacity: 0.5;
+  opacity: 0.5;
+}
+/* line 40, ../../app/assets/stylesheets/images.css.sass.erb */
+.thumb-window .img:hover {
+  filter: alpha(opacity=100);
+  -moz-opacity: 1;
+  -khtml-opacity: 1;
+  -webkit-opacity: 1;
+  opacity: 1;
+}
+/* line 46, ../../app/assets/stylesheets/images.css.sass.erb */
+.thumb-window .img:hover .thumbLabel {
+  filter: alpha(opacity=100);
+  -moz-opacity: 1;
+  -khtml-opacity: 1;
+  -webkit-opacity: 1;
+  opacity: 1;
+}
+
+/* line 53, ../../app/assets/stylesheets/images.css.sass.erb */
+.gallery-thumbs img {
+  border: none;
+  width: 95px;
+  height: 95px;
+}
+
+/* line 61, ../../app/assets/stylesheets/images.css.sass.erb */
+a.prev {
+  clear: both;
+  width: 22px;
+  height: 63px;
+  float: left;
+  margin: 28px 0px 0;
+  cursor: pointer;
+}
+/* line 68, ../../app/assets/stylesheets/images.css.sass.erb */
+a.next {
+  width: 22px;
+  height: 63px;
+  float: left;
+  margin: 28px 0px 0;
+  cursor: pointer;
+  background-image: url(/assets/next.gif);
+}
+/* line 75, ../../app/assets/stylesheets/images.css.sass.erb */
+a.next:hover {
+  background-image: url(/assets/nextO.gif);
+}
+/* line 77, ../../app/assets/stylesheets/images.css.sass.erb */
+a.prev {
+  background-image: url(/assets/prev.gif);
+}
+/* line 79, ../../app/assets/stylesheets/images.css.sass.erb */
+a.prev:hover {
+  background-image: url(/assets/prevO.gif);
+}
+/* line 81, ../../app/assets/stylesheets/images.css.sass.erb */
+a.disabled {
+  visibility: hidden !important;
+}
+
+/* line 85, ../../app/assets/stylesheets/images.css.sass.erb */
+#enlarge_container {
+  clear: both;
+  width: 527px;
+  height: 527px;
+  margin: 0 0 20px 25px;
+  padding: 0;
+  text-align: center;
+  overflow: hidden;
+}
+/* line 93, ../../app/assets/stylesheets/images.css.sass.erb */
+#enlarge_container img {
+  margin: 0;
+  border: 1px solid #acacac;
+}
+/* line 6, ../../app/assets/stylesheets/loading.sass.erb */
+#loading {
+  display: none;
+  position: fixed;
+  border-radius: 8px;
+  -moz-border-radius: 8px;
+  -webkit-border-radius: 8px;
+  background-clip: padding-box !important;
+  padding: 20px 50px;
+  text-align: center;
+  position: fixed;
+  top: 30%;
+  left: 42%;
+  z-index: 2000;
+  background-color: black;
+  background-color: rgba(0, 0, 0, 0.8);
+  box-shadow: 0 0 20px black;
+  -moz-box-shadow: 0 0 14px black;
+  -webkit-box-shadow: 0 0 20px black;
+}
+/* line 21, ../../app/assets/stylesheets/loading.sass.erb */
+#loading .spinner {
+  float: left;
+  margin: 0 30px 0 0;
+  width: 32px;
+  height: 32px;
+  background: no-repeat center center transparent url(/assets/spinner-grey-32.gif);
+}
+/* line 28, ../../app/assets/stylesheets/loading.sass.erb */
+#loading span {
+  font-size: 28px;
+  color: #e0e0dc;
+}
+/* line 7, ../../app/assets/stylesheets/nav_main.sass */
+#news {
+  position: absolute;
+  bottom: 40px;
+  right: 10px;
+  margin: 0 4px 0 0;
+  height: auto;
+  text-align: right;
+  color: #636363;
+}
+/* line 16, ../../app/assets/stylesheets/nav_main.sass */
+#news a:link, #news a:visited {
+  font-size: 0.9em;
+  margin: 0;
+  padding: 4px 12px;
+  color: #7c3113;
+  text-decoration: none;
+}
+/* line 22, ../../app/assets/stylesheets/nav_main.sass */
+#news a:hover, #news a.current {
+  color: #636363;
+  text-decoration: none;
+}
+
+/* line 28, ../../app/assets/stylesheets/nav_main.sass */
+ul#links {
+  position: absolute;
+  bottom: 2px;
+  right: 0;
+  margin: 0 7px 0 0;
+  padding: 0;
+  width: 100%;
+  height: 30px;
+  text-align: right;
+  list-style: none;
+}
+/* line 38, ../../app/assets/stylesheets/nav_main.sass */
+ul#links li {
+  text-align: center;
+  float: right;
+  position: relative;
+  padding: 0;
+  width: auto;
+  line-height: 29px;
+  background: transparent;
+}
+/* line 46, ../../app/assets/stylesheets/nav_main.sass */
+ul#links li.current, ul#links li.nolink {
+  line-height: 18px;
+}
+/* line 49, ../../app/assets/stylesheets/nav_main.sass */
+ul#links li a:link, ul#links li a:visited {
+  font-size: 14px;
+  color: #e5e4e5;
+  text-transform: uppercase;
+  text-decoration: none;
+  width: auto;
+  padding: 6px 20px;
+  height: 18px;
+  background: transparent;
+}
+/* line 58, ../../app/assets/stylesheets/nav_main.sass */
+ul#links li.current, ul#links li.nolink {
+  font-size: 14px;
+  color: #e5e4e5;
+  text-transform: uppercase;
+  text-decoration: none;
+  width: auto;
+  padding: 6px 20px;
+  height: 18px;
+  background: transparent;
+}
+/* line 67, ../../app/assets/stylesheets/nav_main.sass */
+ul#links li:hover, ul#links li a:hover {
+  color: #222222;
+  background-color: #cccccc;
+}
+/* line 71, ../../app/assets/stylesheets/nav_main.sass */
+ul#links a:link.current, ul#links a:visited.current {
+  color: #222222;
+  background-color: #cccccc;
+}
+/* line 75, ../../app/assets/stylesheets/nav_main.sass */
+ul#links li.current, ul#links li.nolink:hover {
+  color: #222222;
+  background-color: #cccccc;
+}
+/* line 78, ../../app/assets/stylesheets/nav_main.sass */
+ul#links li:hover > a {
+  color: #222222;
+}
+/* line 80, ../../app/assets/stylesheets/nav_main.sass */
+ul#links li ul {
+  display: none;
+  list-style: none;
+  position: absolute;
+  top: 1em;
+  left: 0;
+  width: 150px;
+  margin: 0;
+  padding: 0;
+  z-index: 100;
+  background-color: #333333;
+  -moz-box-shadow: 0px 4px 8px #222222;
+  -webkit-box-shadow: 0px 4px 8px #222222;
+  box-shadow: 0px 4px 8px #222222;
+  -ms-filter: "progid:DXImageTransform.Microsoft.Shadow(Strength=8, Direction=90, Color='#222')";
+  filter: progid:DXImageTransform.Microsoft.Shadow(Strength=8, Direction=90, Color='#222');
+}
+/* line 98, ../../app/assets/stylesheets/nav_main.sass */
+ul#links li > ul {
+  top: 30px;
+  left: 0;
+}
+/* line 101, ../../app/assets/stylesheets/nav_main.sass */
+ul#links li:hover ul, ul#links li.over ul {
+  display: block;
+}
+/* line 103, ../../app/assets/stylesheets/nav_main.sass */
+ul#links li ul li {
+  margin: 0;
+  padding: 0;
+  text-align: left;
+  float: none;
+}
+/* line 109, ../../app/assets/stylesheets/nav_main.sass */
+ul#links ul li a:link, ul#links ul li a:visited {
+  width: 110px;
+  display: inline-block;
+  padding: 4px 20px;
+}
+/* line 113, ../../app/assets/stylesheets/nav_main.sass */
+ul#links ul li a:hover {
+  color: #222222;
+  background-color: #cccccc;
+}
+/* line 5, ../../app/assets/stylesheets/show.css.sass.erb */
+#finish {
+  margin: 0 0 16px;
+  padding: 0;
+  height: 38px;
+  font-size: 0.9em;
+  color: #252525;
+  line-height: 1.3em;
+}
