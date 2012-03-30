@@ -34,7 +34,7 @@ gem 'jquery-rails', '>= 2.0.1'
 # gem 'capistrano'
 
 # To use debugger
-gem 'ruby-debug19' #, :require => 'ruby-debug'
+gem 'ruby-debug19' #, :require => 'ruby-debug' # the require breaks on my local -drJ
 
 group :development, :test do
 end
@@ -44,6 +44,8 @@ group :test do
   gem 'capybara', '1.1.2'
   gem 'shoulda', '3.0.1'
   gem 'mocha', '0.10.5'
+  gem 'turn', '0.9.4'
+  gem 'minitest'
   gem 'database_cleaner'
   gem 'rb-fsevent', '0.4.3.1', :require => false
   gem 'growl', '1.0.3'

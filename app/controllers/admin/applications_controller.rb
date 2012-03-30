@@ -45,5 +45,19 @@ class Admin::ApplicationsController < ApplicationController
       end
     end
   end  
+
+  def destroy
+    @application = Application.find(params[:id])
+    return if @application.nil?
+    
+    title = @application.title
+    app_count = MaterialApplication.remove_mat_apps(@application.id)
+    
+    @application.destroy
+
+    redirect_to admin_applications_path, 
+      notice: "Application #{title} removed, 
+      and #{app_count} material relations reset."    
+  end
   
 end
