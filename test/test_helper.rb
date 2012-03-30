@@ -2,9 +2,6 @@ ENV["RAILS_ENV"] = "test"
 require File.expand_path('../../config/environment', __FILE__)
 require 'rails/test_help'
 require 'capybara/rails'
-# require 'database_cleaner'
-# DatabaseCleaner.strategy = :truncation
-
 
 class ActiveSupport::TestCase
   # Setup all fixtures in test/fixtures/*.(yml|csv) for all tests in alphabetical order.
@@ -19,12 +16,8 @@ end
 class ActionDispatch::IntegrationTest
   include Capybara::DSL  
   
-  # DatabaseCleaner.start
-  
   def teardown 
     Capybara.reset_sessions! 
     Capybara.use_default_driver 
-    
-    #DatabaseCleaner.clean 
   end 
 end
