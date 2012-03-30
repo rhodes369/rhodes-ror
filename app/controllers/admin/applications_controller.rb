@@ -1,5 +1,7 @@
 class Admin::ApplicationsController < ApplicationController
   
+  layout 'admin/layouts/application'
+  
   def index
     @applications = Application.all
     @application = Application.new
