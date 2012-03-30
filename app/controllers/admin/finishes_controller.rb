@@ -46,5 +46,18 @@ class Admin::FinishesController < ApplicationController
   end
 
   def destroy
+    @finish = Finish.find(params[:id])
+    return if @finish.nil?
+    
+    title = @finish.title
+    mat_finish_count = MaterialFinish.remove_mat_finishes(@finish.id)
+    image_finish_count = Image.remove_image_finishes(@finish.id)
+    
+    @finish.destroy
+
+    redirect_to admin_finishes_path, 
+      notice: "Finish: #{title} was removed.
+      #{mat_finish_count} material relations were reset.
+      #{image_finish_count} material image relations were reset."    
   end
 end

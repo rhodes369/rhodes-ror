@@ -22,4 +22,19 @@ class Image < ActiveRecord::Base
     self.finish_id = finish_id
     self.save!  
   end
+  
+  # set all records that use finish_id to nil 
+  def self.remove_image_finishes(finish_id)  
+    image_finishes = self.where(finish_id: finish_id)
+    image_finishes_count = image_finishes.count
+    if image_finishes_count > 0
+      image_finishes.each do |image|
+        image.finish_id = nil
+        image.save!
+      end
+    end   
+    
+    return image_finishes_count
+  end  
+  
 end
