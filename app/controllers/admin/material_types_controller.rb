@@ -3,12 +3,12 @@ class Admin::MaterialTypesController < ApplicationController
   layout 'admin/layouts/application'
   
   def index
-    @material_type = MaterialType.new
+    @material_type = MaterialType.new 
     @material_types = MaterialType.all
   end
 
   def new 
-    @material_type = MaterialType.new
+    @material_type = MaterialType.new  
     @material_types = MaterialType.all
   end
 

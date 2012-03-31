@@ -11,7 +11,7 @@ class MaterialTypesTest < ActionDispatch::IntegrationTest
 
     2.times { Factory(:material, material_type_id: 1) }
     @mat_3 = Factory(:material, material_type_id: 2)      
-  end
+  end 
 
   test "clicking create button twice with same title should only save once" do
     2.times do 

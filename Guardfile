@@ -8,9 +8,10 @@ guard :test do
 
   # Rails example
   watch(%r{^app/models/(.+)\.rb$}) { |m| "test/unit/#{m[1]}_test.rb" }
-  #watch(%r{^app/controllers/(.+)\.rb$}) { |m| "test/integration/#{m[1]}_test.rb" }
   
-  watch(%r{^app/controllers/admin/(.+)\.rb$}) { |m| "test/integration/#{m[1]}_test.rb"   }
+  #watch(%r{^app/controllers/admin(.+)\.rb$}) { |m| "test/integration/admin/#{m[1]}_test.rb" }
+  
+  watch(%r{^app/controllers/admin/(.+)\.rb$}) { |m| "test/integration/admin/#{m[1]}_controller_test.rb" }
   #watch(%r{^app/controllers/admin/(.+)\.rb$}) { "test/integration" }
   
   watch(%r{^app/views/.+\.rb$}) { "test/integration" }
