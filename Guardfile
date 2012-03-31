@@ -8,14 +8,16 @@ guard :test do
 
   # Rails example
   watch(%r{^app/models/(.+)\.rb$}) { |m| "test/unit/#{m[1]}_test.rb" }
-  # watch(%r{^app/controllers/(.+)\.rb$}) { |m| "test/integration/#{m[1]}_test.rb" }
+  #watch(%r{^app/controllers/(.+)\.rb$}) { |m| "test/integration/#{m[1]}_test.rb" }
   
-watch(%r{^app/controllers/admin/(.+)\.rb$}) { |m| "test/integration/admin#{m[1]}_test.rb" }
-  watch(%r{^app/views/.+\.rb$}) { "test/integration/admin" }
-  #watch('app/controllers/application_controller.rb') { ["test/functional",   #"test/integration"] }
+  watch(%r{^app/controllers/admin/(.+)\.rb$}) { |m| "test/integration/#{m[1]}_test.rb"   }
+  #watch(%r{^app/controllers/admin/(.+)\.rb$}) { "test/integration" }
+  
+  watch(%r{^app/views/.+\.rb$}) { "test/integration" }
+  watch('app/controllers/application_controller.rb') { ["test/functional",      "test/integration"] }
 end
 
-guard :spork, :test_unit => false, :test_unit_env => { 'RAILS_ENV' => 'test' } do
+guard :spork, :test_unit => true, :test_unit_env => { 'RAILS_ENV' => 'test' } do
   watch('config/application.rb')
   watch('config/environment.rb')
   watch(%r{^config/environments/.+\.rb$})

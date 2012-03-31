@@ -9,7 +9,7 @@ class Admin::FinishesController < ApplicationController
 
   def new
     @finish = Finish.new
-    @finishes = Finish.all
+    @finishes = Finish.all 
   end
 
   def create

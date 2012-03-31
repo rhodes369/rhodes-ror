@@ -4,7 +4,7 @@ class Admin::MaterialsController < ApplicationController
   
   def index
     @materials = Material.all 
-    @material = Material.new  
+    @material = Material.new
 
     respond_to do |format|
       format.html 

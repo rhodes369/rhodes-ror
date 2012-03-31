@@ -1,7 +1,7 @@
 class MaterialsController < ApplicationController
   layout 'application'
   
-  def index
+  def index 
     @material = Material.new # for optionally creating a new material on the index
     @materials_newly_crafted = Material.newly_crafted # array of newly created mats
     
