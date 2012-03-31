@@ -43,6 +43,7 @@ end
 
 group :development, :test do
   gem 'test-unit', '2.4.8'
+  gem 'spork', '~> 1.0rc'
   gem 'spork-testunit'
   gem 'rb-fsevent', '0.4.3.1', :require => false
   gem 'guard-test'

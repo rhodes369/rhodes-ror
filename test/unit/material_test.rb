@@ -1,5 +1,4 @@
 require 'test_helper'
-require 'faker'
 
 class MaterialTest < ActiveSupport::TestCase
 
