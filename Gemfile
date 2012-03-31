@@ -46,7 +46,7 @@ group :development, :test do
   gem 'spork', '~> 1.0rc'
   gem 'spork-testunit'
   gem 'rb-fsevent', '0.4.3.1', :require => false
-  gem 'guard-test'
+  gem 'guard-test', '0.4.3'
   gem 'guard-livereload'
   gem 'factory_girl_rails', '1.4.0'
   gem 'faker'  

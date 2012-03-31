@@ -212,7 +212,7 @@ DEPENDENCIES
   growl (= 1.0.3)
   guard-livereload
   guard-spork
-  guard-test
+  guard-test (= 0.4.3)
   haml-rails
   jquery-rails (>= 2.0.1)
   minitest
