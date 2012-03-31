@@ -2,6 +2,7 @@
 # More info at https://github.com/guard/guard#readme
 
 guard :test do
+
   watch(%r{^lib/(.+)\.rb$}) { |m| "test/#{m[1]}_test.rb" }
   watch(%r{^test/.+_test\.rb$})
   watch('test/test_helper.rb') { "test" }
@@ -9,13 +10,22 @@ guard :test do
   # Rails example
   watch(%r{^app/models/(.+)\.rb$}) { |m| "test/unit/#{m[1]}_test.rb" }
   
-  #watch(%r{^app/controllers/admin(.+)\.rb$}) { |m| "test/integration/admin/#{m[1]}_test.rb" }
+  watch(%r{^app/controllers/(.+)\.rb$}) do |m|  
+    "test/integration/#{m[1]}_test.rb" 
+  end
   
-  watch(%r{^app/controllers/admin/(.+)\.rb$}) { |m| "test/integration/admin/#{m[1]}_controller_test.rb" }
+  watch (%r{^app/controllers/admin/(.+)\.rb$}) do |m| 
+    "test/integration/admin/#{m[1]}_controller_test.rb"
+  end
+  
   #watch(%r{^app/controllers/admin/(.+)\.rb$}) { "test/integration" }
   
   watch(%r{^app/views/.+\.rb$}) { "test/integration" }
-  watch('app/controllers/application_controller.rb') { ["test/functional",      "test/integration"] }
+  
+  watch('app/controllers/application_controller.rb') do
+   ["test/functional", "test/integration"] 
+  end
+  
 end
 
 guard :spork, :test_unit => true, :test_unit_env => { 'RAILS_ENV' => 'test' } do
