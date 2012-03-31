@@ -45,10 +45,11 @@ group :development, :test do
   gem 'rb-fsevent', '0.4.3.1', :require => false
   gem 'guard-test'
   gem 'guard-livereload'
+  gem 'factory_girl_rails', '1.4.0'
+  gem 'faker'  
 end
 
 group :test do
-  gem 'factory_girl_rails', '1.4.0'
   gem 'capybara', '1.1.2'
   gem 'shoulda', '3.0.1'
   gem 'mocha', '0.10.5'
