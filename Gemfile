@@ -42,6 +42,8 @@ group :development do
 end
 
 group :development, :test do
+  gem 'test-unit', '2.4.8'
+  gem 'spork-testunit'
   gem 'rb-fsevent', '0.4.3.1', :require => false
   gem 'guard-test'
   gem 'guard-livereload'
@@ -50,7 +52,6 @@ group :development, :test do
 end
 
 group :test do
-  gem 'test-unit', '2.4.8'
   gem 'capybara', '1.1.2'
   gem 'shoulda', '3.0.1'
   gem 'mocha', '0.10.5'
