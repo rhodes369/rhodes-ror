@@ -4,7 +4,7 @@ require 'faker'
 class MaterialTest < ActiveSupport::TestCase
 
   def setup
-    @long_count = 50
+    @long_count = 10
     @mat_1 = Factory(:material, id: 1)
     2.times { Factory.build(:material, title: Faker::Name.name) } 
   end
