@@ -50,6 +50,7 @@ group :development, :test do
 end
 
 group :test do
+  gem 'test-unit', '2.4.8'
   gem 'capybara', '1.1.2'
   gem 'shoulda', '3.0.1'
   gem 'mocha', '0.10.5'
