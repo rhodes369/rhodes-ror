@@ -36,17 +36,28 @@ gem 'jquery-rails', '>= 2.0.1'
 # To use debugger
 gem 'ruby-debug19' #, :require => 'ruby-debug' # the require breaks on my local -drJ
 
+group :development do
+  gem 'ruby-prof'
+  gem 'guard-spork'
+end
+
 group :development, :test do
+  gem 'test-unit', '2.4.8'
+  gem 'spork', '~> 1.0rc'
+  gem 'spork-testunit'
+  gem 'rb-fsevent', '0.4.3.1', :require => false
+  gem 'guard-test', '0.4.3'
+  gem 'guard-livereload'
+  gem 'factory_girl_rails', '1.4.0'
+  gem 'faker'  
 end
 
 group :test do
-  gem 'factory_girl_rails', '1.4.0'
   gem 'capybara', '1.1.2'
   gem 'shoulda', '3.0.1'
   gem 'mocha', '0.10.5'
   gem 'turn', '0.9.4'
   gem 'minitest'
   gem 'database_cleaner'
-  gem 'rb-fsevent', '0.4.3.1', :require => false
   gem 'growl', '1.0.3'
 end
