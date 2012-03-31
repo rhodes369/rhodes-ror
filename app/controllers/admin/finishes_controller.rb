@@ -3,7 +3,7 @@ class Admin::FinishesController < ApplicationController
   layout 'admin/layouts/application'
   
   def index
-    @finish = Finish.new
+    @finish = Finish.new 
     @finishes = Finish.all
   end
 

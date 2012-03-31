@@ -1,6 +1,6 @@
 class Admin::MaterialTypesController < ApplicationController
   
-  layout 'admin/layouts/application'
+  layout 'admin/layouts/application' 
   
   def index
     @material_type = MaterialType.new
