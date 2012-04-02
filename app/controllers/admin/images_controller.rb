@@ -1,5 +1,7 @@
 class Admin::ImagesController < ApplicationController
-
+  
+  layout 'admin/layouts/application'
+  
   def index
     @images = Image.all
 
