@@ -1,5 +1,4 @@
 = render :partial => 'shared/loading'
-
 = render :partial => 'left_side_bar'
 
 #content-center.TwoColumnFix
@@ -41,11 +40,10 @@
                   %img{:src => i.image.url(:thumb), :alt => "" }           
                     %span.material    
 
+    / SEARCH RESULTS
+    %div#spinner
+      %img{:src => asset_path('spinner-light-32.gif') }
+      
     %div#searchResults 
-      %div#newlyCraftedSearchResults   
-        = render :partial => 'materials/search/newly_crafted/results'    
-      %div#antiqueSearchResults
-        = render :partial => 'antique_search_results'    
-
-
-
+      %div#newlyCraftedSearchResults      
+      %div#antiqueSearchResults   

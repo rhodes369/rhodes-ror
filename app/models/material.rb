@@ -63,7 +63,7 @@ class Material < ActiveRecord::Base
           end
         end  
          
-      else # no filters currently set       
+      else # no filters currently set so show everything      
         results << mat # unless results.include?(mat)
       end    
     end
@@ -109,7 +109,7 @@ class Material < ActiveRecord::Base
           end
         end  
          
-      else # no filters currently set       
+      else # no filters currently set so show everything    
         results << mat # unless results.include?(mat)
       end    
     end
