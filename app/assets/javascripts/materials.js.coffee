@@ -4,7 +4,7 @@ class SearchMaterials
   constructor: (@filters)->
     log 'Search constructor'
     @searchResults = $('#searchResults')
-    @searchResults.hide()
+    #@searchResults.hide()
     #@filters = @getFilters()
 
   # # get our search filters
@@ -21,7 +21,7 @@ class SearchMaterials
   #   return @filters
   #   
           
-  processSearch: (@filters = {}) ->
+  processSearch: (@filters) =>
     @searchResults.fadeOut('medium') # if @mat_type_id = @mat_finish_id = @mat_app_id == 'none'
     @url = "/materials/search"
     
@@ -29,8 +29,7 @@ class SearchMaterials
     console.log "@filters: #{@filters} @url: #{@url} "
     
     # print out our @filters hash for testing
-    for key, value of @filters
-      console.log key, value
+    log @filters
                     
     $.ajax
       url: @url
@@ -41,7 +40,7 @@ class SearchMaterials
         console.log "updating search filters with data: #{data.inspect}"
         $('#newlyCraftedSearchResults').html(data.results.newly_crafted.html)
         $('#antiqueSearchResults').html(data.results.antiques.html)
-        @searchResults.fadeIn(3000)  
+        @searchResults.fadeIn(1000)  
       error: (data) =>
         alert 'Problem filtering search.'
         console.log data.statusText      
@@ -58,35 +57,42 @@ class SearchMaterials
    
 $(document).ready ->
   
-  #runSearch()
+   filters = getFilters() # default
+   runSearch(filters)
   
-  runSearch = =>
-    @filters = getFilters()
-    log @filters
-    search = new SearchMaterials()
-    search.processSearch(@filters)    
-
-  $('.filters .filterWrap').on(
-    change: (event) ->
-      console.log "filter changed"
-      runSearch()
-  )
-
-  # dom listeners...
+   # dom listeners...
+   $('.filters .filterWrap').on(
+     change: (event) ->
+       #console.log "filter changed"
+       @filters = getFilters()
+       runSearch(@filters)
+   )  
   
   # get our search filters
   getFilters = ->   
     log 'running getFilters'   
     @filters = {}
-    @filters['mat_type_id'] = $('#matTypeId').val()
-    @filters['mat_finish_id'] = $('#matFinishId').val()
-    @filters['mat_app_id'] = $('#matAppId').val()
+    matTypeId = $('#matTypeId').val()
+    matFinishId = $('#matFinishId').val()
+    matAppId = $('#matAppId').val()
+    
+    # we want a clean @filters object if nothing is selected to get everything
+    @filters['mat_type_id'] = matTypeId if matTypeId != ''
+    @filters['mat_finish_id'] = matFinishId if matFinishId != ''
+    @filters['mat_app_id'] = matAppId if matAppId != ''
+    
+    # @filters['mat_type_id'] = $('#matTypeId').val()
+    # @filters['mat_finish_id'] = $('#matFinishId').val()
+    # @filters['mat_app_id'] = $('#matAppId').val()
+    
     log @filters
       
     return @filters
 
  
-
-  
-
-
+  runSearch = (@filters) ->
+    #@filters = getFilters()
+    # log @filters
+    search = new SearchMaterials()
+    search.processSearch(@filters)    
+    
