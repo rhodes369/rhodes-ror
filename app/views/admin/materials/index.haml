@@ -13,7 +13,7 @@
 
   = form_for @material, :url => admin_materials_path do |mf|
     = mf.text_field :title, :placeholder => 'Create New Material'
-    = mf.submit :id => :create_material
+    = mf.submit :id => :create_material, :class => "submit"
 
 
 

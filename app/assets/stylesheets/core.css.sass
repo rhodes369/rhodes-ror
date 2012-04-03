@@ -3,8 +3,8 @@
 
 @font-face
   font-family: 'LucidaSans'
-  src: url(<%= asset_path('LucidaSans/lucidasansstd-webfont.eot') %>)
-  src: url(<%= asset_path('LucidaSans/lucidasansstd-webfont.eot?#iefix') %>) format("embedded-opentype"), url(<%= asset_path('LucidaSans/lucidasansstd-webfont.woff') %>) format("woff"), url(<%= asset_path('LucidaSans/lucidasansstd-webfont.ttf') %>) format("truetype"), url(<%= asset_path('LucidaSans/lucidasansstd-webfont.svg#LucidaSansStdRoman') %>) format("svg")
+  src: url(asset_path('LucidaSans/lucidasansstd-webfont.eot', font))
+  src: url(asset_path('LucidaSans/lucidasansstd-webfont.eot?#iefix', font)) format("embedded-opentype"), url(asset_path('LucidaSans/lucidasansstd-webfont.woff', font)) format("woff"), url(asset_path('LucidaSans/lucidasansstd-webfont.ttf', font)) format("truetype"), url(asset_path('LucidaSans/lucidasansstd-webfont.svg#LucidaSansStdRoman', font)) format("svg")
   font-weight: normal
   font-style: normal
 
@@ -300,7 +300,7 @@ h1#logo
     height: 77px
     margin: 0
     padding: 0
-    background: url(<%= asset_path 'logo-stacked-tag.png' %>) no-repeat center transparent
+    background: url(asset_path ('logo-stacked-tag.png', image)) no-repeat center transparent
   a
     color: transparent
 
@@ -642,7 +642,7 @@ h1#logo
   padding: 0
   width: 1019px
   height: 498px
-  background: url(<%= asset_path 'contact_map.gif' %>) no-repeat center 0px transparent
+  background: url(asset_path ('contact_map.gif', image)) no-repeat center 0px transparent
 
 #contact-back
   position: absolute
