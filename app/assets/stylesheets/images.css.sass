@@ -71,13 +71,13 @@ a
     float: left
     margin: 28px 0px 0
     cursor: pointer
-    background-image: url(<%= asset_path 'next.gif' %>)
+    background-image: url(asset_path ('next.gif', image))
     &:hover
-      background-image: url(<%= asset_path 'nextO.gif' %>)
+      background-image: url(asset_path ('nextO.gif', image))
   &.prev
-    background-image: url(<%= asset_path 'prev.gif' %>)
+    background-image: url(asset_path ('prev.gif', image))
     &:hover
-      background-image: url(<%= asset_path 'prevO.gif' %>)
+      background-image: url(asset_path ('prevO.gif', image))
   &.disabled
     visibility: hidden !important
 
