@@ -11,6 +11,7 @@
 // GO AFTER THE REQUIRES BELOW.
 //
 
+//= require log
 //= require jquery
 //= require jquery_ujs
 //= require_directory .
