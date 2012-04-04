@@ -17,5 +17,6 @@
 //= require images
 //= require materials
 //= require toggle
+//= require body_class
 //= require_tree ../../../vendor/assets/javascripts/.
 
