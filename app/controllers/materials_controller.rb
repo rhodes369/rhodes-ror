@@ -24,7 +24,7 @@ class MaterialsController < ApplicationController
     # left sidebar
     @materials_antique_in_title = Material.antique_in_title
     @materials_alpha = Material.alphabetical # for sidebar edit links    
-    @materials_newly_crafted_sidebar = Material.newly_crafted_without_antiques    
+    @materials_newly_crafted_sidebar = Material.newly_crafted_without_antiques   
   end
   
   

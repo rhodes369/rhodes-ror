@@ -37,5 +37,15 @@ RhodesRor::Application.configure do
 
   # Expands the lines which load the assets
   config.assets.debug = true
-  
+
+  # bullet gem stuff ( to hunt down questionable sql queries )
+  config.after_initialize do
+    Bullet.enable = true
+    Bullet.alert = true
+    Bullet.bullet_logger = true
+    Bullet.console = true
+    Bullet.growl = false # seems busted
+    Bullet.rails_logger = false
+    Bullet.disable_browser_cache = true
+  end
 end

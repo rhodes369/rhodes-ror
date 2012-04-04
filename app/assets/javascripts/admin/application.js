@@ -1,1 +1,1 @@
-//= require_directory .
+//= require ./materials

@@ -26,7 +26,6 @@ class Admin::FinishesController < ApplicationController
     end
   end 
   
-
   def edit
     @finish = Finish.find(params[:id])
     @finishes = Finish.all

@@ -12,6 +12,7 @@ gem 'bcrypt-ruby', '3.0.1'
 group :assets do
   gem 'sass-rails',   '~> 3.2.3'
   gem 'coffee-rails', '~> 3.2.1'
+  gem 'coffee-filter'
 
   # See https://github.com/sstephenson/execjs#readme for more supported runtimes
   # gem 'therubyracer'
@@ -39,9 +40,11 @@ gem 'ruby-debug19' #, :require => 'ruby-debug' # the require breaks on my local 
 group :development do
   gem 'ruby-prof'
   gem 'guard-spork'
+  gem "bullet"
 end
 
 group :development, :test do
+  gem 'growl', '1.0.3'
   gem 'test-unit', '2.4.8'
   gem 'spork', '~> 1.0rc'
   gem 'spork-testunit'
@@ -49,7 +52,7 @@ group :development, :test do
   gem 'guard-test', '0.4.3'
   gem 'guard-livereload'
   gem 'factory_girl_rails', '1.4.0'
-  gem 'faker'  
+  gem 'faker', '1.0.1'
 end
 
 group :test do
@@ -59,5 +62,4 @@ group :test do
   gem 'turn', '0.9.4'
   gem 'minitest'
   gem 'database_cleaner'
-  gem 'growl', '1.0.3'
 end
