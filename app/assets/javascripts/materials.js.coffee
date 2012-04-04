@@ -1,7 +1,7 @@
 
 class SearchMaterials    
   constructor: ->
-    @searchResults = $('#searchResults')
+    @searchResultsDiv = $('#materialSearchResults')
     @spinner = $('#spinner')
     
     # run search right off the bat so all code in same place
@@ -32,7 +32,7 @@ class SearchMaterials
           
   processSearch: (@filters) ->
     @spinner.show()
-    @searchResults.fadeOut('medium') 
+    @searchResultsDiv.fadeOut('medium') 
     @url = "/materials/search"
      
     $.ajax
@@ -45,12 +45,14 @@ class SearchMaterials
         $('#newlyCraftedSearchResults').html(data.results.newly_crafted.html)
         $('#antiqueSearchResults').html(data.results.antiques.html)
         @spinner.hide()
-        @searchResults.fadeIn(999)  
+        @searchResultsDiv.fadeIn(999)  
       
       error: (data) =>
         alert 'Problem filtering search.'
         log data.statusText      
     
   
-$(document).ready -> 
-  search = new SearchMaterials() # invoke inital search
+$(document).ready ->
+  if $('#materialSearchResults').length > 0 # only run on materials index page with this div
+    search = new SearchMaterials() # invoke inital search
+  
