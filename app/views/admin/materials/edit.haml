@@ -34,16 +34,16 @@
     %h4 Technical Data
     = f.text_area :technical_data, :size => "50x5", :placeholder => "Technical Data..."
 
-    / %h4 Add a pdf file
-    / = f.file_field 'material[pdf]'    
-    / - unless @material.pdf_id.nil?
-    /   %p
-    /     current pdf: 
-    /     - @pdf = Pdf.find(@material.pdf_id)
-    /     = @pdf.orig_filename
-
-
-    / = render :partial => "sidebar"
+    %h4 Add a pdf file
+    = f.file_field :pdf  
+    /= f.file_field 'pdf'
+      
+    
+    - unless @material.pdf_id.nil?
+      %p
+        current pdf: 
+        - @pdf = Pdf.find(@material.pdf_id)
+        = @pdf.orig_filename
 
     = f.submit :id => "update_material", :class => "submit"
     

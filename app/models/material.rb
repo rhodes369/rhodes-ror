@@ -6,11 +6,12 @@ class Material < ActiveRecord::Base
   has_many :material_finishes, :dependent => :destroy
   has_many :material_applications, :dependent => :destroy
   has_one  :material_type
-  has_one :pdf, :dependent => :destroy
+  has_one  :pdf, :dependent => :destroy
   
   attr_accessible :title, :description, :material_type_id, 
-                  :finish_ids, :finishes, :application_ids, :pdf, 
+                  :finish_ids, :finishes, :application_ids, :pdf,
                   :images, :specifications, :technical_data, :slug 
+  accepts_nested_attributes_for :pdf
       
   scope :alphabetical, self.order('title ASC') 
   scope :newly_crafted, self.order('created_at DESC')

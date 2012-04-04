@@ -33,7 +33,7 @@ class Admin::MaterialsController < ApplicationController
    
   
   def update
-    @material = Material.find_using_slug(params[:id])
+    @material = Material.includes(:pdf).find_using_slug(params[:id])
     redirect_to admin_material_url if @material.nil?
     
     params[:material][:slug] = @material.generate_slug # for sluggable gem

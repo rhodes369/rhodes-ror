@@ -40,8 +40,8 @@ RhodesRor::Application.configure do
 
   # bullet gem stuff ( to hunt down questionable sql queries )
   config.after_initialize do
-    Bullet.enable = true
-    Bullet.alert = true
+    Bullet.enable = false
+    Bullet.alert = false
     Bullet.bullet_logger = true
     Bullet.console = true
     Bullet.growl = false # seems busted
