@@ -50,7 +50,7 @@ group :development, :test do
   gem 'guard-test', '0.4.3'
   gem 'guard-livereload'
   gem 'factory_girl_rails', '1.4.0'
-  gem 'faker'  
+  gem 'faker', '1.0.1'
 end
 
 group :test do
