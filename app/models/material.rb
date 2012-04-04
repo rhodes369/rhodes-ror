@@ -7,20 +7,17 @@ class Material < ActiveRecord::Base
   has_many :material_finishes, :dependent => :destroy
   has_many :material_applications, :dependent => :destroy
   has_one  :material_type
-  #has_one  :pdf, :dependent => :destroy
   has_many :images, :dependent => :destroy
   has_attached_file :pdf, 
          :path => ":rails_root/public/system/:attachment/:id/:style/:filename",
          :url => "/system/:attachment/:id/:style/:filename"
            
-  #accepts_nested_attributes_for :pdf
   
   attr_accessible :title, :description, :material_type_id, 
                   :finish_ids, :finishes, :application_ids, 
                   :images, :specifications, :technical_data, 
                   :pdf, :pdf_file_name, :pdf_content_type, :pdf_file_size
           
-  
       
   scope :alphabetical, self.order('title ASC') 
   scope :newly_crafted, self.order('created_at DESC')
@@ -37,7 +34,11 @@ class Material < ActiveRecord::Base
   
   validates :title, presence: true, :uniqueness => true 
   validates_length_of :title, :maximum => 25, :alert => 'Title can only be 25 characters long'
-   
+  validates_attachment :pdf, 
+    :content_type => { :content_type => ['application/pdf'] },
+    :size => { :in => 0..10.megabytes }
+    
+       
   # filter out all newly crafted mat or 'antique' in title
   def self.newly_crafted(filters = {})
     
