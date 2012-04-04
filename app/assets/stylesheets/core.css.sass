@@ -495,6 +495,7 @@ h1#logo
       text-indent: -12px
 
 // EXPAND AND COLLAPSE ARROWS
+a .arrow,
 .expanded .arrow
   position: absolute
   top: 6px
@@ -514,6 +515,17 @@ h1#logo
   border-width: 6px 6px 0
 
 
+
+
+
+
+// Showing / hiding menus based on page class (should probably be done with js)
+body.AntiquePewter
+  #content-left
+    ul#antiques
+      display: block
+    ul#newly
+      display: none
 
 
 
