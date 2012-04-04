@@ -14,7 +14,6 @@
 //= require log
 //= require jquery
 //= require jquery_ujs
-//= require flash_alerts
 //= require materials
 //= require toggle
 //= require_tree ../../../vendor/assets/javascripts/.
