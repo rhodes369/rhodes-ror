@@ -9,28 +9,6 @@ $(document).ready ->
       $('#large_image').attr(src: @large_image)   
   )
   
-  # remove image 
-  $('.removeImg').on(
-    click: -> 
-      
-      @image_id = $(this).data('image_id')    
-      @url = "/admin/images/#{@image_id}.json"
-      
-      log "about to remove image_id #{@image_id} using @url: #{@url}"
-  
-      $.ajax
-        url: @url
-        dataType: 'json'
-        type: 'DELETE'
-        data: { material_id: @material_id, image_id: @image_id }        
-        success: (data) ->
-          $(this).parent().fadeOut(555)
-          alert 'Image Removed.'
-        error: (data) ->
-          alert 'Problem removing image.'
-          log data.statusText           
-  )  
-  
   # set default image
   $('.default_image_id').on(
     change: ->        
@@ -77,3 +55,22 @@ $(document).ready ->
           log data.statusText                 
   )  
   
+  
+  # remove image 
+  $('.removeImg').on(
+    click: ->    
+      @image_id = $(this).data('image_id')    
+      @url = "/admin/images/#{@image_id}.json"
+
+      $.ajax
+        url: @url
+        dataType: 'json'
+        type: 'DELETE'
+        data: { material_id: @material_id, image_id: @image_id }        
+        success: (data) =>
+          $(this).parent().fadeOut(2999)
+          alert 'Image Removed.'
+        error: (data) ->
+          alert 'Problem removing image.'
+          log data.statusText           
+  )  
