@@ -16,7 +16,7 @@ $(document).ready ->
       @image_id = $(this).data('image_id')    
       @url = "/admin/images/#{@image_id}.json"
       
-      console.log "about to remove image_id #{@image_id} using @url: #{@url}"
+      log "about to remove image_id #{@image_id} using @url: #{@url}"
   
       $.ajax
         url: @url
@@ -28,7 +28,7 @@ $(document).ready ->
           alert 'Image Removed.'
         error: (data) ->
           alert 'Problem removing image.'
-          console.log data.statusText           
+          log data.statusText           
   )  
   
   # set default image
@@ -52,7 +52,7 @@ $(document).ready ->
           alert 'Default image saved.'
         error: (data) ->
           alert 'Problem saving default image.'
-          console.log data.statusText                 
+          log data.statusText                 
   )    
   
   # update image finish type pulldown
@@ -62,7 +62,7 @@ $(document).ready ->
       @finish_id = $("option:selected", this).val()
       @url = "/admin/images/#{@image_id}/update_image_finish_id.json"
       
-      console.log "test @image_id: #{@image_id} finish_id: #{@finish_id} url: #{@url}"
+      log "test @image_id: #{@image_id} finish_id: #{@finish_id} url: #{@url}"
                     
       $.ajax
         url: @url
@@ -71,9 +71,9 @@ $(document).ready ->
         data: { image_id: @image_id, finish_id: @finish_id }        
         success: (data) ->
           alert 'Saved Image Finish'
-          console.log 'saved image finish'
+          log 'saved image finish'
         error: (data) ->
           alert 'Problem Saving Image Finish.'
-          console.log data.statusText                 
+          log data.statusText                 
   )  
   
