@@ -35,20 +35,22 @@ $(document).ready ->
   $('.default_image_id').on(
     change: ->        
       @material_id = $(this).data('material_id')
+      @url = "/admin/materials/#{@material_id}/update_default_image.json"
       @default_image_id = $(this).data('default_image_id') 
       @image_id = $(this).data('image_id')
-         
-      console.log "test mat_id: #{@material_id} def_image_id: #{@default_image_id}"
-      @url = "/admin/materials/#{@material_id}/update_default_image.json"
-               
+      @thumb_image = $("#material_thumb_#{@image_id}")
+      @new_large_image_path = @thumb_image.data('large_image')      
+    
+      $('#large_image').attr(src: @new_large_image_path)
+
       $.ajax
         url: @url
         dataType: 'json'
         type: 'PUT'
         data: { material_id: @material_id, default_image_id: @image_id }        
-        success: (data) =>
+        success: (data) ->
           alert 'Default image saved.'
-        error: (data) =>
+        error: (data) ->
           alert 'Problem saving default image.'
           console.log data.statusText                 
   )    
@@ -67,10 +69,10 @@ $(document).ready ->
         dataType: 'json'
         type: 'PUT'
         data: { image_id: @image_id, finish_id: @finish_id }        
-        success: (data) =>
+        success: (data) ->
           alert 'Saved Image Finish'
           console.log 'saved image finish'
-        error: (data) =>
+        error: (data) ->
           alert 'Problem Saving Image Finish.'
           console.log data.statusText                 
   )  
