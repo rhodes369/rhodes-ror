@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20120404133054) do
+ActiveRecord::Schema.define(:version => 20120404132457) do
 
   create_table "applications", :force => true do |t|
     t.string   "title"
@@ -86,7 +86,6 @@ ActiveRecord::Schema.define(:version => 20120404133054) do
     t.string   "pdf_content_type"
     t.integer  "pdf_file_size"
     t.datetime "pdf_updated_at"
-    t.integer  "material_id"
   end
 
   create_table "slugs", :force => true do |t|

@@ -1,21 +1,29 @@
 class Material < ActiveRecord::Base 
-
+  
+  is_sluggable :title # for slugged gem
+  
   has_many :finishes, :through => :material_finishes 
   has_many :applications, :through => :material_applications 
   has_many :material_finishes, :dependent => :destroy
   has_many :material_applications, :dependent => :destroy
   has_one  :material_type
-  # has_one  :pdf, :dependent => :destroy
+  has_one  :pdf, :dependent => :destroy
   has_many :images, :dependent => :destroy
- 
+  has_attached_file :pdf, 
+         :path => ":rails_root/public/system/:attachment/:id/:style/:filename",
+         :url => "/system/:attachment/:id/:style/:filename"
+           
+  #accepts_nested_attributes_for :pdf
+  
   attr_accessible :title, :description, :material_type_id, 
                   :finish_ids, :finishes, :application_ids, 
-                  :images, :specifications, :technical_data, 
-                  :pdf, :slug
+                  :images, :specifications, :technical_data, :pdf #, :pdf_file_name, :pdf_content_type, :pdf_file_size
+
+  attr_accessor :pdf_file_name
+  attr_accessor :pdf_content_type
+  attr_accessor :pdf_file_size
+  attr_accessor :pdf_updated_at            
   
-  is_sluggable :title # for slugged gem
-                 
-  # accepts_nested_attributes_for :pdf
       
   scope :alphabetical, self.order('title ASC') 
   scope :newly_crafted, self.order('created_at DESC')

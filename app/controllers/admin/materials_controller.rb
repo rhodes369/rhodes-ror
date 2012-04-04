@@ -28,10 +28,10 @@ class Admin::MaterialsController < ApplicationController
    
   
   def update
-    @material = Material.includes(:pdf).find_using_slug(params[:id])
+    @material = Material.find_using_slug(params[:id])
     redirect_to admin_material_url if @material.nil?
     
-    params[:material][:slug] = @material.generate_slug # for sluggable gem
+    #params[:material][:slug] = @material.generate_slug # for sluggable gem
     
     respond_to do |format|
       if @material.update_attributes(params[:material])              
