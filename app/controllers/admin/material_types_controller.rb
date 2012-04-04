@@ -42,7 +42,7 @@ class Admin::MaterialTypesController < ApplicationController
         format.html { redirect_to admin_material_types_path, notice: 'MaterialType was Updated' }
         format.json { head :no_content, status: :success }
       else
-        format.html { render action: "edit", error: 'Problem updating Material Type' }
+        format.html { render action: "edit", alert: 'Problem updating Material Type' }
         format.json { render json: @material_type.errors, status: :unprocessable_entity }
       end
     end

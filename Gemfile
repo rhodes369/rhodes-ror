@@ -40,9 +40,11 @@ gem 'ruby-debug19' #, :require => 'ruby-debug' # the require breaks on my local 
 group :development do
   gem 'ruby-prof'
   gem 'guard-spork'
+  gem "bullet"
 end
 
 group :development, :test do
+  gem 'growl', '1.0.3'
   gem 'test-unit', '2.4.8'
   gem 'spork', '~> 1.0rc'
   gem 'spork-testunit'
@@ -60,5 +62,4 @@ group :test do
   gem 'turn', '0.9.4'
   gem 'minitest'
   gem 'database_cleaner'
-  gem 'growl', '1.0.3'
 end
