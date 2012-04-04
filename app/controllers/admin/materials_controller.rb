@@ -10,8 +10,8 @@ class Admin::MaterialsController < ApplicationController
       format.html 
       format.json { render json: @materials }
     end
-
   end  
+    
     
   def create
     @material = Material.new(params[:material] )
@@ -25,7 +25,7 @@ class Admin::MaterialsController < ApplicationController
         format.html { redirect_to edit_admin_material_path(@material), notice: 'Material Saved' }
         format.json { render json: @material, status: :created, location: @material }
       else
-        format.html { redirect_to edit_admin_material_path(@material), alert: 'Problem Saving Material' }
+        format.html { redirect_to edit_admin_material_path(@material), alert: @material.errors.full_messages }
         format.json { render json: @material.errors, status: :unprocessable_entity }
       end
     end
@@ -43,7 +43,7 @@ class Admin::MaterialsController < ApplicationController
         format.html { redirect_to edit_admin_material_path(@material), notice: 'Material Updated' }
         format.json { head :no_content, status: :success }
       else
-        format.html { redirect_to edit_admin_material_path(@material), alert: 'Problem Updating Material' }
+        format.html { redirect_to edit_admin_material_path(@material), alert: @material.errors.full_messages }
         format.json { render json: @material.errors, status: :unprocessable_entity }
       end
     end
@@ -88,25 +88,11 @@ class Admin::MaterialsController < ApplicationController
   
 
   def destroy
-    @material = Material.find(params[:id])
+    @material = Material.find_using_slug(params[:id])
+    return if @material.nil?
+    @title = @material.title
+    
     @material.destroy
-
-    respond_to do |format|
-      format.html { redirect_to admin_materials_path, notice: 'Material Removed' }
-      # format.json { render json: @material, status: :deleted }
-    end
-  end  
-  
-  # sort from newest to oldest with the default @ the beginning
-  # def sort_images(mat)
-  #   unless mat.images.count == 0
-  #     mat.images.sort { |a,b| b.created_at <=> a.created_at }
-  #     default_image = Image.find mat.default_image_id 
-  #     mat.images.unshift default_image
-  #     mat.images.uniq # using .uniq instead of .delete since .delete deletes from db d 
-  #   else
-  #     return []
-  #   end
-  # end  
-   
+    redirect_to admin_materials_path, notice: "Material \""#{@title}\" removed"
+  end     
 end
