@@ -15,7 +15,11 @@ Spork.prefork do
   require 'rails/test_help'
   require 'capybara/rails'
   require 'faker'
-
+  require 'factory_girl'
+  require 'database_cleaner'
+ 
+  DatabaseCleaner.strategy = :truncation
+  
   class ActiveSupport::TestCase
     # Setup all fixtures in test/fixtures/*.(yml|csv) for all tests in alphabetical order.
     #
@@ -27,20 +31,26 @@ Spork.prefork do
   end
 
   class ActionDispatch::IntegrationTest
-    include Capybara::DSL  
+    include Capybara::DSL
+    
+    # Stop ActiveRecord from wrapping tests in transactions
+    self.use_transactional_fixtures = false
 
-    def teardown 
+    def teardown
+      DatabaseCleaner.clean
       Capybara.reset_sessions! 
       Capybara.use_default_driver 
     end 
   end  
-  
 
 end
 
+# havn't thought of anything to add to this yet
 Spork.each_run do
-
-
+  # Basically that message is when factory girl runs, and it doesn't have you factories 
+  # loaded by the time it runs the test. Adding the FactoryGirl reload should make sure 
+  # it is there in time without having to adjust your requires.
+  FactoryGirl.reload
 end
 
 # --- Instructions ---
