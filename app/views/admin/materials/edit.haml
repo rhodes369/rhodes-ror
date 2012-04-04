@@ -37,11 +37,11 @@
     %h4 Add a pdf file
     = f.file_field :pdf  
     
-    - unless @material.pdf_id.nil?
+    - unless @material.pdf_file_name.nil?
       %p
         current pdf: 
-        - @pdf = Pdf.find(@material.pdf_id)
-        = @pdf.orig_filename
+        %a{:href => @material.pdf.url}
+          = "#{@material.pdf_file_name} (#{number_to_human_size(@material.pdf_file_size)})"
 
     = f.submit :id => "update_material", :class => "submit"
     
@@ -49,8 +49,6 @@
 
   = button_to 'View Material Page', material_path(@material), :method => :get, :class => 'view'
   
-  // %input.view{value: "View Material Page"}
-
   .clear
 
 

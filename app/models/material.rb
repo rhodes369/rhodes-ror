@@ -7,7 +7,7 @@ class Material < ActiveRecord::Base
   has_many :material_finishes, :dependent => :destroy
   has_many :material_applications, :dependent => :destroy
   has_one  :material_type
-  has_one  :pdf, :dependent => :destroy
+  #has_one  :pdf, :dependent => :destroy
   has_many :images, :dependent => :destroy
   has_attached_file :pdf, 
          :path => ":rails_root/public/system/:attachment/:id/:style/:filename",
@@ -17,12 +17,9 @@ class Material < ActiveRecord::Base
   
   attr_accessible :title, :description, :material_type_id, 
                   :finish_ids, :finishes, :application_ids, 
-                  :images, :specifications, :technical_data, :pdf #, :pdf_file_name, :pdf_content_type, :pdf_file_size
-
-  attr_accessor :pdf_file_name
-  attr_accessor :pdf_content_type
-  attr_accessor :pdf_file_size
-  attr_accessor :pdf_updated_at            
+                  :images, :specifications, :technical_data, 
+                  :pdf, :pdf_file_name, :pdf_content_type, :pdf_file_size
+          
   
       
   scope :alphabetical, self.order('title ASC') 

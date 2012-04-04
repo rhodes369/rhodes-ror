@@ -31,10 +31,13 @@ class Admin::MaterialsController < ApplicationController
     @material = Material.find_using_slug(params[:id])
     redirect_to admin_material_url if @material.nil?
     
+    
     #params[:material][:slug] = @material.generate_slug # for sluggable gem
     
     respond_to do |format|
-      if @material.update_attributes(params[:material])              
+      if @material.update_attributes(params[:material])  
+        @material.pdf = params[:material][:pdf]
+        @material.save!            
         format.html { redirect_to edit_admin_material_path(@material), notice: 'Material Updated' }
         format.json { head :no_content, status: :success }
       else
