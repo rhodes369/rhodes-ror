@@ -6,7 +6,7 @@ class Material < ActiveRecord::Base
   has_many :material_finishes, :dependent => :destroy
   has_many :material_applications, :dependent => :destroy
   has_one  :material_type
-  #has_one :pdf, :dependent => :destroy
+  has_one :pdf, :dependent => :destroy
   
   attr_accessible :title, :description, :material_type_id, 
                   :finish_ids, :finishes, :application_ids, :pdf, 
@@ -28,7 +28,6 @@ class Material < ActiveRecord::Base
   
   validates :title, presence: true, :uniqueness => true 
   validates_length_of :title, :maximum => 25, :alert => 'Title can only be 25 characters long'
-  
    
   # filter out all newly crafted mat or 'antique' in title
   def self.newly_crafted(filters = {})

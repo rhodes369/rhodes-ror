@@ -1,8 +1,7 @@
 class Pdf < ActiveRecord::Base
-  def new
-    @pdf = Pdf.new
-  end
   
-  def create
-  end
+  attr_accessible :title
+  
+  validates_attachment_content_type :pdf, :content_type => ['application/pdf'], :allow_nil => true
+  
 end
