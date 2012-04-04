@@ -23,10 +23,10 @@ $(document).ready ->
         dataType: 'json'
         type: 'DELETE'
         data: { material_id: @material_id, image_id: @image_id }        
-        success: (data) =>
+        success: (data) ->
           $(this).parent().fadeOut(555)
           alert 'Image Removed.'
-        error: (data) =>
+        error: (data) ->
           alert 'Problem removing image.'
           console.log data.statusText           
   )  
