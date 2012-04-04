@@ -35,8 +35,8 @@
     = f.text_area :technical_data, :size => "50x5", :placeholder => "Technical Data..."
 
     %h4 Add a pdf file
-    = f.file_field :pdf  
-    /= f.file_field 'pdf'
+    /= f.file_field :pdf  
+
       
     
     - unless @material.pdf_id.nil?

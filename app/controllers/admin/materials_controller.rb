@@ -5,11 +5,6 @@ class Admin::MaterialsController < ApplicationController
   def index
     @materials = Material.all 
     @material = Material.new
-
-    respond_to do |format|
-      format.html 
-      format.json { render json: @materials }
-    end
   end  
     
     
