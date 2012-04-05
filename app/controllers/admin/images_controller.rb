@@ -1,34 +1,9 @@
 class Admin::ImagesController < ApplicationController
   
   layout 'admin/layouts/application'
-  
-  def index
-    @images = Image.all
-
-    respond_to do |format|
-      format.html # index.html.erb
-      format.json { render json: @images }
-    end
-  end
-
-
-  def show
-    @image = Image.find(params[:id])
-       
-    respond_to do |format|
-      format.html # show.html.erb
-      format.json { render json: @image }
-    end
-  end
-
 
   def new
     @image = Image.new
-
-    respond_to do |format|
-      format.html 
-      format.json { render json: @image }
-    end
   end
 
 
@@ -71,14 +46,13 @@ class Admin::ImagesController < ApplicationController
   end
 
 
-
-  def destroy
-    
+  def destroy    
     @image = Image.find(params[:id])
     @material = Material.find(@image.material_id)
     
     # TODO - move this part into model
     # set a new alternative default_image_id if the current one is getting axed
+    
     if @material.default_image_id == @image.id
       if @material.images.count > 1
         if @material.images.first.id != @image.id
@@ -88,10 +62,8 @@ class Admin::ImagesController < ApplicationController
         end
       else
         @material.default_image_id = nil # unset if no images
-      end
-      
+      end 
       @material.save!
-   
     end    
           
     # detatch/delete all related paperclip images

@@ -2,9 +2,9 @@ source 'https://rubygems.org'
 
 gem 'rails', '3.2.2'
 gem 'sqlite3', '1.3.5'
-gem 'haml-rails' 
-gem 'slugged', '1.0.1'
-gem "paperclip", "~> 2.7"
+gem 'haml-rails'
+gem 'slugged', '~> 1.0.1'
+gem "paperclip", "~> 3.0"
 gem 'bcrypt-ruby', '3.0.1'
 
 # Gems used only for assets and not required
@@ -37,20 +37,16 @@ gem 'jquery-rails', '>= 2.0.1'
 # To use debugger
 gem 'ruby-debug19' #, :require => 'ruby-debug' # the require breaks on my local -drJ
 
-group :development do
-  gem 'ruby-prof'
-  gem 'guard-spork'
-  gem "bullet"
-end
 
 group :development, :test do
   gem 'growl', '1.0.3'
   gem 'test-unit', '2.4.8'
+  gem 'ruby-prof'
+  gem 'guard-spork'  
   gem 'spork', '~> 1.0rc'
   gem 'spork-testunit'
   gem 'rb-fsevent', '0.4.3.1', :require => false
   gem 'guard-test', '0.4.3'
-  gem 'guard-livereload'
   gem 'factory_girl_rails', '1.4.0'
   gem 'faker', '1.0.1'
 end

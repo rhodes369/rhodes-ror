@@ -25,10 +25,7 @@ namespace :db do
     app1 = Application.create!(title: 'Freeze thaw proof')
     app2 = Application.create!(title: 'Interior')
     app3 = Application.create!(title: 'Exterior')
-    
-    p 'adding a fake pdf...'
-    pdf = Pdf.create!(orig_filename: 'test1.pdf')
-    
+        
     p 'adding some associations...'
     
     p 'for finishes...'
