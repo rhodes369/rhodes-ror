@@ -75,6 +75,10 @@ class Admin::MaterialsController < ApplicationController
     @materials_newly_crafted_sidebar = Material.newly_crafted_without_antiques # all mats excluding antiques       
   end
   
+  def show
+    redirect_to admin_materials_path, notice: 'No show path for admin materials'
+  end
+  
 
   def destroy
     @material = Material.find_using_slug(params[:id])
