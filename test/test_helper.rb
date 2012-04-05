@@ -34,7 +34,7 @@ Spork.prefork do
     include Capybara::DSL
     
     # Stop ActiveRecord from wrapping tests in transactions
-    self.use_transactional_fixtures = false
+    self.use_transactional_fixtures = true
 
     def teardown
       DatabaseCleaner.clean
