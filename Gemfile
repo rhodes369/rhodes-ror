@@ -37,20 +37,21 @@ gem 'jquery-rails', '>= 2.0.1'
 # To use debugger
 gem 'ruby-debug19' #, :require => 'ruby-debug' # the require breaks on my local -drJ
 
+
 group :development do
-  gem 'ruby-prof'
-  gem 'guard-spork'
-  gem "bullet"
+  # gem "bullet"
 end
 
 group :development, :test do
   gem 'growl', '1.0.3'
   gem 'test-unit', '2.4.8'
+  gem 'ruby-prof'
+  gem 'guard-spork'  
   gem 'spork', '~> 1.0rc'
   gem 'spork-testunit'
   gem 'rb-fsevent', '0.4.3.1', :require => false
   gem 'guard-test', '0.4.3'
-  gem 'guard-livereload'
+  # gem 'guard-livereload'
   gem 'factory_girl_rails', '1.4.0'
   gem 'faker', '1.0.1'
 end
