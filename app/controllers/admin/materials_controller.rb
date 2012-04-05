@@ -6,17 +6,13 @@ class Admin::MaterialsController < ApplicationController
     @materials = Material.all 
     @material = Material.new
   end  
-    
+ 
     
   def create
-    @material = Material.new(params[:material] )
-    @image = Image.create( params[:image] )
-    
-    #params[:material][:slug] = @material.generate_slug!
-    
+    @material = Material.new(params[:material])
+       
     respond_to do |format|
       if @material.save
-        params[:material][:slug] = @material.generate_slug # for sluggable gem
         format.html { redirect_to edit_admin_material_path(@material), notice: 'Material Saved' }
         format.json { render json: @material, status: :created, location: @material }
       else
@@ -28,16 +24,11 @@ class Admin::MaterialsController < ApplicationController
    
   
   def update
-    @material = Material.find_using_slug(params[:id])
+    @material = Material.with_cached_slug(params[:id]).first
     redirect_to admin_material_url if @material.nil?
-    
-    
-    #params[:material][:slug] = @material.generate_slug # for sluggable gem
-    
+
     respond_to do |format|
-      if @material.update_attributes(params[:material])  
-        @material.pdf = params[:material][:pdf]
-        @material.save!            
+      if @material.update_attributes(params[:material])             
         format.html { redirect_to edit_admin_material_path(@material), notice: 'Material Updated' }
         format.json { head :no_content, status: :success }
       else
@@ -88,9 +79,10 @@ class Admin::MaterialsController < ApplicationController
   def destroy
     @material = Material.find_using_slug(params[:id])
     return if @material.nil?
-    @title = @material.title
     
+    @title = @material.title
     @material.destroy
+  
     redirect_to admin_materials_path, notice: "Material \""#{@title}\" removed"
   end     
 end

@@ -2,8 +2,8 @@ source 'https://rubygems.org'
 
 gem 'rails', '3.2.2'
 gem 'sqlite3', '1.3.5'
-gem 'haml-rails' 
-gem 'slugged', '1.0.1'
+gem 'haml-rails'
+gem 'slugged', '~> 1.0.1'
 gem "paperclip", "~> 3.0"
 gem 'bcrypt-ruby', '3.0.1'
 
