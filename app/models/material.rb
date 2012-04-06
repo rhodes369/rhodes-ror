@@ -35,7 +35,7 @@ class Material < ActiveRecord::Base
   validates_length_of :title, :maximum => 255, :alert => 'Title can only be 255 characters long'
   validates_attachment :pdf, 
     :content_type => { :content_type => ['application/pdf'] },
-    :size => { :in => 0..10.megabytes }
+    :size => { :in => 0..20.megabytes }
     
      
   # filter out all newly crafted mat or 'antique' in title
