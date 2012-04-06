@@ -177,11 +177,9 @@ class Material < ActiveRecord::Base
   
   
   def material_type_title
-    unless self.material_type_id.nil?
-      material_type_title = MaterialType.find(self.material_type_id).title
-    else
-      return '' # don't show anything unless mat type title exists
-    end
+    # show blank unless title exists
+    return '' if self.material_type_id.nil? 
+    MaterialType.find(self.material_type_id).title
   end
 
 
