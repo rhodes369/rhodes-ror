@@ -17,7 +17,8 @@ Spork.prefork do
   require 'faker'
   require 'factory_girl'
   require 'database_cleaner'
- 
+  
+  #FactoryGirl.find_definitions
   DatabaseCleaner.strategy = :truncation
   
   class ActiveSupport::TestCase
@@ -33,7 +34,7 @@ Spork.prefork do
   class ActionDispatch::IntegrationTest
     include Capybara::DSL
     
-    self.use_transactional_fixtures = true
+    #self.use_transactional_fixtures = true
 
     def teardown
       DatabaseCleaner.clean
@@ -43,7 +44,6 @@ Spork.prefork do
   end  
 end
 
-# havn't thought of anything to add to this yet
 Spork.each_run do
   # Basically that message is when factory girl runs, and it doesn't have you factories 
   # loaded by the time it runs the test. Adding the FactoryGirl reload should make sure 

@@ -3,8 +3,8 @@ require 'test_helper'
 class MaterialsTest < ActionDispatch::IntegrationTest
   
   def setup
-    @mat_type_1 = Factory(:material_type, id: 1)
-    @mat_1 = Factory(:material, id: 1)      
+    @mat_type_1 = FactoryGirl.create(:material_type, id: 1)
+    @mat_1 = FactoryGirl.create(:material, id: 1)    
   end
 
   test "updating mat title should set save old & new slugged urls" do

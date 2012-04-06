@@ -47,8 +47,12 @@ group :development, :test do
   gem 'spork-testunit'
   gem 'rb-fsevent', '0.4.3.1', :require => false
   gem 'guard-test', '0.4.3'
-  gem 'factory_girl_rails', '1.4.0'
   gem 'faker', '1.0.1'
+  #gem 'factory_girl_rails', '~> 1.4.0' # old school
+  # using factory_girl master for now since it has a depreciation warning patch
+  gem 'factory_girl', :git => 'git://github.com/thoughtbot/factory_girl.git', :branch => "master"
+  # gem 'factory_girl_rails', :git => 'git://github.com/thoughtbot/factory_girl_rails.git', :branch => "master"
+
 end
 
 group :test do
