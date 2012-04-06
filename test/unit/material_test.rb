@@ -4,20 +4,21 @@ class MaterialTest < ActiveSupport::TestCase
 
   def setup
     @long_count = 10 # used for doing massive tests at a time, keep low for speed testing
+    @mat_type_1 = FactoryGirl.build(:material_type, id: 1)
     # @mat_type_1 = FactoryGirl.create(:material_type, id: 1, title: Faker::Name.name)
     # @mat_1 = FactoryGirl.create(:material, id: 1)
     # @mat_2 = FactoryGirl.create(:material_loaded, id: 2)
     # 2.times { FactoryGirl.build(:material, title: Faker::Name.name) } 
   end
   
-  # should validate_presence_of(:title)
+  #should validate_presence_of(:title)
   # should validate_uniqueness_of(:title)
   # should ensure_length_of(:title).is_at_most(255)
   # 
   # 
-  # test "valid with all attributes" do     
-  #   assert @mat_1.valid?, 'Material was valid' 
-  # end
+  test "valid with all attributes" do     
+    assert @mat_1.valid?, 'Material was valid' 
+  end
   # 
   # test "test with many random titles" do
   #   @long_count.times do

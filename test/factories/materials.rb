@@ -1,4 +1,3 @@
-
 FactoryGirl.define do
   factory :material do
     title sequence(:title) { |i| "test_mat#{i}" }

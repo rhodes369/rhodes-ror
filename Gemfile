@@ -50,9 +50,8 @@ group :development, :test do
   gem 'faker', '1.0.1'
   #gem 'factory_girl_rails', '~> 1.4.0' # old school
   # using factory_girl master for now since it has a depreciation warning patch
-  gem 'factory_girl', :git => 'git://github.com/thoughtbot/factory_girl.git', :branch => "master"
-  # gem 'factory_girl_rails', :git => 'git://github.com/thoughtbot/factory_girl_rails.git', :branch => "master"
-
+  # gem 'factory_girl', :git => 'git://github.com/thoughtbot/factory_girl.git', :branch => "master"
+  
 end
 
 group :test do
@@ -62,4 +61,6 @@ group :test do
   gem 'turn', '0.9.4'
   gem 'minitest'
   gem 'database_cleaner'
+  gem 'factory_girl_rails', :git => 'git://github.com/thoughtbot/factory_girl_rails.git', :branch => "master", :require => false
+  
 end
