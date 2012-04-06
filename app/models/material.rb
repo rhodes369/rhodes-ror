@@ -5,7 +5,7 @@ class Material < ActiveRecord::Base
   has_many :material_finishes, :dependent => :destroy
   has_many :material_applications, :dependent => :destroy
   has_one  :material_type
-  has_many :images, :dependent => :destroy
+  has_many :images #, :dependent => :destroy
   has_attached_file :pdf, 
          :path => ":rails_root/public/system/:attachment/:id/:style/:filename",
          :url => "/system/:attachment/:id/:style/:filename"
@@ -26,7 +26,7 @@ class Material < ActiveRecord::Base
   scope :antique_in_title, self.where('title LIKE ?', '%antique%').order('title ASC')  
   scope :with_mat_type, lambda { |mat_type_id| where('material_type_id = ?', mat_type_id) }
 
-  before_destroy :delete_material_images 
+  before_destroy :delete_all_related_attachments
   
   validates :title, presence: true, :uniqueness => true 
   validates_length_of :title, :maximum => 255, :alert => 'Title can only be 255 characters long'
@@ -182,19 +182,24 @@ class Material < ActiveRecord::Base
     MaterialType.find(self.material_type_id).title
   end
 
-
-  # deletes all uploaded material images
-  def delete_material_images
-    if self.images.count > 0 
-      self.images.each do |image|
-       @image.image = nil
-       @image.save
-      end
-    end    
-  end
-
   
   private 
+
+  # manually destroy all related paperclip attachments
+  def delete_all_related_attachments  
+    # manually make sure image records get removed
+    image_ids = self.images.map &:id
+    image_ids.each { |id| i = Image.find id; i.destroy }
+    
+    remaining_images = Image.find_all_by_id(image_ids)
+    if remaining_images.count > 0
+      logger.debug "#{remaining_images.count} images: still exist: #{remaining_images.to_s} after mat destroy for mat: #{self.id}"
+      self.errors[:base] << "- #{remaining_images.count} images still exist"
+      return false
+    else
+      return true
+    end
+  end
   
   def self.order_results_hash(results = {})
     results.sort! { |a,b| b.created_at <=> a.created_at } # reverse!

@@ -16,7 +16,7 @@ class Admin::MaterialsController < ApplicationController
         format.html { redirect_to edit_admin_material_path(@material), notice: 'Material Saved' }
         format.json { render json: @material, status: :created, location: @material }
       else
-        format.html { redirect_to edit_admin_material_path(@material), alert: @material.errors.full_messages }
+        format.html { redirect_to edit_admin_material_path(@material), alert: @material.errors.full_messages.sentence }
         format.json { render json: @material.errors, status: :unprocessable_entity } 
       end
     end
@@ -32,7 +32,7 @@ class Admin::MaterialsController < ApplicationController
         format.html { redirect_to edit_admin_material_path(@material), notice: 'Material Updated' }
         format.json { head :no_content, status: :success }
       else
-        format.html { redirect_to edit_admin_material_path(@material), alert: @material.errors.full_messages }
+        format.html { redirect_to edit_admin_material_path(@material), alert: @material.errors.full_messages.sentence }
         format.json { render json: @material.errors, status: :unprocessable_entity }
       end
     end
@@ -59,8 +59,15 @@ class Admin::MaterialsController < ApplicationController
 
 
   def edit
-    @material = Material.find_using_slug(params[:id])
     
+    # begin
+    #   @material = Material.find_using_slug(params[:id]) 
+    # rescue => e
+    #   redirect_to admin_materials_path, alert: "Could not find material: #{params[:id]}"
+    # end
+    
+    @material = Material.find_using_slug(params[:id]) 
+
     unless @material.nil?
       @materials = Material.all
       @material_sorted_images = @material.sort_thumb_images
@@ -72,12 +79,13 @@ class Admin::MaterialsController < ApplicationController
       # left sidebar
       @materials_antique_in_title = Material.antique_in_title
       @materials_alpha = Material.alphabetical # for sidebar edit links    
-      @materials_newly_crafted_sidebar = Material.newly_crafted_without_antiques # all mats excluding antiques       
+      @materials_newly_crafted_sidebar = Material.newly_crafted_without_antiques # all mats excluding antiques
     else
-      redirect_to admin_materials_path, notice: 'Could not find material' if @material.nil?
+      redirect_to admin_materials_path, notice: 'Could not find material'
     end
-  end
-  
+  end  
+
+
   def show
     redirect_to admin_materials_path, notice: 'No show path for admin materials'
   end
@@ -87,9 +95,16 @@ class Admin::MaterialsController < ApplicationController
     @material = Material.find_using_slug(params[:id])
     return if @material.nil?
     
-    @title = @material.title
+    num_mat_images = @material.images.count
+    image_ids = @material.images.map &:id if num_mat_images > 0
+
     @material.destroy
-  
-    redirect_to admin_materials_path, notice: "Material \""#{@title}\" removed"
+       
+     unless @material.errors.count > 0
+      redirect_to admin_materials_path, notice: "Material: #{@material.title} removed"
+    else
+      redirect_to admin_materials_path, 
+        alert: "Problem removing material: #{@material.errors.full_messages.first }"
+    end
   end     
 end
