@@ -15,8 +15,7 @@ class Material < ActiveRecord::Base
                   :images, :specifications, :technical_data,
                   :pdf, :pdf_file_name, :pdf_content_type, :pdf_file_size
 
-  # for slugged gem - must be after attr_accessible line!
-  is_sluggable :title
+  is_sluggable :title # for slugged gem 
                           
   scope :alphabetical, self.order('title ASC') 
   scope :newly_crafted, self.order('created_at DESC') 
@@ -27,8 +26,6 @@ class Material < ActiveRecord::Base
   scope :antique_in_title, self.where('title LIKE ?', '%antique%').order('title ASC')  
   scope :with_mat_type, lambda { |mat_type_id| where('material_type_id = ?', mat_type_id) }
 
-
-  
   before_destroy :delete_material_images 
   
   validates :title, presence: true, :uniqueness => true 
@@ -128,12 +125,12 @@ class Material < ActiveRecord::Base
     return results
   end
 
-
-  def self.with_finish(finish_id)
-    with_finish = []
-    MaterialFinish.where(finish_id: finish_id).each { |mat| with_finish << mat }    
-    return with_finish
-  end
+  # 
+  # def self.with_finish(finish_id)
+  #   #with_finish = []
+  #   #MaterialFinish.where(finish_id: finish_id).each { |mat| with_finish << mat }    
+  #   #return with_finish
+  # end
 
   # set all instances using this mat_type_id to nil
   def self.reset_all_material_types(mat_type_id)
@@ -180,11 +177,10 @@ class Material < ActiveRecord::Base
   
   
   def material_type_title
-    #material_type_title = '' # don't show anything unless mat type title exists
     unless self.material_type_id.nil?
       material_type_title = MaterialType.find(self.material_type_id).title
     else
-      return ''
+      return '' # don't show anything unless mat type title exists
     end
   end
 
