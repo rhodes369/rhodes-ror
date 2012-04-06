@@ -5,8 +5,8 @@ FactoryGirl.define do
 
   # This will use the User class (Admin would have been guessed)
   factory :material_loaded, class: Material do
-   title { Faker::Name.name }
-   material_type_id 1
+    title { Faker::Name.name }
+    material_type_id 1
   end
 end
  
