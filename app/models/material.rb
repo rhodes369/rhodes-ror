@@ -32,7 +32,7 @@ class Material < ActiveRecord::Base
   before_destroy :delete_material_images 
   
   validates :title, presence: true, :uniqueness => true 
-  validates_length_of :title, :maximum => 25, :alert => 'Title can only be 25 characters long'
+  validates_length_of :title, :maximum => 255, :alert => 'Title can only be 255 characters long'
   validates_attachment :pdf, 
     :content_type => { :content_type => ['application/pdf'] },
     :size => { :in => 0..10.megabytes }

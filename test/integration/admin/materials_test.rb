@@ -24,7 +24,7 @@ class MaterialsTest < ActionDispatch::IntegrationTest
     assert_equal edit_admin_material_path(orig_title), current_path
     
     # test bad slug redirect
-    bad_slug = "#{test_slug}-9993"       
+    bad_slug = 'test_slug-9993'       
     get edit_admin_material_path(bad_slug) 
     assert_response :redirect
     assert_redirected_to admin_materials_path   

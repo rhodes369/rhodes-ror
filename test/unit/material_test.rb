@@ -3,16 +3,15 @@ require 'test_helper'
 class MaterialTest < ActiveSupport::TestCase
 
   def setup
-    @long_count = 10
+    @long_count = 10 # used for doing massive tests at a time, keep low for speed testing
     @mat_1 = Factory(:material, id: 1)
     2.times { Factory.build(:material, title: Faker::Name.name) } 
   end
   
   should validate_presence_of(:title)
   should validate_uniqueness_of(:title)
-  #should validate_numericality_of(:material_type_id)
+  should ensure_length_of(:title).is_at_most(255)
   
-
   test "valid with all attributes" do     
     assert @mat_1.valid?, 'Material was valid' 
   end
