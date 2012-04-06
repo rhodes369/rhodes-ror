@@ -1,14 +1,15 @@
 FactoryGirl.define do
-  sequence :mat_title do |t|
-    "test_title-#{t}"
-  end
-end
-
-FactoryGirl.define do
   factory :material do
-    title { FactoryGirl.generate :mat_title }
+    title { Faker::Name.name }
+  end
+
+  # This will use the User class (Admin would have been guessed)
+  factory :material_loaded, class: Material do
+   title { Faker::Name.name }
+   material_type_id 1
   end
 end
+ 
 # 
 # FactoryGirl.define do
 #   sequence :mat_name do |n|
