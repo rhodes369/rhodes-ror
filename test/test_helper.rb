@@ -33,7 +33,6 @@ Spork.prefork do
   class ActionDispatch::IntegrationTest
     include Capybara::DSL
     
-    # Stop ActiveRecord from wrapping tests in transactions
     self.use_transactional_fixtures = true
 
     def teardown
@@ -42,7 +41,6 @@ Spork.prefork do
       Capybara.use_default_driver 
     end 
   end  
-
 end
 
 # havn't thought of anything to add to this yet

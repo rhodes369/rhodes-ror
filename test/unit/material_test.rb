@@ -40,4 +40,5 @@ class MaterialTest < ActiveSupport::TestCase
     @mat_1.save!
     assert_equal @mat_1.cached_slug, @mat_1.title 
   end
+  
 end
