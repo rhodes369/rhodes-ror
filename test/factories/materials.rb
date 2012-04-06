@@ -1,6 +1,12 @@
 FactoryGirl.define do
+  sequence :mat_title do |t|
+    "test_title-#{t}"
+  end
+end
+
+FactoryGirl.define do
   factory :material do
-    title sequence(:title) { |i| "test_mat#{i}" }
+    title { FactoryGirl.generate :mat_title }
   end
 end
 # 

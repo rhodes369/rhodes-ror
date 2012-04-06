@@ -9,7 +9,7 @@ require 'faker'
 require 'factory_girl_rails'
 require 'database_cleaner'
 
-FactoryGirl.find_definitions
+#FactoryGirl.find_definitions
 DatabaseCleaner.strategy = :truncation
 
 class ActiveSupport::TestCase
@@ -18,6 +18,7 @@ class ActiveSupport::TestCase
   # Note: You'll currently still have to declare fixtures explicitly in integration tests
   # -- they do not yet inherit this setting
   # fixtures :all
+  self.use_transactional_fixtures = true
   DatabaseCleaner.clean
   FactoryGirl.reload
   # Add more helper methods to be used by all tests here...
