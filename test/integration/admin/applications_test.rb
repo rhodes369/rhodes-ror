@@ -1,6 +1,6 @@
 require 'test_helper'
 
-class ApplicationsTest < ActionDispatch::IntegrationTest
+class Admin::ApplicationsTest < ActionDispatch::IntegrationTest
 
   def setup
     @valid_title = 'rainbowed chrome' 

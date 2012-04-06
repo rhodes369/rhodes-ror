@@ -17,6 +17,10 @@ class MaterialTest < ActiveSupport::TestCase
     assert @mat_1.valid?, 'Material was valid' 
   end
   
+  test "make sure slug gets generated on save" do
+    assert_not_nil @mat_1.cached_slug
+  end
+  
   test "test with many random titles" do
     @long_count.times do
       FactoryGirl.create(:material)
@@ -36,14 +40,8 @@ class MaterialTest < ActiveSupport::TestCase
     end
   end
   
-  test "make sure slug gets generated on save" do
-    @mat_2.save!
-    assert_not_nil @mat_1.cached_slug
-  end
-  
   test "test that material_type_title() returns proper title if one exists" do
     correct_title = MaterialType.find(@mat_2.material_type_id).title
-    puts "correct_title #{correct_title}"
     assert_equal @mat_2.material_type_title, correct_title
   end  
   
