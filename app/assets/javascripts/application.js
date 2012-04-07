@@ -19,3 +19,4 @@
 //= require toggle
 //= require body_class
 //= require ../../../vendor/assets/javascripts/application
+
