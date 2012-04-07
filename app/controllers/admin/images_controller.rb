@@ -1,10 +1,14 @@
 class Admin::ImagesController < ApplicationController
   
   layout 'admin/layouts/application'
-
-  def new
-    @image = Image.new
-  end
+  
+  # def index
+  #   redirect_to admin_materials_path
+  # end
+  
+  # def new
+  #   @image = Image.new
+  # end
 
 
   def create
