@@ -45,8 +45,16 @@ class MaterialTest < ActiveSupport::TestCase
     assert_equal @mat_2.material_type_title, correct_title
   end  
   
-  test "test that material_type_title() returns blank for views if none set" do
+  test "test that material_type_title() returns blank (for views) if none set" do
     assert_equal @mat_1.material_type_title, ''
   end
+
+  test "to make sure mats actually gets deleted on destroy" do
+    # this test should be at the bottom
+    assert_difference 'Material.count', -1 do
+      @mat_1.destroy
+    end
+  end
+
 end
 

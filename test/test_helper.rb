@@ -12,6 +12,8 @@ Spork.prefork do
   require File.expand_path('../../config/environment', __FILE__)
   require 'rails/test_help'
   require 'capybara/rails'
+  require 'shoulda'
+  require 'paperclip/matchers'  
   require 'factory_girl_rails'
   require 'faker'
   require 'database_cleaner'
@@ -20,6 +22,9 @@ Spork.prefork do
   
   class ActiveSupport::TestCase
     # Add more helper methods to be used by all tests here...
+    def teardown
+      DatabaseCleaner.clean
+    end
   end
 
   class ActionDispatch::IntegrationTest
