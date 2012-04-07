@@ -49,12 +49,19 @@ class MaterialTest < ActiveSupport::TestCase
     assert_equal @mat_1.material_type_title, ''
   end
 
-  test "to make sure mats actually gets deleted on destroy" do
+  test "to make sure mat image associations and files actually gets deleted on destroy" do
     # this test should be at the bottom
     assert_difference 'Material.count', -1 do
       @mat_1.destroy
     end
   end
+  
+  test "to make sure mats actually gets deleted on destroy" do
+
+    assert_difference 'Material.count', -1 do
+      @mat_1.destroy
+    end
+  end  
 
 end
 
