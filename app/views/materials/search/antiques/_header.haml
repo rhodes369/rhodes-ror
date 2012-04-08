@@ -1,5 +1,7 @@
 %h3 
   ANTIQUE MATERIALS 
+
+/= if !session[:not_first_mat_search]
 %h3 
   Results:
   = results['antiques']['count']

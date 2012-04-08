@@ -18,7 +18,7 @@ class SearchMaterials
 
   getFilters: ->  
     @filters = {} # unless this gets populated, we should get all results back
-    
+
     matTypeId = $('#matTypeId').val()
     matFinishId = $('#matFinishId').val()
     matAppId = $('#matAppId').val()
@@ -55,4 +55,9 @@ class SearchMaterials
 $(document).ready ->
   if $('#materialSearchResults').length > 0 # only run on materials index page with this div
     search = new SearchMaterials() # invoke inital search
-  
+    unless $('#materialSearchResults').hasData('prevSearch', 1)
+      $('#results').remove()
+      log 'been here done that'
+    else
+      $('#materialSearchResults').data('prevSearch', 1)
+      log 'setting been here'
