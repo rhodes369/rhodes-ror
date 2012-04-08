@@ -5,7 +5,7 @@ Spork.prefork do
   # Loading more in this block will cause your tests to run faster. However,
   # if you change any configuration or code from libraries loaded here, you'll
   # need to restart spork for it take effect.
-  
+
   # This code will be run each time you run your specs.
   ENV["RAILS_ENV"] = "test"
   
@@ -16,22 +16,15 @@ Spork.prefork do
   require 'paperclip/matchers'  
   require 'factory_girl_rails'
   require 'faker'
-  require 'database_cleaner'
-  
-  DatabaseCleaner.strategy = :truncation
   
   class ActiveSupport::TestCase
     # Add more helper methods to be used by all tests here...
-    def teardown
-      DatabaseCleaner.clean
-    end
   end
 
   class ActionDispatch::IntegrationTest
     include Capybara::DSL
     
     def teardown
-      DatabaseCleaner.clean
       Capybara.reset_sessions! 
       Capybara.use_default_driver 
     end 
