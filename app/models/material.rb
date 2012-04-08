@@ -5,7 +5,7 @@ class Material < ActiveRecord::Base
   has_many :material_finishes, :dependent => :destroy
   has_many :material_applications, :dependent => :destroy
   has_one  :material_type
-  has_many :images, :dependent => :destroy
+  has_many :images #, :dependent => :destroy
   has_attached_file :pdf, 
          :path => ":rails_root/public/system/:attachment/:id/:style/:filename",
          :url => "/system/:attachment/:id/:style/:filename"
@@ -15,8 +15,7 @@ class Material < ActiveRecord::Base
                   :images, :specifications, :technical_data,
                   :pdf, :pdf_file_name, :pdf_content_type, :pdf_file_size
 
-  # for slugged gem - must be after attr_accessible line!
-  is_sluggable :title
+  is_sluggable :title # for slugged gem 
                           
   scope :alphabetical, self.order('title ASC') 
   scope :newly_crafted, self.order('created_at DESC') 
@@ -27,15 +26,13 @@ class Material < ActiveRecord::Base
   scope :antique_in_title, self.where('title LIKE ?', '%antique%').order('title ASC')  
   scope :with_mat_type, lambda { |mat_type_id| where('material_type_id = ?', mat_type_id) }
 
-
-  
-  before_destroy :delete_material_images 
+  before_destroy :delete_all_related_attachments
   
   validates :title, presence: true, :uniqueness => true 
-  validates_length_of :title, :maximum => 25, :alert => 'Title can only be 25 characters long'
+  validates_length_of :title, :maximum => 255, :alert => 'Title can only be 255 characters long'
   validates_attachment :pdf, 
     :content_type => { :content_type => ['application/pdf'] },
-    :size => { :in => 0..10.megabytes }
+    :size => { :in => 0..20.megabytes }
     
      
   # filter out all newly crafted mat or 'antique' in title
@@ -128,12 +125,12 @@ class Material < ActiveRecord::Base
     return results
   end
 
-
-  def self.with_finish(finish_id)
-    with_finish = []
-    MaterialFinish.where(finish_id: finish_id).each { |mat| with_finish << mat }    
-    return with_finish
-  end
+  # 
+  # def self.with_finish(finish_id)
+  #   #with_finish = []
+  #   #MaterialFinish.where(finish_id: finish_id).each { |mat| with_finish << mat }    
+  #   #return with_finish
+  # end
 
   # set all instances using this mat_type_id to nil
   def self.reset_all_material_types(mat_type_id)
@@ -180,25 +177,29 @@ class Material < ActiveRecord::Base
   
   
   def material_type_title
-    material_type_title = '' # don't show anything unless mat type title exists
-    unless self.material_type_id.nil?
-      material_type_title = MaterialType.find(self.material_type_id).title
-    end
-  end
-
-
-  # deletes all uploaded material images
-  def delete_material_images
-    if self.images.count > 0 
-      self.images.each do |image|
-       @image.image = nil
-       @image.save
-      end
-    end    
+    # show blank unless title exists
+    return '' if self.material_type_id.nil? 
+    MaterialType.find(self.material_type_id).title
   end
 
   
   private 
+
+  # manually destroy all related paperclip attachments
+  def delete_all_related_attachments  
+    # manually make sure image records get removed
+    image_ids = self.images.map &:id
+    image_ids.each { |id| i = Image.find id; i.destroy }
+    
+    remaining_images = Image.find_all_by_id(image_ids)
+    if remaining_images.count > 0
+      logger.debug "#{remaining_images.count} images: still exist: #{remaining_images.to_s} after mat destroy for mat: #{self.id}"
+      self.errors[:base] << "- #{remaining_images.count} images still exist"
+      return false
+    else
+      return true
+    end
+  end
   
   def self.order_results_hash(results = {})
     results.sort! { |a,b| b.created_at <=> a.created_at } # reverse!

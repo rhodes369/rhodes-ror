@@ -1,6 +1,6 @@
 FactoryGirl.define do 
   factory :image do
-    sequence(:image_file_name) { |i| "test_image#{i}" }
+    image_file_name { "#{Faker::Name.name}.jpg" }
     material_id 1
     finish_id 1
     image_content_type 'image/jpeg'

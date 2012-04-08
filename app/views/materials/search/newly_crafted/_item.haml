@@ -7,5 +7,4 @@
         %img{ :src => "#{asset_path('placeholder-95.gif')}" }
       
       %span.material= "#{ mat.title }"
-      - unless mat_type_title = mat.material_type_title.nil?
-        %span.type= "#{ mat.material_type_title }"
+      %span.type= "#{ mat.material_type_title }"

@@ -1,22 +1,22 @@
 require 'test_helper'
 
-class FinishesTest < ActionDispatch::IntegrationTest
+class Admin::FinishesTest < ActionDispatch::IntegrationTest
   def setup 
     @center_div_id = 'div#content-center'  
     @valid_title = 'rainbowed chrome'
     
-    @finish_1 = Factory(:finish, id: 1, title: 'split')
-    @finish_2 = Factory(:finish, id: 2, title: 'pineapple')    
-
-    2.times { Factory(:material_finish, material_id: 2) }
-    @mat_finish_1 = Factory(:material_finish, material_id: 3, finish_id: 1)
-    @mat_finish_2 = Factory(:material_finish, material_id: 4, finish_id: 1)
+    @finish_1 = FactoryGirl.create(:finish, id: 1, title: 'split')
+    @finish_2 = FactoryGirl.create(:finish, id: 2, title: 'pineapple')    
+  
+    2.times { FactoryGirl.create(:material_finish, material_id: 2) }
+    @mat_finish_1 = FactoryGirl.create(:material_finish, material_id: 3, finish_id: 1)
+    @mat_finish_2 = FactoryGirl.create(:material_finish, material_id: 4, finish_id: 1)
     
-    @mat_1 = Factory(:material, id: 1)
-    @mat_2 = Factory(:material, id: 2)
+    @mat_1 = FactoryGirl.create(:material, id: 1)
+    @mat_2 = FactoryGirl.create(:material, id: 2)
     
-    @image_1 = Factory(:image, material_id: 1, finish_id: 1)
-    @image_2 = Factory(:image, material_id: 2, finish_id: 1)    
+    @image_1 = FactoryGirl.create(:image, material_id: 1, finish_id: 1)
+    @image_2 = FactoryGirl.create(:image, material_id: 2, finish_id: 1)    
   end
 
   test "clicking create button twice with same title should only save once" do

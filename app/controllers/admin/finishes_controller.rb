@@ -58,7 +58,7 @@ class Admin::FinishesController < ApplicationController
     @finish.destroy
 
     redirect_to admin_finishes_path, 
-      notice: "Finish: #{title} was removed.
+      notice: "Finish: #{title} was removed, and 
       #{mat_finish_count} material relations were reset.
       #{image_finish_count} material image relations were reset."    
   end

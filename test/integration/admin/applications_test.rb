@@ -1,17 +1,17 @@
 require 'test_helper'
 
-class ApplicationsTest < ActionDispatch::IntegrationTest
+class Admin::ApplicationsTest < ActionDispatch::IntegrationTest
 
   def setup
     @valid_title = 'rainbowed chrome' 
     @center_div_id = 'div#content-center' 
      
-    @app_1 = Factory(:application, id: 1, title: 'interior')
-    @app_2 = Factory(:application, id: 2, title: 'exterior')    
+    @app_1 = FactoryGirl.create(:application, id: 1, title: 'interior')
+    @app_2 = FactoryGirl.create(:application, id: 2, title: 'exterior')    
 
-    2.times { Factory(:material_application, material_id: 2) }
-    @mat_app_1 = Factory(:material_application, material_id: 3, application_id: 1)
-    @mat_app_2 = Factory(:material_application, material_id: 3, application_id: 2)      
+    2.times { FactoryGirl.create(:material_application, material_id: 2) }
+    @mat_app_1 = FactoryGirl.create(:material_application, material_id: 3, application_id: 1)
+    @mat_app_2 = FactoryGirl.create(:material_application, material_id: 3, application_id: 2)      
   end
 
   test "clicking create button twice with same title should only save once" do

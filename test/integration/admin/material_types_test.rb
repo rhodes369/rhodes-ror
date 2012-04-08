@@ -1,16 +1,11 @@
 require 'test_helper'
 
-class MaterialTypesTest < ActionDispatch::IntegrationTest
+class Admin::MaterialTypesTest < ActionDispatch::IntegrationTest
   
   def setup
     @valid_title = 'rainbowed chrome'
-    @center_div_id = 'div#content-center'
-    
-    @mat_type_1 = Factory(:material_type, id: 1, title: 'firebrick')
-    @mat_type_2 = Factory(:material_type, id: 2, title: 'granite')    
-
-    2.times { Factory(:material, material_type_id: 1) }
-    @mat_3 = Factory(:material, material_type_id: 2)      
+    @center_div_id = 'div#content-center'   
+    @mat_type_1 = FactoryGirl.create(:material_type, id: 1, title: 'firebrick')   
   end 
 
   test "clicking create button twice with same title should only save once" do
@@ -34,7 +29,7 @@ class MaterialTypesTest < ActionDispatch::IntegrationTest
       assert_equal edit_admin_material_type_path(@mat_type_1), current_path
     end 
   end 
-
+  
   test "clickng update button should save title" do
     visit edit_admin_material_type_path(@mat_type_1)
     
@@ -45,7 +40,7 @@ class MaterialTypesTest < ActionDispatch::IntegrationTest
       assert_equal admin_material_types_path, current_path
     end
   end
- 
+   
   test "clicking delete button should delete mat type and all mat relations" do  
     visit edit_admin_material_type_path(@mat_type_1)
     

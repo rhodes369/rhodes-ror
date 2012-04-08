@@ -1,55 +1,37 @@
 require 'rubygems'
 require 'spork'
-#uncomment the following line to use spork with the debugger
-#require 'spork/ext/ruby-debug'
 
 Spork.prefork do
   # Loading more in this block will cause your tests to run faster. However,
   # if you change any configuration or code from libraries loaded here, you'll
   # need to restart spork for it take effect.
-  
+
   # This code will be run each time you run your specs.
   ENV["RAILS_ENV"] = "test"
   
   require File.expand_path('../../config/environment', __FILE__)
   require 'rails/test_help'
   require 'capybara/rails'
+  require 'shoulda'
+  require 'paperclip/matchers'  
+  require 'factory_girl_rails'
   require 'faker'
-  require 'factory_girl'
-  require 'database_cleaner'
- 
-  DatabaseCleaner.strategy = :truncation
   
   class ActiveSupport::TestCase
-    # Setup all fixtures in test/fixtures/*.(yml|csv) for all tests in alphabetical order.
-    #
-    # Note: You'll currently still have to declare fixtures explicitly in integration tests
-    # -- they do not yet inherit this setting
-    # fixtures :all
-
     # Add more helper methods to be used by all tests here...
   end
 
   class ActionDispatch::IntegrationTest
     include Capybara::DSL
     
-    # Stop ActiveRecord from wrapping tests in transactions
-    self.use_transactional_fixtures = true
-
     def teardown
-      DatabaseCleaner.clean
       Capybara.reset_sessions! 
       Capybara.use_default_driver 
     end 
   end  
-
 end
 
-# havn't thought of anything to add to this yet
 Spork.each_run do
-  # Basically that message is when factory girl runs, and it doesn't have you factories 
-  # loaded by the time it runs the test. Adding the FactoryGirl reload should make sure 
-  # it is there in time without having to adjust your requires.
   FactoryGirl.reload
 end
 

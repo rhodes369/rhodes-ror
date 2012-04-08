@@ -5,18 +5,25 @@ RhodesRor::Application.routes.draw do
   end
    
   namespace :admin do
+    
+    match '/' => 'admin#index'
+    
     resources :material_types, :finishes, :applications, :except => 'show'
+    
     resources :materials do
       put :update_default_image, :to => 'materials#update_default_image'                                  
     end
-    resources :images do
+    
+    resources :images, :only => [:create, :destroy] do
       put :update_image_finish_id, :to => 'images#update_finish_id'
     end
   end    
  
-  match '/admin' => 'admin/admin#index'
   match '/materials/search' => 'materials#search'
   
-  #root :to => 'public/index.haml'
+  root :to => 'application#index'
+
+  # a catch all for invalid urls - suggested by radar
+  match '*path', :to => "application#bad_route"
 
 end
