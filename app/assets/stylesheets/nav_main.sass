@@ -3,26 +3,6 @@
 ////////// MAIN NAV
 
 
-// ADMIN NAV
-#header a.adminHome
-  +absolute
-  left: 8px
-  bottom: 2px
-  margin: 0
-  font-size: 14px
-  color: #999
-  text-transform: uppercase
-  text-decoration: none
-  font-style: italic
-  width: auto
-  line-height: 18px
-  padding: 6px 20px
-  background: transparent
-  &:hover
-    color: #222
-    background-color: #ccc
-
-
 // NEWS
 #news
   position: absolute
@@ -44,14 +24,13 @@
       text-decoration: none
 
 
-// LINKS
-ul#links
+// MAIN LINKS & ADMIN LINKS
+ul#links, ul#links-admin
   position: absolute
   bottom: 2px
   right: 0
   margin: 0 7px 0 0
   padding: 0
-  width: 80%
   height: 30px
   text-align: right
   list-style: none
@@ -68,7 +47,6 @@ ul#links
     a
       &:link, &:visited
         font-size: 14px
-        color: #e5e4e5
         text-transform: uppercase
         text-decoration: none
         width: auto
@@ -103,7 +81,6 @@ ul#links
       position: absolute
       top: 1em
       left: 0
-      width: 150px
       margin: 0
       padding: 0
       z-index: 100
@@ -127,12 +104,48 @@ ul#links
       float: none
   ul li a
     &:link, &:visited
-      width: 110px
       display: inline-block
       padding: 4px 20px
     &:hover
       color: #222
       background-color: #ccc
+
+
+// MAIN LINKS
+ul#links
+  li
+    a
+      &:link, &:visited
+        color: #e5e4e5
+    &:hover, a:hover
+      color: #222
+      background-color: #ccc
+    ul
+      width: 150px
+      li a
+        width: 110px
+
+
+// ADMIN LINKS
+ul#links-admin
+  left: 0
+  text-align: left
+
+  li
+    float: left
+
+  a
+    color: #999
+    font-style: italic
+    &:hover
+      color: #222
+      background-color: #ccc
+  ul
+    width: 178px
+    li a
+      width: 138px
+
+
 
 // ul#links li:hover > a and ul#links li:hover above makes the first child nav link stay highlited when mousing down to second children
 
