@@ -55,4 +55,24 @@ class SearchMaterials
 $(document).ready ->
   if $('#materialSearchResults').length > 0 # only run on materials index page with this div
     search = new SearchMaterials() # invoke inital search
-  
+
+
+
+
+
+
+
+# Add "dash" to begining of links in left nav
+# Ideally want to use &ndash, but having trouble getting jQuery to write it as html
+
+$(document).ready ->
+  $("#content-left ul ul li a").prepend "- "
+
+
+
+
+
+
+
+
+
