@@ -1,6 +1,18 @@
 
 // ADMIN NAV
-= link_to 'Admin Home', admin_path, :class => 'adminHome'
+
+%ul#links-admin
+  %li
+    = link_to 'Admin Home', admin_path
+  %li
+    = link_to 'Manage Materials'
+    %ul
+      %li
+        = link_to 'Material Types'
+      %li
+        = link_to 'Finishes'
+      %li
+        = link_to 'Applications'
 
 
 // MAIN NAV + NEWS
