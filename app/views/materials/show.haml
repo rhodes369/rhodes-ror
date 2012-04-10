@@ -35,11 +35,13 @@
   #description
     // Advise on how to break into paragraphs, place inside p tag or no?
     %p=simple_format(@material.description)
-
-  %p.readMore Read More
-
-  %p
-    %a{href: "", target: "_blank"} Download material details PDF
+  
+  - unless @material.description.blank?
+    %p.readMore Read More
+  
+  - unless @material.pdf_file_name.nil?
+    %p
+      %a{:href => @material.pdf.url, target: "_blank"} Download material details PDF
 
 
   // MATERIAL SPECS, THESE VARY IN KIND
@@ -76,22 +78,4 @@
   // MAIN IMAGE
   #enlarge_container
     %img{src: "/", name: "enlarge1"}
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 
