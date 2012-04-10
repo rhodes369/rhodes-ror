@@ -10,28 +10,32 @@
 
     = form_for @material, :remote => true do |f|
     
-      - unless @material.images.count == 0 
+      - unless @material.images.count == 0
+        - counter = 1
         - material_sorted_images.each do |i|
-      
-          .img
-            %img{src: i.image.url(:thumb), name: 'al', class: "material_thumb", id: "material_thumb_#{i.id}", :data => { large_image: "#{i.image.url(:large)}", image_id: "#{i.id}" }}
-          
-            .finishesImg-wrap
-              %select.finishesImg{ name: "image[finish_id]", :data => { image_id: "#{i.id}" } }
-                %option{:value => ''} Finish Type
-                - @all_finishes.each do |finish|
-                  %option{:value => finish.id, :selected =>  i.finish_id == finish.id ? "selected" : nil}
-                    = finish.title
-              .arrow-down
+          - className = counter == 1 ? 'thumb-group' : 'hideme' 
+          - counter = counter > 5 ? 1 : counter+= 1
+          - tab_down
 
-            .removeImg{:data => { image_id: i.id }} remove
+          %div{:class => className}
+            .img
+              %img{src: i.image.url(:thumb), name: 'al', class: "material_thumb", id: "material_thumb_#{i.id}", :data => { large_image: "#{i.image.url(:large)}", image_id: "#{i.id}" }}  
+              .finishesImg-wrap
+                %select.finishesImg{ name: "image[finish_id]", :data => { image_id: "#{i.id}" } }
+                  %option{:value => ''} Finish Type
+                  - @all_finishes.each do |finish|
+                    %option{:value => finish.id, :selected =>  i.finish_id == finish.id ? "selected" : nil}
+                      = finish.title
+                .arrow-down
 
-            %label.default
-              %input{ type: "radio", :class => :default_image_id, :name => 'default_image_id', :checked => @material.default_image_id == i.id || nil, :data => { material_id: @material.id, default_image_id: @material.default_image_id, image_id: i.id } }
-              %span set default
+              .removeImg{:data => { image_id: i.id }} remove
 
-// next page
-%a.next
+              %label.default
+                %input{ type: "radio", :class => :default_image_id, :name => 'default_image_id', :checked => @material.default_image_id == i.id || nil, :data => { material_id: @material.id, default_image_id: @material.default_image_id, image_id: i.id } }
+                %span set default
+
+  // next page
+  %a.next
 
 
 // MAIN IMAGE
