@@ -57,6 +57,6 @@
   = render :partial => 'new_image_form', :locals => { :material => @material }
     
   - if @material.images.count != 0
-    = render :partial => 'gallery', :locals => { :material => @material, :material_sorted_images => @material_sorted_images }  
+    = render :partial => 'gallery', :locals => { :material => @material, :material_sorted_images => @material_sorted_images, :image_count => @material.images.count }  
   - else
     .placeholder-large

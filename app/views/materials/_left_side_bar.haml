@@ -14,7 +14,7 @@
 
       %ul#antiques
         - @materials_antique_in_title.each do |mat|
-          %li
+          %li 
             = link_to "#{mat.title} #{mat.material_type_title}", material_path(mat.cached_slug)
 
     / NEWLY CRAFTED
@@ -33,8 +33,8 @@
       %a.collapsed
         .arrow 
         %span.arrowTxt All Materials
-
-        %ul
+        
+        %ul#all
           - @materials_alpha.each do |mat|
             %li
               = link_to "#{mat.title} #{mat.material_type_title}", material_path(mat)

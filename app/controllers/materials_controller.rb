@@ -14,7 +14,10 @@ class MaterialsController < ApplicationController
     # populate filter pulldown values
     @all_mat_finishes = Finish.order(:title)
     @all_mat_types = MaterialType.order('title ASC')
-    @all_mat_apps = Application.order(:title)     
+    @all_mat_apps = Application.order(:title)
+    
+    # for tracking when to show the results: # text on /materials page on a users first search
+    session[:not_first_mat_search] = 1       
   end
       
     

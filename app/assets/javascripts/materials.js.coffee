@@ -1,24 +1,25 @@
-
 class SearchMaterials    
   constructor: ->
     @searchResultsDiv = $('#materialSearchResults')
     @spinner = $('#spinner')
     
-    # run search right off the bat so all code in same place
+    @setFilterListener()
     @filters = @getFilters() 
-    @processSearch(@filters)
-    
-    # listen for filter changes
+    @processSearch(@filters) # run search right off the bat so all code in same place 
+
+     
+  setFilterListener: ->    
     $('.filters .filterWrap').on(
-      change: (event,el) =>
+      change: (event) =>
         log "search filter changed"
         @filters = @getFilters()
-        @processSearch(@filters)
-    )    
-
+        @processSearch(@filters)      
+        $('#resultsHeader').show()
+    )
+          
   getFilters: ->  
     @filters = {} # unless this gets populated, we should get all results back
-    
+
     matTypeId = $('#matTypeId').val()
     matFinishId = $('#matFinishId').val()
     matAppId = $('#matAppId').val()
@@ -48,31 +49,23 @@ class SearchMaterials
         @searchResultsDiv.fadeIn(999)  
       
       error: (data) =>
-        alert 'Problem filtering search.'
+        alert 'Problem processing search.'
         log data.statusText      
-    
+
+  # Todo: refactor/enable method once working
+  # # check to see if search has been run before, if so, show results headers
+  # setResultsHeaders: ->
+  #   log 'setResultsHeaders'
+  #   if @searchResultsDiv.hasData('prevSearch', 1)
+  #     @searchResultsDiv.data('prevSearch', 1)
+  #     log 'setting been here'
+  #   else  
+  #     log 'been here done that' 
+  #     #$('#newlyCraftedResultsHeader').remove()    
+
+
+$(document).ready ->
+  App.prependLeftSideBarDashes()
   
-$(document).ready ->
   if $('#materialSearchResults').length > 0 # only run on materials index page with this div
-    search = new SearchMaterials() # invoke inital search
-
-
-
-
-
-
-
-# Add "dash" to begining of links in left nav
-# Ideally want to use &ndash, but having trouble getting jQuery to write it as html
-
-$(document).ready ->
-  $("#content-left ul ul li a").prepend "- "
-
-
-
-
-
-
-
-
-
+    search = new SearchMaterials() # invoke inital search 
