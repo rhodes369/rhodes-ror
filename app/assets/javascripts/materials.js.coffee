@@ -4,18 +4,28 @@ class SearchMaterials
     @searchResultsDiv = $('#materialSearchResults')
     @spinner = $('#spinner')
     
-    # run search right off the bat so all code in same place
-    @filters = @getFilters() 
-    @processSearch(@filters)
-    
     # listen for filter changes
     $('.filters .filterWrap').on(
       change: (event,el) =>
         log "search filter changed"
         @filters = @getFilters()
-        @processSearch(@filters)
-    )    
-
+        # run search right off the bat so all code in same place
+        @processSearch(@filters)      
+        $('#resultsHeader').show()
+    )
+    
+    @filters = @getFilters() 
+    @processSearch(@filters)  
+      
+    # check to see if search has been run before
+    # if searchResultsDiv.hasData('prevSearch', 1)
+    #   @searchResultsDiv.data('prevSearch', 1)
+    #   log 'setting been here'
+    # else  
+    #   log 'been here done that' 
+    #   #$('#newlyCraftedResultsHeader').remove()
+      
+      
   getFilters: ->  
     @filters = {} # unless this gets populated, we should get all results back
 
@@ -55,9 +65,4 @@ class SearchMaterials
 $(document).ready ->
   if $('#materialSearchResults').length > 0 # only run on materials index page with this div
     search = new SearchMaterials() # invoke inital search
-    unless $('#materialSearchResults').hasData('prevSearch', 1)
-      $('#results').remove()
-      log 'been here done that'
-    else
-      $('#materialSearchResults').data('prevSearch', 1)
-      log 'setting been here'
+      
