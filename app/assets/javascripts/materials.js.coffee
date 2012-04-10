@@ -6,8 +6,7 @@ class SearchMaterials
     @setFilterListener()
     @filters = @getFilters() 
     @processSearch(@filters) # run search right off the bat so all code in same place 
-    # @setResultsHeaders() 
-  
+
      
   setFilterListener: ->    
     $('.filters .filterWrap').on(
@@ -53,7 +52,7 @@ class SearchMaterials
         alert 'Problem processing search.'
         log data.statusText      
 
-  # Todo: refactor/enable method
+  # Todo: refactor/enable method once working
   # # check to see if search has been run before, if so, show results headers
   # setResultsHeaders: ->
   #   log 'setResultsHeaders'
