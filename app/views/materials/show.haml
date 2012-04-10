@@ -41,7 +41,9 @@
   
   - unless @material.pdf_file_name.nil?
     %p
-      %a{:href => @material.pdf.url, target: "_blank"} Download material details PDF
+      %a{:href => @material.pdf.url, target: "_blank"} 
+        Download material details PDF 
+        = "#{@material.pdf_file_name} (#{number_to_human_size(@material.pdf_file_size)})"
 
 
   // MATERIAL SPECS, THESE VARY IN KIND
