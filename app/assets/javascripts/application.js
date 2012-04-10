@@ -15,7 +15,7 @@
 //= require jquery
 //= require jquery_ujs
 //= require images
-//= require left_sidebar
+//= require left_side_bar
 //= require materials
 //= require toggle
 //= require body_class
