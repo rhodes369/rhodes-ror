@@ -9,7 +9,7 @@
   
     = form_for @material, :remote => true do |f|
       - unless image_count == 0
-        = render :partial => 'thumb_group', :locals => { :material_sorted_images => material_sorted_images } 
+        = render :partial => 'thumb_group', :locals => { :material_sorted_images => material_sorted_images, :total_image_count => image_count } 
     
     // next page
     - if image_count > 5 
