@@ -1,5 +1,4 @@
 $(document).ready ->
-  
   # DOM LISTENERS
   
   # set large image for thumbnail mouseovers

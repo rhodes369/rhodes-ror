@@ -11,12 +11,13 @@
 // GO AFTER THE REQUIRES BELOW.
 //
 
+//= require global
 //= require log
 //= require jquery
 //= require jquery_ujs
 //= require images
+//= require left_sidebar
 //= require materials
 //= require toggle
 //= require body_class
 //= require ../../../vendor/assets/javascripts/application
-
