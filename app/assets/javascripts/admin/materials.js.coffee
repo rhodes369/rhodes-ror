@@ -1,5 +1,6 @@
 $(document).ready ->
   # DOM LISTENERS
+  log 'admin test'
   
   # set large image for thumbnail mouseovers
   $('.material_thumb').on(

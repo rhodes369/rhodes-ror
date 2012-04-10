@@ -12,7 +12,6 @@
 //
 
 //= require global
-//= require log
 //= require jquery
 //= require jquery_ujs
 //= require images
