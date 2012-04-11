@@ -2,14 +2,15 @@
 - total_counter = 0
 
 - material_sorted_images.each do |i|
-  - counter = counter >= 5 ? 1 : counter+= 1
+  - counter = counter == 5 ? 1 : counter+= 1
   - total_counter+= 1
   - if counter == 1
     = preserve do
       <div>
-  - tab_up
+    - tab_up
     
   .img
+    = "counter: #{counter}"
     %img{src: i.image.url(:thumb), name: 'al', class: "material_thumb", id: "material_thumb_#{i.id}", :data => { large_image: "#{i.image.url(:large)}", image_id: "#{i.id}" }}  
     .finishesImg-wrap
       %select.finishesImg{ name: "image[finish_id]", :data => { image_id: "#{i.id}" } }
@@ -18,15 +19,15 @@
           %option{:value => finish.id, :selected =>  i.finish_id == finish.id ? "selected" : nil}
             = finish.title
       .arrow-down
-
+    
     .removeImg{:data => { image_id: i.id }} remove
-
+    
     %label.default
       %input{ type: "radio", :class => :default_image_id, :name => 'default_image_id', :checked => @material.default_image_id == i.id || nil, :data => { material_id: @material.id, default_image_id: @material.default_image_id, image_id: i.id } }
       %span set default
 
-  - tab_down    
-  - if counter == 5 or total_counter == total_image_count  
+  - if counter == 5 or total_counter == total_image_count
+    - tab_down
     = preserve do
       </div>
       
