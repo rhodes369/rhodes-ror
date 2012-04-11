@@ -4,7 +4,7 @@
 - material_sorted_images.each do |i|
   - counter = counter >= 5 ? 1 : counter+= 1
   - total_counter+= 1
-  - if counter == 1   
+  - if counter == 1
     = preserve do
       <div>
   - tab_up
@@ -26,6 +26,7 @@
       %span set default
 
   - tab_down    
-  - if counter == 4 or total_counter == total_image_count  
+  - if counter == 5 or total_counter == total_image_count  
     = preserve do
       </div>
+      
