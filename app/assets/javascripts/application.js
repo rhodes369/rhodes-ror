@@ -11,6 +11,7 @@
 // GO AFTER THE REQUIRES BELOW.
 //
 
+//= require noconflict
 //= require global
 //= require jquery
 //= require jquery_ujs
