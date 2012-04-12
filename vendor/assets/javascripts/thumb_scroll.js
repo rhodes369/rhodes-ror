@@ -1,4 +1,4 @@
-$(function() {
+$jQtools(function() {
   // initialize scrollable
-  $(".scrollable").scrollable();
+  $jQtools(".scrollable").scrollable();
 });
