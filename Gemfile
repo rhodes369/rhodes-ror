@@ -23,8 +23,14 @@ gem 'jquery-rails', '>= 2.0.1'
 # Deploy with Capistrano
 # gem 'capistrano'
 
+# To use the ruby-debug gem with ruby 1.9.3-p125 include the next 3 gems
+# then use rails s --debugger -- took forever to get working properly
+gem 'linecache19', '~> 0.5.13'
+gem 'ruby-debug-base19', '~> 0.11.26'
+gem 'ruby-debug19', :require => 'ruby-debug'
+
 # To use debugger
-gem 'ruby-debug19' #, :require => 'ruby-debug' # the require breaks on my local -drJ
+#gem 'ruby-debug19' #, :require => 'ruby-debug' # the require breaks on my local #-drJ
 
 group :development, :test do
   gem 'growl', '~> 1.0.3'
