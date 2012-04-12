@@ -45,22 +45,22 @@ class Material < ActiveRecord::Base
      unless filters.empty? # filter results via pulldowns
      
         # filter for mat type
-        if !filters[:mat_type_id].blank? 
+        unless filters[:mat_type_id].blank? 
           if mat.material_type_id == filters[:mat_type_id].to_i 
             results << mat unless results.include?(mat)
           end
         end
        
     
-        # filter for finish type
-        if !filters[:mat_finish_id].blank?
-          if mat.finishes.map(&:id).include?( filters[:mat_finish_id].to_i )  
+        # # filter for finish type
+        unless filters[:mat_finish_id].blank?
+          if mat.all_finish_ids.include?(filters[:mat_finish_id].to_i) 
             results << mat unless results.include?(mat)
           end
         end
        
         # filter for application type
-        if !filters[:mat_app_id].blank?
+        unless filters[:mat_app_id].blank?
           if mat.applications.map(&:id).include?( filters[:mat_app_id].to_i )  
             results << mat unless results.include?(mat)
           end
@@ -91,22 +91,22 @@ class Material < ActiveRecord::Base
      unless filters.empty? # filter results via pulldowns
      
         # filter for mat type
-        if !filters[:mat_type_id].blank? 
+        unless filters[:mat_type_id].blank? 
           if mat.material_type_id == filters[:mat_type_id].to_i 
             results << mat unless results.include?(mat)
           end
         end
        
     
-        # filter for finish type
-        if !filters[:mat_finish_id].blank?
-          if mat.finishes.map(&:id).include?( filters[:mat_finish_id].to_i )  
+        # # filter for finish type
+        unless filters[:mat_finish_id].blank?
+          if mat.all_finish_ids.include?(filters[:mat_finish_id].to_i) 
             results << mat unless results.include?(mat)
           end
         end
        
         # filter for application type
-        if !filters[:mat_app_id].blank?
+        unless filters[:mat_app_id].blank?
           if mat.applications.map(&:id).include?( filters[:mat_app_id].to_i )  
             results << mat unless results.include?(mat)
           end
@@ -123,13 +123,6 @@ class Material < ActiveRecord::Base
     return results
   end
 
-  # 
-  # def self.with_finish(finish_id)
-  #   #with_finish = []
-  #   #MaterialFinish.where(finish_id: finish_id).each { |mat| with_finish << mat }    
-  #   #return with_finish
-  # end
-
   # set all instances using this mat_type_id to nil
   def self.reset_all_material_types(mat_type_id)
     mat_types = Material.where(material_type_id: mat_type_id)
@@ -142,6 +135,17 @@ class Material < ActiveRecord::Base
     end 
     
     return mat_types.count   
+  end
+
+
+  # return array of all mat finish ids + mat.images finish_ids combined
+  def all_finish_ids
+    if self.images.nil?
+      return self.finishes.map(&:id) 
+    else
+      image_finish_ids = self.images.where('finish_id IS NOT NULL').map(&:finish_id)
+      return self.finishes.map(&:id).concat(image_finish_ids)
+    end
   end
 
 
