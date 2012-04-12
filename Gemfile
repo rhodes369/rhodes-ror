@@ -24,7 +24,7 @@ gem 'jquery-rails', '>= 2.0.1'
 # gem 'capistrano'
 
 # To use debugger
-gem 'ruby-debug19' #, :require => 'ruby-debug' # the require breaks on my local -drJ
+# gem 'ruby-debug19' #, :require => 'ruby-debug' # the require breaks on my local -drJ
 
 group :development, :test do
   gem 'growl', '~> 1.0.3'
