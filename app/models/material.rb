@@ -18,11 +18,9 @@ class Material < ActiveRecord::Base
   is_sluggable :title # for slugged gem 
                           
   scope :alphabetical, self.order('title ASC') 
-  scope :newly_crafted, self.order('created_at DESC') 
+  # scope :newly_crafted, self.order('created_at DESC') 
   scope :newly_crafted_without_antiques, 
-        self.find_by_sql("SELECT * from materials 
-                          WHERE title NOT LIKE '%antique%' 
-                          ORDER BY created_at DESC")
+    where("title NOT LIKE '%antique%'").order("created_at DESC")
   scope :antique_in_title, self.where('title LIKE ?', '%antique%').order('title ASC')  
   scope :with_mat_type, lambda { |mat_type_id| where('material_type_id = ?', mat_type_id) }
 
