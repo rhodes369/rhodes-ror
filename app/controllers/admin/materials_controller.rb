@@ -59,13 +59,7 @@ class Admin::MaterialsController < ApplicationController
 
 
   def edit
-    
-    # begin
-    #   @material = Material.find_using_slug(params[:id]) 
-    # rescue => e
-    #   redirect_to admin_materials_path, alert: "Could not find material: #{params[:id]}"
-    # end
-    
+
     @material = Material.find_using_slug(params[:id]) 
 
     unless @material.nil?
