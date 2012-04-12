@@ -28,7 +28,7 @@ not for this element. */
   width:20000em;
   position:absolute;
   clear:both;}
-.items div {
+.items > div {
   float:left;
   width: 535px;
   cursor:pointer;}

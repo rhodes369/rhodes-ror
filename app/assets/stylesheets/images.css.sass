@@ -7,7 +7,7 @@ a:active
   -moz-outline-style: none
 
 
-.thumb-window
+.scrollable
   position: relative
   float: left
   overflow: hidden
@@ -16,14 +16,14 @@ a:active
   margin: 0 0 0 4px
   &.noscroll
     margin: 0 0 0 25px
-  .gallery-thumbs
+  .items
     position: absolute
     clear: both
     form
       width: auto
 
 
-.thumb-window .img
+.scrollable .img
   position: relative
   display: inline-block
   float: left
@@ -50,7 +50,7 @@ a:active
       -webkit-opacity: 1
       opacity: 1
 
-.gallery-thumbs img
+.items img
   border: none
   width: 95px
   height: 95px
@@ -71,13 +71,13 @@ a
     float: left
     margin: 28px 0px 0
     cursor: pointer
-    background-image: url(asset_path ('next.gif', image))
+    background-image: url(asset_path('next.gif', image))
     &:hover
-      background-image: url(asset_path ('nextO.gif', image))
+      background-image: url(asset_path('nextO.gif', image))
   &.prev
-    background-image: url(asset_path ('prev.gif', image))
+    background-image: url(asset_path('prev.gif', image))
     &:hover
-      background-image: url(asset_path ('prevO.gif', image))
+      background-image: url(asset_path('prevO.gif', image))
   &.disabled
     visibility: hidden !important
 
