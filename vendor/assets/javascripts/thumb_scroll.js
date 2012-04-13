@@ -1,4 +1,3 @@
-$jQtools(function() {
-  // initialize scrollable
-  $jQtools(".scrollable").scrollable();
+$(document).ready(function() {
+  $(".scrollable").scrollable();
 });

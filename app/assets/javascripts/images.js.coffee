@@ -4,18 +4,21 @@ $(document).ready ->
 
   # Get total width of all thumbnails
   totalWidth = 0
-  $(".items form").children().each ->
+  # $(".items form").children().each ->
+  $(".items").children().each ->
     totalWidth = totalWidth + $(this).outerWidth(true)
 
   $(".items").css "width", parseInt(totalWidth) + "px"
 
 
   # $(".next").click ->
+  #   console.log 'next clicked'
   #   scrollAmount = $(".gallery-thumbs").width() - $(".gallery-thumbs").parent().width()
   #   currentPos = Math.abs(parseInt($(".gallery-thumbs").css("left")))
   #   remainingScroll = scrollAmount - currentPos
   #   nextScroll = Math.floor($(".gallery-thumbs").parent().width())
   #   nextScroll = remainingScroll  if remainingScroll < nextScroll
+  #   console.log "scrollAmount: #{scrollAmount} currentPos: #{currentPos}"
   #   if currentPos < scrollAmount
   #     $(".gallery-thumbs").animate
   #       left: "-=" + nextScroll
