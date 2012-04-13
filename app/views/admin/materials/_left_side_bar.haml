@@ -16,8 +16,6 @@
         - @materials_antique_in_title.each do |mat|
           %li
             = link_to "#{mat.title} #{mat.material_type_title}", edit_admin_material_path(mat)
-            // Indent for long titles
-            // %span.indentLinks Limestone
 
     / NEWLY CRAFTED
     %li
@@ -40,6 +38,3 @@
           - @materials_alpha.each do |mat|
             %li
               = link_to "#{mat.title} #{mat.material_type_title}", edit_admin_material_path(mat)
-            // &ndash; Antique Yangtze
-            // Indent for long titles
-            // %span.indentLinks Limestone
