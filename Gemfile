@@ -23,11 +23,9 @@ gem 'jquery-rails', '>= 2.0.1'
 # Deploy with Capistrano
 # gem 'capistrano'
 
-
 # for ruby-1.9.2-p180 debugger
 gem 'ruby-debug-base19', "0.11.24"
 gem 'ruby-debug19', "0.11.6"
-
 
 group :development, :test do
   gem 'growl', '~> 1.0.3'

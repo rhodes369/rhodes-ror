@@ -1,26 +1,30 @@
-// Thumbnail window
-.thumb-window
-  // Thumbnail container
-  .gallery-thumbs
-  
+
+= form_for @material, :remote => true do |f|
+  - unless image_count == 0
+
     // previous page
-    - if image_count > 0
-      %a.prev
-  
-    = form_for @material, :remote => true do |f|
-      - unless image_count == 0
+    / - if image_count > 0
+    / This is handled in jQueryTools
+    %a.prev
+
+    // Thumbnail window
+    .scrollable
+      // Thumbnail container
+      .items
+
         = render :partial => 'thumb_group', :locals => { :material_sorted_images => material_sorted_images, :total_image_count => image_count } 
     
     // next page
-    - if image_count > 5 
-      %a.next
+    / - if image_count > 5
+    / This is handled in jQueryTools
+    %a.next
 
-// MAIN IMAGE
-#enlarge_container
-  %img{ src: @material.default_large_image, name: "enlarge1", id: "large_image" }
+    // MAIN IMAGE
+    #enlarge_container
+      %img{ src: @material.default_large_image, name: "enlarge1", id: "large_image" }
          
-%br
-%br
+    %br
+    %br
 
 
 

@@ -4,26 +4,29 @@ $(document).ready ->
 
   # Get total width of all thumbnails
   totalWidth = 0
-  $(".gallery-thumbs form").children().each ->
+  # $(".items form").children().each ->
+  $(".items").children().each ->
     totalWidth = totalWidth + $(this).outerWidth(true)
 
-  $(".gallery-thumbs").css "width", parseInt(totalWidth) + "px"
+  $(".items").css "width", parseInt(totalWidth) + "px"
 
 
-  $(".next").click ->
-    scrollAmount = $(".gallery-thumbs").width() - $(".gallery-thumbs").parent().width()
-    currentPos = Math.abs(parseInt($(".gallery-thumbs").css("left")))
-    remainingScroll = scrollAmount - currentPos
-    nextScroll = Math.floor($(".gallery-thumbs").parent().width())
-    nextScroll = remainingScroll  if remainingScroll < nextScroll
-    if currentPos < scrollAmount
-      $(".gallery-thumbs").animate
-        left: "-=" + nextScroll
-      , "slow"
-    else
-      $(".gallery-thumbs").animate
-        left: "0"
-      , "fast"
+  # $(".next").click ->
+  #   console.log 'next clicked'
+  #   scrollAmount = $(".gallery-thumbs").width() - $(".gallery-thumbs").parent().width()
+  #   currentPos = Math.abs(parseInt($(".gallery-thumbs").css("left")))
+  #   remainingScroll = scrollAmount - currentPos
+  #   nextScroll = Math.floor($(".gallery-thumbs").parent().width())
+  #   nextScroll = remainingScroll  if remainingScroll < nextScroll
+  #   console.log "scrollAmount: #{scrollAmount} currentPos: #{currentPos}"
+  #   if currentPos < scrollAmount
+  #     $(".gallery-thumbs").animate
+  #       left: "-=" + nextScroll
+  #     , "slow"
+  #   else
+  #     $(".gallery-thumbs").animate
+  #       left: "0"
+  #     , "fast"
 
 
   # $(".prev").click ->
