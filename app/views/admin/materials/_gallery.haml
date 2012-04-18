@@ -8,9 +8,9 @@
     %a.prev
 
     // Thumbnail window
-    .scrollable
+    #thumb_scroll
       // Thumbnail container
-      .items
+      #thumbs
 
         = render :partial => 'thumb_group', :locals => { :material_sorted_images => material_sorted_images, :total_image_count => image_count } 
     

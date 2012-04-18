@@ -3,7 +3,7 @@ $(document).ready ->
   
   totalWidth = 0 # Get total width of all thumbnails
   
-  $(".items").children().each ->
+  $("#thumbs, .items").children().each ->
     totalWidth = totalWidth + $(this).outerWidth(true)
 
-  $(".items").css "width", parseInt(totalWidth) + "px"
+  $("#thumbs, .items").css "width", parseInt(totalWidth) + "px"
