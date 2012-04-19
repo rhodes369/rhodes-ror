@@ -17,6 +17,8 @@
   *= require images
   *= require show
   *= require footer
+  *= require admin/admin
+  *= require admin/finishes
 
 
 

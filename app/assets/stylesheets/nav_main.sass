@@ -35,6 +35,7 @@ ul#links, ul#links-admin
   text-align: right
   list-style: none
   li
+    +pointer
     text-align: center
     float: right
     position: relative
@@ -44,6 +45,7 @@ ul#links, ul#links-admin
     background: transparent
     &.current, &.nolink
       line-height: 18px
+      +cursor
     a
       &:link, &:visited
         font-size: 14px
@@ -133,13 +135,14 @@ ul#links-admin
 
   li
     float: left
-
-  a
-    color: #999
-    font-style: italic
-    &:hover
+    a
+      color: #999
+      font-style: italic
+    &:hover, a:hover
       color: #222
       background-color: #ccc
+    &:hover > a
+      color: #222
   ul
     width: 178px
     li a

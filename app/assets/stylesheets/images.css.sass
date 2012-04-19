@@ -6,7 +6,7 @@ a:active
 \:focus
   -moz-outline-style: none
 
-
+#thumb_scroll,
 .scrollable
   position: relative
   float: left
@@ -16,16 +16,18 @@ a:active
   margin: 0 0 0 4px
   &.noscroll
     margin: 0 0 0 25px
-  .items
+  #thumbs, .items
     position: absolute
     clear: both
     form
       width: auto
 
+#thumbs > div,
 .items > div
   float: left
   width: 535px
   cursor: pointer
+#thumbs div a span
 .items div a span
   margin: 2px 0 0 0
   display: block
@@ -34,6 +36,7 @@ a:active
   color: #414042
   text-align: center
 
+#thumb_scroll .img,
 .scrollable .img
   position: relative
   display: inline-block
@@ -61,6 +64,7 @@ a:active
       -webkit-opacity: 1
       opacity: 1
 
+#thumbs img,
 .items img
   border: none
   width: 95px

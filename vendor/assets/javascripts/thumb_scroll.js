@@ -1,3 +1,3 @@
 $(document).ready(function() {
-  $(".scrollable").scrollable();
+  $("#thumb_scroll").scrollable();
 });
