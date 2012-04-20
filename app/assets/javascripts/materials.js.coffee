@@ -65,7 +65,23 @@ class SearchMaterials
 
 
 $(document).ready ->
+
   App.prependLeftSideBarDashes()
   
   if $('#materialSearchResults').length > 0 # only run on materials index page with this div
     search = new SearchMaterials() # invoke inital search 
+
+
+
+  # set large image for thumbnail mouseovers
+  $('.material_thumb').on(
+    mouseover: ->   
+      @large_image = $(this).data('large_image')
+      $('#large_image').attr(src: @large_image)   
+  )
+
+
+
+
+
+

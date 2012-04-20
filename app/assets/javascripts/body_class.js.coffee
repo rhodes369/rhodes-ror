@@ -1,7 +1,7 @@
 $(document).ready ->
 
   # Add class to body based on h3#mat_title
-  title = $("h3#mat_title").text().replace(RegExp(" ", "g"), "")
+  title = $("#mat_title").text().replace(RegExp(" ", "g"), "")
   $("body").addClass title
 
   # Check if Antique is in the class name on body and show / hide menus

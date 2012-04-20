@@ -41,8 +41,8 @@
   
   - unless @material.pdf_file_name.nil?
     %p
+      Download material PDF:
       %a{:href => @material.pdf.url, target: "_blank"} 
-        Download material details PDF 
         = "#{@material.pdf_file_name} (#{number_to_human_size(@material.pdf_file_size)})"
 
 
@@ -62,31 +62,11 @@
 
 #content-right
 
-  %a.prev
-
-  // Thumbnail window
-  .scrollable
-
-    // Thumbnail container
-    .items
-
-      // FINISH INFO IS IN THE MOUSEOVER FUNCTION, BEING WRITTEN TO #finish
-      %a(href="#" onMouseover="MM_swapImage('enlarge1','','images/stone/Amande/amande_4ptStalk.jpg',0); writeText('FINISH: Type of finish <br> and minimum thickness')")
-        %img{src: "/", alt: "", name: "a1"}
-     
-
-  %a.next
+  = render :partial => 'gallery', :locals => { :material => @material, :material_sorted_images => @material_sorted_images, :image_count => @material.images.count }
 
 
-  // MAIN IMAGE
-  #enlarge_container
-    %img{src: "/", name: "enlarge1"}
-    
-    // DESTROY STUFF BELOW ME AFTER DONE TESTING
-    %br
-    %br
-    %br
-    %p
-      =debug(@material_sorted_images.map(&:image_file_name))
-      %br
-      %br
+
+
+
+
+

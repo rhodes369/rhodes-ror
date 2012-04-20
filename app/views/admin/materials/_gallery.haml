@@ -3,8 +3,6 @@
   - unless image_count == 0
 
     // previous page
-    / - if image_count > 0
-    / This is handled in jQueryTools
     %a.prev
 
     // Thumbnail window
@@ -15,8 +13,6 @@
         = render :partial => 'thumb_group', :locals => { :material_sorted_images => material_sorted_images, :total_image_count => image_count } 
     
     // next page
-    / - if image_count > 5
-    / This is handled in jQueryTools
     %a.next
 
     // MAIN IMAGE
