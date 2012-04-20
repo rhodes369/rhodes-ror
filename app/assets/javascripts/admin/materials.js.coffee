@@ -2,11 +2,7 @@ $(document).ready ->
   # DOM LISTENERS
   
   # set large image for thumbnail mouseovers
-  $('.material_thumb').on(
-    mouseover: ->   
-      @large_image = $(this).data('large_image')
-      $('#large_image').attr(src: @large_image)   
-  )
+  # in main materials.js
   
   # set default image
   $('.default_image_id').on(

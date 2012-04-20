@@ -8,7 +8,7 @@
   %ul
     / ANTIQUES
     %li
-      %a.expanded
+      %a.collapsed
         .arrow
         %span.arrowTxt Antiques
 
@@ -34,7 +34,7 @@
         .arrow 
         %span.arrowTxt All Materials
 
-        %ul
-          - @materials_alpha.each do |mat|
-            %li
-              = link_to "#{mat.title} #{mat.material_type_title}", edit_admin_material_path(mat)
+      %ul
+        - @materials_alpha.each do |mat|
+          %li
+            = link_to "#{mat.title} #{mat.material_type_title}", edit_admin_material_path(mat)
