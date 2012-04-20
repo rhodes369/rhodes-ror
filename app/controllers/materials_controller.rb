@@ -22,13 +22,23 @@ class MaterialsController < ApplicationController
       
     
   def show
-    @material = Material.find_using_slug(params[:id]) 
-    redirect_to materials_path, notice: 'No material found' if @material.nil?
+    @material = Material.find_using_slug(params[:id])   
     
-    # left sidebar
-    @materials_antique_in_title = Material.antique_in_title
-    @materials_alpha = Material.alphabetical # for sidebar edit links    
-    @materials_newly_crafted_sidebar = Material.newly_crafted_without_antiques   
+    unless @material.nil?
+      @materials = Material.all
+      @material_sorted_images = @material.sort_thumb_images
+      @image = Image.new # for new image form
+      @all_material_types = MaterialType.all
+      @all_finishes = Finish.order(:title)
+      @all_applications = Application.order(:title)
+
+      # left sidebar
+      @materials_antique_in_title = Material.antique_in_title
+      @materials_alpha = Material.alphabetical # for sidebar edit links    
+      @materials_newly_crafted_sidebar = Material.newly_crafted_without_antiques # all mats excluding antiques     
+    else
+      redirect_to materials_path, notice: 'No material found' if @material.nil?
+    end 
   end
   
   

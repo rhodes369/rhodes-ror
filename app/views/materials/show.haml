@@ -73,6 +73,7 @@
       // FINISH INFO IS IN THE MOUSEOVER FUNCTION, BEING WRITTEN TO #finish
       %a(href="#" onMouseover="MM_swapImage('enlarge1','','images/stone/Amande/amande_4ptStalk.jpg',0); writeText('FINISH: Type of finish <br> and minimum thickness')")
         %img{src: "/", alt: "", name: "a1"}
+     
 
   %a.next
 
@@ -80,4 +81,12 @@
   // MAIN IMAGE
   #enlarge_container
     %img{src: "/", name: "enlarge1"}
-
+    
+    // DESTROY STUFF BELOW ME AFTER DONE TESTING
+    %br
+    %br
+    %br
+    %p
+      =debug(@material_sorted_images.map(&:image_file_name))
+      %br
+      %br

@@ -59,23 +59,22 @@ class Admin::MaterialsController < ApplicationController
 
 
   def edit
-
-    @material = Material.find_using_slug(params[:id]) 
-
-    unless @material.nil?
+    @material = Material.find_using_slug(params[:id])     
+    
+    unless @material.nil?  
       @materials = Material.all
       @material_sorted_images = @material.sort_thumb_images
       @image = Image.new
       @all_material_types = MaterialType.all
       @all_finishes = Finish.order(:title)
       @all_applications = Application.order(:title)
-    
+  
       # left sidebar
       @materials_antique_in_title = Material.antique_in_title
       @materials_alpha = Material.alphabetical # for sidebar edit links    
       @materials_newly_crafted_sidebar = Material.newly_crafted_without_antiques # all mats excluding antiques
     else
-      redirect_to admin_materials_path, notice: 'Could not find material'
+      redirect_to admin_materials_path, notice: 'Could not find material' if @material.nil?
     end
   end  
 
