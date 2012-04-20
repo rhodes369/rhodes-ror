@@ -1,11 +1,12 @@
 source 'https://rubygems.org'
 
-gem 'rails', '3.2.2'
-gem 'sqlite3', '1.3.5'
-gem 'slugged', '~> 1.0.1'
-gem "paperclip", "~> 3.0"
+gem 'rails', '3.2.3'
+gem 'sqlite3', '1.3.6'
+gem 'slugged', '~> 1.0'
+gem "paperclip", '~> 3.0'
 gem 'coffee-filter'
 gem 'haml-rails'
+
 
 # Gems used only for assets and not required
 # in production environments by default.
@@ -23,26 +24,32 @@ gem 'jquery-rails', '>= 2.0.1'
 # Deploy with Capistrano
 # gem 'capistrano'
 
+
 # for ruby-1.9.2-p180 debugger
-# gem 'ruby-debug-base19', "0.11.24"
-# gem 'ruby-debug19', "0.11.6"
+#gem 'ruby-debug-base19', "0.11.25"
+#gem 'ruby-debug19', "0.11.6"
+
+gem 'linecache19', '0.5.12'
+gem 'ruby-debug-base19', '0.11.25'
+gem 'ruby-debug19', :require => 'ruby-debug'
 
 group :development, :test do
-  gem 'growl', '~> 1.0.3'
-  gem 'guard-test', '0.4.3'
-  gem 'guard-spork', '~> 0.5.2'
+  gem 'pry'
+  gem 'pry-rails'
+  gem 'growl', '~> 1.0'
+  gem 'guard-test'
+  gem 'guard-spork'
   gem 'spork-testunit'
-  gem 'faker', '~> 1.0.1'
-  gem 'factory_girl_rails', '~> 3.0'
+  gem 'faker', '~> 1.0'
+  gem 'factory_girl_rails', '~> 3.1'
 end
 
 group :test do
-  gem 'capybara', '~> 1.1.2'
-  gem 'shoulda', '~> 3.0.1'
-  gem 'mocha', '~> 0.10.5'
-  gem 'turn', '~> 0.9.4'
-  gem 'database_cleaner', '~> 0.7.2'
-  gem 'minitest', '~> 2.11.4', :require => false # for turn
-  gem 'rb-fsevent', '~> 0.4.3.1', :require => false
+  gem 'capybara', '~> 1.1'
+  gem 'shoulda', '~> 3.0'
+  gem 'mocha'
+  gem 'turn', '~> 0.9'
+  gem 'minitest', '~> 2.1', :require => false # for turn
+  gem 'rb-fsevent', :require => false
   gem 'ruby-prof', :require => false
 end
