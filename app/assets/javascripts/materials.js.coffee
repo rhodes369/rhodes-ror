@@ -81,6 +81,10 @@ $(document).ready ->
   )
 
 
+  # Update #finish with finish type from writeText function on thumbnail
+  writeText = (txt) ->
+    $('#finish').innerHTML = txt
+
 
 
 
