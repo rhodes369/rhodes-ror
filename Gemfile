@@ -29,11 +29,11 @@ gem 'capistrano'
 #gem 'ruby-debug-base19', "0.11.25"
 #gem 'ruby-debug19', "0.11.6"
 
-gem 'linecache19', '0.5.12'
-gem 'ruby-debug-base19', '0.11.25'
-gem 'ruby-debug19', :require => 'ruby-debug'
 
 group :development, :test do
+  gem 'linecache19', '0.5.12'
+  gem 'ruby-debug-base19', '0.11.25'
+  gem 'ruby-debug19', :require => 'ruby-debug'
   gem 'pry'
   gem 'pry-rails'
   gem 'growl', '~> 1.0'
