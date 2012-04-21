@@ -22,7 +22,7 @@ gem 'jquery-rails', '>= 2.0.1'
 # gem 'unicorn'
 
 # Deploy with Capistrano
-# gem 'capistrano'
+gem 'capistrano'
 
 
 # for ruby-1.9.2-p180 debugger
