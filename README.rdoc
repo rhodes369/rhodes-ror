@@ -1,4 +1,4 @@
-== Welcome to Rhodes on Rails 3.2.3 Open source code base.
+== Welcome to Rhodes on Rails (3.2.3) Open source repo!
 
 - Currently features an Ajaxified product CMS, with Embedded image gallery
 automatic thumbnail cropping & PDF , utilizing Paperclip3 uploads. 
@@ -6,9 +6,10 @@ automatic thumbnail cropping & PDF , utilizing Paperclip3 uploads.
 - There is also a small buy small Ajax front endproduct search.
 
 
-*** Developers - if you want to contribute, fork a personal repo, clone it, then 
+- Developers - if you want to contribute, fork a personal repo, clone it, then 
 do a pull request. (contact doktorj -at- gmail.com) if you would like access
-to do so.) ***
+to do so.)
+
 
 first clone the repo in to your desired directory:
 git clone git@github.com:rhodes369/rhodes-ror.git
@@ -22,9 +23,7 @@ then once you are in the repo, if you would like some sample/test data run:
 
 bundle exec rakeb db:sample_data:do_all
 
-Then do a: 
+Then do a: rails server
 
-rails server
-
-Then goto: http://localhost:3000/ ,in your browser and you should be Golden.
+Then goto: http://localhost:3000 ,in your browser and you should be Golden.
 
