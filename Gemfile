@@ -1,7 +1,8 @@
 source 'https://rubygems.org'
 
 gem 'rails', '3.2.3'
-gem 'sqlite3', '1.3.6'
+gem 'mysql2'
+# gem 'sqlite3', '1.3.6'
 gem 'slugged', '~> 1.0'
 gem "paperclip", '~> 3.0'
 gem 'coffee-filter'
