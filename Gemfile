@@ -30,6 +30,9 @@ gem 'capistrano'
 #gem 'ruby-debug-base19', "0.11.25"
 #gem 'ruby-debug19', "0.11.6"
 
+group :production do
+  gem 'unicorn'
+end
 
 group :development, :test do
   gem 'linecache19', '0.5.12'
