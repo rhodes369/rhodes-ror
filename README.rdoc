@@ -1,8 +1,14 @@
 == Welcome to Rhodes on Rails 3.2.3 Open source code base.
 
-developers - if you want to contribute, fork a personal repo, clone it, then 
-do a pull request. (contact doktorj -at- gmail.com if you would like access
-to do so.)
+- Currently features an Ajaxified product CMS, with Embedded image gallery
+automatic thumbnail cropping & PDF , utilizing Paperclip3 uploads. 
+
+- There is also a small buy small Ajax front endproduct search.
+
+
+*** Developers - if you want to contribute, fork a personal repo, clone it, then 
+do a pull request. (contact doktorj -at- gmail.com) if you would like access
+to do so.) ***
 
 first clone the repo in to your desired directory:
 git clone git@github.com:rhodes369/rhodes-ror.git
@@ -10,26 +16,15 @@ git clone git@github.com:rhodes369/rhodes-ror.git
 setup your remotes if you havn't already:
 git remote upstream git@github.com:rhodes369/rhodes-ror.git
 
-then fork 
+then fork.
 
+then once you are in the repo, if you would like some sample/test data run:
 
+bundle exec rakeb db:sample_data:do_all
 
-== Welcome to Rails 3.2.3
+Then do a: 
 
+rails server
 
-== Getting Started
+Then goto: http://localhost:3000/ ,in your browser and you should be Golden.
 
-1. At the command prompt, create a new Rails application:
-       <tt>rails new myapp</tt> (where <tt>myapp</tt> is the application name)
-
-2. Change directory to <tt>myapp</tt> and start the web server:
-       <tt>cd myapp; rails server</tt> (run with --help for options)
-
-3. Go to http://localhost:3000/ and you'll see:
-       "Welcome aboard: You're riding Ruby on Rails!"
-
-4. Follow the guidelines to start developing your application. You can find
-the following resources handy:
-
-* The Getting Started Guide: http://guides.rubyonrails.org/getting_started.html
-* Ruby on Rails Tutorial Book: http://www.railstutorial.org/
