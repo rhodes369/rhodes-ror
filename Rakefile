@@ -5,3 +5,11 @@
 require File.expand_path('../config/application', __FILE__)
 
 RhodesRor::Application.load_tasks
+
+@rake_logger = Rails.logger = Logger.new("log/rake.log")
+
+# Swiped from Duke
+def log(msg, level=:info)
+  puts msg
+  @rake_logger.send(level,msg)
+end
