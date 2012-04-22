@@ -1,29 +1,33 @@
-== Welcome to Rhodes on Rails (3.2.3) Open source repo!
+Welcome to Rhodes on Rails (3.2.3) Open source repo!
+====================================================
 
-- Currently features an Ajaxified product CMS, with Embedded image gallery
-automatic thumbnail cropping & PDF , utilizing Paperclip3 uploads. 
+Currently core features include:
+--------------------------------
+- Ajaxified product admin content management system 
+- Embedded image gallery manager
+automatic thumbnail cropping & Pdf , utilizing the Paperclip3 uploads. 
 
 - There is also a small buy small Ajax front endproduct search.
 
+Developers
+===========
+ if you would like to contribute bug fixes, updates or features  (contact doktorj -at- gmail.com)
+ 
 
-- Developers - if you want to contribute, fork a personal repo, clone it, then 
-do a pull request. (contact doktorj -at- gmail.com) if you would like access
-to do so.)
+Installing the rails app
+=========================
+1 git clone git@github.com:rhodes369/rhodes-ror.git 
+2 cd rhodes-ror (or whatever name you specified)
+3 bundle install
+4 bundle exec rake:db:migrate
+5 if you would like some sample/test data added:
+6 bundle exec rakeb db:sample_data:do_all
+7 Start your rails server and you should be Golden.
 
 
-first clone the repo in to your desired directory:
-git clone git@github.com:rhodes369/rhodes-ror.git
 
-setup your remotes if you havn't already:
-git remote upstream git@github.com:rhodes369/rhodes-ror.git
+= Haml / Sass Design by:
+[ Placebo Arts ]: http://www.placeboarts.com/design/design_web.html
 
-then fork.
-
-then once you are in the repo, if you would like some sample/test data run:
-
-bundle exec rakeb db:sample_data:do_all
-
-Then do a: rails server
-
-Then goto: http://localhost:3000 ,in your browser and you should be Golden.
-
+= Ruby on Rails backend by:
+[ doktor J]: https://github.com/doktorj
