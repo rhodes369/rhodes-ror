@@ -1,9 +1,9 @@
 class ApplicationController < ActionController::Base
   protect_from_forgery
   
-  # def index
-  #   render :root
-  # end
+  def index
+    render :root
+  end
   
   # redirect to root route with alert, and log it
   def bad_route
