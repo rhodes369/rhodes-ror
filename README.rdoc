@@ -1,13 +1,13 @@
-Welcome to Rhodes on Rails (3.2.3) Open source repo!
-====================================================
+Welcome to Rhodes on Rails (3.2.3) 
+==================================
 
 Currently core features include:
 --------------------------------
 - Ajaxified product admin content management system 
 - Embedded image gallery manager
-automatic thumbnail cropping & Pdf , utilizing the Paperclip3 uploads. 
-
-- There is also a small buy small Ajax front endproduct search.
+- Automatic thumbnail cropping & Pdf uploading, utilizing the Paperclip3 gem.
+- Seo friendly product urls using the slugged gem 
+- There is also a small buy small Ajax front end product search filter.
 
 Developers
 ===========
@@ -19,10 +19,11 @@ Installing the rails app
 1 git clone git@github.com:rhodes369/rhodes-ror.git 
 2 cd rhodes-ror (or whatever name you specified)
 3 bundle install
-4 bundle exec rake:db:migrate
-5 if you would like some sample/test data added:
-6 bundle exec rakeb db:sample_data:do_all
-7 Start your rails server and you should be Golden.
+4 bundle exec rake:db:create
+5 bundle exec rake:db:migrate
+6 if you would like some sample/test data added:
+7 bundle exec rakeb db:sample_data:do_all
+8 start your rails server and you should be golden.
 
 
 
