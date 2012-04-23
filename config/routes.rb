@@ -21,7 +21,7 @@ RhodesRor::Application.routes.draw do
  
   match '/materials/search' => 'materials#search'
   
-  root :to => 'application#index'
+  #root :to => 'application#index' # eph wants this to go to public/index.html
 
   # a catch all for invalid urls - suggested by radar
   match '*path', :to => "application#bad_route"
