@@ -27,8 +27,8 @@ Installing the rails app
 
 
 
-= Haml / Sass Design by:
+- Haml / Sass Design by:
 [ Placebo Arts ]: http://www.placeboarts.com/design/design_web.html
 
-= Ruby on Rails backend by:
+- Ruby on Rails backend by:
 [ doktor J]: https://github.com/doktorj
