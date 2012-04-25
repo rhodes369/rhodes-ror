@@ -1,0 +1,101 @@
+/* IMAGE GALLERIES */
+
+a:active {
+    outline: medium none;
+}
+:focus {
+}
+#thumb_scroll, .scrollable {
+    float: left;
+    height: 116px;
+    margin: 0 0 0 4px;
+    overflow: hidden;
+    position: relative;
+    width: 530px;
+}
+#thumb_scroll.noscroll, .scrollable.noscroll {
+    margin: 0 0 0 25px;
+}
+#thumb_scroll #thumbs, #thumb_scroll .items, .scrollable #thumbs, .scrollable .items {
+    clear: both;
+    position: absolute;
+}
+#thumb_scroll #thumbs form, #thumb_scroll .items form, .scrollable #thumbs form, .scrollable .items form {
+    width: auto;
+}
+#thumbs > div, .items > div {
+    cursor: pointer;
+    float: left;
+    width: 535px;
+}
+.items div a span {
+    color: #414042;
+    display: block;
+    font-size: 11px;
+    line-height: 11px;
+    margin: 2px 0 0;
+    text-align: center;
+}
+#thumb_scroll .img, .scrollable a {
+    border: 1px solid #AFAFAE;
+    display: inline-block;
+    float: left;
+    height: 95px;
+    margin: 10px 10px 10px 0;
+    opacity: 0.5;
+    padding: 0;
+    position: relative;
+    width: 95px;
+}
+.scrollable a:hover {
+    opacity: 1;
+}
+#thumb_scroll .img:hover .thumbLabel {
+    opacity: 1;
+}
+#thumbs img, .items img {
+    border: medium none;
+    height: 95px;
+    width: 95px;
+}
+a.prev {
+    clear: both;
+    cursor: pointer;
+    float: left;
+    height: 63px;
+    margin: 28px 0 0;
+    width: 22px;
+}
+a.next {
+    background-image: url("/assets/next.gif");
+    cursor: pointer;
+    float: left;
+    height: 63px;
+    margin: 28px 0 0;
+    width: 22px;
+}
+a.next:hover {
+    background-image: url("/assets/nextO.gif");
+}
+a.prev {
+    background-image: url("/assets/prev.gif");
+}
+a.prev:hover {
+    background-image: url("/assets/prevO.gif");
+}
+a.disabled {
+    visibility: hidden !important;
+}
+#enlarge_container {
+    clear: both;
+    height: 527px;
+    margin: 0 0 20px 25px;
+    overflow: hidden;
+    padding: 0;
+    text-align: center;
+    width: 527px;
+}
+#enlarge_container img {
+    border: 1px solid #ACACAC;
+    margin: 0;
+}

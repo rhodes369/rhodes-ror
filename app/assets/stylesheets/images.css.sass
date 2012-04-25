@@ -37,7 +37,7 @@ a:active
   text-align: center
 
 #thumb_scroll .img,
-.scrollable .img
+.scrollable a
   position: relative
   display: inline-block
   float: left
@@ -51,18 +51,18 @@ a:active
   -khtml-opacity: .50
   -webkit-opacity: .50
   opacity: .50
-  &:hover
-    filter: alpha(opacity=100)
-    -moz-opacity: 1
-    -khtml-opacity: 1
-    -webkit-opacity: 1
-    opacity: 1
-    .thumbLabel
-      filter: alpha(opacity=100)
-      -moz-opacity: 1
-      -khtml-opacity: 1
-      -webkit-opacity: 1
-      opacity: 1
+.scrollable a:hover
+  filter: alpha(opacity=100)
+  -moz-opacity: 1
+  -khtml-opacity: 1
+  -webkit-opacity: 1
+  opacity: 1
+#thumb_scroll .img:hover  .thumbLabel
+  filter: alpha(opacity=100)
+  -moz-opacity: 1
+  -khtml-opacity: 1
+  -webkit-opacity: 1
+  opacity: 1
 
 #thumbs img,
 .items img
