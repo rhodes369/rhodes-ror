@@ -16,7 +16,7 @@ class Admin::MaterialsController < ApplicationController
         format.html { redirect_to edit_admin_material_path(@material), notice: 'Material Saved' }
         format.json { render json: @material, status: :created, location: @material }
       else
-        format.html { redirect_to edit_admin_material_path(@material), alert: @material.errors.full_messages.first }
+        format.html { redirect_to admin_materials_path, alert: @material.errors.full_messages.first }
         format.json { render json: @material.errors, status: :unprocessable_entity } 
       end
     end

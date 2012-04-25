@@ -10,9 +10,7 @@ set :rails_env, "production"
 set :branch, "master"
 
 set :use_sudo, false
-
 set :keep_releases, 5
-
 set :user, "rhodes"
 
 # role :web, "50.57.155.246"                          # Your HTTP server, Apache/etc
@@ -20,7 +18,7 @@ set :user, "rhodes"
 # role :db,  "50.57.155.246", :primary => true # This is where Rails migrations will run
 server "50.57.155.246", :web, :app, :db, :primary => true, :memcached => true
 
-set :deploy_to,       "/home/rhodes/#{application}"
+set :deploy_to, "/home/rhodes/#{application}"
 
 ssh_options[:forward_agent] = true
 default_run_options[:shell] = 'bash'
@@ -29,7 +27,7 @@ default_run_options[:pty] = true
 default_environment["RAILS_ENV"] = 'production'
 
 after "bundle:install", "deploy:set_configs"
-after "bundle:install", "deploy:migrate"
+after "deploy:set_configs", "deploy:migrate"
 after "deploy:update_code", "deploy:build_missing_paperclip_styles"
 after "deploy:finalize_update", "deploy:cleanup"
 
@@ -43,7 +41,7 @@ namespace :deploy do
 
   desc "set up extra configs"
   task :set_configs, :role => :app do
-    run "ln -sf #{shared_path}/config/database.yml #{latest_release}/config/database.yml"
+    run "ln -sf ~/config/database.yml #{latest_release}/config/database.yml"
   end
 
   task :start do ; end

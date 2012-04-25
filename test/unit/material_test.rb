@@ -11,7 +11,8 @@ class MaterialTest < ActiveSupport::TestCase
   
   should validate_presence_of(:title)
   should validate_uniqueness_of(:title)
-  should ensure_length_of(:title).is_at_most(255)
+  should ensure_length_of(:title).is_at_least(3)
+  should ensure_length_of(:title).is_at_most(40)
 
   test "valid with all attributes" do     
     assert @mat_1.valid?, 'Material was valid' 
