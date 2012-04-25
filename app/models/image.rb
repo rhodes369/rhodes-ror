@@ -7,13 +7,11 @@ class Image < ActiveRecord::Base
                   :image_content_type, :image_file_size
   
   # paperclip settings
-  
   has_attached_file :image, 
          :styles => { :large => "527x527>", :thumb => "95x95#" },
          :path => ":rails_root/public/system/:attachment/:id/:style/:filename",
          :url => "/system/:attachment/:id/:style/:filename"
                                        
-  validates_uniqueness_of :image_file_name, :scope => :material_id 
   validates_attachment :image, 
       :presence => true, 
       :content_type => { :content_type => ['image/jpeg', 'image/png', 'image/gif'] },
