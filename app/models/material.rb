@@ -18,20 +18,17 @@ class Material < ActiveRecord::Base
   is_sluggable :title # for slugged gem 
                           
   scope :alphabetical, self.order('title ASC') 
-  # scope :newly_crafted, self.order('created_at DESC') 
   scope :newly_crafted_without_antiques, 
     where("title NOT LIKE '%antique%'").order("created_at DESC")
   scope :antique_in_title, self.where('title LIKE ?', '%antique%').order('title ASC')  
   scope :with_mat_type, lambda { |mat_type_id| where('material_type_id = ?', mat_type_id) }
 
-  before_destroy :delete_all_related_attachments
-  
-  validates :title, presence: true, :uniqueness => true 
   validates_length_of :title, :maximum => 255, :alert => 'Title can only be 255 characters long'
   validates_attachment :pdf, 
     :content_type => { :content_type => ['application/pdf'] },
     :size => { :in => 0..20.megabytes }
-    
+
+  before_destroy :delete_all_related_attachments    
      
   # filter out all newly crafted mat or 'antique' in title
   def self.newly_crafted(filters = {})
