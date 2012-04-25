@@ -2,7 +2,7 @@ class ApplicationController < ActionController::Base
   protect_from_forgery
   
   def index
-    render :root
+    render :root # default to /public/index.html
   end
   
   # redirect to root route with alert, and log it
