@@ -23,7 +23,9 @@ class Material < ActiveRecord::Base
   scope :antique_in_title, self.where('title LIKE ?', '%antique%').order('title ASC')  
   scope :with_mat_type, lambda { |mat_type_id| where('material_type_id = ?', mat_type_id) }
 
-  validates_length_of :title, :maximum => 255, :alert => 'Title can only be 255 characters long'
+  validates_presence_of :title
+  validates_uniqueness_of :title
+  validates :title, :length => { :in => 3..40 }
   validates_attachment :pdf, 
     :content_type => { :content_type => ['application/pdf'] },
     :size => { :in => 0..20.megabytes }
