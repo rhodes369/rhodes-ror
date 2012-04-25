@@ -2,7 +2,6 @@ source 'https://rubygems.org'
 
 gem 'rails', '3.2.3'
 gem 'mysql2'
-# gem 'sqlite3', '1.3.6'
 gem 'slugged', '~> 1.0'
 gem "paperclip", '~> 3.0'
 gem 'coffee-filter'
@@ -25,11 +24,9 @@ gem 'jquery-rails', '>= 2.0.1'
 # Deploy with Capistrano
 gem 'capistrano'
 
-
-# for ruby-1.9.2-p180 debugger
-#gem 'ruby-debug-base19', "0.11.25"
-#gem 'ruby-debug19', "0.11.6"
-
+group :production do
+  gem 'unicorn'
+end
 
 group :development, :test do
   gem 'linecache19', '0.5.12'
