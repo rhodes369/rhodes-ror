@@ -1,0 +1,150 @@
+/* NAV MAIN */
+
+#news {
+    bottom: 40px;
+    color: #636363;
+    height: auto;
+    margin: 0 4px 0 0;
+    position: absolute;
+    right: 10px;
+    text-align: right;
+}
+#news a:link, #news a:visited {
+    color: #7C3113;
+    font-size: 0.9em;
+    margin: 0;
+    padding: 4px 12px;
+    text-decoration: none;
+}
+#news a:hover, #news a.current {
+    color: #636363;
+    text-decoration: none;
+}
+ul#links, ul#links-admin {
+    bottom: 2px;
+    height: 30px;
+    list-style: none outside none;
+    margin: 0 7px 0 0;
+    padding: 0;
+    position: absolute;
+    right: 0;
+    text-align: right;
+}
+ul#links li, ul#links-admin li {
+    background: none repeat scroll 0 0 transparent;
+    cursor: pointer;
+    float: right;
+    line-height: 29px;
+    padding: 0;
+    position: relative;
+    text-align: center;
+    width: auto;
+}
+ul#links li.current, ul#links li.nolink, ul#links-admin li.current, ul#links-admin li.nolink {
+    cursor: default;
+    line-height: 18px;
+}
+ul#links li a:link, ul#links li a:visited, ul#links-admin li a:link, ul#links-admin li a:visited {
+    background: none repeat scroll 0 0 transparent;
+    font-size: 14px;
+    height: 18px;
+    padding: 6px 20px;
+    text-decoration: none;
+    text-transform: uppercase;
+    width: auto;
+}
+ul#links li.current, ul#links li.nolink, ul#links-admin li.current, ul#links-admin li.nolink {
+    background: none repeat scroll 0 0 transparent;
+    color: #E5E4E5;
+    font-size: 14px;
+    height: 18px;
+    padding: 6px 20px;
+    text-decoration: none;
+    text-transform: uppercase;
+    width: auto;
+}
+ul#links li:hover, ul#links li a:hover, ul#links-admin li:hover, ul#links-admin li a:hover {
+    background-color: #CCCCCC;
+    color: #222222;
+}
+ul#links a.current:link, ul#links a.current:visited, ul#links-admin a.current:link, ul#links-admin a.current:visited {
+    background-color: #CCCCCC;
+    color: #222222;
+}
+ul#links li.current, ul#links li.nolink:hover, ul#links-admin li.current, ul#links-admin li.nolink:hover {
+    background-color: #CCCCCC;
+    color: #222222;
+}
+ul#links li ul, ul#links-admin li ul {
+    background-color: #333333;
+    box-shadow: 0 4px 8px #222222;
+    display: none;
+    left: 0;
+    list-style: none outside none;
+    margin: 0;
+    padding: 0;
+    position: absolute;
+    top: 1em;
+    z-index: 100;
+}
+ul#links li > ul, ul#links-admin li > ul {
+    left: 0;
+    top: 30px;
+}
+ul#links li:hover ul, ul#links li.over ul, ul#links-admin li:hover ul, ul#links-admin li.over ul {
+    display: block;
+}
+ul#links li ul li, ul#links-admin li ul li {
+    float: none;
+    margin: 0;
+    padding: 0;
+    text-align: left;
+}
+ul#links ul li a:link, ul#links ul li a:visited, ul#links-admin ul li a:link, ul#links-admin ul li a:visited {
+    display: inline-block;
+    padding: 4px 20px;
+}
+ul#links ul li a:hover, ul#links-admin ul li a:hover {
+    background-color: #CCCCCC;
+    color: #222222;
+}
+ul#links li a:link, ul#links li a:visited {
+    color: #E5E4E5;
+}
+ul#links li:hover, ul#links li a:hover {
+    background-color: #CCCCCC;
+    color: #222222;
+}
+ul#links li:hover > a {
+    color: #222222;
+}
+ul#links li ul {
+    width: 150px;
+}
+ul#links li ul li a {
+    width: 110px;
+}
+ul#links-admin {
+    left: 0;
+    text-align: left;
+}
+ul#links-admin li {
+    float: left;
+}
+ul#links-admin li a {
+    color: #999999;
+    font-style: italic;
+}
+ul#links-admin li:hover, ul#links-admin li a:hover {
+    background-color: #CCCCCC;
+    color: #222222;
+}
+ul#links-admin li:hover > a {
+    color: #222222;
+}
+ul#links-admin ul {
+    width: 178px;
+}
+ul#links-admin ul li a {
+    width: 138px;
+}

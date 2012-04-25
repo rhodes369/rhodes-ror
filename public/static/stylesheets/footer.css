@@ -1,0 +1,68 @@
+/* FOOTER */
+
+#footer {
+    background-color: rgba(0, 0, 0, 0.1);
+    clear: both;
+    margin: 0;
+    min-width: 1200px;
+    padding: 0;
+    position: relative;
+    width: 100%;
+    z-index: 99;
+}
+#footer #footerWrap {
+    margin: 0 auto;
+    padding: 0;
+    width: 1200px;
+}
+#footer .left {
+    margin: 0;
+    padding: 10px;
+}
+#footer p {
+    color: #252525;
+    font-size: 0.8em;
+    margin: 0;
+    padding: 0;
+}
+#footer a:link, #footer a:visited {
+    color: #7C3113;
+    text-decoration: none;
+}
+#footer a:hover {
+    color: #252525;
+    text-decoration: underline;
+}
+#footer p.address {
+    font-size: 0.8em;
+    font-weight: bold;
+}
+#footer p.copyright {
+    font-size: 0.7em;
+}
+#footer a.credit {
+    -moz-transition-duration: 400ms;
+    -moz-transition-property: color;
+    -moz-transition-timing-function: ease;
+    color: #666666;
+    display: block;
+    margin: 6px 0;
+    padding: 0;
+    text-decoration: none;
+    text-shadow: 1px 1px 0 #DDDDDD;
+}
+#footer a.credit:hover {
+    background-position: center 0;
+    color: #111111;
+    text-decoration: none;
+    text-shadow: 1px 1px 0 #DDDDDD;
+}
+#footer a.credit .creditTxt {
+    font-size: 11px;
+}
+#footer a.credit .name {
+    color: #7C3113;
+}
+#footer a.credit:hover .name {
+    font-style: italic;
+}
