@@ -14,4 +14,4 @@
 .DS_Store
 
 /public/system
-config/database.yml
+/config/database.yml
