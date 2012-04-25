@@ -2,12 +2,12 @@ class ApplicationController < ActionController::Base
   protect_from_forgery
   
   def index
-    render :root # default to /public/index.html
+    redirect_to '/' # default to /public/index.html
   end
   
-  # redirect to root route with alert, and log it
+  # redirect to /public/index.html with alert, and log it
   def bad_route
-    redirect_to :root, alert: "Sorry, the url: #{request.fullpath} was not found"
+    redirect_to '/', alert: "Sorry, the url: #{request.fullpath} was not found"
     logger.error "Bad route requested for #{request.fullpath}"
   end
 end
