@@ -28,7 +28,7 @@ default_run_options[:pty] = true
 
 default_environment["RAILS_ENV"] = 'production'
 
-after "bundle:install", "deploy:copy_configs"
+after "bundle:install", "deploy:set_configs"
 after "bundle:install", "deploy:migrate"
 after "deploy:update_code", "deploy:build_missing_paperclip_styles"
 after "deploy:finalize_update", "deploy:cleanup"
@@ -41,10 +41,10 @@ namespace :deploy do
     run "cd #{release_path}; RAILS_ENV=production bundle exec rake paperclip:refresh:missing_styles"
   end
   
-  desc "copy server configs"
-  task :copy_configs, :except => { :no_release => true }, :role => :app do
-    run "cp -f ~/config/database.yml #{release_path}/config/database.yml"
-  end
+  desc "set configs"
+  task :set_configs, :role => :app do
+    run "ln -sf #{shared_path}/db/database.yml #{latest_release}/config/database.yml"
+  end  
 
   task :start do ; end
   task :stop do ; end
