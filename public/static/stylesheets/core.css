@@ -575,25 +575,25 @@ a .arrow, .expanded .arrow {
     display: inline;
     margin: 0;
 }
-.press .thumbs li {
+#press .thumbs li {
     height: 328px;
 }
-.press .thumbs a {
+#press .thumbs a {
     height: 300px;
     padding: 14px;
     width: 180px;
 }
-.press .thumbs .material {
+#press .thumbs .material {
     text-transform: uppercase;
 }
-.press .thumbs .type {
+#press .thumbs .type {
     margin-top: 6px;
 }
-.press .thumbs img {
+#press .thumbs img {
     height: 230px;
     width: 180px;
 }
-.press #content-center .thumbs a {
+#press #content-center .thumbs a {
     font-size: 0.8em;
 }
 #quote {
@@ -614,7 +614,7 @@ a .arrow, .expanded .arrow {
     position: relative;
     top: 6px;
 }
-.contact #wrapper {
+#contact #wrapper {
     min-height: 900px;
 }
 #map {
@@ -720,34 +720,34 @@ a .arrow, .expanded .arrow {
     margin: 6px 0 0;
     text-transform: uppercase;
 }
-.howWeWork .company {
+#howWeWork .company {
     margin: 0;
 }
-.howWeWork #left-back {
+#howWeWork #left-back {
     right: 359px;
 }
-.howWeWork #center-back {
+#howWeWork #center-back {
     right: 548px;
 }
-.howWeWork #content-left {
+#howWeWork #content-left {
     left: 907px;
 }
-.howWeWork #content-center {
+#howWeWork #content-center {
     left: 907px;
     width: 600px;
 }
-.howWeWork #content-right {
+#howWeWork #content-right {
     left: 950px;
     width: 246px;
 }
-.privacy #wrapper {
+#privacy #wrapper {
     background: none repeat scroll 0 0 #F0F0EE;
     min-height: 670px;
 }
-.privacy #content {
+#privacy #content {
     margin: 100px 0 0 100px;
 }
-.privacy #content p {
+#privacy #content p {
     font-size: 16px;
     line-height: 24px;
     width: 620px;
@@ -755,6 +755,6 @@ a .arrow, .expanded .arrow {
 #left-back {
     min-height: 922px;
 }
-.privacy #wrapper, .contact #wrapper {
+#privacy #wrapper, .contact #wrapper {
     min-height: 970px;
 }
