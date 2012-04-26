@@ -8,7 +8,8 @@ class Material < ActiveRecord::Base
   has_many :images, :dependent => :destroy
   has_attached_file :pdf, 
          :path => ":rails_root/public/system/materials/:attachment/:id/:filename",
-         :url => "/system/materials/:attachment/:id/:filename"
+         :url => "/system/materials/:attachment/:id/:filename",
+         :dependent => :destroy
          
   attr_accessible :title, :description, :material_type_id, 
                   :finish_ids, :finishes, :application_ids, 
@@ -31,7 +32,7 @@ class Material < ActiveRecord::Base
     :size => { :in => 0..20.megabytes }
 
   # before_post_process :transliterate_file_name
-  before_destroy :delete_all_related_image_attachments    
+  # before_destroy :delete_all_related_image_attachments    
      
   # filter out all newly crafted mat or 'antique' in title
   def self.newly_crafted(filters = {})
@@ -188,20 +189,20 @@ class Material < ActiveRecord::Base
   private 
 
   # manually destroy all related paperclip attachments
-  def delete_all_related_image_attachments  
-    # manually make sure image records get removed
-    image_ids = self.images.map &:id
-    image_ids.each { |id| i = Image.find id; i.destroy }
-    
-    remaining_images = Image.find_all_by_id(image_ids)
-    if remaining_images.count > 0
-      logger.debug "#{remaining_images.count} images: still exist: #{remaining_images.to_s} after mat destroy for mat: #{self.id}"
-      self.errors[:base] << "- #{remaining_images.count} images still exist"
-      return false
-    else
-      return true
-    end
-  end
+  # def delete_all_related_image_attachments  
+  #   # manually make sure image records get removed
+  #   image_ids = self.images.map &:id
+  #   image_ids.each { |id| i = Image.find id; i.destroy }
+  #   
+  #   remaining_images = Image.find_all_by_id(image_ids)
+  #   if remaining_images.count > 0
+  #     logger.debug "#{remaining_images.count} images: still exist: #{remaining_images.to_s} after mat destroy for mat: #{self.id}"
+  #     self.errors[:base] << "- #{remaining_images.count} images still exist"
+  #     return false
+  #   else
+  #     return true
+  #   end
+  # end
   
   
   # def transliterate_file_name
