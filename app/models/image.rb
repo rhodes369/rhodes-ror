@@ -9,8 +9,8 @@ class Image < ActiveRecord::Base
   # paperclip settings
   has_attached_file :image, 
          :styles => { :large => "527x527>", :thumb => "95x95#" },
-         :path => ":rails_root/public/system/:attachment/:id/:style/:filename",
-         :url => "/system/:attachment/:id/:style/:filename"
+         :path => ":rails_root/public/system/materials/:attachment/:id/:style/:filename",
+         :url => "/system/materials/:attachment/:id/:style/:filename"
                                        
   validates_attachment :image, 
       :presence => true, 
