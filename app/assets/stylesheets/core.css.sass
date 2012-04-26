@@ -500,7 +500,7 @@ h1#logo
 
 // EXPAND AND COLLAPSE ARROWS
 a .arrow,
-.expanded .arrow
+.closed .arrow
   position: absolute
   top: 6px
   border-style: solid
@@ -509,7 +509,7 @@ a .arrow,
   border-color: transparent transparent transparent #636363
   border-width: 6px
 
-.collapsed .arrow, .expanded:hover .arrow
+.open .arrow
   position: absolute
   top: 8px
   border-style: solid
@@ -523,15 +523,14 @@ a .arrow,
 
 
 
-// DEFAULT Show / hide menus more newly crafted. (antiques are checked for with body_class.js)
+// DEFAULT Show / hide menus for newly crafted and all. (antiques are checked for with body_class.js)
 #content-left
   ul#antiques
     display: none
   ul#newly
     display: block
-
-
-
+  ul#all
+    display: block
 
 
 
