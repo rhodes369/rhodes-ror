@@ -32,6 +32,7 @@ GEM
     ansi (1.4.2)
     archive-tar-minitar (0.5.2)
     arel (3.0.2)
+    bcrypt-ruby (3.0.1)
     builder (3.0.0)
     capistrano (2.12.0)
       highline
@@ -239,6 +240,7 @@ PLATFORMS
   ruby
 
 DEPENDENCIES
+  bcrypt-ruby
   capistrano
   capybara (~> 1.1)
   coffee-filter

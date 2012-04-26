@@ -2,7 +2,7 @@
 # The default is nothing which will include only core features (password encryption, login/logout).
 # Available submodules are: :user_activation, :http_basic_auth, :remember_me,
 # :reset_password, :session_timeout, :brute_force_protection, :activity_logging, :external
-Rails.application.config.sorcery.submodules = [:remember_me, :reset_password]
+Rails.application.config.sorcery.submodules = [:remember_me]
 
 # Here you can configure each submodule's features.
 Rails.application.config.sorcery.configure do |config|
@@ -44,26 +44,26 @@ Rails.application.config.sorcery.configure do |config|
   # What realm to display for which controller name. For example {"My App" => "Application"}
   # Default: `{"application" => "Application"}`
   #
-  # config.controller_to_realm_map =
+  # config.controller_to_realm_map = {"application" => "Application"}
 
 
   # -- activity logging --
   # will register the time of last user login, every login.
   # Default: `true`
   #
-  # config.register_login_time =
+  # config.register_login_time = 'true'
 
 
   # will register the time of last user logout, every logout.
   # Default: `true`
   #
-  # config.register_logout_time =
+  # config.register_logout_time = 'true'
 
 
   # will register the time of last user action, every action.
   # Default: `true`
   #
-  # config.register_last_activity_time =
+  # config.register_last_activity_time = 'true'
 
 
   # -- external --
@@ -119,19 +119,19 @@ Rails.application.config.sorcery.configure do |config|
     # specify username attributes, for example: [:username, :email].
     # Default: `[:username]`
     #
-    # user.username_attribute_names =
+    user.username_attribute_names = [:username]
 
 
     # change *virtual* password attribute, the one which is used until an encrypted one is generated.
     # Default: `:password`
     #
-    # user.password_attribute_name =
+    # user.password_attribute_name = 
 
 
     # downcase the username before trying to authenticate, default is false
     # Default: `false`
     #
-    # user.downcase_username_before_authenticating =
+    # user.downcase_username_before_authenticating = true
 
 
     # change default email attribute.
@@ -186,7 +186,7 @@ Rails.application.config.sorcery.configure do |config|
     # make this configuration inheritable for subclasses. Useful for ActiveRecord's STI.
     # Default: `false`
     #
-    # user.subclasses_inherit_config =
+    user.subclasses_inherit_config = true
 
 
     # -- user_activation --
@@ -321,7 +321,7 @@ Rails.application.config.sorcery.configure do |config|
     # How many failed logins allowed.
     # Default: `50`
     #
-    # user.consecutive_login_retries_amount_limit =
+    # user.consecutive_login_retries_amount_limit = 10
 
 
     # How long the user should be banned. in seconds. 0 for permanent.

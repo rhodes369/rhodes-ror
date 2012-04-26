@@ -1,14 +1,12 @@
 class Admin::ImagesController < ApplicationController
   
+  before_filter :require_login
+  
   layout 'admin/layouts/application'
-  
-  # def index
-  #   redirect_to admin_materials_path
-  # end
-  
-  # def new
-  #   @image = Image.new
-  # end
+   
+  def new
+    @image = Image.new
+  end
 
 
   def create
