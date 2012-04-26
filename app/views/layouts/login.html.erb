@@ -3,10 +3,10 @@
 <head>
   <title>RhodesRor</title>
   <%= stylesheet_link_tag    "core", "login", "nav_main", "footer", :media => "all" %>
-  <%= javascript_include_tag "jquery-tools_no-jq.1.2.7", "dropdown" %>
+  <!-- <%= javascript_include_tag "jquery-tools_no-jq.1.2.7", "dropdown" %> -->
   <%= csrf_meta_tags %>
 </head>
-<body>
+<body id="sessions">
 
 <div id="outer">
   <div id="header_back">
@@ -27,16 +27,11 @@
 
 
   <div id="content">
-    
-    <!-- <form id="login">
 
-      <input id="username" placeholder="username"></input>
+    <h3>Login to Rhodes Admin</h3>
 
-      <input id="password" placeholder="password"></input>
-
-    </form> -->
     <%= render :template => "sessions/new" %>
-    
+
   </div>
 
 </div><!-- wrapper -->

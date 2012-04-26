@@ -1,13 +1,13 @@
 <%= form_tag sessions_path do %>
   <div class="field">
-    <%= label_tag :username %>
-    <%= text_field_tag :username, params[:email] %>
+    <!-- <%= label_tag :username %> -->
+    <%= text_field_tag :username, params[:email], :placeholder => "username" %>
   </div>
   <div class="field">
-    <%= label_tag :password %>
-    <%= password_field_tag :password %>
+    <!-- <%= label_tag :password %> -->
+    <%= password_field_tag :password,  :placeholder => "password" %>
   </div>
-  <div class="field">
+  <div class="field" id="remember">
     <%= check_box_tag :remember_me, 1, params[:remember_me] %>
     <%= label_tag :remember_me %>
   </div>
