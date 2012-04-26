@@ -40,7 +40,7 @@
     - unless @material.pdf_file_name.nil?
       %p
         current pdf: 
-        %a{:href => @material.pdf.url}
+        %a{:href => "/system/materials/pdfs/#{@material.id}/#{@material.pdf_file_name}"}
           = "#{@material.pdf_file_name} (#{number_to_human_size(@material.pdf_file_size)})"
 
     = f.submit :id => "update_material", :class => "submit"
