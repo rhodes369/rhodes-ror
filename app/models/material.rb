@@ -5,10 +5,10 @@ class Material < ActiveRecord::Base
   has_many :material_finishes, :dependent => :destroy
   has_many :material_applications, :dependent => :destroy
   has_one  :material_type
-  has_many :images #, :dependent => :destroy
+  has_many :images, :dependent => :destroy
   has_attached_file :pdf, 
-         :path => ":rails_root/public/system/:attachment/:id/:style/:filename",
-         :url => "/system/:attachment/:id/:style/:filename"
+         :path => ":rails_root/public/system/materials/:attachment/:id/:filename",
+         :url => "/system/materials/:attachment/:id/:filename"
          
   attr_accessible :title, :description, :material_type_id, 
                   :finish_ids, :finishes, :application_ids, 
@@ -16,7 +16,7 @@ class Material < ActiveRecord::Base
                   :pdf, :pdf_file_name, :pdf_content_type, :pdf_file_size
 
   is_sluggable :title # for slugged gem 
-                          
+                         
   scope :alphabetical, self.order('title ASC') 
   scope :newly_crafted_without_antiques, 
     where("title NOT LIKE '%antique%'").order("created_at DESC")
@@ -30,7 +30,8 @@ class Material < ActiveRecord::Base
     :content_type => { :content_type => ['application/pdf'] },
     :size => { :in => 0..20.megabytes }
 
-  before_destroy :delete_all_related_attachments    
+  # before_post_process :transliterate_file_name
+  before_destroy :delete_all_related_image_attachments    
      
   # filter out all newly crafted mat or 'antique' in title
   def self.newly_crafted(filters = {})
@@ -187,7 +188,7 @@ class Material < ActiveRecord::Base
   private 
 
   # manually destroy all related paperclip attachments
-  def delete_all_related_attachments  
+  def delete_all_related_image_attachments  
     # manually make sure image records get removed
     image_ids = self.images.map &:id
     image_ids.each { |id| i = Image.find id; i.destroy }
@@ -201,6 +202,13 @@ class Material < ActiveRecord::Base
       return true
     end
   end
+  
+  
+  # def transliterate_file_name
+  #   extension = File.extname(local_file_name).gsub(/^\.+/, '')
+  #   filename = local_file_name.gsub(/\.#{extension}$/, '')
+  #   self.local.instance_write(:filename, "#{UrlFriendlyFilenames::transliterate(filename)}.#{UrlFriendlyFilenames::transliterate(extension)}")
+  # end
   
   def self.order_results_hash(results = {})
     results.sort! { |a,b| b.created_at <=> a.created_at } # reverse!
