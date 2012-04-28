@@ -1,4 +1,4 @@
-class SessionsController < ApplicationController
+class AuthSessionsController < ApplicationController
   
   layout 'login'
   
