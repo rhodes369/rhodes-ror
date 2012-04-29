@@ -2,37 +2,35 @@
 <html>
 <head>
   <title>RhodesRor</title>
-  <%= stylesheet_link_tag    "core", "login", "nav_main", "footer" :media => "all" %>
-  <%= javascript_include_tag "jquery-tools_no-jq.1.2.7", "dropdown" %>
+  <%= stylesheet_link_tag    "core", "login", "nav_main", "footer", :media => "all" %>
+  <!-- <%= javascript_include_tag "jquery-tools_no-jq.1.2.7", "dropdown" %> -->
   <%= csrf_meta_tags %>
 </head>
-<body>
+<body id="sessions">
 
 <div id="outer">
   <div id="header_back">
     <div id="links_back"></div>
   </div>
 </div><!-- outer -->
-
+ 
 <div id="wrapper">
 
   <div id="header">
-
+    
     <h1 id="logo"><a href="index.html"><span></span>Rhodes.org</a></h1>
 
     <%= render :partial => "shared/nav_main" %>
 
   </div><!-- header -->
-
-
+  
   <div id="content">
-    <form id="login">
 
-      <input id="username" placeholder="username"></input>
+    <h3>Login to Rhodes Admin</h3>
 
-      <input id="password" placeholder="password"></input>
-
-    </form>
+    </form> -->
+    <%= render :template => "auth_sessions/new" %>
+    
   </div>
 
 </div><!-- wrapper -->

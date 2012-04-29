@@ -1,3 +1,4 @@
+@import mixins
 
 // CORE STYLES
 
@@ -304,6 +305,19 @@ h1#logo
   a
     color: transparent
 
+
+
+// ONE COLUMN
+.oneColumn
+  #wrapper
+    background: #f0f0ee
+    min-height: 670px
+  #content
+    margin: 100px 0 0 100px
+    p
+      width: 620px
+      font-size: 16px
+      line-height: 24px
 
 
 
@@ -838,20 +852,81 @@ a .arrow,
 
 
 
+
+
+
+
+
+
+
 // PRIVACY
 
 #privacy
-  #wrapper
-    background: #f0f0ee
-    min-height: 670px
   #content
-    margin: 100px 0 0 100px
     p
       width: 620px
       font-size: 16px
       line-height: 24px
 
 
+
+
+
+
+
+
+
+
+
+// SESSIONS - LOGIN FORM
+#sessions
+
+  #content
+    margin: 40px 0 0
+
+  form
+    width: auto
+    margin: 8px 0 40px
+    padding: 0
+
+  input[type=text], input[type=email], input[type=password]
+    margin: 0 0 16px
+    padding: 8px 12px
+    width: 330px
+    font-family: Times, serif
+    font-size: 26px
+    letter-spacing: 2px
+    color: #999
+    outline: none
+    border: 1px solid #555
+    box-shadow:         inset 2px 4px 4px #ccc
+    -moz-box-shadow:    inset 2px 4px 4px #ccc
+    -webkit-box-shadow: inset 2px 4px 4px #ccc
+
+    &:focus
+      +shadow(0, 0, 8, #414042)
+      color: #414042
+      border: 1px solid #414042
+
+  #remember.field
+    margin: 0 0 4px
+    padding: 16px 12px
+    width: 330px
+    background-color: #eee
+    border: 1px solid #555
+
+    label, input
+      +pointer
+
+
+  input[type=submit]
+    margin: 40px 20px 0 0
+    height: 48px
+    width: 160px
+    +center
+    +font(14px)
+    +round(6)
+    +submit(24)
 
 
 

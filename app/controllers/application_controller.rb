@@ -10,4 +10,9 @@ class ApplicationController < ActionController::Base
     redirect_to '/index.html', alert: "Sorry, the url: #{request.fullpath} was not found"
     logger.error "Bad route requested for #{request.fullpath}"
   end
+  
+  def not_authenticated
+    redirect_to login_url, :alert => "First login to access this page."
+  end  
+  
 end

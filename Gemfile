@@ -6,6 +6,8 @@ gem 'slugged', '~> 1.0'
 gem "paperclip", '~> 3.0'
 gem 'coffee-filter'
 gem 'haml-rails'
+gem 'sorcery', '~> 0.7'
+gem 'bcrypt-ruby'
 
 
 # Gems used only for assets and not required
