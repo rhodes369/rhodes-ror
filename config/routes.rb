@@ -1,5 +1,11 @@
 RhodesRor::Application.routes.draw do
   
+  get "logout" => "auth_sessions#destroy", :as => "logout"
+  get "login" => "auth_sessions#new", :as => "login"
+  
+  # resources :users, :only => [:new, :create]
+  resources :auth_sessions, :only => [:new, :create, :destroy]
+  
   resources :materials, :only => [:index, :show] do
     put :search, :to => 'materials#search'
   end

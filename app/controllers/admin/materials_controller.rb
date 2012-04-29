@@ -1,5 +1,7 @@
 class Admin::MaterialsController < ApplicationController
   
+  before_filter :require_login
+  
   layout 'admin/layouts/application'
   
   def index
