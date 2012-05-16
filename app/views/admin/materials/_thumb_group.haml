@@ -19,12 +19,16 @@
           %option{:value => finish.id, :selected =>  i.finish_id == finish.id ? "selected" : nil}
             = finish.title
       .arrow-down
-    
+
     .removeImg{:data => { image_id: i.id }} remove
-    
+
+    %label.icon
+      %input{type: "radio"}
+      %span Icon image
+
     %label.default
       %input{ type: "radio", :class => :default_image_id, :name => 'default_image_id', :checked => @material.default_image_id == i.id || nil, :data => { material_id: @material.id, default_image_id: @material.default_image_id, image_id: i.id } }
-      %span set default
+      %span 1st image
 
   - if counter == 5 or total_counter == total_image_count
     - tab_down
