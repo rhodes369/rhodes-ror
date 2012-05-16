@@ -6,12 +6,12 @@ $(document).ready ->
   # On click again, change height back to 94px and text back to "read more".
 
   $(".readMore").toggle (->
-    $(".description").animate
+    $("#description").animate
       height: "100%"
     , 800
     $(".readMore").text "Hide description"
   ), ->
-    $(".description").animate
-      height: "94px"
+    $("#description").animate
+      height: "92px"
     , 800
     $(".readMore").text "Read More"
