@@ -19,21 +19,20 @@
   - if @material.finishes.count > 0
     %p
       %span.caps
-        Available finishes:
-      - @material.finishes.each do |finish|
-        = finish.title
+        Available finishes:        
+      // easy way to comma delimit - J
+      = @material.finishes.collect{ |f| f.title }.to_sentence
 
   // RECOMMENDED USES / APPLICATIONS
   - if @material.applications.count > 0
     %p
       %span.caps
         Recommended Uses:
-      - @material.applications.each do |app|
-        = app.title
+      = @material.applications.collect{ |app| app.title }.to_sentence  
+
 
   // DESCRIPTION
   #description
-    // Advise on how to break into paragraphs, place inside p tag or no?
     %p=simple_format(@material.description)
   
   - unless @material.description.blank?
@@ -59,14 +58,6 @@
 
 
 
-
 #content-right
 
   = render :partial => 'gallery', :locals => { :material => @material, :material_sorted_images => @material_sorted_images, :image_count => @material.images.count }
-
-
-
-
-
-
-

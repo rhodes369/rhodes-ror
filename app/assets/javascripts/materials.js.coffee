@@ -72,20 +72,11 @@ $(document).ready ->
     search = new SearchMaterials() # invoke inital search 
 
 
-
   # set large image for thumbnail mouseovers
   $('.material_thumb').on(
     mouseover: ->   
       @large_image = $(this).data('large_image')
-      $('#large_image').attr(src: @large_image)   
+      @finishTitle = $(this).data('finish_title')
+      $('#large_image').attr(src: @large_image)
+      $('#finish').text("FINISH: #{@finishTitle}")    
   )
-
-
-  # Update #finish with finish type from writeText function on thumbnail
-  writeText = (txt) ->
-    $('#finish').innerHTML = txt
-
-
-
-
-
