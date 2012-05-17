@@ -74,18 +74,20 @@ $(document).ready ->
 
 
   # set large image for thumbnail mouseovers
-  $('.material_thumb').on(
-    mouseover: ->   
-      @large_image = $(this).data('large_image')
-      $('#large_image').attr(src: @large_image)   
+  $('#content-right .material_thumb').on(
+    mouseover: ->
+      @largeImage = $(this).data('large_image')
+      @finishTitle = $(this).data('finish_title')
+      #log "mouseover .material_thumb @largeImage: #{@largeImage} @finishTitle: #{@finishTitle}"
+      #$('#largeImage').attr(src: "#{@largeImage}")
+      log 'test'
+      #$(this).('#largeImage').hide('slow')
+      log 'test2'
+      $('#finish').text("FINISH: #{@finishTitle}")    
   )
 
 
-  # Update #finish with finish type from writeText function on thumbnail
-  writeText = (txt) ->
-    $('#finish').innerHTML = txt
-
-
-
-
-
+  # # Update #finish with finish type from writeText function on thumbnail
+  # updateFinishHtmlText: (@title) ->
+  #   log 'running updateFinishHtmlText'
+  #   $('#finish').innerHTML = @title

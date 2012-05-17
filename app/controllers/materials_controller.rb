@@ -27,7 +27,6 @@ class MaterialsController < ApplicationController
     unless @material.nil?
       @materials = Material.all
       @material_sorted_images = @material.sort_thumb_images
-      @image = Image.new # for new image form
       @all_material_types = MaterialType.all
       @all_finishes = Finish.order(:title)
       @all_applications = Application.order(:title)
