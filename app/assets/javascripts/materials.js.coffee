@@ -77,13 +77,6 @@ $(document).ready ->
     mouseover: ->   
       @large_image = $(this).data('large_image')
       @finishTitle = $(this).data('finish_title')
-      log 'test'
       $('#large_image').attr(src: @large_image)
       $('#finish').text("FINISH: #{@finishTitle}")    
   )
-
-
-  # # Update #finish with finish type from writeText function on thumbnail
-  # updateFinishHtmlText: (@title) ->
-  #   log 'running updateFinishHtmlText'
-  #   $('#finish').innerHTML = @title
