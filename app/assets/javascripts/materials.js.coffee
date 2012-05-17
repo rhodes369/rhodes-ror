@@ -72,17 +72,13 @@ $(document).ready ->
     search = new SearchMaterials() # invoke inital search 
 
 
-
   # set large image for thumbnail mouseovers
-  $('#content-right .material_thumb').on(
-    mouseover: ->
-      @largeImage = $(this).data('large_image')
+  $('.material_thumb').on(
+    mouseover: ->   
+      @large_image = $(this).data('large_image')
       @finishTitle = $(this).data('finish_title')
-      #log "mouseover .material_thumb @largeImage: #{@largeImage} @finishTitle: #{@finishTitle}"
-      #$('#largeImage').attr(src: "#{@largeImage}")
       log 'test'
-      #$(this).('#largeImage').hide('slow')
-      log 'test2'
+      $('#large_image').attr(src: @large_image)
       $('#finish').text("FINISH: #{@finishTitle}")    
   )
 
