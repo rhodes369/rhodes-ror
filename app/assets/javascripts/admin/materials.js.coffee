@@ -22,9 +22,9 @@ $(document).ready ->
         type: 'PUT'
         data: { material_id: @material_id, default_image_id: @image_id }        
         success: (data) ->
-          alert 'Default image saved.'
+          alert '1st image saved.' # rhodes wants the default called 1st now
         error: (data) ->
-          alert 'Problem saving default image.'
+          alert 'Problem saving 1st image.' # same here...
           log data.statusText                 
   )    
   
