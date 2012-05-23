@@ -5,8 +5,6 @@ class Image < ActiveRecord::Base
   
   attr_accessible :material_id, :image, :image_file_name, 
                   :image_content_type, :image_file_size
-                  
-  #attr_accessor :finish_title
   
   # paperclip settings
   has_attached_file :image, 
@@ -22,12 +20,10 @@ class Image < ActiveRecord::Base
   
   # set finish id and title                    
   def set_finish(finish_id = nil)
-    return if finish_id.nil?
-    
+    return if finish_id.nil?    
     finish = Finish.find(finish_id)
-    
+       
     self.finish_id = finish_id
-    #self.finish_title = finish.title # title as an attr_accessor for front end mouseovers
     self.save!  
   end
   
