@@ -4,11 +4,12 @@
 - material_sorted_images.each do |i|
   - counter = counter == 5 ? 1 : counter+= 1
   - total_counter+= 1
+  - finish_title = i.finish.nil? ? 'None' : i.finish.title
   - if counter == 1
     = preserve do
       <div>
     - tab_up
-    
+  
   .img
     = "<!-- counter: #{counter} -->".html_safe()
     %img{src: i.image.url(:thumb), name: 'al', class: "material_thumb", id: "material_thumb_#{i.id}", :data => { large_image: "#{i.image.url(:large)}", image_id: "#{i.id}" }, onMouseover: "writeText('FINISH: ')"}

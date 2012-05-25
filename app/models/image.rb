@@ -1,7 +1,7 @@
 class Image < ActiveRecord::Base
   
   belongs_to :material
-  has_one :finish
+  belongs_to :finish
   
   attr_accessible :material_id, :image, :image_file_name, 
                   :image_content_type, :image_file_size
@@ -17,10 +17,12 @@ class Image < ActiveRecord::Base
       :content_type => { :content_type => ['image/jpeg', 'image/png', 'image/gif'] },
       :size => { :in => 0..10.megabytes }
     
-                      
-  def set_finish_id(finish_id = nil)
-    return if finish_id.nil?
-    
+  
+  # set finish id and title                    
+  def set_finish(finish_id = nil)
+    return if finish_id.nil?    
+    finish = Finish.find(finish_id)
+       
     self.finish_id = finish_id
     self.save!  
   end
