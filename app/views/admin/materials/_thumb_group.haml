@@ -19,8 +19,7 @@
           %option{:value => finish.id, :selected =>  i.finish_id == finish.id ? "selected" : nil}
             = finish.title
       .arrow-down
-
-    .removeImg{:data => { image_id: i.id }} remove
+    = link_to("remove", "#", :class => "removeImg", :data => { :image_id => "#{i.id}" } )
 
     %label.icon
       %input{type: "radio"}
