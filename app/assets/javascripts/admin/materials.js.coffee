@@ -53,18 +53,23 @@ $(document).ready ->
   
   # remove image 
   $('.removeImg').on(
-    click: ->    
-      @image_id = $(this).data('image_id')    
+    click: (e) ->     
+      # this technique is apparently better than using the rails :confirm on link_to
+      return false unless confirm("Are you sure you want to remove this image?")
+      
+      # note that data-attribute keys always seem to convert underscores to dashes 
+      # @material_id = $(this).data('material_id')
+      @image_id = $(this).data('image-id') 
       @url = "/admin/images/#{@image_id}.json"
-
+      
       $.ajax
         url: @url
         dataType: 'json'
         type: 'DELETE'
         data: { material_id: @material_id, image_id: @image_id }        
         success: (data) =>
-          $(this).parent().fadeOut(2999)
-          alert 'Image Removed.'
+          $(this).parent().fadeOut(1999)
+          alert 'Image was removed.'
         error: (data) ->
           alert 'Problem removing image.'
           log data.statusText           
