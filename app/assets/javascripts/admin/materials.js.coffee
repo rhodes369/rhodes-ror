@@ -53,12 +53,11 @@ $(document).ready ->
   
   # remove image 
   $('.removeImg').on(
-    click: (e) ->     
+    click: ->     
       # this technique is apparently better than using the rails :confirm on link_to
       return false unless confirm("Are you sure you want to remove this image?")
       
-      # note that data-attribute keys always seem to convert underscores to dashes 
-      # @material_id = $(this).data('material_id')
+      # note that data-attribute keys tend to seem to convert underscores to dashes 
       @image_id = $(this).data('image-id') 
       @url = "/admin/images/#{@image_id}.json"
       
