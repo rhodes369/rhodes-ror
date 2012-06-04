@@ -11,7 +11,8 @@
     - tab_up
   
   .img
-    %img{src: i.image.url(:thumb), name: 'al', class: "material_thumb", id: "material_thumb_#{i.id}", :data => { large_image: "#{i.image.url(:large)}", image_id: "#{i.id}", finish_title: finish_title}}
+    = "<!-- counter: #{counter} -->".html_safe()
+    %img{src: i.image.url(:thumb), name: 'al', class: "material_thumb", id: "material_thumb_#{i.id}", :data => { large_image: "#{i.image.url(:large)}", image_id: "#{i.id}" }, onMouseover: "writeText('FINISH: ')"}
 
 
   - if counter == 5 or total_counter == total_image_count
