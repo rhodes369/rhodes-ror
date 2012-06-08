@@ -1,0 +1,1 @@
+$(".finishesImg").multiselect()
