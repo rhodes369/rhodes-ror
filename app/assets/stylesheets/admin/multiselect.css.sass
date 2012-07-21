@@ -1,0 +1,92 @@
+
+input
+  display: inline-block
+
+.ui-multiselect
+  padding: 2px 0 2px 4px
+  text-align: left
+
+.ui-multiselect span.ui-icon
+  float: right
+
+.ui-multiselect-single .ui-multiselect-checkboxes input
+  position: absolute !important
+  top: auto !important
+  left: -9999px
+  
+.ui-multiselect-single .ui-multiselect-checkboxes label
+  padding: 5px !important
+
+.ui-multiselect-header
+
+
+.ui-multiselect-header ul
+  font-size: 0.9em
+  margin: 2px 0 0
+
+.ui-multiselect-header ul li
+  float: left
+  padding: 0
+  margin: 0 0 8px
+
+.ui-multiselect-header a
+  text-decoration: none
+  padding: 2px 12px
+  background: #E0E0DC
+  border-bottom: 1px solid #AFAFAE
+  border-right: 1px solid #AFAFAE
+
+.ui-multiselect-header a:hover
+  text-decoration: underline
+
+.ui-multiselect-header span.ui-icon
+  float: left
+
+.ui-multiselect-header li.ui-multiselect-close
+  float: right
+  text-align: right
+  padding-right: 0
+
+.ui-multiselect-menu 
+  display: none 
+  padding: 0
+  position: absolute
+  z-index: 10000
+  width: 202px !important
+  background: rgba(250,250,250,0.9)
+  border: 1px solid #AFAFAE
+
+.ui-multiselect-checkboxes
+  height: 275px !important
+  clear: both
+  position: relative // fixes bug in IE6/7
+  overflow-y: scroll
+
+.ui-multiselect-checkboxes label
+  cursor: default
+  display: block
+  border: 1px solid transparent
+  padding: 3px 1px
+
+.ui-multiselect-checkboxes label input
+  position: relative
+  top: 1px
+
+.ui-multiselect-checkboxes li
+  clear: both
+  font-size: 0.9em
+  padding-right: 3px
+
+.ui-multiselect-checkboxes li.ui-multiselect-optgroup-label
+  font-weight: bold
+  border-bottom: 1px solid
+
+.ui-multiselect-checkboxes li.ui-multiselect-optgroup-label a
+  display: block
+  padding: 3px
+  margin: 1px 0
+  text-decoration: none
+
+// remove label borders in IE6 because IE6 does not support transparency
+* html .ui-multiselect-checkboxes label
+  border: none

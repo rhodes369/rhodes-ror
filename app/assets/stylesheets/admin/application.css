@@ -19,6 +19,7 @@
   *= require footer
   *= require admin/admin
   *= require admin/finishes
+  *= require admin/multiselect
 
 
 

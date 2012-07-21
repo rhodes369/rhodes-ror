@@ -1,3 +1,11 @@
+// Initialize multiselect
+:javascript
+  $(document).ready(function(){
+    $(".finishesImg").multiselect();
+  });
+
+
+
 - counter = 0
 - total_counter = 0
 
@@ -13,7 +21,7 @@
     = "<!-- counter: #{counter} -->".html_safe()
     %img{src: i.image.url(:thumb), name: 'al', class: "material_thumb", id: "material_thumb_#{i.id}", :data => { large_image: "#{i.image.url(:large)}", image_id: "#{i.id}" }}  
     .finishesImg-wrap
-      %select.finishesImg{ multiple: "multiple", name: "image[finish_id]", :data => { image_id: "#{i.id}" } }
+      %select.finishesImg{ name: "image[finish_id]", :data => { image_id: "#{i.id}" } }
         %optgroup{ label: "Finish" }
           - @all_finishes.each do |finish|
             %option{:value => finish.id, :selected =>  i.finish_id == finish.id ? "selected" : nil}
