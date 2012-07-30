@@ -17,6 +17,7 @@
   *= require images
   *= require show
   *= require footer
+  *= require ../../../vendor/assets/stylesheets/application
 
 
 

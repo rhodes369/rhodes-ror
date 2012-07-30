@@ -13,21 +13,32 @@
     = "<!-- counter: #{counter} -->".html_safe()
     %img{src: i.image.url(:thumb), name: 'al', class: "material_thumb", id: "material_thumb_#{i.id}", :data => { large_image: "#{i.image.url(:large)}", image_id: "#{i.id}" }}  
     .finishesImg-wrap
-      %select.finishesImg{ name: "image[finish_id]", :data => { image_id: "#{i.id}" } }
-        %option{:value => ''} Finish Type
-        - @all_finishes.each do |finish|
-          %option{:value => finish.id, :selected =>  i.finish_id == finish.id ? "selected" : nil}
-            = finish.title
+      %select.finishesImg{name: "image[finish_id]", :data => { image_id: "#{i.id}" } }
+        %optgroup{ label: "Finish" }
+          - @all_finishes.each do |finish|
+            %option{:value => finish.id, :selected =>  i.finish_id == finish.id ? "selected" : nil}
+              = finish.title
       .arrow-down
+
     = link_to("remove", "#", :class => "removeImg", :data => { :image_id => "#{i.id}" } )
 
     %label.icon
       %input{type: "radio"}
-      %span Icon image
+      %span Icon
 
     %label.default
       %input{ type: "radio", :class => :default_image_id, :name => 'default_image_id', :checked => @material.default_image_id == i.id || nil, :data => { material_id: @material.id, default_image_id: @material.default_image_id, image_id: i.id } }
-      %span 1st image
+      %span 1st
+
+    #minThickness-wrap
+      %select.minThickness
+        %optgroup{ label: "Minimum Thickness" }
+          %option{value: ".75&#34; minimum thickness"} .75&#34; minimum thickness
+          %option{value: "1&#34; minimum thickness"} 1&#34; minimum thickness
+          %option{value: "1.5&#34; minimum thickness"} 1.5&#34; minimum thickness
+          %option{value: "2&#34; minimum thickness"} 2&#34; minimum thickness
+          %option{value: "3&#34; minimum thickness"} 3&#34; minimum thickness
+      .arrow-down
 
   - if counter == 5 or total_counter == total_image_count
     - tab_down
