@@ -4,6 +4,16 @@ class Admin::MaterialsController < ApplicationController
   
   layout 'admin/layouts/application'
   
+  MIN_THICKNESS_OPTIONS = { 
+    '.75"' => ".75&#34;", 
+    '1"'   => "1&#34;", 
+    '1.5"' => "1.5&#34;",
+    '2"'   => "2&#34;",
+    '3"'   => "3&#34;"
+  }
+  
+  
+  
   def index
     @materials = Material.all 
     @material = Material.new
@@ -70,6 +80,7 @@ class Admin::MaterialsController < ApplicationController
       @all_material_types = MaterialType.all
       @all_finishes = Finish.order(:title)
       @all_applications = Application.order(:title)
+      @all_min_thicknesses = MIN_THICKNESS_OPTIONS
   
       # left sidebar
       @materials_antique_in_title = Material.antique_in_title

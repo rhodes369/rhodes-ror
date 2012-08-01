@@ -8,6 +8,7 @@ gem 'coffee-filter'
 gem 'haml-rails'
 gem 'sorcery', '0.7.7'
 gem 'bcrypt-ruby'
+gem 'htmlentities'
 
 
 # Gems used only for assets and not required
