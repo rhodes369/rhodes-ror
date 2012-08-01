@@ -22,6 +22,7 @@ RhodesRor::Application.routes.draw do
     
     resources :images, :only => [:create, :destroy] do
       put :update_image_finish_id, :to => 'images#update_finish_id'
+      put :update_image_min_thickness, :to => 'images#update_min_thickness'
     end
   end    
  

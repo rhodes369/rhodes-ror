@@ -28,7 +28,7 @@ $(document).ready ->
           log data.statusText                 
   )    
   
-  # update image finish type pulldown
+  # update image finish type 
   $('.finishesImg').on(
     change: ->        
       @image_id = $(this).data('image_id')
@@ -49,7 +49,30 @@ $(document).ready ->
           alert 'Problem Saving Image Finish.'
           log data.statusText                 
   )  
-  
+
+  # update minimum finish
+  $('#minFinish').on(
+    change: ->       
+      @min_thickness = $("option:selected", this).val() 
+      @image_id = $(this).data('image_id')
+      
+      @url = "/admin/images/#{@image_id}/update_image_finish_id.json"
+      
+      log "@min_finish: #{@min_finish}"
+                    
+      $.ajax
+        url: @url
+        dataType: 'json'
+        type: 'PUT'
+        data: { image_id: @image_id, finish_id: @finish_id }        
+        success: (data) ->
+          alert 'Saved minimum thickness'
+          log 'saved image finish'
+        error: (data) ->
+          alert 'Problem Saving Image Finish.'
+          log data.statusText                 
+  )
+    
   
   # remove image 
   $('.removeImg').on(
