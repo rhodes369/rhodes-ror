@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20120426050151) do
+ActiveRecord::Schema.define(:version => 20120722025457) do
 
   create_table "applications", :force => true do |t|
     t.string   "title"
@@ -34,6 +34,7 @@ ActiveRecord::Schema.define(:version => 20120426050151) do
     t.string   "image_content_type"
     t.integer  "image_file_size"
     t.datetime "image_updated_at"
+    t.string   "min_thickness"
   end
 
   add_index "images", ["finish_id"], :name => "index_images_on_finish_id"

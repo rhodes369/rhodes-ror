@@ -3,7 +3,7 @@ class Image < ActiveRecord::Base
   belongs_to :material
   belongs_to :finish
   
-  attr_accessible :material_id, :image, :image_file_name, 
+  attr_accessible :material_id, :min_thickness, :image, :image_file_name, 
                   :image_content_type, :image_file_size
   
   # paperclip settings
@@ -18,7 +18,7 @@ class Image < ActiveRecord::Base
       :size => { :in => 0..10.megabytes }
     
   
-  # set finish id and title                    
+  # set finish id                   
   def set_finish(finish_id = nil)
     return if finish_id.nil?    
     finish = Finish.find(finish_id)
@@ -26,6 +26,15 @@ class Image < ActiveRecord::Base
     self.finish_id = finish_id
     self.save!  
   end
+  
+  
+  # set min thickness                 
+  def set_min_thickness(min_thickness = nil)
+    return if min_thickness.nil?    
+
+    self.min_thickness = min_thickness
+    self.save!  
+  end  
   
   # set all records that use finish_id to nil 
   def self.remove_image_finishes(finish_id)  

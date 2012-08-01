@@ -28,7 +28,7 @@ $(document).ready ->
           log data.statusText                 
   )    
   
-  # update image finish type 
+  # update image finish
   $('.finishesImg').on(
     change: ->        
       @image_id = $(this).data('image_id')
@@ -43,33 +43,33 @@ $(document).ready ->
         type: 'PUT'
         data: { image_id: @image_id, finish_id: @finish_id }        
         success: (data) ->
-          alert 'Saved Image Finish'
+          alert 'Saved image finish'
           log 'saved image finish'
         error: (data) ->
-          alert 'Problem Saving Image Finish.'
+          alert 'Problem saving image finish.'
           log data.statusText                 
   )  
 
-  # update minimum finish
-  $('#minFinish').on(
+  # update image minimum thickness
+  $('#minThickness').on(
     change: ->       
       @min_thickness = $("option:selected", this).val() 
       @image_id = $(this).data('image_id')
       
-      @url = "/admin/images/#{@image_id}/update_image_finish_id.json"
+      @url = "/admin/images/#{@image_id}/update_image_min_thickness.json"
       
-      log "@min_finish: #{@min_finish}"
+      log "@min_thickness: #{@min_thickness}"
                     
       $.ajax
         url: @url
         dataType: 'json'
         type: 'PUT'
-        data: { image_id: @image_id, finish_id: @finish_id }        
+        data: { image_id: @image_id, min_thickness: @min_thickness }        
         success: (data) ->
           alert 'Saved minimum thickness'
           log 'saved image finish'
         error: (data) ->
-          alert 'Problem Saving Image Finish.'
+          alert 'Problem saving image minimum thickness.'
           log data.statusText                 
   )
     

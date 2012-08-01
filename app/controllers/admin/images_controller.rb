@@ -48,6 +48,25 @@ class Admin::ImagesController < ApplicationController
   end
 
 
+  def update_min_thickness
+    image_id = params[:image_id].to_i
+    min_thickness = params[:min_thickness].to_s
+    
+    return unless image_id.is_a?(Numeric) and min_thickness.is_a?(String)
+    # return unless min_thickness.is_a?(String) and min_thickness.is_a?(String)
+    
+    @image = Image.find(image_id)  
+    return if @image.nil? 
+   
+    respond_to do |format|      
+      if @image.set_min_thickness min_thickness
+        format.json { render json: { type: 'ok', status: :success } }
+      else
+        format.json { render json: @image.errors, status: :unprocessable_entity }
+      end
+    end       
+  end
+
   def destroy    
     @image = Image.find(params[:id])
     @material = Material.find(@image.material_id)
