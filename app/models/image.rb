@@ -17,6 +17,7 @@ class Image < ActiveRecord::Base
       :content_type => { :content_type => ['image/jpeg', 'image/png', 'image/gif'] },
       :size => { :in => 0..10.megabytes }
     
+  after_initialize :init
   
   # set finish id                   
   def set_finish(finish_id = nil)
@@ -48,5 +49,10 @@ class Image < ActiveRecord::Base
     end     
     return image_finishes_count
   end  
-  
+
+
+  def init
+    self.min_thickness ||= "1&#34; minimum thickness" # 1 inch default for now
+  end
+
 end

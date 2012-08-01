@@ -6,8 +6,4 @@ class ImageFinish < ActiveRecord::Base
   
   attr_protected :image_id, :finish_id. :min_thickness
   
-  def after_initalize
-    self.min_thickness ||= "1&#34; minimum thickness" # 1 inch default for now
-  end  
-  
 end
