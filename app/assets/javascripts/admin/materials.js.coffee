@@ -35,7 +35,7 @@ $(document).ready ->
       @finish_id = $("option:selected", this).val()
       @url = "/admin/images/#{@image_id}/update_image_finish_id.json"
       
-      log "test @image_id: #{@image_id} finish_id: #{@finish_id} url: #{@url}"
+      log "image finish change... @image_id: #{@image_id} finish_id: #{@finish_id} url: #{@url}"
                     
       $.ajax
         url: @url
@@ -51,14 +51,14 @@ $(document).ready ->
   )  
 
   # update image minimum thickness
-  $('#minThickness').on(
+  $('.minThickness').on(
     change: ->       
       @min_thickness = $("option:selected", this).val() 
       @image_id = $(this).data('image_id')
       
       @url = "/admin/images/#{@image_id}/update_image_min_thickness.json"
       
-      log "@min_thickness: #{@min_thickness}"
+      log "image min thickness change... @image_id: #{@image_id} @min_thickness: #{@min_thickness}"
                     
       $.ajax
         url: @url
