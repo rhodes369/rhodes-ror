@@ -67,7 +67,7 @@ $(document).ready ->
         data: { image_id: @image_id, min_thickness: @min_thickness }        
         success: (data) ->
           alert 'Saved minimum thickness'
-          log 'saved image finish'
+          log 'saved minimum thickness'
         error: (data) ->
           alert 'Problem saving image minimum thickness.'
           log data.statusText                 

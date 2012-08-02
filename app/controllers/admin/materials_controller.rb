@@ -4,6 +4,8 @@ class Admin::MaterialsController < ApplicationController
   
   layout 'admin/layouts/application'
   
+  require 'htmlentities'
+  
   MIN_THICKNESS_OPTIONS = { 
     '.75"' => ".75&#34;", 
     '1"'   => "1&#34;", 
@@ -80,6 +82,7 @@ class Admin::MaterialsController < ApplicationController
       @all_material_types = MaterialType.all
       @all_finishes = Finish.order(:title)
       @all_applications = Application.order(:title)
+      @html_encoder = HTMLEntities.new
       @all_min_thicknesses = MIN_THICKNESS_OPTIONS
   
       # left sidebar

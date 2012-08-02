@@ -30,10 +30,6 @@
       %input{ type: "radio", :class => :default_image_id, :name => 'default_image_id', :checked => @material.default_image_id == i.id || nil, :data => { material_id: @material.id, default_image_id: @material.default_image_id, image_id: i.id } }
       %span 1st
 
-
-    - require 'htmlentities'
-    - coder = HTMLEntities.new
-
     #minThickness-wrap
       %select.minThickness{:id => "minThickness",:data => { material_id: @material.id, default_image_id: @material.default_image_id, image_id: i.id }}
         %optgroup{ label: "Minimum Thickness" }
@@ -44,7 +40,7 @@
           / %option{value: "3&#34; minimum thickness"} 3&#34; minimum thickness
           - @all_min_thicknesses.each do |val,html|
             %option{:value => val, :selected =>  i.min_thickness == val ? "selected" : nil}   
-              = "#{coder.decode(html)} minimum thickness"
+              = "#{@html_encoder.decode(html)} minimum thickness"
       .arrow-down
 
   - if counter == 5 or total_counter == total_image_count
