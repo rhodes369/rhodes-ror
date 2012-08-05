@@ -9,7 +9,6 @@ $(document).ready ->
     change: ->        
       @material_id = $(this).data('material_id')
       @url = "/admin/materials/#{@material_id}/update_default_image.json"
-      #@default_image_id = $(this).data('default_image_id') 
       @image_id = $(this).data('image_id')
       @thumb_image = $("#material_thumb_#{@image_id}")
       @new_large_image_path = @thumb_image.data('large_image')      
@@ -34,14 +33,8 @@ $(document).ready ->
     change: ->        
       @material_id = $(this).data('material_id')
       @url = "/admin/materials/#{@material_id}/update_search_icon_image.json"
-      #@search_icon_image_id = $(this).data('search_icon_image_id') 
       @image_id = $(this).data('image_id')
       @thumb_image = $("#material_thumb_#{@image_id}")
-      @new_large_image_path = @thumb_image.data('large_image')      
-      
-      log "test123 search icon change image_id: #{@image_id}"
-      
-      $('#large_image').attr(src: @new_large_image_path)
 
       $.ajax
         url: @url

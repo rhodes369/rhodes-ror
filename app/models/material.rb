@@ -171,7 +171,6 @@ class Material < ActiveRecord::Base
     end    
   end
 
-
   def set_default_image(image_id)
     return nil unless image_id.is_a?(Numeric) and image_id > 0
     self.default_image_id = image_id
