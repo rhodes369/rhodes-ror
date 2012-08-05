@@ -18,6 +18,7 @@ RhodesRor::Application.routes.draw do
     
     resources :materials do
       put :update_default_image, :to => 'materials#update_default_image'                                  
+      put :update_search_icon_image, :to => 'materials#update_search_icon_image'
     end
     
     resources :images, :only => [:create, :destroy] do

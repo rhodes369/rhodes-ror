@@ -23,7 +23,7 @@
     = link_to("remove", "#", :class => "removeImg", :data => { :image_id => "#{i.id}" } )
 
     %label.icon
-      %input{type: "radio"}
+      %input{ type: "radio", :class => :search_icon_image_id, :name => 'search_icon_image_id', :checked => @material.search_icon_image_id == i.id || nil, :data => { material_id: @material.id, search_icon_image_id: @material.search_icon_image_id, image_id: i.id } }
       %span Icon
 
     %label.default

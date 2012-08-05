@@ -177,7 +177,12 @@ class Material < ActiveRecord::Base
     self.default_image_id = image_id
     return true if self.save!
   end
-  
+
+  def set_search_icon_image(image_id)
+    return nil unless image_id.is_a?(Numeric) and image_id > 0
+    self.search_icon_image_id = image_id
+    return true if self.save!
+  end  
   
   def material_type_title
     # show blank unless title exists
