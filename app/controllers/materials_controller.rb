@@ -45,9 +45,12 @@ class MaterialsController < ApplicationController
   # materials index search filters (ajax)
   def search  
     filters = params[:filters] ||= {}
+    thumb_image =  nil
+        
     results = {}
     results['newly_crafted'] = {}
     results['antiques'] = {}
+
     
     logger.debug "params search(filters): #{filters.inspect}"
     
@@ -65,15 +68,22 @@ class MaterialsController < ApplicationController
     # filter newly crafted
     if results['newly_crafted']['count'] > 0   
       newly_crafted.each do |mat|     
-        default_image = nil # reset
+        default_image = nil # reset        
+        search_icon_image = nil # reset
         
         unless mat.default_image_id.nil?
           default_image = Image.find(mat.default_image_id).image.url(:thumb)
         end
+
+        unless mat.search_icon_image_id.nil?
+          search_icon_image = Image.find(mat.search_icon_image_id).image.url(:thumb)
+        end
+              
+        thumb_image = filters.empty? ? search_icon_image : default_image
         
         results['newly_crafted']['html'] += render_to_string(
           partial: 'materials/search/newly_crafted/item', 
-            locals: { mat: mat, default_image: default_image })
+            locals: { mat: mat, thumb_image: thumb_image })
       end 
     end
     

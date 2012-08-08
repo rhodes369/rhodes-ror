@@ -151,13 +151,19 @@ class Material < ActiveRecord::Base
 
 
   # sort from newest to oldest with the default @ the beginning
-  def sort_thumb_images
+  def sort_thumb_images(use_search_icon_image = nil)
     return [] if self.images.count == 0
     
     self.images.sort { |a,b| b.created_at <=> a.created_at }
     
     default_image = Image.find self.default_image_id 
+    search_icon_image = Image.find self.search_icon_image_id
+    
+    # self.images.unshift default_image 
+    # put search icon image @ beginning for index page (no filters)
+    
     self.images.unshift default_image # put default image @ beginning
+    self.images.unshift search_icon_image unless use_search_icon_image.nil?
     self.images.uniq # make sure array is unique  
   end
 
