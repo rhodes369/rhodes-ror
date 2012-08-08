@@ -77,7 +77,8 @@ $(document).ready ->
     mouseover: ->   
       @large_image =   $(this).data('large_image')
       @finishTitle =   $(this).data('finish_title')
-      @minThickness = $(this).data('min_thickness')
+      @minThickness =  $(this).data('min_thickness') 
+      @minThickness = "none" if @minThickness == ""
       
       $('#large_image').attr(src: @large_image)
       $('#finish').text("FINISH: #{@finishTitle}")
