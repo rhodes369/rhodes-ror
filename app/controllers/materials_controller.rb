@@ -79,9 +79,10 @@ class MaterialsController < ApplicationController
         unless mat.search_icon_image_id.nil?
           search_icon_image = Image.find(mat.search_icon_image_id).image.url(:thumb)
         end
-
-        thumb_image = ( filters.empty? or !filters['mat_finish_id'].nil?) ? search_icon_image : default_image
         
+        # use icon thumb for search index + finish filters only, otherwise use default/1st thumb
+        thumb_image = ( filters.empty? or !filters['mat_finish_id'].nil?) ? search_icon_image : default_image
+                
         results['newly_crafted']['html'] += render_to_string(
           partial: 'materials/search/newly_crafted/item', 
             locals: { mat: mat, thumb_image: thumb_image })
@@ -102,7 +103,9 @@ class MaterialsController < ApplicationController
           search_icon_image = Image.find(mat.search_icon_image_id).image.url(:thumb)
         end
 
-        thumb_image = filters.empty? ? search_icon_image : default_image
+        # use icon thumb for search index + finish filters only, otherwise use default/1st thumb
+        thumb_image = ( filters.empty? or !filters['mat_finish_id'].nil?) ? search_icon_image : default_image
+        
         
         results['antiques']['html'] += render_to_string(
           partial: 'materials/search/antiques/item', 
