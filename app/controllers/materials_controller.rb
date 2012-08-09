@@ -80,7 +80,7 @@ class MaterialsController < ApplicationController
           search_icon_image = Image.find(mat.search_icon_image_id).image.url(:thumb)
         end
 
-        thumb_image = filters.empty? ? search_icon_image : default_image
+        thumb_image = ( filters.empty? or !filters['mat_finish_id'].nil?) ? search_icon_image : default_image
         
         results['newly_crafted']['html'] += render_to_string(
           partial: 'materials/search/newly_crafted/item', 
