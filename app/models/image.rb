@@ -52,7 +52,7 @@ class Image < ActiveRecord::Base
 
 
   def init
-    self.min_thickness ||= "1&#34; minimum thickness" # 1 inch default for now
+    self.min_thickness ||= "1\"" # 1 inch default for now
   end
 
 end
