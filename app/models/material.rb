@@ -179,8 +179,8 @@ class Material < ActiveRecord::Base
   def default_large_image
     unless self.default_image_id.nil?
       unless Image.find_by_id(self.default_image_id).nil?
-        default_image = Image.find_by_id self.default_image_id
-        return default_image.image.url(:large) # paperclip
+        search_icon_image = Image.find_by_id self.search_icon_image_id
+        return search_icon_image.image.url(:large) # paperclip
       end
     end    
   end

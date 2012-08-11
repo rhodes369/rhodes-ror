@@ -4,16 +4,13 @@ $(document).ready ->
   # set large image for thumbnail mouseovers
   # in main materials.js
   
-  # set default image
+  # set default image - now called 1st image for rhodes
   $('.default_image_id').on(
     change: ->        
       @material_id = $(this).data('material_id')
       @url = "/admin/materials/#{@material_id}/update_default_image.json"
       @image_id = $(this).data('image_id')
       @thumb_image = $("#material_thumb_#{@image_id}")
-      @new_large_image_path = @thumb_image.data('large_image')      
-    
-      $('#large_image').attr(src: @new_large_image_path)
 
       $.ajax
         url: @url
@@ -35,6 +32,9 @@ $(document).ready ->
       @url = "/admin/materials/#{@material_id}/update_search_icon_image.json"
       @image_id = $(this).data('image_id')
       @thumb_image = $("#material_thumb_#{@image_id}")
+      @new_large_image_path = @thumb_image.data('large_image')
+      
+      $('#large_image').attr(src: @new_large_image_path)
 
       $.ajax
         url: @url
