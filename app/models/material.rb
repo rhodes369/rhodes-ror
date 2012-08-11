@@ -150,6 +150,14 @@ class Material < ActiveRecord::Base
   end
 
 
+  # return array of all mat.images finish_ids combined
+  def all_images_with_finish(finish_id = nil)
+    return nil if finish_id.nil? or self.images.nil? 
+    
+    images_with_finish = self.images.where(finish_id: finish_id)
+    return images_with_finish
+  end
+
   # sort from newest to oldest with the default @ the beginning
   def sort_thumb_images(use_search_icon_image = nil)
     return [] if self.images.count == 0
