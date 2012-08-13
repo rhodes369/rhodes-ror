@@ -75,8 +75,13 @@ $(document).ready ->
   # set large image for thumbnail mouseovers
   $('.material_thumb').on(
     mouseover: ->   
-      @large_image = $(this).data('large_image')
-      @finishTitle = $(this).data('finish_title')
+      @large_image =   $(this).data('large_image')
+      @finishTitle =   $(this).data('finish_title')
+      @minThickness =  $(this).data('min_thickness') 
+      @minThickness = "none" if @minThickness == ""
+      
       $('#large_image').attr(src: @large_image)
-      $('#finish').text("FINISH: #{@finishTitle}")    
+      $('#finish').text("FINISH: #{@finishTitle}")
+      $('#min_thickness').text("#{@minThickness} minimum thickness")
+      
   )

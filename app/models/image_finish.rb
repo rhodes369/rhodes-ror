@@ -4,5 +4,6 @@ class ImageFinish < ActiveRecord::Base
   
   validates_uniqueness_of :finish_id, :scope => [:image_id]
   
-  attr_protected :image_id, :finish_id
+  attr_protected :image_id, :finish_id. :min_thickness
+  
 end
