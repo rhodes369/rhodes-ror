@@ -11,7 +11,10 @@ $(document).ready ->
       @url = "/admin/materials/#{@material_id}/update_default_image.json"
       @image_id = $(this).data('image_id')
       @thumb_image = $("#material_thumb_#{@image_id}")
-
+      @new_large_image_path = @thumb_image.data('large_image')
+      
+      $('#large_image').attr(src: @new_large_image_path)
+      
       $.ajax
         url: @url
         dataType: 'json'
@@ -32,9 +35,6 @@ $(document).ready ->
       @url = "/admin/materials/#{@material_id}/update_search_icon_image.json"
       @image_id = $(this).data('image_id')
       @thumb_image = $("#material_thumb_#{@image_id}")
-      @new_large_image_path = @thumb_image.data('large_image')
-      
-      $('#large_image').attr(src: @new_large_image_path)
 
       $.ajax
         url: @url
