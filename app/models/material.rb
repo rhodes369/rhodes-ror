@@ -83,10 +83,14 @@ class Material < ActiveRecord::Base
   # filter out all newly crafted mat or 'antique' in title
   def self.antique_in_title_results(filters = {})
     
-    logger.debug "looking up mats with 'antique' in title using filters: #{filters.inspect}"
+    logger.debug "looking up antique_in_title_results using filters: #{filters.inspect}"
     
     results = []
           
+    @antique_in_title = self.antique_in_title
+    logger.debug "@antique_in_title: #{@antique_in_title}"
+    
+    #unless @antique_in_title.blank?
     self.antique_in_title.each do |mat| 
      
      unless filters.empty? # filter results via pulldowns
