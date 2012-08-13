@@ -18,10 +18,12 @@ RhodesRor::Application.routes.draw do
     
     resources :materials do
       put :update_default_image, :to => 'materials#update_default_image'                                  
+      put :update_search_icon_image, :to => 'materials#update_search_icon_image'
     end
     
     resources :images, :only => [:create, :destroy] do
       put :update_image_finish_id, :to => 'images#update_finish_id'
+      put :update_image_min_thickness, :to => 'images#update_min_thickness'
     end
   end    
  

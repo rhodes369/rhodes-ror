@@ -1,4 +1,5 @@
 = render :partial => 'left_side_bar'
+- @default_image = Image.find(@material.default_image_id)
 
 #content-center
 
@@ -10,11 +11,16 @@
       = @material_type.nil? ? 'None' : @material_type.title
 
   #finish
+    - finish_title = @default_image.finish.nil? ? 'None' : @default_image.finish.title
     // Currently, this variable gets pulled from js on the img
     // hmm, i'll have to add some ajax/coffee for this part later -dr. J
-    FINISH: Finish 
-    %br 3&quot; minimum thickness
+    = "FINISH: #{finish_title}"
+  
+  #min_thickness
+    = "#{@default_image.min_thickness} minimum thickness"
 
+  %br 
+  
   // AVAILABLE FINISHES
   - if @material.finishes.count > 0
     %p

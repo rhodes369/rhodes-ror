@@ -45,9 +45,12 @@ class MaterialsController < ApplicationController
   # materials index search filters (ajax)
   def search  
     filters = params[:filters] ||= {}
+    thumb_image =  nil
+        
     results = {}
     results['newly_crafted'] = {}
     results['antiques'] = {}
+
     
     logger.debug "params search(filters): #{filters.inspect}"
     
@@ -61,19 +64,28 @@ class MaterialsController < ApplicationController
     results['antiques']['count'] = antiques_in_title.count
     results['antiques']['html'] = render_to_string( 
       partial: 'materials/search/antiques/header', locals: { results: results})     
-    
+
+
     # filter newly crafted
     if results['newly_crafted']['count'] > 0   
       newly_crafted.each do |mat|     
-        default_image = nil # reset
+        default_image = nil # reset        
+        search_icon_image = nil # reset
         
         unless mat.default_image_id.nil?
           default_image = Image.find(mat.default_image_id).image.url(:thumb)
         end
+
+        unless mat.search_icon_image_id.nil?
+          search_icon_image = Image.find(mat.search_icon_image_id).image.url(:thumb)
+        end
         
+        # use icon thumb for search index + finish filters only, otherwise use default/1st thumb
+        thumb_image = ( filters.empty? or !filters['mat_finish_id'].nil?) ? search_icon_image : default_image
+                
         results['newly_crafted']['html'] += render_to_string(
           partial: 'materials/search/newly_crafted/item', 
-            locals: { mat: mat, default_image: default_image })
+            locals: { mat: mat, thumb_image: thumb_image })
       end 
     end
     
@@ -81,14 +93,23 @@ class MaterialsController < ApplicationController
     if results['antiques']['count'] > 0   
       antiques_in_title.each do |mat|     
         default_image = nil # reset
+        search_icon_image = nil # reset
         
-        if Image.exists?(mat.default_image_id)
+        unless mat.default_image_id.nil?
           default_image = Image.find(mat.default_image_id).image.url(:thumb)
         end
+
+        unless mat.search_icon_image_id.nil?
+          search_icon_image = Image.find(mat.search_icon_image_id).image.url(:thumb)
+        end
+
+        # use icon thumb for search index + finish filters only, otherwise use default/1st thumb
+        thumb_image = ( filters.empty? or !filters['mat_finish_id'].nil?) ? search_icon_image : default_image
+        
         
         results['antiques']['html'] += render_to_string(
           partial: 'materials/search/antiques/item', 
-            locals: { mat: mat, default_image: default_image })
+            locals: { mat: mat, thumb_image: thumb_image })
       end 
     end    
       

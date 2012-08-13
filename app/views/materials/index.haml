@@ -33,18 +33,20 @@
         - @material.mats_with_finishes(fin.id).each do |mat| 
           %p= "finish title: #{fin.title}"
           %h3= "mat title: #{mat.title}"
-          - if mat.images.count > 0    
+          - if mat.images.count > 0
+            - mat.images.unshift mat.search_icon_image #unless use_default_image.nil? 
             %ul#antique.thumbs.clearfix
             - mat.images.each do |i|    
               %li
                 %a{ :href => i.image.url(:large) }
-                  %img{:src => i.image.url(:thumb), :alt => "" }           
+                  %p=test
+                  %img{:src => i.image.url(:thumb), :alt => "" }        
                     %span.material    
 
     / SEARCH RESULTS
     %div#spinner
       %img{:src => asset_path('spinner-light-32.gif') }
       
-    %div#materialSearchResults 
+    %div#materialSearchResults
       %div#newlyCraftedSearchResults      
       %div#antiqueSearchResults   

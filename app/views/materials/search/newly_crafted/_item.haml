@@ -1,10 +1,10 @@
 %ul#new.thumbs.clearfix
   %li
-    %a{:href => material_path(mat) }
-      - unless default_image.nil?  
-        %img{ :src => default_image }
+    %a{:href => material_path(mat) }  
+      - unless thumb_image.nil?    
+        %img{ :src => "#{thumb_image}" }
       - else 
-        %img{ :src => "#{asset_path('placeholder-95.gif')}" }
-      
+        %img{ :src => "#{asset_path('placeholder-95.gif')}" } 
+    
       %span.material= "#{ mat.title }"
       %span.type= "#{ mat.material_type_title }"

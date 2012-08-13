@@ -4,6 +4,18 @@ class Admin::MaterialsController < ApplicationController
   
   layout 'admin/layouts/application'
   
+  require 'htmlentities'
+  
+  MIN_THICKNESS_OPTIONS = { 
+    '.75"' => ".75&#34;", 
+    '1"'   => "1&#34;", 
+    '1.5"' => "1.5&#34;",
+    '2"'   => "2&#34;",
+    '3"'   => "3&#34;"
+  }
+  
+  
+  
   def index
     @materials = Material.all 
     @material = Material.new
@@ -40,18 +52,18 @@ class Admin::MaterialsController < ApplicationController
     end
   end 
   
-  
+  # First = the first image in the list of thumbs (basically the default)
   def update_default_image
-    material_id = params[:material_id].to_i
-    default_image_id = params[:default_image_id].to_i
+    @material_id = params[:material_id].to_i
+    @default_image_id = params[:default_image_id].to_i
     
-    return unless material_id.is_a?(Numeric) and default_image_id.is_a?(Numeric)
+    return unless @material_id.is_a?(Numeric) and @default_image_id.is_a?(Numeric)
     
-    @material = Material.find(material_id)  
+    @material = Material.find(@material_id)  
     return if @material.nil? 
    
     respond_to do |format|      
-       if @material.set_default_image(default_image_id)
+       if @material.set_default_image(@default_image_id)
         format.json { render json: { type: 'ok', status: :success } }
       else
         format.json { render json: @material.errors, status: :unprocessable_entity }
@@ -59,6 +71,26 @@ class Admin::MaterialsController < ApplicationController
     end       
   end
 
+
+  # Search Icon = Icon = the image used to represent a material, 
+  # shown as thumbs on the material index page by default (without filtering).
+  def update_search_icon_image
+    @material_id = params[:material_id].to_i
+    @search_icon_image_id = params[:search_icon_image_id].to_i
+    
+    return unless @material_id.is_a?(Numeric) and @search_icon_image_id.is_a?(Numeric)
+    
+    @material = Material.find(@material_id)  
+    return if @material.nil? 
+   
+    respond_to do |format|      
+       if @material.set_search_icon_image(@search_icon_image_id)
+        format.json { render json: { type: 'ok', status: :success } }
+      else
+        format.json { render json: @material.errors, status: :unprocessable_entity }
+      end
+    end       
+  end
 
   def edit
     @material = Material.find_using_slug(params[:id])     
@@ -70,6 +102,8 @@ class Admin::MaterialsController < ApplicationController
       @all_material_types = MaterialType.all
       @all_finishes = Finish.order(:title)
       @all_applications = Application.order(:title)
+      @html_encoder = HTMLEntities.new
+      @all_min_thicknesses = MIN_THICKNESS_OPTIONS
   
       # left sidebar
       @materials_antique_in_title = Material.antique_in_title
