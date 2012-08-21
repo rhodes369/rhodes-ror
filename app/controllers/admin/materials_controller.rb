@@ -141,12 +141,12 @@ class Admin::MaterialsController < ApplicationController
   end
   
   def default_image_ids
-    logger.debug "#{params.inspect}"
+    logger.debug "running default_image_ids... params: #{params.inspect}"
     
     @material = Material.find(params[:material_id])
     return if @material.nil?
     
-    logger.debug "running get_default_image_ids die @material #{@material.id}"
+    logger.debug "running get_default_image_ids @material #{@material.id}"
     
     @default_image_ids = {}
     @default_image_ids[:default] = nil
@@ -156,12 +156,8 @@ class Admin::MaterialsController < ApplicationController
     @default_image_ids[:search_icon] = @material.search_icon_image_id
 
     respond_to do |format|      
-       unless @material.nil? 
-        format.json { render json: @default_image_ids, status: :success }
-      else
-        format.json { render json: @material.errors, status: :unprocessable_entity }
-      end
+      format.json { render json: {default_image_ids: @default_image_ids.to_json, type: 'ok', status: :success }}
     end
-  end  
+  end 
       
 end
