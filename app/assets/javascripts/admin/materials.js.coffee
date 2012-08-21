@@ -1,8 +1,8 @@
 $(document).ready ->
-  # DOM LISTENERS
   
-  # set large image for thumbnail mouseovers
-  # in main materials.js
+  App.mat_id = $('.default_image_id').data('material_id')
+  
+  # Admin DOM Listeners
   
   # set default image - now called 1st image for rhodes
   $('.default_image_id').on(
@@ -12,8 +12,10 @@ $(document).ready ->
       @image_id = $(this).data('image_id')
       @thumb_image = $("#material_thumb_#{@image_id}")
       @new_large_image_path = @thumb_image.data('large_image')
+                
       
       $('#large_image').attr(src: @new_large_image_path)
+      
       
       $.ajax
         url: @url
@@ -41,7 +43,9 @@ $(document).ready ->
         dataType: 'json'
         type: 'PUT'
         data: { material_id: @material_id, search_icon_image_id: @image_id }        
-        success: (data) ->
+        success: (data) =>
+          $(this).data('current_search_icon').value(1)
+          log "set #{@image_id} to 1 for $(this).data('current_default_or_icon')"
           alert 'Icon image saved.' # search result icon image id
         error: (data) ->
           alert 'Problem saving icon image.' 
@@ -98,22 +102,42 @@ $(document).ready ->
   # remove image 
   $('.removeImg').on(
     click: ->     
-      # this technique is apparently better than using the rails :confirm on link_to
-      return false unless confirm("Are you sure you want to remove this image?")
+      # note that data-attribute keys tend to seem to convert underscores to dashes
+      @image_id = $(this).data('image-id')
+      log "@image_id: #{@image_id} App.mat_id #{App.mat_id}"      
+      @url = "/admin/images/#{@material_id}.json"
+
       
-      # note that data-attribute keys tend to seem to convert underscores to dashes 
-      @image_id = $(this).data('image-id') 
-      @url = "/admin/images/#{@image_id}.json"
+     # $.ajax
+     #    url: "/admin/materials/#{@material_id}/default_image_ids.json"
+     #    dataType: 'json'
+     #    type: 'GET'
+     #    data: { material_id: @material_id }        
+     #    success: (data) 
+     #      log "success: data #{data}"
+     #    error: (data) ->
+     #      alert 'Problem getting default images.'
+     #      log data.statusText
+        
       
-      $.ajax
-        url: @url
-        dataType: 'json'
-        type: 'DELETE'
-        data: { material_id: @material_id, image_id: @image_id }        
-        success: (data) =>
-          $(this).parent().fadeOut(1999)
-          alert 'Image was removed.'
-        error: (data) ->
-          alert 'Problem removing image.'
-          log data.statusText           
+      # don't let them remove image if it's currently set as default or icon image
+      if @current_default_image_id == @image_id
+        alert "Please set another image as the 1st or icon image before removing this one."
+      else
+        
+            
+        # this technique is apparently better than using the rails :confirm on link_to
+        return false unless confirm("Are you sure you want to remove this image?")
+
+        $.ajax
+          url: @url
+          dataType: 'json'
+          type: 'DELETE'
+          data: { material_id: @material_id, image_id: @image_id }        
+          success: (data) =>
+            $(this).parent().fadeOut(1999)
+            alert 'Image was removed.'
+          error: (data) ->
+            alert 'Problem removing image.'
+            log data.statusText           
   )  

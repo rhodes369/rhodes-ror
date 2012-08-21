@@ -174,5 +174,5 @@ class MaterialsController < ApplicationController
       return false
     end
   end
-    
+
 end
