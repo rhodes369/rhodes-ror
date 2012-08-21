@@ -20,7 +20,7 @@
               = finish.title
       .arrow-down
 
-    = link_to("remove", "#", :class => "removeImg", :data => { :image_id => "#{i.id}" } )
+    = link_to("remove", "#", :class => "removeImg", :data => { :image_id => "#{i.id}", :material_id => "#{@material.id}" } )
 
     %label.default
       %input{ type: "radio", :class => :default_image_id, :name => 'default_image_id', :checked => @material.default_image_id == i.id || nil, :data => { material_id: @material.id, default_image_id: @material.default_image_id, image_id: i.id } }
