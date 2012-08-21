@@ -156,7 +156,7 @@ class Admin::MaterialsController < ApplicationController
     @default_image_ids[:search_icon] = @material.search_icon_image_id
 
     respond_to do |format|      
-      format.json { render json: {default_image_ids: @default_image_ids.to_json, type: 'ok', status: :success }}
+      format.json { render json: {default_image_ids: @default_image_ids, type: 'ok', status: :success }}
     end
   end 
       

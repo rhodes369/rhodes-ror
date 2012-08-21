@@ -104,7 +104,7 @@ $(document).ready ->
       @image_id = $(this).data('image-id')
       @material_id = $(this).data('material-id')
       @default_images_url = "/admin/materials/#{@material_id}/default_image_ids.json"
-      @remove_image_url = "/admin/images/#{@material_id}.json"
+      @remove_image_url = "/admin/images/#{@image_id}.json"
       
       log "@image_id: #{@image_id} @material_id: #{@material_id}"      
       
@@ -113,30 +113,42 @@ $(document).ready ->
         url: @default_images_url
         dataType: 'json'
         type: 'GET'    
-        success: (@default_images) =>
-          log "success: data #{@default_images}"
+        success: (results1) =>
+          log "success getting default_image_ids data: #{results1.inspect}"
+          
+          #@current_default_image_id = nil # reset
+          #@current_icon_image_id = nil
+          @current_default_image_id = results1.default_image_ids.default
+          @current_search_icon_image_id = results1.default_image_ids.search_icon
+          
+          log "current_default_image_id: #{@current_default_image_id}"
+          log "current_search_icon_image_id: #{@current_search_icon_image_id}"
+          log 'test124'
+          
+          # # don't let them remove an image if it's currently set as default/1st or icon image
+          if @current_default_image_id is @image_id
+            alert "Please set another image as the default/1st image before removing this one."
+          if @current_search_icon_image_id is @image_id
+            alert "Please set another image as the search icon image before removing this one." 
+                       
+          # this technique is apparently better than using the rails :confirm on link_to
+          return false unless confirm("Are you sure you want to remove this image?")
+      
+          $.ajax
+            url: @remove_image_url
+            dataType: 'json'
+            type: 'DELETE'
+            data: { material_id: @material_id, image_id: @image_id }        
+            success: (data) =>
+              $(this).parent().fadeOut(1999)
+              alert 'Image was removed.'
+            error: (data) ->
+              alert 'Problem removing image.'
+              log data.statusText          
+          
         error: (data) =>
           alert "Problem getting default images. @material_id: #{@material_id}"
           log data.statusText
         
-      
-      # # don't let them remove image if it's currently set as default or icon image
-      if @default_images.default == @image_id
-        alert "Please set another image as the 1st or icon image before removing this one."
-      end        
-      #       
-      # # this technique is apparently better than using the rails :confirm on link_to
-      # return false unless confirm("Are you sure you want to remove this image?")
-      # 
-      # $.ajax
-      #   url: @remove_image_url
-      #   dataType: 'json'
-      #   type: 'DELETE'
-      #   data: { material_id: @material_id, image_id: @image_id }        
-      #   success: (data) =>
-      #     $(this).parent().fadeOut(1999)
-      #     alert 'Image was removed.'
-      #   error: (data) ->
-      #     alert 'Problem removing image.'
-      #     log data.statusText           
+          
   )  
