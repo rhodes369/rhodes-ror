@@ -41,9 +41,7 @@ $(document).ready ->
         dataType: 'json'
         type: 'PUT'
         data: { material_id: @material_id, search_icon_image_id: @image_id }        
-        success: (data) =>
-          $(this).data('current_search_icon').value(1)
-          log "set #{@image_id} to 1 for $(this).data('current_default_or_icon')"
+        success: (data) ->
           alert 'Icon image saved.' # search result icon image id
         error: (data) ->
           alert 'Problem saving icon image.' 
@@ -128,9 +126,12 @@ $(document).ready ->
           # # don't let them remove an image if it's currently set as default/1st or icon image
           if @current_default_image_id is @image_id
             alert "Please set another image as the default/1st image before removing this one."
+            return false
           if @current_search_icon_image_id is @image_id
-            alert "Please set another image as the search icon image before removing this one." 
-                       
+            alert "Please set another image as the search icon image before removing this one."
+            return false
+          
+          # make them verify they want to remove      
           # this technique is apparently better than using the rails :confirm on link_to
           return false unless confirm("Are you sure you want to remove this image?")
       
@@ -149,6 +150,6 @@ $(document).ready ->
         error: (data) =>
           alert "Problem getting default images. @material_id: #{@material_id}"
           log data.statusText
-        
-          
-  )  
+             
+  )
+  
