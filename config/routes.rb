@@ -5,7 +5,7 @@ RhodesRor::Application.routes.draw do
   
   resources :auth_sessions, :only => [:new, :create, :destroy]
   
-  resources :materials, :only => [:index, :show] do
+  resources :materials, :only => [:index, :show, :search] do
     put :search, :to => 'materials#search'
   end
    
