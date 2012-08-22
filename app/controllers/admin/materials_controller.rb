@@ -1,10 +1,10 @@
 class Admin::MaterialsController < ApplicationController
   
+  require 'htmlentities'
+    
   before_filter :require_login
   
   layout 'admin/layouts/application'
-  
-  require 'htmlentities'
   
   MIN_THICKNESS_OPTIONS = { 
     '.75"' => ".75&#34;", 
@@ -138,5 +138,26 @@ class Admin::MaterialsController < ApplicationController
       redirect_to admin_materials_path, 
         alert: "Problem removing material: #{@material.errors.full_messages.first }"
     end
-  end     
+  end
+  
+  def default_image_ids
+    logger.debug "running default_image_ids... params: #{params.inspect}"
+    
+    @material = Material.find(params[:material_id])
+    return if @material.nil?
+    
+    logger.debug "running get_default_image_ids @material #{@material.id}"
+    
+    @default_image_ids = {}
+    @default_image_ids[:default] = nil
+    @default_image_ids[:search_icon] = nil
+    
+    @default_image_ids[:default] = @material.default_image_id
+    @default_image_ids[:search_icon] = @material.search_icon_image_id
+
+    respond_to do |format|      
+      format.json { render json: {default_image_ids: @default_image_ids, type: 'ok', status: :success }}
+    end
+  end 
+      
 end
