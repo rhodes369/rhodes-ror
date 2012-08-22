@@ -53,7 +53,7 @@ class MaterialsController < ApplicationController
    
     logger.debug "params search(filters): #{filters.inspect}"
     
-    antiques_in_title = Material.antique_in_title_results(filters)
+    antique_in_title = Material.antique_in_title_results(filters)
     newly_crafted = Material.newly_crafted(filters)
     use_special_finish_filter_only_results = check_finish_filter_only(filters)
     
@@ -61,7 +61,7 @@ class MaterialsController < ApplicationController
     results['newly_crafted']['html'] = render_to_string( 
       partial: 'materials/search/newly_crafted/header', locals: { results: results}) 
     
-    results['antiques']['count'] = antiques_in_title.count
+    results['antiques']['count'] = antique_in_title.count
     results['antiques']['html'] = render_to_string( 
       partial: 'materials/search/antiques/header', locals: { results: results})     
 
@@ -106,7 +106,7 @@ class MaterialsController < ApplicationController
     
     # filter antiques
     if results['antiques']['count'] > 0   
-      antiques_in_title.each do |mat|     
+      antique_in_title.each do |mat|     
         # default_image = nil # reset
         # search_icon_image = nil # reset
         # 
@@ -174,5 +174,5 @@ class MaterialsController < ApplicationController
       return false
     end
   end
-    
+
 end

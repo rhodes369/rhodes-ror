@@ -13,9 +13,11 @@
         %span.arrowTxt Antiques
 
       %ul
-        - @materials_antique_in_title.each do |mat|
-          %li
-            = link_to "#{mat.title} #{mat.material_type_title}", edit_admin_material_path(mat)
+        = unless @materials_antique_in_title.blank?
+          - @materials_antique_in_title.each do |mat|
+            %li
+              = link_to "#{mat.title} #{mat.material_type_title}", edit_admin_material_path(mat)
+          end
 
     / NEWLY CRAFTED
     %li
