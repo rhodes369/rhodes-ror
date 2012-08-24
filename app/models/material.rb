@@ -73,7 +73,7 @@ class Material < ActiveRecord::Base
     end
     
     # since our array loses the original sql ordering, reverse   
-    results = order_results_hash(results) 
+    results = self.order_results_hash results 
      
     return results
   end
@@ -83,10 +83,10 @@ class Material < ActiveRecord::Base
   # filter out all newly crafted mat or 'antique' in title
   def self.antique_in_title_results(filters = {})
     
-    logger.debug "looking up mats with 'antique' in title using filters: #{filters.inspect}"
+    logger.debug "looking up antique_in_title_results using filters: #{filters.inspect}"
     
     results = []
-          
+
     self.antique_in_title.each do |mat| 
      
      unless filters.empty? # filter results via pulldowns
@@ -150,14 +150,28 @@ class Material < ActiveRecord::Base
   end
 
 
+  # return array of all mat.images finish_ids combined
+  def all_images_with_finish(finish_id = nil)
+    return nil if finish_id.nil? or self.images.nil? 
+    
+    images_with_finish = self.images.where(finish_id: finish_id)
+    return images_with_finish
+  end
+
   # sort from newest to oldest with the default @ the beginning
-  def sort_thumb_images
+  def sort_thumb_images(use_search_icon_image = nil)
     return [] if self.images.count == 0
     
     self.images.sort { |a,b| b.created_at <=> a.created_at }
     
     default_image = Image.find self.default_image_id 
+    search_icon_image = Image.find self.search_icon_image_id
+    
+    # self.images.unshift default_image 
+    # put search icon image @ beginning for index page (no filters)
+    
     self.images.unshift default_image # put default image @ beginning
+    self.images.unshift search_icon_image unless use_search_icon_image.nil?
     self.images.uniq # make sure array is unique  
   end
 
@@ -171,13 +185,17 @@ class Material < ActiveRecord::Base
     end    
   end
 
-
   def set_default_image(image_id)
     return nil unless image_id.is_a?(Numeric) and image_id > 0
     self.default_image_id = image_id
     return true if self.save!
   end
-  
+
+  def set_search_icon_image(image_id)
+    return nil unless image_id.is_a?(Numeric) and image_id > 0
+    self.search_icon_image_id = image_id
+    return true if self.save!
+  end  
   
   def material_type_title
     # show blank unless title exists
