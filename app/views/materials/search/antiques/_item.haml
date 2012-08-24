@@ -1,8 +1,8 @@
 %ul#new.thumbs.clearfix
   %li
     %a{:href => material_path(mat) }  
-      - unless thumb_image.nil?    
-        %img{ :src => "#{thumb_image}" }
+      - unless thumb_image_url.nil?    
+        %img{ :src => "#{thumb_image_url}" }
       - else 
         %img{ :src => "#{asset_path('placeholder-95.gif')}" } 
   
