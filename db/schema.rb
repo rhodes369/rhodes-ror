@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20120722025457) do
+ActiveRecord::Schema.define(:version => 20120805060940) do
 
   create_table "applications", :force => true do |t|
     t.string   "title"
@@ -68,13 +68,14 @@ ActiveRecord::Schema.define(:version => 20120722025457) do
     t.text     "description"
     t.text     "specifications"
     t.text     "technical_data"
-    t.datetime "created_at",       :null => false
-    t.datetime "updated_at",       :null => false
+    t.datetime "created_at",           :null => false
+    t.datetime "updated_at",           :null => false
     t.string   "cached_slug"
     t.string   "pdf_file_name"
     t.string   "pdf_content_type"
     t.integer  "pdf_file_size"
     t.datetime "pdf_updated_at"
+    t.integer  "search_icon_image_id"
   end
 
   add_index "materials", ["cached_slug"], :name => "index_materials_on_cached_slug"

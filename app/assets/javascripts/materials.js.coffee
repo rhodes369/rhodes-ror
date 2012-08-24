@@ -42,7 +42,7 @@ class SearchMaterials
       type: 'PUT'
       data: { filters: @filters } 
             
-      success: (data) =>       
+      success: (data) =>      
         $('#newlyCraftedSearchResults').html(data.results.newly_crafted.html)
         $('#antiqueSearchResults').html(data.results.antiques.html)
         @spinner.hide()
@@ -51,6 +51,8 @@ class SearchMaterials
       error: (data) =>
         alert 'Problem processing search.'
         log data.statusText      
+
+
 
   # Todo: refactor/enable method once working
   # # check to see if search has been run before, if so, show results headers
@@ -77,7 +79,8 @@ $(document).ready ->
     mouseover: ->   
       @large_image =   $(this).data('large_image')
       @finishTitle =   $(this).data('finish_title')
-      @minThickness = $(this).data('min_thickness')
+      @minThickness =  $(this).data('min_thickness') 
+      @minThickness = "none" if @minThickness == ""
       
       $('#large_image').attr(src: @large_image)
       $('#finish').text("FINISH: #{@finishTitle}")
