@@ -14,17 +14,16 @@
 
       %ul
         = unless @materials_antique_in_title.blank?
-          - @materials_antique_in_title.each do |mat|
+          - @materials_antique_in_title.map do |mat|
             %li
               = link_to "#{mat.title} #{mat.material_type_title}", edit_admin_material_path(mat)
-          end
-
+    
     / NEWLY CRAFTED
     %li
       %a.collapsed
         .arrow 
+        
         %span.arrowTxt Newly Crafted
-
       %ul
         - @materials_newly_crafted_sidebar.each do |mat|
           %li
