@@ -73,7 +73,7 @@ class Material < ActiveRecord::Base
     end
     
     # since our array loses the original sql ordering, reverse   
-    results = order_results_hash(results) 
+    results = self.order_results_hash results 
      
     return results
   end
