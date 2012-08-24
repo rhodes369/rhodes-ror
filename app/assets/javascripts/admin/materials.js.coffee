@@ -121,7 +121,6 @@ $(document).ready ->
           
           log "current_default_image_id: #{@current_default_image_id}"
           log "current_search_icon_image_id: #{@current_search_icon_image_id}"
-          log 'test124'
           
           # # don't let them remove an image if it's currently set as default/1st or icon image
           if @current_default_image_id is @image_id
