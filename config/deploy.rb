@@ -1,5 +1,5 @@
 require "bundler/capistrano"
-# load "deploy/assets"
+load "deploy/assets"
 
 set :application, "staging.rhodes.org"
 set :repository,  "git@github.com:rhodes369/rhodes-ror.git"
@@ -26,7 +26,7 @@ default_environment["RAILS_ENV"] = 'production'
 
 after "bundle:install", "deploy:set_configs"
 # after "deploy:set_configs", "deploy:migrate"
-# after "deploy:update_code", "deploy:build_missing_paperclip_styles"
+after "deploy:update_code", "deploy:build_missing_paperclip_styles"
 after "deploy:finalize_update", "deploy:cleanup"
 
 # If you are using Passenger mod_rails uncomment this:
