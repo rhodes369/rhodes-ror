@@ -29,7 +29,7 @@ group :production do
 end
 
 group :development, :test do
-  gem 'linecache19', '0.5.12'
+  # gem 'linecache19', '0.5.12'
   gem 'pry'
   gem 'pry-rails'
   gem 'growl', '~> 1.0'
