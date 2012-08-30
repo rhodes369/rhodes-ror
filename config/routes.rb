@@ -3,10 +3,9 @@ RhodesRor::Application.routes.draw do
   get "logout" => "auth_sessions#destroy", :as => "logout"
   get "login" => "auth_sessions#new", :as => "login"
   
-  # resources :users, :only => [:new, :create]
   resources :auth_sessions, :only => [:new, :create, :destroy]
   
-  resources :materials, :only => [:index, :show] do
+  resources :materials, :only => [:index, :show, :search] do
     put :search, :to => 'materials#search'
   end
    
@@ -14,11 +13,12 @@ RhodesRor::Application.routes.draw do
     
     match '/' => 'admin#index'
     
-    resources :material_types, :finishes, :applications, :except => 'show'
+    resources :material_types, :finishes, :applications
     
     resources :materials do
       put :update_default_image, :to => 'materials#update_default_image'                                  
       put :update_search_icon_image, :to => 'materials#update_search_icon_image'
+      get :default_image_ids, :to => 'materials#default_image_ids'
     end
     
     resources :images, :only => [:create, :destroy] do
