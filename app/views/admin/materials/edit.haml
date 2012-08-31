@@ -10,13 +10,6 @@
     %h4 Material Type
     
     = f.select(:material_type_id, @all_material_types.collect {|mat_type| [ mat_type.title, mat_type.id ]}, { :include_blank => 'Material Type'})
-        
-    %h4 Select finishe(s)
-
-    %select#finishIds{name: 'material[finish_ids][]', size: "5x20", multiple: true}
-      - @all_finishes.each do |finish|
-        %option{:value => finish.id, :selected =>  @material.finishes.include?(finish) ? "selected" : nil}
-          =finish.title 
 
     %h4 Select application(s)
     

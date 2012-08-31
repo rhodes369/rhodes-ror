@@ -7,7 +7,7 @@ class MaterialFinish < ActiveRecord::Base
   validates :material_id, :numericality => { :only_integer => true } 
   validates :finish_id, :numericality => { :only_integer => true } 
   
-  attr_accessible :finish_id               
+  attr_accessible :finish_id, :min_thickness                
   
   # remove all records that use finish_id 
   def self.remove_mat_finishes(finish_id)  
