@@ -1,8 +1,6 @@
 class Material < ActiveRecord::Base 
 
-  has_many :finishes, :through => :material_finishes 
   has_many :applications, :through => :material_applications 
-  has_many :material_finishes, :dependent => :destroy
   has_many :material_applications, :dependent => :destroy
   has_one  :material_type
   has_many :images, :dependent => :destroy
@@ -12,9 +10,9 @@ class Material < ActiveRecord::Base
          :dependent => :destroy
          
   attr_accessible :title, :description, :material_type_id, 
-                  :finish_ids, :finishes, :application_ids, 
-                  :images, :specifications, :technical_data,
-                  :pdf, :pdf_file_name, :pdf_content_type, :pdf_file_size
+                  :application_ids, :images, :specifications, 
+                  :technical_data, :pdf, :pdf_file_name, 
+                  :pdf_content_type, :pdf_file_size
 
   is_sluggable :title # for slugged gem 
                          
