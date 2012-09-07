@@ -53,7 +53,7 @@ class Material < ActiveRecord::Base
     
         # # filter for finish type
         unless filters[:mat_finish_id].blank?
-          if mat.finishes.include?(filters[:mat_finish_id].to_i) 
+          if mat.finishes(true).include?(filters[:mat_finish_id].to_i) 
             results << mat unless results.include?(mat)
           end
         end
@@ -99,7 +99,7 @@ class Material < ActiveRecord::Base
     
         # # filter for finish type
         unless filters[:mat_finish_id].blank?
-          if mat.finishes.include?(filters[:mat_finish_id].to_i) 
+          if mat.finishes(true).include?(filters[:mat_finish_id].to_i) 
             results << mat unless results.include?(mat)
           end
         end
@@ -137,13 +137,24 @@ class Material < ActiveRecord::Base
   end
 
 
-  # return array of all mat image finish_ids
-  def finishes    
+  # return array of all mat image finish objects or ids
+  def finishes(ids_only = nil)
+    finishes = []
     finish_ids = self.images.where('finish_id IS NOT NULL').map(&:finish_id)
-    return finish_ids.empty? ? [] : finish_ids
+    
+    if !ids_only.nil?
+      finishes = finish_ids 
+    else  # return array of full objects
+      finish_ids.map do |fid| 
+        fin = Finish.find_by_id fid
+        finishes << fin unless fin.nil?
+      end
+    end
+    return finishes
   end
 
 
+  
   # return array of all mat.images finish_ids combined
   def images_with_finish(finish_id = nil)
     return [] if finish_id.nil? or self.images.nil? 
