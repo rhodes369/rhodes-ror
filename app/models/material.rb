@@ -53,7 +53,7 @@ class Material < ActiveRecord::Base
     
         # # filter for finish type
         unless filters[:mat_finish_id].blank?
-          if mat.all_finish_ids.include?(filters[:mat_finish_id].to_i) 
+          if mat.finishes.include?(filters[:mat_finish_id].to_i) 
             results << mat unless results.include?(mat)
           end
         end
@@ -99,7 +99,7 @@ class Material < ActiveRecord::Base
     
         # # filter for finish type
         unless filters[:mat_finish_id].blank?
-          if mat.all_finish_ids.include?(filters[:mat_finish_id].to_i) 
+          if mat.finishes.include?(filters[:mat_finish_id].to_i) 
             results << mat unless results.include?(mat)
           end
         end
@@ -138,18 +138,17 @@ class Material < ActiveRecord::Base
 
 
   # return array of all mat image finish_ids
-  def all_finish_ids
+  def finishes    
     finish_ids = self.images.where('finish_id IS NOT NULL').map(&:finish_id)
     return finish_ids.empty? ? [] : finish_ids
   end
 
 
   # return array of all mat.images finish_ids combined
-  def all_images_with_finish(finish_id = nil)
-    return nil if finish_id.nil? or self.images.nil? 
-    
-    images_with_finish = self.images.where(finish_id: finish_id)
-    return images_with_finish
+  def images_with_finish(finish_id = nil)
+    return [] if finish_id.nil? or self.images.nil? 
+    # otherwize...
+    return self.images.where(finish_id: finish_id)
   end
 
   # sort from newest to oldest with the default @ the beginning
@@ -197,24 +196,6 @@ class Material < ActiveRecord::Base
     MaterialType.find(self.material_type_id).title
   end
 
-  
-  private 
-
-  # manually destroy all related paperclip attachments
-  # def delete_all_related_image_attachments  
-  #   # manually make sure image records get removed
-  #   image_ids = self.images.map &:id
-  #   image_ids.each { |id| i = Image.find id; i.destroy }
-  #   
-  #   remaining_images = Image.find_all_by_id(image_ids)
-  #   if remaining_images.count > 0
-  #     logger.debug "#{remaining_images.count} images: still exist: #{remaining_images.to_s} after mat destroy for mat: #{self.id}"
-  #     self.errors[:base] << "- #{remaining_images.count} images still exist"
-  #     return false
-  #   else
-  #     return true
-  #   end
-  # end
   
   
   # def transliterate_file_name
