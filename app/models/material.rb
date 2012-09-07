@@ -137,14 +137,10 @@ class Material < ActiveRecord::Base
   end
 
 
-  # return array of all mat finish ids + mat.images finish_ids combined
+  # return array of all mat image finish_ids
   def all_finish_ids
-    if self.images.nil?
-      return self.finishes.map(&:id) 
-    else
-      image_finish_ids = self.images.where('finish_id IS NOT NULL').map(&:finish_id)
-      return self.finishes.map(&:id).concat(image_finish_ids)
-    end
+    finish_ids = self.images.where('finish_id IS NOT NULL').map(&:finish_id)
+    return finish_ids.empty? ? [] : finish_ids
   end
 
 
