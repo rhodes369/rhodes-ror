@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20120805060940) do
+ActiveRecord::Schema.define(:version => 20120907125147) do
 
   create_table "applications", :force => true do |t|
     t.string   "title"
@@ -46,13 +46,6 @@ ActiveRecord::Schema.define(:version => 20120805060940) do
   end
 
   add_index "material_applications", ["material_id", "application_id"], :name => "index_material_applications_on_material_id_and_application_id"
-
-  create_table "material_finishes", :force => true do |t|
-    t.integer "material_id"
-    t.integer "finish_id"
-  end
-
-  add_index "material_finishes", ["material_id", "finish_id"], :name => "index_material_finishes_on_material_id_and_finish_id"
 
   create_table "material_types", :force => true do |t|
     t.string   "title"
