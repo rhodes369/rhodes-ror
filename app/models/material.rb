@@ -1,8 +1,6 @@
 class Material < ActiveRecord::Base 
 
-  has_many :finishes, :through => :material_finishes 
   has_many :applications, :through => :material_applications 
-  has_many :material_finishes, :dependent => :destroy
   has_many :material_applications, :dependent => :destroy
   has_one  :material_type
   has_many :images, :dependent => :destroy
@@ -12,9 +10,9 @@ class Material < ActiveRecord::Base
          :dependent => :destroy
          
   attr_accessible :title, :description, :material_type_id, 
-                  :finish_ids, :finishes, :application_ids, 
-                  :images, :specifications, :technical_data,
-                  :pdf, :pdf_file_name, :pdf_content_type, :pdf_file_size
+                  :application_ids, :images, :specifications, 
+                  :technical_data, :pdf, :pdf_file_name, 
+                  :pdf_content_type, :pdf_file_size
 
   is_sluggable :title # for slugged gem 
                          
@@ -55,7 +53,7 @@ class Material < ActiveRecord::Base
     
         # # filter for finish type
         unless filters[:mat_finish_id].blank?
-          if mat.all_finish_ids.include?(filters[:mat_finish_id].to_i) 
+          if mat.finishes(true).include?(filters[:mat_finish_id].to_i) 
             results << mat unless results.include?(mat)
           end
         end
@@ -101,7 +99,7 @@ class Material < ActiveRecord::Base
     
         # # filter for finish type
         unless filters[:mat_finish_id].blank?
-          if mat.all_finish_ids.include?(filters[:mat_finish_id].to_i) 
+          if mat.finishes(true).include?(filters[:mat_finish_id].to_i) 
             results << mat unless results.include?(mat)
           end
         end
@@ -139,23 +137,29 @@ class Material < ActiveRecord::Base
   end
 
 
-  # return array of all mat finish ids + mat.images finish_ids combined
-  def all_finish_ids
-    if self.images.nil?
-      return self.finishes.map(&:id) 
-    else
-      image_finish_ids = self.images.where('finish_id IS NOT NULL').map(&:finish_id)
-      return self.finishes.map(&:id).concat(image_finish_ids)
+  # return array of all mat image finish objects or ids
+  def finishes(ids_only = nil)
+    finishes = []
+    finish_ids = self.images.where('finish_id IS NOT NULL').map(&:finish_id)
+    
+    if !ids_only.nil?
+      finishes = finish_ids 
+    else  # return array of full objects
+      finish_ids.map do |fid| 
+        fin = Finish.find_by_id fid
+        finishes << fin unless fin.nil?
+      end
     end
+    return finishes
   end
 
 
+  
   # return array of all mat.images finish_ids combined
-  def all_images_with_finish(finish_id = nil)
-    return nil if finish_id.nil? or self.images.nil? 
-    
-    images_with_finish = self.images.where(finish_id: finish_id)
-    return images_with_finish
+  def images_with_finish(finish_id = nil)
+    return [] if finish_id.nil? or self.images.nil? 
+    # otherwize...
+    return self.images.where(finish_id: finish_id)
   end
 
   # sort from newest to oldest with the default @ the beginning
@@ -203,24 +207,6 @@ class Material < ActiveRecord::Base
     MaterialType.find(self.material_type_id).title
   end
 
-  
-  private 
-
-  # manually destroy all related paperclip attachments
-  # def delete_all_related_image_attachments  
-  #   # manually make sure image records get removed
-  #   image_ids = self.images.map &:id
-  #   image_ids.each { |id| i = Image.find id; i.destroy }
-  #   
-  #   remaining_images = Image.find_all_by_id(image_ids)
-  #   if remaining_images.count > 0
-  #     logger.debug "#{remaining_images.count} images: still exist: #{remaining_images.to_s} after mat destroy for mat: #{self.id}"
-  #     self.errors[:base] << "- #{remaining_images.count} images still exist"
-  #     return false
-  #   else
-  #     return true
-  #   end
-  # end
   
   
   # def transliterate_file_name
