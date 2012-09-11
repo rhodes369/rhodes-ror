@@ -11,6 +11,7 @@ class Admin::ImagesController < ApplicationController
 
   def create
     @image = Image.new(params[:image])
+    
     @material = Material.find(params[:image][:material_id])
     return if @material.nil?
         
@@ -20,6 +21,7 @@ class Admin::ImagesController < ApplicationController
           # set as default image and search icon image if it's the only image in gallery
           @material.set_default_image(@image.id) if @material.images.count == 1
           @material.set_search_icon_image(@image.id) if @material.images.count == 1
+          # @material.
           
           format.html { redirect_to edit_admin_material_path(@material), notice: 'Image was successfully added.' }
           format.json { render json: @image, status: :created, location: @image }

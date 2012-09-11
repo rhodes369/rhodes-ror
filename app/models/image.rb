@@ -17,14 +17,14 @@ class Image < ActiveRecord::Base
       :content_type => { :content_type => ['image/jpeg', 'image/png', 'image/gif'] },
       :size => { :in => 0..10.megabytes }
     
-  after_initialize :init
+  after_create :set_defaults
   
   # set finish id                   
   def set_finish(finish_id = nil)
     return if finish_id.nil?    
     finish = Finish.find(finish_id)
        
-    self.finish_id = finish_id
+    self.finish = finish
     self.save!  
   end
   
@@ -51,7 +51,8 @@ class Image < ActiveRecord::Base
   end  
 
 
-  def init
+  def set_defaults
+    # self.finish_id = Finish.first # set a default
     self.min_thickness ||= "1\"" # 1 inch default for now
   end
 
