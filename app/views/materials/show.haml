@@ -1,13 +1,5 @@
 = render :partial => 'left_side_bar'
 
-- default_image_id = @material.default_image_id ||= nil
-- unless default_image_id.nil?
-  - @default_image = Image.find(@material.default_image_id)
-- else
-  - @finish_title = "None"
-  - @min_thickness = "None"
-
-
 #content-center
 
   %h3#mat_title
@@ -16,53 +8,47 @@
     - unless @material.material_type_id.nil?
       - @material_type = MaterialType.find(@material.material_type_id)
       = @material_type.nil? ? 'None' : @material_type.title
-
+  
   #finish
     - unless @default_image.nil?
-      -  @default_image.finish.title.blank?
-        - @finish_title = @default_image.finish.title ||= 'None'
-      - if @default
-      - @min_thickness = @default_image.min_thickness ||= 'None'
-      
-      /- @min_thickness = "#{@default_image.min_thickness} minimum thickness" ||= 'None'
-      / - else
-      /   - @finish_title = 'None'
-      /   - @min_thickness = 'None'
-
-      / Currently, this variable gets pulled from js on the img
-      / hmm, i'll have to add some ajax/coffee for this part later -dr. J
-      = "FINISH: #{@finish_title}"
-
+      - unless @default_image.finish.title.nil?
+        = "FINISH: #{@default_image.finish.title}"
+  
+  / MINIMUM THICKNESS
   #min_thickness
     - unless @min_thickness.blank?
-      = "#{@min_thickness} minimum thickness"      
+      = "Minimum Thickness"" #{@min_thickness}"      
 
   %br 
 
-  // AVAILABLE FINISHES
-  - if @material.finishes.count > 0
+  / AVAILABLE FINISHES
+  - unless @material.finishes.blank?
     %p
       %span.caps
         Available finishes:        
-      // easy way to comma delimit - J
+      / easy way to comma delimit - J
       = @material.finishes.uniq.collect{ |f| f.title }.to_sentence
 
-  // RECOMMENDED USES / APPLICATIONS
-  - if @material.applications.count > 0
+  / RECOMMENDED USES / APPLICATIONS
+  - unless @material.applications.blank?
     %p
       %span.caps
         Recommended Uses:
       = @material.applications.collect{ |app| app.title }.to_sentence  
 
 
-  // DESCRIPTION
-  #description
-    %p=simple_format(@material.description)
-
+  / DESCRIPTION
   - unless @material.description.blank?
-    %p.readMore Read More
+    #description
+      %p=simple_format(@material.description)
+      
+      / - if @material.description.length > 15
+      %p.readMore Read More
+      %br 
 
+  / PDF
   - unless @material.pdf_file_name.blank?
+    %br
     %p
       Download material PDF:
       %a{:href => "/system/materials/pdfs/#{@material.id}/#{@material.pdf_file_name}", target: "_blank"} 
@@ -86,5 +72,5 @@
 
 #content-right
   - unless @material.images.blank?
-    / = render :partial => 'gallery', :locals => { :material => @material, :material_sorted_images => @material_sorted_images, :image_count => @material.images.count }
+    = render :partial => 'gallery', :locals => { :material => @material, :material_sorted_images => @material_sorted_images, :image_count => @material.images.count }
   

@@ -27,9 +27,13 @@ class MaterialsController < ApplicationController
     if @material.nil? 
       redirect_to materials_path, notice: 'No material found'
     else
+
+        
       unless @material.images.blank?
-        #@materials = Material.all
         @material_sorted_images = @material.sort_thumb_images
+        unless @material.default_image_id.nil?
+          @default_image = Image.find(@material.default_image_id)
+        end
       end
       
       @all_material_types = MaterialType.all
