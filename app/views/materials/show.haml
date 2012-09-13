@@ -68,8 +68,7 @@
       %h3 Technical Data
       %p=simple_format(@material.technical_data)
 
-
-
+/ IMAGE GALLERY
 #content-right
   - unless @material.images.blank?
     = render :partial => 'gallery', :locals => { :material => @material, :material_sorted_images => @material_sorted_images, :image_count => @material.images.count }
