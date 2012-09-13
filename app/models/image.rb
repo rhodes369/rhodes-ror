@@ -18,18 +18,15 @@ class Image < ActiveRecord::Base
       :size => { :in => 0..10.megabytes }
     
   after_create :set_defaults
-  
-  # set finish id                   
+                    
   def set_finish(finish_id = nil)
     return if finish_id.nil?    
-    finish = Finish.find(finish_id)
-       
+    
+    finish = Finish.find(finish_id)   
     self.finish = finish
     self.save!  
   end
-  
-  
-  # set min thickness                 
+                  
   def set_min_thickness(min_thickness = nil)
     return if min_thickness.nil?    
 
@@ -52,8 +49,6 @@ class Image < ActiveRecord::Base
 
 
   def set_defaults
-    # self.finish_id = Finish.first # set a default
     self.min_thickness ||= "1\"" # 1 inch default for now
   end
-
 end
