@@ -35,8 +35,8 @@
 
     #minThickness-wrap
       %select.minThickness{:id => "minThickness",:data => { material_id: @material.id, default_image_id: @material.default_image_id, image_id: i.id }}
+        %option{:value => ""} Minimum Thickness
         - @all_min_thicknesses.each do |val,html|
-          %option{:value => ""} Minimum Thickness
           %option{:value => val, :selected =>  i.min_thickness == val ? "selected" : nil}   
             = "#{@html_encoder.decode(html)} minimum thickness"
       .arrow-down

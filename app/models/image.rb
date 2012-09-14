@@ -16,8 +16,7 @@ class Image < ActiveRecord::Base
       :presence => true, 
       :content_type => { :content_type => ['image/jpeg', 'image/png', 'image/gif'] },
       :size => { :in => 0..10.megabytes }
-    
-  after_create :set_defaults
+
                     
   def set_finish(finish_id = nil)
     return if finish_id.nil?    
@@ -46,9 +45,4 @@ class Image < ActiveRecord::Base
     end     
     return image_finishes_count
   end  
-
-
-  def set_defaults
-    self.min_thickness ||= "1\"" # 1 inch default for now
-  end
 end
