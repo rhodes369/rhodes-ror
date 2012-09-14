@@ -5,7 +5,7 @@
   - material_sorted_images.each do |i|
     - counter = counter == 5 ? 1 : counter+= 1
     - total_counter+= 1
-    - finish_title = i.finish.nil? ? 'None' : i.finish.title
+    - finish_title = i.finish.nil? ? "" : i.finish.title
     - if counter == 1
       = preserve do
         <div>
