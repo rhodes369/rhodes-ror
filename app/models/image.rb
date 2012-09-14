@@ -19,9 +19,7 @@ class Image < ActiveRecord::Base
 
                     
   def set_finish(finish_id = nil)
-    return if finish_id.nil?    
-    
-    finish = Finish.find(finish_id)   
+    finish = finish_id.blank? ? nil : Finish.find(finish_id.to_i)       
     self.finish = finish
     self.save!  
   end

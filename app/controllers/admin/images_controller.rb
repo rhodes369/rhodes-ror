@@ -34,14 +34,11 @@ class Admin::ImagesController < ApplicationController
 
 
   def update_finish_id
-    image_id = params[:image_id].to_i
-    finish_id = params[:finish_id].to_i
+    image_id = params[:image_id]
+    finish_id = params[:finish_id]
 
-    return unless image_id.is_a?(Numeric) and finish_id.is_a?(Numeric)
+    return unless @image = Image.find(image_id.to_i)
     
-    @image = Image.find(image_id)  
-    return if @image.nil? 
-   
     respond_to do |format|      
       if @image.set_finish(finish_id)
         format.json { render json: { type: 'ok', status: :success } }
