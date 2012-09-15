@@ -1,5 +1,4 @@
 = render :partial => 'left_side_bar'
-- @default_image = Image.find(@material.default_image_id)
 
 #content-center
 
@@ -9,61 +8,68 @@
     - unless @material.material_type_id.nil?
       - @material_type = MaterialType.find(@material.material_type_id)
       = @material_type.nil? ? 'None' : @material_type.title
-
-  #finish
-    - finish_title = @default_image.finish.nil? ? 'None' : @default_image.finish.title
-    // Currently, this variable gets pulled from js on the img
-    // hmm, i'll have to add some ajax/coffee for this part later -dr. J
-    = "FINISH: #{finish_title}"
   
+  #finish
+    - unless @default_image.nil?
+      - unless @default_image.finish.nil?
+        = "FINISH: #{@default_image.finish.title}"
+  
+  / MINIMUM THICKNESS
   #min_thickness
-    = "#{@default_image.min_thickness} minimum thickness"
+    - unless @min_thickness.blank?
+      = "Minimum Thickness"" #{@min_thickness}"      
 
   %br 
-  
-  // AVAILABLE FINISHES
-  - if @material.finishes.count > 0
+
+  / AVAILABLE FINISHES
+  - unless @material.finishes.blank?
     %p
       %span.caps
         Available finishes:        
-      // easy way to comma delimit - J
-      = @material.finishes.collect{ |f| f.title }.to_sentence
+      / easy way to comma delimit - J
+      = @material.finishes.uniq.collect{ |f| f.title }.to_sentence
 
-  // RECOMMENDED USES / APPLICATIONS
-  - if @material.applications.count > 0
+  / RECOMMENDED USES / APPLICATIONS
+  - unless @material.applications.blank?
     %p
       %span.caps
         Recommended Uses:
       = @material.applications.collect{ |app| app.title }.to_sentence  
 
 
-  // DESCRIPTION
-  #description
-    %p=simple_format(@material.description)
-  
+  / DESCRIPTION
   - unless @material.description.blank?
-    %p.readMore Read More
-  
-  - unless @material.pdf_file_name.nil?
+    #description
+      %p=simple_format(@material.description)
+      
+      / - if @material.description.length > 15
+      %p.readMore Read More
+      %br 
+
+  / PDF
+  - unless @material.pdf_file_name.blank?
+    %br
     %p
       Download material PDF:
       %a{:href => "/system/materials/pdfs/#{@material.id}/#{@material.pdf_file_name}", target: "_blank"} 
         = "#{@material.pdf_file_name} (#{number_to_human_size(@material.pdf_file_size)})"
 
 
-  // MATERIAL SPECS, THESE VARY IN KIND
-  .details
-    %h3 Material Specifications
-    %p=simple_format(@material.specifications)
+  / MATERIAL SPECS, THESE VARY IN KIND
+  - unless @material.specifications.blank?
+    .details
+      %h3 Material Specifications
+      %p=simple_format(@material.specifications)
 
 
-  // TECH SPECS, THESE VARY IN KIND
-  .details
-    %h3 Technical Data
-    %p=simple_format(@material.technical_data)
+  / TECH SPECS, THESE VARY IN KIND
+  - unless @material.technical_data.blank?
+    .details
+      %h3 Technical Data
+      %p=simple_format(@material.technical_data)
 
-
-
+/ IMAGE GALLERY
 #content-right
-
-  = render :partial => 'gallery', :locals => { :material => @material, :material_sorted_images => @material_sorted_images, :image_count => @material.images.count }
+  - unless @material.images.blank?
+    = render :partial => 'gallery', :locals => { :material => @material, :material_sorted_images => @material_sorted_images, :image_count => @material.images.count }
+  

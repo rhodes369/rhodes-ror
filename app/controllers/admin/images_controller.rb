@@ -11,6 +11,7 @@ class Admin::ImagesController < ApplicationController
 
   def create
     @image = Image.new(params[:image])
+    
     @material = Material.find(params[:image][:material_id])
     return if @material.nil?
         
@@ -20,6 +21,7 @@ class Admin::ImagesController < ApplicationController
           # set as default image and search icon image if it's the only image in gallery
           @material.set_default_image(@image.id) if @material.images.count == 1
           @material.set_search_icon_image(@image.id) if @material.images.count == 1
+          # @material.
           
           format.html { redirect_to edit_admin_material_path(@material), notice: 'Image was successfully added.' }
           format.json { render json: @image, status: :created, location: @image }
@@ -32,14 +34,11 @@ class Admin::ImagesController < ApplicationController
 
 
   def update_finish_id
-    image_id = params[:image_id].to_i
-    finish_id = params[:finish_id].to_i
+    image_id = params[:image_id]
+    finish_id = params[:finish_id]
 
-    return unless image_id.is_a?(Numeric) and finish_id.is_a?(Numeric)
+    return unless @image = Image.find(image_id.to_i)
     
-    @image = Image.find(image_id)  
-    return if @image.nil? 
-   
     respond_to do |format|      
       if @image.set_finish(finish_id)
         format.json { render json: { type: 'ok', status: :success } }

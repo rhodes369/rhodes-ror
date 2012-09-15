@@ -80,10 +80,15 @@ $(document).ready ->
       @large_image =   $(this).data('large_image')
       @finishTitle =   $(this).data('finish_title')
       @minThickness =  $(this).data('min_thickness') 
-      @minThickness = "none" if @minThickness == ""
+      
+      # show nothing by default
+      @finishTitleString = ""
+      @minThicknessString = ""
+      
+      @finishTitleString = "FINISH: #{@finishTitle}" if @finishTitle.length > 0
+      @minThicknessString = "#{@minThickness} Minimum Thickness" if @minThickness.length > 0
       
       $('#large_image').attr(src: @large_image)
-      $('#finish').text("FINISH: #{@finishTitle}")
-      $('#min_thickness').text("#{@minThickness} minimum thickness")
-      
+      $('#finish').text("#{@finishTitleString}") 
+      $('#min_thickness').text("#{@minThicknessString}")   
   )

@@ -4,7 +4,7 @@
   %h1
     = link_to 'Materials', admin_materials_path
 
-  // Stone lists: Antiques, Newly Crafted (Excluding ones with Antique in title), All
+  / Stone lists: Antiques, Newly Crafted (Excluding ones with Antique in title), All
   %ul
     / ANTIQUES
     %li
@@ -13,11 +13,11 @@
         %span.arrowTxt Antiques
 
       %ul
-        = unless @materials_antique_in_title.blank?
+        - unless @materials_antique_in_title.empty?
           - @materials_antique_in_title.map do |mat|
             %li
               = link_to "#{mat.title} #{mat.material_type_title}", edit_admin_material_path(mat)
-    
+          
     / NEWLY CRAFTED
     %li
       %a.collapsed

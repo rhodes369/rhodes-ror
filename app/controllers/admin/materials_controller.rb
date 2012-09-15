@@ -41,7 +41,6 @@ class Admin::MaterialsController < ApplicationController
     @material = Material.find_using_slug(params[:id])
     redirect_to admin_material_url if @material.nil?
     
-    params[:material][:finish_ids] = [] if params[:material][:finish_ids].blank?
     params[:material][:application_ids] = [] if params[:material][:application_ids].blank?
 
     respond_to do |format|

@@ -1,19 +1,16 @@
 
-//// SHARED GALLERY
+/ SHARED GALLERY
+/ Prev/Next buttons are handled in jQueryTools
 
-// previous page
 %a.prev
 
 // Thumbnail window
 #thumb_scroll
   // Thumbnail container
   #thumbs
-
     = render :partial => 'thumb_group', :locals => { :material_sorted_images => material_sorted_images, :total_image_count => image_count } 
 
 // next page
-/ - if image_count > 5
-/ This is handled in jQueryTools
 %a.next
 
 // MAIN IMAGE

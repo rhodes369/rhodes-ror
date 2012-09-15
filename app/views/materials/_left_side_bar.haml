@@ -3,38 +3,41 @@
 
   %h1
     %a{href: "stone.html"} Materials
-
-  // Stone lists: Antiques, Newly Crafted (Excluding ones with Antique in title), All
-  %ul
+    
+  / Stone lists: Antiques, Newly Crafted (Excluding ones with Antique in title), All
+  %ul 
+     
     / ANTIQUES
-    %li
-      %a
-        .arrow
-        %span.arrowTxt Antiques
-
-      %ul#antiques
-        - @materials_antique_in_title.map do |mat|
-          %li 
-            = link_to "#{mat.title} #{mat.material_type_title} tes2", material_path(mat.cached_slug)
+    - unless @materials_antique_in_title.blank?    
+      %li
+        %a.collapsed
+          .arrow
+          %span.arrowTxt Antiques
+        %ul#antiques
+          - @materials_antique_in_title.each do |mat|
+            %li 
+              = link_to "#{mat.title} #{mat.material_type_title}", material_path(mat.cached_slug)
 
     / NEWLY CRAFTED
-    %li
-      %a
-        .arrow 
-        %span.arrowTxt Newly Crafted
+    - unless @materials_newly_crafted_sidebar.blank?
+      %li
+        %a
+          .arrow 
+          %span.arrowTxt Newly Crafted
 
-      %ul#newly
-        - @materials_newly_crafted_sidebar.each do |mat|
-          %li
-            = link_to "#{mat.title} #{mat.material_type_title}", material_path(mat)
+        %ul#newly
+          - @materials_newly_crafted_sidebar.each do |mat|
+            %li
+              = link_to "#{mat.title} #{mat.material_type_title}", material_path(mat)
 
     / ALL
-    %li
-      %a
-        .arrow 
-        %span.arrowTxt All Materials
+    - unless @materials_alpha.blank?
+      %li
+        %a
+          .arrow 
+          %span.arrowTxt All Materials
 
-      %ul#all
-        - @materials_alpha.each do |mat|
-          %li
-            = link_to "#{mat.title} #{mat.material_type_title}", material_path(mat)
+        %ul#all
+          - @materials_alpha.each do |mat|
+            %li
+              = link_to "#{mat.title} #{mat.material_type_title}", material_path(mat)
