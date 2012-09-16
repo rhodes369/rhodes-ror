@@ -7,7 +7,8 @@ set :scm, :git
 set :deploy_via, :remote_cache
 
 set :rails_env, "production"
-set :branch, "master"
+#set :branch, "master"
+set :branch, "dev"
 
 set :use_sudo, false
 set :keep_releases, 5
