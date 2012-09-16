@@ -81,8 +81,6 @@ $(document).ready ->
       @finishTitle =   $(this).data('finish_title')
       @minThickness =  $(this).data('min_thickness') 
       
-      log "@large_image: #{@large_image} @finishTitle: #{@finishTitle}"
-      
       # show nothing by default
       @finishTitleString = ""
       @minThicknessString = ""
