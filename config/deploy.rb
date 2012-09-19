@@ -13,19 +13,16 @@ set :use_sudo, false
 set :keep_releases, 5
 set :user, "rhodes"
 
-# server "50.57.155.246", :web, :app, :db, :primary => true, :memcached => true
 server "96.44.174.157", :web, :app, :db, :primary => true, :memcached => true
 
 set :deploy_to, "/home/rhodes/#{application}"
 
 ssh_options[:forward_agent] = true
-# default_run_options[:shell] = 'bash'
 default_run_options[:pty] = true
 
 default_environment["RAILS_ENV"] = 'production'
 
 after "bundle:install", "deploy:set_configs"
-# after "deploy:set_configs", "deploy:migrate"
 after "deploy:update_code", "deploy:build_missing_paperclip_styles"
 after "deploy:finalize_update", "deploy:cleanup"
 
