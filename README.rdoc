@@ -7,11 +7,13 @@ Currently core features include:
 - Embedded image gallery manager
 - Automatic thumbnail cropping & Pdf uploading, utilizing the Paperclip3 gem.
 - Seo friendly product urls using the slugged gem 
-- There is also a small buy small Ajax front end product search filter.
+- There is also a small Ajax front end product search engine with complex 
+filters that could be easily updated.
 
 Developers
 ===========
- if you would like to contribute bug fixes, updates or features  (contact doktorj -at- gmail.com)
+ if you would like to contribute bug fixes, features or patches  
+ (contact doktorj -at- gmail.com)
  
 
 Installing the rails app
@@ -25,7 +27,7 @@ Installing the rails app
 7 bundle exec rakeb db:sample_data:do_all
 8 start your rails server and you should be golden.
 
-
+Constructive Critism Welcome!'
 
 - Haml / Sass Design by:
 [ Placebo Arts ]: http://www.placeboarts.com/design/design_web.html
