@@ -32,49 +32,90 @@ class Material < ActiveRecord::Base
   # before_post_process :transliterate_file_name
   # before_destroy :delete_all_related_image_attachments    
      
-  # filter out all newly crafted mat or 'antique' in title
+     
+  # filtering all newly crafted mats without 'antique' in title
   def self.newly_crafted(filters = {})
     
-    logger.debug "looking up newly_crafted mats using filters: #{filters.inspect}"
+    logger.debug "filtering newly_crafted mats using filters: #{filters.inspect}"
     
     results = []
           
     self.newly_crafted_without_antiques.each do |mat| 
-     
-     unless filters.empty? # filter results via pulldowns
-     
-        # filter for mat type
-        unless filters[:mat_type_id].blank? 
-          if mat.material_type_id == filters[:mat_type_id].to_i 
-            results << mat unless results.include?(mat)
-          end
+      
+      results << mat # add by default, filter if needed
+      
+      # filter mat types
+      unless filters[:mat_type_id].blank? 
+        unless mat.material_type_id == filters[:mat_type_id].to_i
+          results.delete mat if results.include?(mat)
         end
-       
-    
-        # # filter for finish type
-        unless filters[:mat_finish_id].blank?
-          if mat.finishes(true).include?(filters[:mat_finish_id].to_i) 
-            results << mat unless results.include?(mat)
-          end
+      end
+      
+      # filter finishes
+      unless filters[:mat_finish_id].blank?  
+        unless mat.finishes(true).include?(filters[:mat_finish_id].to_i)
+          results.delete mat if results.include?(mat)
         end
-       
-        # filter for application type
-        unless filters[:mat_app_id].blank?
-          if mat.applications.map(&:id).include?( filters[:mat_app_id].to_i )  
-            results << mat unless results.include?(mat)
-          end
-        end  
-         
-      else # no filters currently set so show everything      
-        results << mat # unless results.include?(mat)
-      end    
+      end
+      
+      # filter applications
+      unless filters[:mat_app_id].blank?  
+        unless mat.applications.map(&:id).include?( filters[:mat_app_id].to_i )
+          results.delete mat if results.include?(mat)
+        end
+      end
     end
-    
+        
     # since our array loses the original sql ordering, reverse   
-    results = self.order_results_hash results 
-     
-    return results
-  end
+    # results = self.order_results_hash results    
+    return results.uniq
+
+  end 
+
+      
+  # # filter out all newly crafted mat or 'antique' in title
+  # def self.newly_crafted(filters = {})
+  #   
+  #   logger.debug "looking up newly_crafted mats using filters: #{filters.inspect}"
+  #   
+  #   results = []
+  #         
+  #   self.newly_crafted_without_antiques.each do |mat| 
+  #    
+  #    unless filters.empty? # filter results via pulldowns
+  #    
+  #       # filter for mat type
+  #       unless filters[:mat_type_id].blank? 
+  #         if mat.material_type_id == filters[:mat_type_id].to_i 
+  #           results << mat unless results.include?(mat)
+  #         end
+  #       end
+  #      
+  #   
+  #       ## filter for finish type
+  #       unless filters[:mat_finish_id].blank?
+  #         if mat.finishes(true).include?(filters[:mat_finish_id].to_i) 
+  #           results << mat unless results.include?(mat)
+  #         end
+  #       end
+  #      
+  #       # filter for application type
+  #       unless filters[:mat_app_id].blank?
+  #         if mat.applications.map(&:id).include?( filters[:mat_app_id].to_i )  
+  #           results << mat unless results.include?(mat)
+  #         end
+  #       end  
+  #        
+  #     else # no filters currently set so show everything      
+  #       results << mat # unless results.include?(mat)
+  #     end    
+  #   end
+  #   
+  #   # since our array loses the original sql ordering, reverse   
+  #   results = self.order_results_hash results 
+  #    
+  #   return results
+  # end
   
 
 
