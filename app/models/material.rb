@@ -33,13 +33,13 @@ class Material < ActiveRecord::Base
   # before_destroy :delete_all_related_image_attachments    
      
      
-  # filtering all newly crafted mats without 'antique' in title
+  # filter all newly crafted mats without 'antique' in title
   def self.newly_crafted(filters = {})
+    
+    results = []
     
     logger.debug "filtering newly_crafted mats using filters: #{filters.inspect}"
     
-    results = []
-          
     self.newly_crafted_without_antiques.each do |mat| 
       
       results << mat # add by default, filter if needed
@@ -69,57 +69,10 @@ class Material < ActiveRecord::Base
     # since our array loses the original sql ordering, reverse   
     # results = self.order_results_hash results    
     return results.uniq
-
   end 
 
-      
-  # # filter out all newly crafted mat or 'antique' in title
-  # def self.newly_crafted(filters = {})
-  #   
-  #   logger.debug "looking up newly_crafted mats using filters: #{filters.inspect}"
-  #   
-  #   results = []
-  #         
-  #   self.newly_crafted_without_antiques.each do |mat| 
-  #    
-  #    unless filters.empty? # filter results via pulldowns
-  #    
-  #       # filter for mat type
-  #       unless filters[:mat_type_id].blank? 
-  #         if mat.material_type_id == filters[:mat_type_id].to_i 
-  #           results << mat unless results.include?(mat)
-  #         end
-  #       end
-  #      
-  #   
-  #       ## filter for finish type
-  #       unless filters[:mat_finish_id].blank?
-  #         if mat.finishes(true).include?(filters[:mat_finish_id].to_i) 
-  #           results << mat unless results.include?(mat)
-  #         end
-  #       end
-  #      
-  #       # filter for application type
-  #       unless filters[:mat_app_id].blank?
-  #         if mat.applications.map(&:id).include?( filters[:mat_app_id].to_i )  
-  #           results << mat unless results.include?(mat)
-  #         end
-  #       end  
-  #        
-  #     else # no filters currently set so show everything      
-  #       results << mat # unless results.include?(mat)
-  #     end    
-  #   end
-  #   
-  #   # since our array loses the original sql ordering, reverse   
-  #   results = self.order_results_hash results 
-  #    
-  #   return results
-  # end
-  
 
-
-  # filter out all newly crafted mat or 'antique' in title
+  # filter all newly crafted mats with 'antique' in title
   def self.antique_in_title_results(filters = {})
     
     logger.debug "looking up antique_in_title_results using filters: #{filters.inspect}"
@@ -211,9 +164,6 @@ class Material < ActiveRecord::Base
     
     default_image = Image.find self.default_image_id 
     search_icon_image = Image.find self.search_icon_image_id
-    
-    # self.images.unshift default_image 
-    # put search icon image @ beginning for index page (no filters)
     
     self.images.unshift default_image # put default image @ beginning
     self.images.unshift search_icon_image unless use_search_icon_image.nil?
