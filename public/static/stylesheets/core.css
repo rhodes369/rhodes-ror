@@ -609,11 +609,17 @@ a .arrow, .expanded .arrow {
     margin: 0;
 }
 #quote .quote-marks {
-    color: #7C3113;
+    color: #000;
     font-size: 36px;
     position: relative;
     top: 6px;
 }
+#quote .quote-ref {
+    line-height: 1.3em;
+    font-weight: bold;
+    margin-right: 40px;
+    text-align: right;}
+
 #contact #wrapper {
     min-height: 900px;
 }

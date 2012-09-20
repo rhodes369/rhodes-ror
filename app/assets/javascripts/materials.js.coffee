@@ -85,9 +85,9 @@ $(document).ready ->
       @finishTitleString = ""
       @minThicknessString = ""
       
-      @finishTitleString = "FINISH: #{@finishTitle}" if @finishTitle.length > 0
-      @minThicknessString = "#{@minThickness} Minimum Thickness" if @minThickness.length > 0
-      
+      @finishTitleString = "FINISH: #{@finishTitle}" if @finishTitle?
+      @minThicknessString = "#{@minThickness} Minimum Thickness" if @minThickness?
+       
       $('#large_image').attr(src: @large_image)
       $('#finish').text("#{@finishTitleString}") 
       $('#min_thickness').text("#{@minThicknessString}")   

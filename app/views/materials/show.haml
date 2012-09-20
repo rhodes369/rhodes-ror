@@ -41,10 +41,10 @@
   - unless @material.description.blank?
     #description
       %p=simple_format(@material.description)
-      
-      / - if @material.description.length > 15
-      %p.readMore Read More
-      %br 
+
+    / - if @material.description.length > 15
+    %p.readMore Read More
+    %br
 
   / PDF
   - unless @material.pdf_file_name.blank?

@@ -13,12 +13,11 @@ set :use_sudo, false
 set :keep_releases, 5
 set :user, "rhodes"
 
-set :application, "rhodes.org"
+set :application, "rhodes"
 server "96.44.174.157", :web, :app, :db, :primary => true, :memcached => true
 
 
 ssh_options[:forward_agent] = true
-# default_run_options[:shell] = 'bash'
 default_run_options[:pty] = true
 
 # default_environment["RAILS_ENV"] = 'production'

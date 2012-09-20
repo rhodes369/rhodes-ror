@@ -145,11 +145,12 @@ input#image_image
     width: 95px
     height: 24px
     line-height: 24px
+    background: red
     background: rgba(250,0,0,0.3)
     color: #fff
     &:hover
-      +bg-black(.5)
-      color: red
+      background: red
+      background: rgba(250,0,0,1.0)
 
   .icon, .default
     +hidden
@@ -164,8 +165,10 @@ input#image_image
     width: 49%
     height: 24px
     line-height: 24px
+    background: #eee
     background: rgba(250,250,250,0.5)
     &:hover
+      background: #fff
       background: rgba(250,250,250,0.95)
     span
       +absolute
