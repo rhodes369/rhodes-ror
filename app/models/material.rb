@@ -32,61 +32,27 @@ class Material < ActiveRecord::Base
   # before_post_process :transliterate_file_name
   # before_destroy :delete_all_related_image_attachments    
      
-     
-  # filter all newly crafted mats without 'antique' in title
-  def self.newly_crafted(filters = {})
-    
+  # filter mat search results based on type ( newly_crafted or antique_in_title)
+  def self.filter_search_results(filters = {}, mat_types = 'newly_crafted')
     results = []
+    logger.debug "filtering search results for mat_types #{mat_types} filters: #{filters.inspect}"
     
-    logger.debug "filtering newly_crafted mats using filters: #{filters.inspect}"
-    
-    self.newly_crafted_without_antiques.each do |mat| 
-      
-      results << mat # add by default, filter if needed
-      
-      # filter mat types
-      unless filters[:mat_type_id].blank? 
-        unless mat.material_type_id == filters[:mat_type_id].to_i
-          results.delete mat if results.include?(mat)
-        end
-      end
-      
-      # filter finishes
-      unless filters[:mat_finish_id].blank?  
-        unless mat.finishes(true).include?(filters[:mat_finish_id].to_i)
-          results.delete mat if results.include?(mat)
-        end
-      end
-      
-      # filter applications
-      unless filters[:mat_app_id].blank?  
-        unless mat.applications.map(&:id).include?( filters[:mat_app_id].to_i )
-          results.delete mat if results.include?(mat)
-        end
-      end
+    if mat_types == 'newly_crafted'
+      mats = self.newly_crafted_without_antiques
+    elsif mat_types == 'antique_in_title'
+      mats = self.antique_in_title
     end
-          
-    return results.uniq
-  end 
-
-
-  # filter all newly crafted mats with 'antique' in title
-  def self.antique_in_title_results(filters = {})
     
-    logger.debug "filtering antique in title mats using filters: #{filters.inspect}"
-    
-    results = []
-
-    self.antique_in_title.each do |mat| 
-     
+    mats.each do |mat|
+      
       results << mat # add by default, filter if needed
-         
+
       # filter mat types
       unless filters[:mat_type_id].blank? 
         unless mat.material_type_id == filters[:mat_type_id].to_i
           results.delete mat if results.include?(mat)
         end
-      end       
+      end
 
       # filter finishes
       unless filters[:mat_finish_id].blank?  
@@ -103,8 +69,9 @@ class Material < ActiveRecord::Base
       end
     end
     
-    return results
+    return results.uniq      
   end
+
 
   # set all instances using this mat_type_id to nil
   def self.reset_all_material_types(mat_type_id)

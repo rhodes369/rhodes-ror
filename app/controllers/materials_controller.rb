@@ -4,8 +4,7 @@ class MaterialsController < ApplicationController
   
   def index 
     @material = Material.new # for optionally creating a new material on the index
-    @materials_newly_crafted = Material.newly_crafted # array of newly created mats
-    
+
     # left sidebar
     @materials_antique_in_title = Material.antique_in_title
     @materials_alpha = Material.alphabetical # for sidebar edit links    
@@ -58,9 +57,11 @@ class MaterialsController < ApplicationController
     results = {}
     results['newly_crafted'] = {}
     results['antiques'] = {}
-   
-    newly_crafted = Material.newly_crafted(filters)
-    antique_in_title = Material.antique_in_title_results(filters)
+    
+    newly_crafted = Material.filter_search_results(filters,'newly_crafted')
+    antique_in_title = Material.filter_search_results(filters,'antique_in_title')
+    # newly_crafted = Material.newly_crafted(filters)
+    # antique_in_title = Material.antique_in_title_results(filters)
 
     use_special_result_images = special_result_images(filters)
     

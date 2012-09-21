@@ -42,7 +42,7 @@ class SearchMaterials
       type: 'PUT'
       data: { filters: @filters } 
             
-      success: (data) =>      
+      success: (data) =>
         $('#newlyCraftedSearchResults').html(data.results.newly_crafted.html)
         $('#antiqueSearchResults').html(data.results.antiques.html)
         @spinner.hide()
