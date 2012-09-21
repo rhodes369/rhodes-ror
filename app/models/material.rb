@@ -65,9 +65,7 @@ class Material < ActiveRecord::Base
         end
       end
     end
-        
-    # since our array loses the original sql ordering, reverse   
-    # results = self.order_results_hash results    
+          
     return results.uniq
   end 
 
@@ -105,55 +103,8 @@ class Material < ActiveRecord::Base
       end
     end
     
-    # since our array loses the original sql ordering, reverse   
-    # results = order_results_hash(results) 
-     
     return results
   end
-
-  # # filter all newly crafted mats with 'antique' in title
-  # def self.antique_in_title_results(filters = {})
-  #   
-  #   logger.debug "filtering antique in title mats using filters: #{filters.inspect}"
-  #   
-  #   results = []
-  # 
-  #   self.antique_in_title.each do |mat| 
-  #    
-  #    unless filters.empty? # filter results via pulldowns
-  #    
-  #       # filter for mat type
-  #       unless filters[:mat_type_id].blank? 
-  #         if mat.material_type_id == filters[:mat_type_id].to_i 
-  #           results << mat unless results.include?(mat)
-  #         end
-  #       end
-  #      
-  #   
-  #       # # filter for finish type
-  #       unless filters[:mat_finish_id].blank?
-  #         if mat.finishes(true).include?(filters[:mat_finish_id].to_i) 
-  #           results << mat unless results.include?(mat)
-  #         end
-  #       end
-  #      
-  #       # filter for application type
-  #       unless filters[:mat_app_id].blank?
-  #         if mat.applications.map(&:id).include?( filters[:mat_app_id].to_i )  
-  #           results << mat unless results.include?(mat)
-  #         end
-  #       end  
-  #        
-  #     else # no filters currently set so show everything    
-  #       results << mat # unless results.include?(mat)
-  #     end    
-  #   end
-  #   
-  #   # since our array loses the original sql ordering, reverse   
-  #   results = order_results_hash(results) 
-  #    
-  #   return results
-  # end
 
   # set all instances using this mat_type_id to nil
   def self.reset_all_material_types(mat_type_id)
@@ -235,17 +186,5 @@ class Material < ActiveRecord::Base
     # show blank unless title exists
     return '' if self.material_type_id.nil? 
     MaterialType.find(self.material_type_id).title
-  end
-
-  
-  
-  # def transliterate_file_name
-  #   extension = File.extname(local_file_name).gsub(/^\.+/, '')
-  #   filename = local_file_name.gsub(/\.#{extension}$/, '')
-  #   self.local.instance_write(:filename, "#{UrlFriendlyFilenames::transliterate(filename)}.#{UrlFriendlyFilenames::transliterate(extension)}")
-  # end
-  
-  def self.order_results_hash(results = {})
-    results.sort! { |a,b| b.created_at <=> a.created_at } # reverse!
   end
 end
