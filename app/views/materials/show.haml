@@ -71,5 +71,8 @@
 / IMAGE GALLERY
 #content-right
   - unless @material.images.blank?
-    = render :partial => 'gallery', :locals => { :material => @material, :material_sorted_images => @material_sorted_images, :image_count => @material.images.count }
+    = render :partial => 'gallery', 
+             :locals => { :material => @material, 
+                          :material_sorted_images => @material_sorted_images, 
+                          :image_count => @material.images.count }
   

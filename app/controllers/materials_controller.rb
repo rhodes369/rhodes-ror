@@ -59,26 +59,29 @@ class MaterialsController < ApplicationController
     results['newly_crafted'] = {}
     results['antiques'] = {}
    
-    logger.debug "params search(filters): #{filters.inspect}"
-    
-    antique_in_title = Material.antique_in_title_results(filters)
     newly_crafted = Material.newly_crafted(filters)
-    use_special_finish_filter_only_results = check_finish_filter_only(filters)
+    antique_in_title = Material.antique_in_title_results(filters)
+
+    use_special_result_images = special_result_images(filters)
     
     results['newly_crafted']['count'] = newly_crafted.count
     results['newly_crafted']['html'] = render_to_string( 
-      partial: 'materials/search/newly_crafted/header', locals: { results: results}) 
+      partial: 'materials/search/newly_crafted/header', 
+      locals: { results: results}
+    ) 
     
     results['antiques']['count'] = antique_in_title.count
     results['antiques']['html'] = render_to_string( 
-      partial: 'materials/search/antiques/header', locals: { results: results})     
+      partial: 'materials/search/antiques/header', 
+      locals: { results: results}
+    )     
 
 
-    # filter newly crafted
+    # render newly crafted results
     if results['newly_crafted']['count'] > 0   
       newly_crafted.each do |mat|     
   
-        thumb_image_url = self.get_thumb_image_url(mat,filters,use_special_finish_filter_only_results)
+        thumb_image_url = self.get_thumb_image_url(mat,filters,use_special_result_images)
         
         results['newly_crafted']['html'] += render_to_string(
           partial: 'materials/search/newly_crafted/item', 
@@ -86,11 +89,11 @@ class MaterialsController < ApplicationController
       end 
     end
     
-    # filter antiques
+    # render antiques results
     if results['antiques']['count'] > 0   
       antique_in_title.each do |mat|     
 
-        thumb_image_url = self.get_thumb_image_url(mat,filters,use_special_finish_filter_only_results) 
+        thumb_image_url = self.get_thumb_image_url(mat,filters,use_special_result_images) 
         
         results['antiques']['html'] += render_to_string(
           partial: 'materials/search/antiques/item', 
@@ -103,45 +106,42 @@ class MaterialsController < ApplicationController
     end 
   end 
   
+  
+protected
 
-  def get_thumb_image_url(mat,filters,use_special_finish_filter_only_results)
-    default_image = nil # reset        
-    search_icon_image = nil # reset
+  # if finish filter set use first finish image thumb, 
+  # otherwise search icon thumb including for unfiltered search index and fall back on default_image
+  def get_thumb_image_url(mat,filters,use_special_result_images)
+    # resets
+    default_image = nil      
+    search_icon_image = nil 
     thumb_image_url = nil
+    mat_images_with_finish = [] 
     
-    unless mat.default_image_id.nil?
-      default_image = Image.find(mat.default_image_id).image.url(:thumb)
-    end
-
-    unless mat.search_icon_image_id.nil?
-      search_icon_image = Image.find(mat.search_icon_image_id).image.url(:thumb)
-    end
+    mat_images_with_finish = mat.images_with_finish(filters[:mat_finish_id].to_i)
+    @mat_images_with_finish = mat.images_with_finish(mat.finishes)
+    logger.debug "mat_images_with_finish: #{mat_images_with_finish.inspect}"
     
-
-    # by default use icon thumb for search index + finish filters only, 
-    # otherwise use default/1st thumb
-    thumb_image_url = ( filters.empty? or !use_special_finish_filter_only_results) ? search_icon_image : default_image
-  
-    # special case for finish only search filtering... (use first thumb assoc. with finish )
-    if use_special_finish_filter_only_results
-      mat_images_with_finish = [] # reset
-      mat_images_with_finish = mat.images_with_finish(filters[:mat_finish_id].to_i)
-  
-      unless mat_images_with_finish.empty?
-        thumb_image = mat_images_with_finish.first
-        thumb_image_url = thumb_image.image.url(:thumb)
+    unless mat_images_with_finish.empty?
+      thumb_image = mat_images_with_finish.first
+      thumb_image_url = thumb_image.image.url(:thumb)
+    else
+      unless mat.default_image_id.nil?
+        default_image = Image.find(mat.default_image_id).image.url(:thumb)
       end
-    end 
-  
+
+      unless mat.search_icon_image_id.nil?
+        search_icon_image = Image.find(mat.search_icon_image_id).image.url(:thumb)
+      end
+      
+      thumb_image_url = ( filters.empty? or !use_special_result_images.nil?) ? search_icon_image : default_image
+    end
+        
     return thumb_image_url 
   end
-  
-  def check_finish_filter_only(filters)
-    if !filters['mat_finish_id'].nil? and filters[:mat_app_id].blank? and filters[:mat_type_id].blank?
-      return true
-    else
-      return false
-    end
+
+  def special_result_images(filters)
+    return (filters.empty? or filters['mat_finish_id'].nil?) ? true : false
   end
 
 end

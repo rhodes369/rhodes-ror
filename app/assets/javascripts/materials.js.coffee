@@ -51,26 +51,13 @@ class SearchMaterials
       error: (data) =>
         alert 'Problem processing search.'
         log data.statusText      
-
-
-
-  # Todo: refactor/enable method once working
-  # # check to see if search has been run before, if so, show results headers
-  # setResultsHeaders: ->
-  #   log 'setResultsHeaders'
-  #   if @searchResultsDiv.hasData('prevSearch', 1)
-  #     @searchResultsDiv.data('prevSearch', 1)
-  #     log 'setting been here'
-  #   else  
-  #     log 'been here done that' 
-  #     #$('#newlyCraftedResultsHeader').remove()    
-
+        
 
 $(document).ready ->
 
   App.prependLeftSideBarDashes()
   
-  if $('#materialSearchResults').length > 0 # only run on materials index page with this div
+  if $('#materialSearchResults').length > 0 # only run on materials index page
     search = new SearchMaterials() # invoke inital search 
 
 
