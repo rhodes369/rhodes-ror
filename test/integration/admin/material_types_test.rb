@@ -1,7 +1,7 @@
 require 'test_helper'
 
 class Admin::MaterialTypesTest < ActionDispatch::IntegrationTest
-  
+=begin
   def setup
     @valid_title = 'rainbowed chrome'
     @center_div_id = 'div#content-center'   
@@ -50,5 +50,6 @@ class Admin::MaterialTypesTest < ActionDispatch::IntegrationTest
       assert_equal Material.where(material_type_id: 1).count, 0
       assert_equal admin_material_types_path, current_path
     end    
-  end 
+  end
+=end
 end

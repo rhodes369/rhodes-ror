@@ -4,11 +4,12 @@ class Material < ActiveRecord::Base
   has_many :material_applications, :dependent => :destroy
   has_one  :material_type
   has_many :images, :dependent => :destroy
+  has_many :standard_values
   has_attached_file :pdf, 
          :path => ":rails_root/public/system/materials/:attachment/:id/:filename",
          :url => "/system/materials/:attachment/:id/:filename",
          :dependent => :destroy
-         
+      
   attr_accessible :title, :description, :material_type_id, 
                   :application_ids, :images, :specifications, 
                   :technical_data, :pdf, :pdf_file_name, 
