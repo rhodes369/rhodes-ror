@@ -16,6 +16,7 @@ RhodesRor::Application.routes.draw do
     resources :material_types, :finishes, :applications
     
     resources :materials do
+      resources :standards
       put :update_default_image, :to => 'materials#update_default_image'                                  
       put :update_search_icon_image, :to => 'materials#update_search_icon_image'
       get :default_image_ids, :to => 'materials#default_image_ids'

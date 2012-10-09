@@ -1,7 +1,7 @@
 = render :partial => 'left_side_bar'
 
 #content-center
-
+  - @material.standard_values << StandardValue.new
   = form_for @material, :url => admin_material_path do |f| 
 
     / %h4 Title
@@ -27,6 +27,20 @@
     %h4 Technical Data
     = f.text_area :technical_data, :size => "50x5", :placeholder => "Technical Data..."
 
+    %h4 Standards Data
+    -# @material.standard_values
+    -# standard_value.standard
+    -# material[standard_values][]
+    = f.fields_for :standard_values do |ff|
+      .standard_value
+        -# binding.pry
+        = ff.collection_select "standard_id", Standard.all, :id, :to_s, :prompt => true
+        = ff.text_field :imperials
+
+    
+    
+    
+    
     %h4 Add a pdf file
     = f.file_field :pdf  
     
@@ -38,7 +52,7 @@
 
     = f.submit :id => "update_material", :class => "submit"
     
-  = button_to 'Delete Material', admin_material_path(@material), :method => :delete, :confirm => "Are you sure you want to delete this material and all of it's gallery images?", :class => "delete"    
+  = button_to 'Delete Material', admin_material_path(@material), :method => :delete, :confirm => "Are you sure you want to delete this material and all of it's gallery images?", :class => "delete"
 
   = button_to 'View Material Page', material_path(@material), :method => :get, :class => 'view'
   

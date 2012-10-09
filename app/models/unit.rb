@@ -21,20 +21,20 @@ class Unit
   end
   
   def id
-    UNITS.find_index{|unit| unit[:imperial] == @unit_hash[:imperial]}
+    UNITS.find_index{|unit| unit[:imperial] == @unit_data[:imperial]}
   end
 
-  def initialize(unit_hash)
-    @unit_hash = unit_hash
+  def initialize(unit_data)
+    @unit_data = unit_data
   end
   
   def convert_to_metric(imperials)
-    if @unit_hash[:imperials_per_metric] == 0
-      if @unit_hash[:imperial] == "F"
+    if @unit_data[:imperials_per_metric] == 0
+      if @unit_data[:imperial] == "F"
         return convert_to_celsius(imperials)
       end
     else
-      return imperials * @unit_hash[:imperials_per_metric]
+      return imperials * @unit_data[:imperials_per_metric]
     end
   end
   
@@ -43,8 +43,8 @@ class Unit
   end
   
   def method_missing(meth, *args)
-    if @unit_hash.has_key? meth
-      return @unit_hash[meth]
+    if @unit_data.has_key? meth
+      return @unit_data[meth]
     else
       super
     end
