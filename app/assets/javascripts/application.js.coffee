@@ -16,9 +16,9 @@
 #= require backbone_datalink
 #
 #= require_self
-#= require_tree ../templates/
-#= require_tree .//models
-#= require_tree .//collections
+#x= require_tree ../templates/
+#x= require_tree .//models
+#x= require_tree .//collections
 #= require_tree .//views
 #= require_tree .//routers
 #= require images
