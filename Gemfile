@@ -20,7 +20,7 @@ group :assets do
 end
 
 gem 'jquery-rails', '>= 2.0.1'
-
+gem 'rails-backbone'
 
 group :production do
   gem 'unicorn'

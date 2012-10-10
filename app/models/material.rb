@@ -5,7 +5,7 @@ class Material < ActiveRecord::Base
   has_one  :material_type
   has_many :images, :dependent => :destroy
   has_many :standard_values
-  accepts_nested_attributes_for :standard_values
+  accepts_nested_attributes_for :standard_values, :allow_destroy => true
   
   has_attached_file :pdf, 
          :path => ":rails_root/public/system/materials/:attachment/:id/:filename",
@@ -15,7 +15,7 @@ class Material < ActiveRecord::Base
   attr_accessible :title, :description, :material_type_id, 
                   :application_ids, :images, :specifications, 
                   :technical_data, :pdf, :pdf_file_name, 
-                  :pdf_content_type, :pdf_file_size
+                  :pdf_content_type, :pdf_file_size, :standard_values_attributes
 
   is_sluggable :title # for slugged gem 
                          
