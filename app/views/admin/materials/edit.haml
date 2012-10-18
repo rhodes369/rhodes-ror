@@ -1,9 +1,10 @@
-%script#new-standard-value-template{type: "text/template"}
-  .standard-value
-    = fields_for "material[standard_values_attributes][1]", StandardValue.new do |f|
-      = f.collection_select "standard_id", Standard.all, :id, :to_s, :prompt => true
-      = f.text_field :imperials
-    = link_to 'remove', '#', :class => 'remove-link'
+/
+  %script#new-standard-value-template{type: "text/template"}
+    .standard-value
+      = fields_for "material[standard_values_attributes][1]", StandardValue.new do |f|
+        = f.collection_select "standard_id", Standard.all, :id, :to_s, :prompt => true
+        = f.text_field :imperials
+      = link_to 'remove', '#', :class => 'remove-link'
 
 = render :partial => 'left_side_bar'
 
@@ -33,17 +34,18 @@
     %h4 Technical Data
     = f.text_area :technical_data, :size => "50x5", :placeholder => "Technical Data..."
 
-    %h4 Standards Data
-    #standard-values
-      = f.fields_for :standard_values do |ff|
-        .standard-value
-          -# binding.pry
-          = ff.collection_select "standard_id", Standard.all, :id, :to_s
-          = ff.text_field :imperials
-          = ff.check_box :_destroy
-          = ff.label :_destroy, 'destroy'
+    /
+      %h4 Standards Data
+      #standard-values
+        = f.fields_for :standard_values do |ff|
+          .standard-value
+            -# binding.pry
+            = ff.collection_select "standard_id", Standard.all, :id, :to_s
+            = ff.text_field :imperials
+            = ff.check_box :_destroy
+            = ff.label :_destroy, 'destroy'
 
-      = link_to 'add new', '#', :class => 'add-link'
+        = link_to 'add new', '#', :class => 'add-link'
     
     %hr
     %h4 Add a pdf file
