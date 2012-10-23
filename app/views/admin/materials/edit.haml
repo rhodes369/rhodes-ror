@@ -41,11 +41,12 @@
           = ff.collection_select "standard_id", Standard.all, :id, :to_s
           = ff.text_field :imperials
           = ff.check_box :_destroy
-          = ff.label :_destroy, 'destroy'
+          = ff.label :_destroy, 'Remove'
+          .clear
 
-      = link_to 'add new', '#', :class => 'add-link'
-    
-    %hr
+      = link_to '+ Add new data', '#', :class => 'add-link'
+
+
     %h4 Add a pdf file
     = f.file_field :pdf  
     

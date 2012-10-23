@@ -9,14 +9,15 @@ form
   width: 600px
 
 label
-  margin: 2px 0
+  +pointer
+  margin: 1px 0 0 2px
   font-weight: bold
   line-height: 1.3em
-  font-size: .9em
+  font-size: .8em
   color: #252525
 
 select
-  margin: 0 0 24px
+  margin: 0 0 10px
   min-width: 180px
   option
     padding: 2px 4px
@@ -64,6 +65,38 @@ textarea#material_description, textarea#material_specifications, textarea#materi
     color: #414042
     border: 1px solid #414042
     +shadow(0, 0, 8, #414042)
+
+
+// STANDARDS DATA
+#standard-values
+  width: 346px
+  margin: 0 0 40px
+
+  .standard-value
+    clear: both
+    margin: 0 0 20px
+
+  input[type=text]
+    margin: 0 0 4px
+    padding: 4px 8px
+    min-width: 248px
+    color: #999
+    outline: none
+    border: 1px solid #555
+    box-shadow:         inset 2px 4px 4px #ccc
+    -moz-box-shadow:    inset 2px 4px 4px #ccc
+    -webkit-box-shadow: inset 2px 4px 4px #ccc
+    &:focus
+      +shadow(0, 0, 8, #414042)
+      color: #414042
+      border: 1px solid #414042
+
+  input[type=checkbox]
+    +left
+    +pointer
+
+  label
+    +left
 
 
 input#material_material[pdf]
