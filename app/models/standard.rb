@@ -9,6 +9,6 @@ class Standard < ActiveRecord::Base
   end
   
   def to_s
-    "ASTM #{code} #{description}"
+    "ASTM #{code} #{description} #{unit.imperial}"
   end
 end
