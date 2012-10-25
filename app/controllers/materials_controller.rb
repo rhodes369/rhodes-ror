@@ -21,13 +21,12 @@ class MaterialsController < ApplicationController
       
     
   def show
+    @unit_type = :metric # or :imperial
     @material = Material.find_using_slug(params[:id])   
     
     if @material.nil? 
       redirect_to materials_path, notice: 'No material found'
     else
-
-        
       unless @material.images.blank?
         @material_sorted_images = @material.sort_thumb_images
         unless @material.default_image_id.nil?
@@ -43,8 +42,7 @@ class MaterialsController < ApplicationController
       @materials_antique_in_title = Material.antique_in_title
       @materials_alpha = Material.alphabetical # for sidebar edit links    
       @materials_newly_crafted_sidebar = Material.newly_crafted_without_antiques    
-  
-    end 
+    end
   end
   
   

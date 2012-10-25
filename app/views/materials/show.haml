@@ -67,6 +67,14 @@
     .details
       %h3 Technical Data
       %p=simple_format(@material.technical_data)
+      
+  - unless @material.standard_values.blank?
+    .details
+      %h3 Technical Data
+      %dl
+        - @material.standard_values.each do |standard_value|
+          %dt= standard_value.standard.to_s
+          %dd= standard_value.to_s(@unit_type)
 
 / IMAGE GALLERY
 #content-right

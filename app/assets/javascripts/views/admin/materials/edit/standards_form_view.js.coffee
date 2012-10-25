@@ -1,12 +1,17 @@
 class App.Admin.Materials.Edit.StandardsFormView extends Backbone.View
-  template: null
   events:
     'click .add-link': 'addStandard'
     'click .remove-link': 'removeStandard'
     
   initialize: ->
-    @template = _.template $('#new-standard-value-template').text()
     @setElement $('#standard-values').get()
+  template: (opts)->
+    i = opts.index
+    namePrefix = "material[standard_values_attributes][#{i}]"
+    $el = $( $('#new-standard-value-template').text() ).clone()
+    _.each [$el.find('select'), $el.find('input')], (formEl)->
+      formEl.attr('name', namePrefix + formEl.attr('name'))
+    return $el
 
   removeStandard: (ev)=>
     ev.preventDefault()
@@ -14,5 +19,6 @@ class App.Admin.Materials.Edit.StandardsFormView extends Backbone.View
     
   addStandard: (ev)=>
     ev.preventDefault()
-    log ev.target
-    $(ev.target).before(@template())
+
+    newStandard = @template({index: @$('.standard-value').length + 1})
+    $(ev.target).before(newStandard)

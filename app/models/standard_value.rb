@@ -13,4 +13,12 @@ class StandardValue < ActiveRecord::Base
   def metrics
     standard.unit.convert_to_metric imperials
   end
+  
+  def to_s(type=:imperial)
+    if type == :imperial
+      "#{self.imperials.round(1)} #{self.standard.unit.imperial}"
+    elsif type == :metric
+      "#{self.metrics.round(1)} #{self.standard.unit.metric}"
+    end
+  end
 end
