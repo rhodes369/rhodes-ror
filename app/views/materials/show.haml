@@ -74,7 +74,9 @@
       %dl
         - @material.standard_values.each do |standard_value|
           %dt= print_standard(standard_value.standard)
-          %dd= print_standard_value(standard_value, @unit_type)
+          %dd
+            –
+            = print_standard_value(standard_value, @unit_type)
 
 / IMAGE GALLERY
 #content-right
