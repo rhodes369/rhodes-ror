@@ -13,7 +13,7 @@
 
     %h4 Select application(s)
     
-    %select#applicationIds{name: 'material[application_ids][]', size: "5x20", multiple: true}
+    %select#applicationIds{name: 'material[application_ids][]', size: "20x20", multiple: true}
       - @all_applications.each do |app|
         %option{:value => app.id, :selected =>  @material.applications.include?(app) ? "selected" : nil}
           = app.title
