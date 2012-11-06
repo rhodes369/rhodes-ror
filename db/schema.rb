@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20120922064202) do
+ActiveRecord::Schema.define(:version => 20121106065712) do
 
   create_table "applications", :force => true do |t|
     t.string   "title"
@@ -91,6 +91,7 @@ ActiveRecord::Schema.define(:version => 20120922064202) do
     t.integer "standard_id"
     t.integer "material_id"
     t.float   "imperials"
+    t.float   "metrics",     :default => 0.0
   end
 
   add_index "standard_values", ["material_id"], :name => "index_standard_values_on_material_id"

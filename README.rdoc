@@ -24,7 +24,7 @@ Installing the rails app
 4 bundle exec rake:db:create
 5 bundle exec rake:db:migrate
 6 if you would like some sample/test data added:
-7 bundle exec rakeb db:sample_data:do_all
+7 bundle exec rake db:sample_data:do_all
 8 start your rails server and you should be golden.
 
 Constructive Critism Welcome!'
@@ -33,4 +33,5 @@ Constructive Critism Welcome!'
 [ Placebo Arts ]: http://www.placeboarts.com/design/design_web.html
 
 - Ruby on Rails backend by:
-[ doktor J]: https://github.com/doktorj
+[ doktor J ]: https://github.com/doktorj
+[ Duke Dorje ]: https://github.com/dukejones

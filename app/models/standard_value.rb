@@ -8,10 +8,9 @@ class StandardValue < ActiveRecord::Base
   validates_associated :standard
   
   validates_numericality_of :imperials
-  # #imperials is the imperials value
-  
-  def metrics
-    standard.unit.convert_to_metric imperials
-  end
+  validates_numericality_of :metrics
+  # def metrics
+  #   standard.unit.convert_to_metric imperials
+  # end
   
 end

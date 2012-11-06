@@ -5,12 +5,16 @@ class App.Admin.Materials.Edit.StandardsFormView extends Backbone.View
     
   initialize: ->
     @setElement $('#standard-values').get()
-  template: (opts)->
-    i = opts.index
+    @setLabels()
+  template: (options)->
+    i = options.index
     namePrefix = "material[standard_values_attributes][#{i}]"
     $el = $( $('#new-standard-value-template').text() ).clone()
-    _.each [$el.find('select'), $el.find('input')], (formEl)->
-      formEl.attr('name', namePrefix + formEl.attr('name'))
+    log $el.find('select, input')
+    $el.find('select, input').each (i, formEl)->
+      $formEl = $(formEl)
+      log $formEl
+      $formEl.attr('name', namePrefix + $formEl.attr('name'))
     return $el
 
   removeStandard: (ev)=>
@@ -22,3 +26,6 @@ class App.Admin.Materials.Edit.StandardsFormView extends Backbone.View
 
     newStandard = @template({index: @$('.standard-value').length + 1})
     $(ev.target).before(newStandard)
+    
+  setLabels: (ev)=>
+    # TODO: Set the labels to the proper unit values.

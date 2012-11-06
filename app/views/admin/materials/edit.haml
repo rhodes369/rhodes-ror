@@ -4,7 +4,11 @@
     %select{name: "[standard_id]"}
       = options_from_collection_for_select Standard.all, :id, :to_s, :prompt => true
     = text_field_tag("[imperials]")
+    = label_tag "[imperials]", 'imperials'
+    = text_field_tag("[metrics]")
+    = label_tag "[metrics]", 'metrics'
     = link_to 'remove', '#', :class => 'remove-link'
+    .clear
 
   
   
@@ -36,15 +40,20 @@
     %h4 Technical Data
     = f.text_area :technical_data, :size => "50x5", :placeholder => "Technical Data..."
 
-    %h4 Technical Data - Imperial
+
+    %h4 Technical Data
     #standard-values
       = f.fields_for :standard_values do |ff|
+        - unit = ff.object.standard.unit
         .standard-value
-          -# binding.pry
           = ff.collection_select "standard_id", Standard.all, :id, :to_s
-          = ff.text_field :imperials
           = ff.check_box :_destroy
           = ff.label :_destroy, 'Remove'
+          .clear
+          = ff.text_field :imperials
+          = ff.label :imperials, unit.imperial
+          = ff.text_field :metrics
+          = ff.label :metrics, unit.metric
           .clear
 
       = link_to '+ New Standard', '#', :class => 'add-link'
