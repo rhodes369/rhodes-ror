@@ -11,3 +11,6 @@ $(document).ready ->
   ).each ->
     $("ul#antiques").css "display", "block"
     $("ul#newly").css "display", "none"
+
+  # Need else statement to say otherwise do opposite
+
