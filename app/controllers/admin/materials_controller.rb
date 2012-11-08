@@ -7,6 +7,7 @@ class Admin::MaterialsController < ApplicationController
   layout 'admin/layouts/application'
   
   MIN_THICKNESS_OPTIONS = { 
+    '.50"' => ".50&#34;", 
     '.75"' => ".75&#34;", 
     '1"'   => "1&#34;", 
     '1.25"' => "1.25&#34;",
