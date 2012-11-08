@@ -1,6 +1,6 @@
 source 'https://rubygems.org'
 
-gem 'rails', '3.2.3'
+gem 'rails', '3.2.8'
 gem 'mysql2'
 gem 'slugged', '~> 1.0'
 gem "paperclip", '~> 3.0'
@@ -20,16 +20,15 @@ group :assets do
 end
 
 gem 'jquery-rails', '>= 2.0.1'
-
-# Deploy with Capistrano
-gem 'capistrano'
+gem 'rails-backbone'
 
 group :production do
   gem 'unicorn'
 end
 
 group :development, :test do
-  # gem 'linecache19', '0.5.12'
+  gem 'capistrano'
+  gem 'capistrano_colors'
   gem 'pry'
   gem 'pry-rails'
   gem 'growl', '~> 1.0'

@@ -1,5 +1,14 @@
 # A sample Guardfile
 # More info at https://github.com/guard/guard#readme
+guard :spork do
+  watch('config/application.rb')
+  watch('config/environment.rb')
+  watch(%r{^config/environments/.+\.rb$})
+  watch(%r{^config/initializers/.+\.rb$})
+  watch('Gemfile')
+  watch('Gemfile.lock')
+  watch('test/test_helper.rb') { :test_unit }
+end
 
 guard :test do
   watch(%r{^lib/(.+)\.rb$}) { |m| "test/#{m[1]}_test.rb" } # lib dir mods
@@ -17,7 +26,7 @@ guard :test do
   # this is for when we modify our admin controllers
   # make it so we don't have to have a controller in our integration tests filenames
   watch (%r{^app/controllers/admin/(.+)\.rb$}) do |m|     
-    "test/integration/admin/#{m[1].gsub!(/_controller/, '')}_test.rb" 
+    "test/integration/admin/#{m[1].sub!(/_controller/, '')}_test.rb" 
   end
  
   # when factories get modified..
@@ -26,16 +35,7 @@ guard :test do
   # when views get modified..
   watch(%r{^app/views/.+\.rb$}) { "test/integration" }
   
-  # when the application controller get's modified
+  # when the application controller gets modified
   watch('app/controllers/application_controller.rb') { "test/integration" }
 end
 
-guard :spork do
-  watch('config/application.rb')
-  watch('config/environment.rb')
-  watch(%r{^config/environments/.+\.rb$})
-  watch(%r{^config/initializers/.+\.rb$})
-  watch('Gemfile')
-  watch('Gemfile.lock')
-  watch('test/test_helper.rb') { :test_unit }
-end

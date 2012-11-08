@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20120907125147) do
+ActiveRecord::Schema.define(:version => 20120922064202) do
 
   create_table "applications", :force => true do |t|
     t.string   "title"
@@ -86,6 +86,20 @@ ActiveRecord::Schema.define(:version => 20120907125147) do
   add_index "slugs", ["scope", "record_id"], :name => "index_slugs_on_scope_and_record_id"
   add_index "slugs", ["scope", "slug", "created_at"], :name => "index_slugs_on_scope_and_slug_and_created_at"
   add_index "slugs", ["scope", "slug"], :name => "index_slugs_on_scope_and_slug"
+
+  create_table "standard_values", :force => true do |t|
+    t.integer "standard_id"
+    t.integer "material_id"
+    t.float   "imperials"
+  end
+
+  add_index "standard_values", ["material_id"], :name => "index_standard_values_on_material_id"
+
+  create_table "standards", :force => true do |t|
+    t.string  "code"
+    t.string  "description"
+    t.integer "unit_id"
+  end
 
   create_table "users", :force => true do |t|
     t.string   "username",                        :null => false

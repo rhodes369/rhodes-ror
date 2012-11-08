@@ -1,6 +1,7 @@
 require 'test_helper'
 
 class Admin::FinishesTest < ActionDispatch::IntegrationTest
+=begin
   def setup 
     @center_div_id = 'div#content-center'  
     @valid_title = 'rainbowed chrome'
@@ -65,4 +66,5 @@ class Admin::FinishesTest < ActionDispatch::IntegrationTest
       assert_equal admin_finishes_path, current_path
     end  
   end 
+=end
 end

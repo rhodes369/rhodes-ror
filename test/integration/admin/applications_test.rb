@@ -1,7 +1,7 @@
 require 'test_helper'
 
 class Admin::ApplicationsTest < ActionDispatch::IntegrationTest
-
+=begin
   def setup
     @valid_title = 'rainbowed chrome' 
     @center_div_id = 'div#content-center' 
@@ -59,4 +59,5 @@ class Admin::ApplicationsTest < ActionDispatch::IntegrationTest
       assert_equal admin_applications_path, current_path
     end  
   end 
+=end
 end

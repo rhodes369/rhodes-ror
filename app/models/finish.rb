@@ -1,6 +1,4 @@
 class Finish < ActiveRecord::Base
-  has_many :material_finishes, :dependent => :destroy
-  has_many :materials, :through => :material_finishes
   belongs_to :image, :polymorphic => true
   
   attr_accessible :title 
