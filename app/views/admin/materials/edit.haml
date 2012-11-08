@@ -3,9 +3,9 @@
     / name prefix: "material[standard_values_attributes][i]"
     %select{name: "[standard_id]"}
       = options_from_collection_for_select Standard.all, :id, :to_s, :prompt => true
-    = text_field_tag("[imperials]")
+    = text_field_tag("[imperials]", nil, placeholder: 'Imperial')
     / = label_tag "[imperials]", 'imperials'
-    = text_field_tag("[metrics]")
+    = text_field_tag("[metrics]", nil, placeholder: 'Metric')
     / = label_tag "[metrics]", 'metrics'
     = link_to 'remove', '#', :class => 'remove-link'
     .clear
