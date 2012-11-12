@@ -1,3 +1,4 @@
+require "capistrano_colors"
 require "bundler/capistrano"
 load "deploy/assets"
 
