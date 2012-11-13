@@ -8,18 +8,18 @@
     - unless @material.material_type_id.nil?
       - @material_type = MaterialType.find(@material.material_type_id)
       = @material_type.nil? ? 'None' : @material_type.title
-  
-  #finish
-    - unless @default_image.nil?
-      - unless @default_image.finish.nil?
-        = "FINISH: #{@default_image.finish.title}"
-  
-  / MINIMUM THICKNESS
-  #min_thickness
-    - unless @min_thickness.blank?
-      = "Minimum Thickness"" #{@min_thickness}"      
 
-  %br 
+  #finish_thickness
+    #finish
+      - unless @default_image.nil?
+        - unless @default_image.finish.nil?
+          = "FINISH: #{@default_image.finish.title}"
+  
+    / MINIMUM THICKNESS
+    #min_thickness
+      - unless @min_thickness.blank?
+        = "Minimum Thickness"" #{@min_thickness}"      
+
 
   / AVAILABLE FINISHES
   - unless @material.finishes.blank?
