@@ -11,9 +11,13 @@
 
   #finish_thickness
     #finish
-      - unless @default_image.nil?
-        - unless @default_image.finish.nil?
-          = "FINISH: #{@default_image.finish.title}"
+      - unless @finish_title.blank?
+        = "FINISH: #{@finish_title}"
+
+      / This was pulling the finish of the default (1st) image. This would be good, if min thickness was doing the same.
+      / - unless @default_image.nil?
+      /   - unless @default_image.finish.nil?
+      /     = "FINISH: #{@default_image.finish.title}"
   
     / MINIMUM THICKNESS
     #min_thickness
