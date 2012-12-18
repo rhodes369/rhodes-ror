@@ -58,6 +58,13 @@
       %a{:href => "/system/materials/pdfs/#{@material.id}/#{@material.pdf_file_name}", target: "_blank"} 
         = "#{@material.pdf_file_name} (#{number_to_human_size(@material.pdf_file_size)})"
 
+  / Metric PDF
+  - unless @material.pdf_file_name.blank?
+    %p
+      Download metric PDF:
+      %a{:href => "/system/materials/pdfs/metric/#{@material.id}/#{@material.pdf_file_name}", target: "_blank"} 
+        = "#{@material.pdf_file_name} (#{number_to_human_size(@material.pdf_file_size)})"
+
 
   / MATERIAL SPECS, THESE VARY IN KIND
   - unless @material.specifications.blank?
