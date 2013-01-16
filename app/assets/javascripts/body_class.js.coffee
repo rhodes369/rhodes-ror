@@ -1,5 +1,4 @@
 $(document).ready ->
-
   # Add class to body based on h3#mat_title
   title = $("#mat_title").text().replace(RegExp(" ", "g"), "")
   $("body").addClass title

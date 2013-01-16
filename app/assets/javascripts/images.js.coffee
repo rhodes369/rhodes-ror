@@ -1,4 +1,5 @@
 $(document).ready ->
+  
   # Basic thumbnail scrolling
   
   totalWidth = 0 # Get total width of all thumbnails

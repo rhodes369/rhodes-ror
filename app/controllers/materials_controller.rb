@@ -1,6 +1,6 @@
 class MaterialsController < ApplicationController
   
-  layout 'application'
+  # layout 'application'
   
   def index 
     @material = Material.new # for optionally creating a new material on the index
