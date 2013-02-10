@@ -14,24 +14,23 @@
 #= require backbone
 #= require backbone_rails_sync
 #= require backbone_datalink
-#
-#= require_self
-#x= require_tree ../templates/
-#x= require_tree .//models
-#x= require_tree .//collections
-#= require_tree .//views
-#= require_tree .//routers
-#= require images
-#= require left_side_bar
-#= require materials
-#= require toggle
-#= require body_class
-### Vendor ###
 #= require jquery-tools_no-jq.1.2.7
 #= require thumb_scroll
 #= require dropdown
 #= require jquery.cookie
 #= require toggle_menu
+#
+#= require_self
+#x= require_tree ../templates/
+#x= require_tree .//models
+#x= require_tree .//collections
+#= require_tree ./views
+#= require_tree ./routers
+#= require images
+#= require left_side_bar
+#= require materials
+#= require toggle
+#= require body_class
 
 @App = 
   dispatcher: _.clone(Backbone.Events)
@@ -44,6 +43,6 @@ $(document).ready ->
   adminRouter = new AdminRouter()
   Backbone.history.start({pushState: true})
 
-# this global method replaces console.log() with just log() 
-# the console object is not defined in all browsers and thus will throw an error if a console.log statement is forgotten in the code.
+
 window.log = (msg) -> console.log(msg) if console?
+

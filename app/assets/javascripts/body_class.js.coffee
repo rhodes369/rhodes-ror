@@ -1,5 +1,4 @@
 $(document).ready ->
-
   # Add class to body based on h3#mat_title
   title = $("#mat_title").text().replace(RegExp(" ", "g"), "")
   $("body").addClass title
@@ -11,3 +10,6 @@ $(document).ready ->
   ).each ->
     $("ul#antiques").css "display", "block"
     $("ul#newly").css "display", "none"
+
+  # Need else statement to say otherwise do opposite
+

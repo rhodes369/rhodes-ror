@@ -8,18 +8,22 @@
     - unless @material.material_type_id.nil?
       - @material_type = MaterialType.find(@material.material_type_id)
       = @material_type.nil? ? 'None' : @material_type.title
-  
-  #finish
-    - unless @default_image.nil?
-      - unless @default_image.finish.nil?
-        = "FINISH: #{@default_image.finish.title}"
-  
-  / MINIMUM THICKNESS
-  #min_thickness
-    - unless @min_thickness.blank?
-      = "Minimum Thickness"" #{@min_thickness}"      
 
-  %br 
+  #finish_thickness
+    #finish
+      - unless @finish_title.blank?
+        = "FINISH: #{@finish_title}"
+
+      / This was pulling the finish of the default (1st) image. This would be good, if min thickness was doing the same.
+      / - unless @default_image.nil?
+      /   - unless @default_image.finish.nil?
+      /     = "FINISH: #{@default_image.finish.title}"
+  
+    / MINIMUM THICKNESS
+    #min_thickness
+      - unless @min_thickness.blank?
+        = "Minimum Thickness"" #{@min_thickness}"      
+
 
   / AVAILABLE FINISHES
   - unless @material.finishes.blank?
@@ -52,6 +56,13 @@
     %p
       Download material PDF:
       %a{:href => "/system/materials/pdfs/#{@material.id}/#{@material.pdf_file_name}", target: "_blank"} 
+        = "#{@material.pdf_file_name} (#{number_to_human_size(@material.pdf_file_size)})"
+
+  / Metric PDF
+  - unless @material.pdf_file_name.blank?
+    %p
+      Download metric PDF:
+      %a{:href => "/images/stone/PDF/metric/#{@material.pdf_file_name}", target: "_blank"} 
         = "#{@material.pdf_file_name} (#{number_to_human_size(@material.pdf_file_size)})"
 
 

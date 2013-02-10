@@ -54,12 +54,9 @@ class SearchMaterials
         
 
 $(document).ready ->
-
   App.prependLeftSideBarDashes()
-  
   if $('#materialSearchResults').length > 0 # only run on materials index page
     search = new SearchMaterials() # invoke inital search 
-
 
   # set large image for thumbnail mouseovers
   $('.material_thumb').on(
@@ -72,8 +69,8 @@ $(document).ready ->
       @finishTitleString = ""
       @minThicknessString = ""
       
-      @finishTitleString = "FINISH: #{@finishTitle}" if @finishTitle?
-      @minThicknessString = "#{@minThickness} Minimum Thickness" if @minThickness?
+      @finishTitleString = "FINISH: #{@finishTitle}" unless @finishTitle == ""
+      @minThicknessString = "#{@minThickness} Minimum Thickness" unless @minThickness == ""
        
       $('#large_image').attr(src: @large_image)
       $('#finish').text("#{@finishTitleString}") 

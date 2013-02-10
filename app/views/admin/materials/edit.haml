@@ -9,7 +9,6 @@
     / = label_tag "[metrics]", 'metrics'
     = link_to 'remove', '#', :class => 'remove-link'
     .clear
-
   
   
 = render :partial => 'left_side_bar'
@@ -26,7 +25,7 @@
 
     %h4 Select application(s)
     
-    %select#applicationIds{name: 'material[application_ids][]', size: "5x20", multiple: true}
+    %select#applicationIds{name: 'material[application_ids][]', size: "20x20", multiple: true}
       - @all_applications.each do |app|
         %option{:value => app.id, :selected =>  @material.applications.include?(app) ? "selected" : nil}
           = app.title
@@ -39,7 +38,6 @@
     
     %h4 Technical Data
     = f.text_area :technical_data, :size => "50x5", :placeholder => "Technical Data..."
-
 
     %h4 Technical Data
     #standard-values
@@ -58,6 +56,21 @@
 
       = link_to '+ Add Data', '#', :class => 'add-link'
 
+
+    /
+      %h4 Standards Data
+      #standard-values
+        = f.fields_for :standard_values do |ff|
+          .standard-value
+            -# binding.pry
+            = ff.collection_select "standard_id", Standard.all, :id, :to_s
+            = ff.text_field :imperials
+            = ff.check_box :_destroy
+            = ff.label :_destroy, 'destroy'
+
+        = link_to 'add new', '#', :class => 'add-link'
+    
+    %hr
 
     %h4 Add a pdf file
     = f.file_field :pdf  
