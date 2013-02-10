@@ -40,9 +40,10 @@
       Edit: {}
     
 $(document).ready ->
+  # if <title>..Admin
   adminRouter = new AdminRouter()
   Backbone.history.start({pushState: true})
 
 
-window.log = (msg) -> console.log(msg) if console?
+window.log = (msg)-> console.log(msg) if console?
 

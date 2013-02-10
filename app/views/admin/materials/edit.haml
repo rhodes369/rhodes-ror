@@ -1,3 +1,4 @@
+
 %script#new-standard-value-template{type: "text/template"}
   .standard-value
     / name prefix: "material[standard_values_attributes][i]"
@@ -56,19 +57,6 @@
 
       = link_to '+ Add Data', '#', :class => 'add-link'
 
-
-    /
-      %h4 Standards Data
-      #standard-values
-        = f.fields_for :standard_values do |ff|
-          .standard-value
-            -# binding.pry
-            = ff.collection_select "standard_id", Standard.all, :id, :to_s
-            = ff.text_field :imperials
-            = ff.check_box :_destroy
-            = ff.label :_destroy, 'destroy'
-
-        = link_to 'add new', '#', :class => 'add-link'
     
     %hr
 

@@ -7,17 +7,17 @@ class Unit
     {imperial: "F", metric: "C", imperials_per_metric: 0}, # 0 means to convert manually
   ]
   
-  class <<self
-    def all
-      UNITS.map{|unit_hash| new(unit_hash)}
-    end
-    def find(id)
-      new(UNITS[id])
-    end
-    def find_by_imperial(imp)
-      unit_hash = UNITS.find{|unit| unit[:imperial] == imp}
-      new(unit_hash) if unit_hash
-    end
+  def self.all
+    UNITS.map{|unit_hash| new(unit_hash)}
+  end
+
+  def self.find(id)
+    new(UNITS[id])
+  end
+
+  def self.find_by_imperial(imp)
+    unit_hash = UNITS.find{|unit| unit[:imperial] == imp}
+    new(unit_hash) if unit_hash
   end
   
   def id
